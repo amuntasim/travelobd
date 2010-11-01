@@ -1,0 +1,6 @@
+<div class="listRow">
+  <div class="list_img">&nbsp;</div>
+  <div class="list_desc">
+    <%= link_to raw(truncate(sanitize(spot.detail).gsub(/<\/?[^>]*>/, "") ,:length => 100, :omission=>  '.. '+link_to('Read More',spot_path(spot), :class=> 'read_more') )), spot_path(spot)%>
+  </div>
+</div>

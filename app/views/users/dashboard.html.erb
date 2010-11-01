@@ -1,0 +1,113 @@
+<% title 'Dashboard' %>
+
+<%= content_for :over_mid_content do %>
+
+<% end %>
+
+
+<div class="mtop15 clear">
+  <h1>Welcome (<%= current_user.name %>),</h1>
+</div>
+<div class="msg_box clear">
+  <div class="msg_top"></div>
+  <div class="msg_desc">
+    <h1>My Message</h1>
+    <div class="msg_desc_info">You have
+      <%=link_to  pluralize(@unread_messages.size, 'message'), inbox_path %> unread
+      <br/>
+      <%= link_to 'Inbox', inbox_path %>
+      <br/>
+      <%= link_to 'Outbox', outbox_path %>
+    </div>
+
+  </div>
+  <div class="msg_bot"></div>
+</div>
+
+<div class="msg_box clear" id="manage_ad">
+  <div class="msg_top"></div>
+  <div class="msg_desc" >
+    <h1>Manage My Ad Classified Ads</h1>
+    <div class="msg_desc_info_big">
+      <% if current_cart.line_items.size > 0 %>
+        <div class="order">You have an order in progrss. <a href="#">Click here </a> to complete order.</div>
+      <% end %>
+      <div class="list_msg">
+        <div class="msg_list_img">
+          <div class="list_img_bor"></div>
+          <%=link_to  'View Listing', my_ads_path %>
+          <%=link_to  'Delete Listing', my_ads_path %>
+        </div>
+        <div class="msg_list_desc" id="place_ad">You currently have  <%=link_to  pluralize(current_user.ads.size, 'Ad'), my_ads_path %> placed.
+          <%= link_to 'Place an Add', place_an_ad_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="msg_bot"></div>
+</div>
+
+<div class="msg_box clear" id="saved_listings">
+  <div class="msg_top"></div>
+  <div class="msg_desc" >
+    <h1>My Saved Listing</h1>
+    <div class="msg_desc_info_big">
+      <div class="list_msg">
+        <div class="msg_list_img">
+          <div class="list_img_bor_fill"></div>
+          <%=link_to  'View Listing', my_saved_listings_path %>
+          <%=link_to  'Delete Listing', my_saved_listings_path %>
+
+        </div>
+        <!--<div class="msg_list_desc">You currently have no Ads placed. <a href="#">Place an Ad</a></div> -->
+      </div>
+    </div>
+  </div>
+  <div class="msg_bot"></div>
+</div>
+
+<div class="msg_box clear" id="my_product">
+  <div class="msg_top"></div>
+  <div class="msg_desc" >
+    <h1>Manage Product/Trailer Clissified Ads</h1>
+    <div class="msg_desc_info_big">
+
+      <div class="list_msg">
+        <div class="msg_list_img">
+          <div class="list_img_bor"></div>
+          <%=link_to  'View Listing', my_products_path %>
+          <%=link_to  'Delete Listing', my_products_path %>
+        </div>
+        <div class="msg_list_desc">
+          <%= link_to '+Ad my Product/trailer for sale', new_classified_path, :class => 'ad_pro' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="msg_bot"></div>
+</div>
+
+<div class="msg_box clear" id="my_directiry">
+  <div class="msg_top"></div>
+  <div class="msg_desc" >
+    <h1>Spot</h1>
+    <div class="msg_desc_info_big">
+      <div class="list_msg">
+        <div class="msg_list_img">
+          <div class="list_img_bor"></div>
+          <%=link_to  'View Listing', my_spots_path %>
+          <%=link_to  'Delete Listing', my_products_path %>
+        </div>
+        <div class="msg_list_desc">
+          <%= link_to '+Ad my Firm/Stable, Ad Shows, or Organization', new_spot_url, :class=> 'ad_pro' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="msg_bot"></div>
+</div>
+
+
+
+
+

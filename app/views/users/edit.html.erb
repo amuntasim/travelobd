@@ -1,0 +1,48 @@
+<% title 'Change Password' %>
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>Change Password</h2>
+  </div>
+<% end %>
+
+<div class="mtop15 clear">
+  <h1>Welcome (<%= current_user.name %>),</h1>
+</div>
+<div class="msg_box clear">
+  <div class="msg_top"></div>
+  <div class="msg_desc">
+    <h1>Change Password</h1>
+    <div class="msg_desc_info">
+
+      <%= render 'form' %>
+    </div>
+  </div>
+  <div class="msg_bot"></div>
+</div>
+
+<style type="text/css">
+  .msg_desc_info .field{float: left; margin-bottom: 5px; padding-left: 170px;}
+
+  input.creBtn {
+    background:url("/images/sub_btn.jpg") no-repeat scroll 0 0 transparent;
+    cursor:pointer;
+    display:inline;
+    float:left;
+    height:37px;
+    margin-left:200px;
+    margin-top:20px;
+    width:152px;
+    border: none;
+  }
+
+  .msg_desc_info .field input {
+    background:url("/images/dir_input.jpg") no-repeat scroll 0 0 transparent;
+    border:medium none;
+    float:left;
+    height:24px;
+    padding-left:5px;
+    padding-top:5px;
+    width:203px;
+  }
+
+</style>

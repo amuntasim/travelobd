@@ -1,0 +1,105 @@
+
+<% title @message.title %>
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>Message Details</h2>
+  </div>
+<% end %>
+
+
+<div class="detail_top_link">
+  <%= link_to raw('&lArr; Reply'), 'javascript:void(0)', :message_id=> @message.id, :class=> "reply_message"  %>
+</div>
+
+<div class="firms_row message_detail">
+  <div class="firms_head">
+    Message Details
+  </div>
+  <div class="f_bor article">
+    <div class="f_inner_bor">
+      <%= image_tag @message.user.profile.avatar.url(:thumb), :width => 68, :height => 55  if @message.user && @message.user.profile.avatar%>
+    </div>
+    <div class="f_inner_right">
+      <h3>
+        <%=  @message.title %>
+      </h3>
+      <h5>
+        <%= distance_of_time_in_words(@message.created_at, Time.now) %>
+        ago, by:
+        <%= @message.name %>
+        [
+        <%= @message.email %>
+        ]
+      </h5>
+
+
+      <%= @message.content %>
+
+      <p>
+        <%= link_to raw('&lArr; Reply'), 'javascript:void(0)', :message_id=> @message.id, :class=> "reply_message", :title=> 'RE: '+@message.title  %>
+      </p>
+    </div>
+  </div>
+
+  <%= render :partial=> 'messages/reply', :collection=> @message.children %>
+
+  <div id="message_reply">
+    <%=form_for Message.new, :url=>messages_path, :html=> {:id=> 'message_form'} do |f| %>
+      <div class='f_inner_right_row'>
+        <label>Message Title:</label>
+        <%= f.text_field :title, :value=>"RE:#{@message.title}" %>
+      </div>
+      <div class='f_inner_right_row'>
+        <label>Your Reply:</label>
+        <%= f.text_area :content %>
+      </div>
+
+
+
+      <div class="f_inner_right_row">
+        <%= hidden_field_tag :message_status, 'message_status' %>
+        <input name="" class="subBtn" type="submit" value=""/> <%= link_to 'Hide', 'javascript:void(0)',:class=> 'hide_reply_form' %>
+        <%= f.hidden_field :seller_id, :value => current_user.id  %>
+        <%= f.hidden_field :parent_id, :value => @message.id  %>
+        <%= f.hidden_field :ref_id, :value => @message.ref_id  %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="firma_bottom"></div>
+</div>
+
+
+<style type="text/css">
+  #message_reply {
+    float: left;
+
+  }
+  input.subBtn {
+    border: none;
+    margin-left: 250px;
+
+  }
+
+  .f_inner_right_row textarea {width: 430px; height: 210px;}
+  .f_inner_right_row #message_title {width: 430px;}
+
+  h5 {color: #000000;}
+  .hide_reply_form {float: left; margin: 32px 0px 0px 20px}
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#message_reply').hide();
+    $('a.reply_message').click(function(){
+      $('#message_reply').show(2000);
+      $('#message_title').val($(this).attr('title'));
+      $('#message_parent_id').val($(this).attr('parent_id'));
+    });
+
+    $('.hide_reply_form').click(function(){
+      $('#message_reply').hide();
+    });
+  });
+</script>

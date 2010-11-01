@@ -1,0 +1,27 @@
+<div class="f_bor article">
+  <div class="f_inner_bor">
+    <%= image_tag reply.user.profile.avatar.url(:thumb), :width => 68, :height => 55  if reply.user && reply.user.profile.avatar%>
+  </div>
+  <div class="f_inner_right">
+    <h3>
+      <%=  reply.title %>
+    </h3>
+    <h5>
+      <%= distance_of_time_in_words(reply.created_at, Time.now) %>
+      ago, by:
+      <%= reply.user.full_name %>
+      [
+      <%= reply.user.email %>
+      ]
+    </h5>
+
+
+    <%= reply.content %>
+
+    <p>
+      <%= link_to raw('&lArr; Reply'), 'javascript:void(0)', :message_id=> reply.id, :title=> 'RE: '+reply.title, :class=> "reply_message" unless current_user.id == reply.user_id %>
+    </p>
+  </div>
+</div>
+
+<%= render :partial=> 'messages/reply', :collection=> reply.children %>

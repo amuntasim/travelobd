@@ -1,0 +1,3 @@
+<% if @saved_item%>
+  $('#saved_item_li').html('<%= link_to '[ Remove ]', 'javascript:void(0)', :class => 'remove_from_save_listing',:sl_id=> @saved_item.id,:savable_id => @saved_item.savable_id, :savable_type => @saved_item.savable_type %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;');
+<% end %>

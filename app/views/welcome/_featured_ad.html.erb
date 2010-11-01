@@ -1,0 +1,16 @@
+<div class="samRow">
+  <h3>
+    <%=link_to truncate(featured_ad.title ,:length => 30),  ad_path(featured_ad) %>
+  </h3>
+  <%= image_tag featured_ad.main_image_url(:thumb) %>
+  <p>
+    <%=link_to truncate(sanitize(featured_ad.description).gsub(/<\/?[^>]*>/, "") ,:length => 100),  ad_path(featured_ad) %>
+  </p>
+  <span><strong>Height:</strong>
+    <%= featured_ad.height %>
+  </span>
+  <span><strong>Breed:</strong>
+    <%= featured_ad.breed.name if featured_ad.breed %>
+  </span>
+  <span><strong>Discipline:</strong> Hunter jumper</span>
+</div>

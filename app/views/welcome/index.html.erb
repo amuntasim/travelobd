@@ -1,0 +1,200 @@
+<%= content_for :js_css_include do %>
+  <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+<% end %>
+<div class="home_left fl">
+  <div class="home_left_header fl search_header">
+    <div class="home_left_header_content">
+      <%= t 'search' %>
+    </div>
+
+  </div>
+  <div class="home_left_content fl">
+    Search fields
+  </div>
+
+  <div class="home_left_header fl featured_hotel_header">
+    <div class="home_left_header_content">
+      <%= t 'featured_hotel' %>
+    </div>
+
+  </div>
+  <div class="home_left_content fl">
+    featured hotels
+  </div>
+
+  <div class="home_left_header fl latest_article_header">
+    <div class="home_left_header_content">
+      <%= t 'latest_article' %>
+    </div>
+
+  </div>
+  <div class="home_left_content fl" id="articles">
+    
+  </div>
+
+  <div class="home_left_header fl featured_transport_header">
+    <div class="home_left_header_content">
+      <%= t 'featured_transport' %>
+    </div>
+
+  </div>
+  <div class="home_left_content fl">
+    featured transports
+  </div>
+</div>
+
+<div class="home_left_border fl">
+
+</div>
+
+<div class="home_middle fl">
+  <div class="galleryview" id="spots_gallery">
+    <div class="gallery_wrapper">
+      
+    </div>
+  </div>
+
+</div>
+<!--END home middle-->
+
+
+<div class="home_right fl">
+
+</div>
+
+<style type="text/css">
+  .midContent{padding-left: 0px; width: 990px;}
+
+  .home_left { width: 200px;}
+  .home_left_border {
+    width: 37px;
+    height: 1125px;
+    overflow: auto;
+    background:url("/images/separetor.png") no-repeat;
+  }
+  .home_middle {
+    width: 530px;
+    margin: 0px 10px;
+  }
+  .home_right {
+    width: 190px;
+  }
+
+  .home_left_header {
+    width: 200px;
+    height: 32px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .home_left .search_header{
+    background:url("/images/heading_repeat.jpg") repeat-x;
+  }
+
+  .home_left .featured_hotel_header{
+    background:url("/images/heading_repeat.jpg") repeat-x 0 -32px;
+  }
+
+  .home_left .latest_article_header{
+    background:url("/images/heading_repeat.jpg") repeat-x 0 -64px;
+  }
+  .home_left .featured_transport_header{
+    background:url("/images/heading_repeat.jpg") repeat-x 0 -96px;
+  }
+
+  .gallery_wrapper{
+    
+    background:url("/images/banner_bg.png") no-repeat ;
+    width: 526px;
+    height: 270px;
+  }
+
+  .home_left_header_content {
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+  .home_left_content {
+    padding: 10px;
+    width: 180px;
+  }
+</style>
+
+<script type="text/javascript">
+  $.fn.loadAdsForSale = function(){
+    $.ajax({
+      url: '/welcome/ads_for_sale',
+      type: 'get',
+      dataType: 'script',
+      success: function(results) {
+       
+      }
+    });
+  };
+  $.fn.loadArticles= function(){
+    $.ajax({
+      url: '/welcome/articles',
+      type: 'get',
+      dataType: 'script'
+    });
+  };
+
+  $.fn.loadOtherClassifieds = function(){
+    $.ajax({
+      url: '/welcome/other_classifieds',
+      type: 'get',
+      dataType: 'script',
+      success: function(results) {
+        //$('#other_classified_loading').hide();
+      }
+    });
+  };
+
+  $.fn.loadFeaturedAds = function(){
+    $.ajax({
+      url: '/welcome/featured_ads',
+      type: 'get',
+      dataType: 'script',
+      success: function(results) {
+      }
+    });
+  };
+
+  $.fn.loadSpots = function(){
+    $.ajax({
+      url: '/welcome/spots',
+      type: 'get',
+      dataType: 'script',
+      success: function(results) {
+      }
+    });
+  };
+
+  $.fn.locationAutocomplete = function(){
+    $('#search_location').autocomplete({
+      source: '/ads/location_autocomplete',
+      //width: '200px',
+      select: function(event, ui) {
+        $(this).val(ui.item.value);
+        $('#search_district_id_equals').val(ui.item.id);
+        return false;
+      }
+    });
+  }
+ 
+
+  $(document).ready(function(){
+
+    //$(this).loadAdsForSale();
+    //$(this).loadOtherClassifieds();
+    $(this).loadArticles();
+    //$(this).loadFeaturedAds();
+    //$(this).loadSpots();
+    //$(this).locationAutocomplete();
+
+
+  });
+
+
+</script>

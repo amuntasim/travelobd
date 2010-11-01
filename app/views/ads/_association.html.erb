@@ -1,0 +1,11 @@
+<div class="association">
+
+  <%= form.fields_for :ad_associations, association, :child_index => (association.new_record? ? "index_to_replace_with_js" : nil) do |association_form| -%>
+
+    <%= association_form.select  :association_id, Association.all.collect { |d| [d.name, d.id] }, {:prompt => 'Choose Association'}, {:class=> 'clear'} %>
+    <%= association_form.text_field  :value, :class=> 'association_value' %>
+
+  <a class="removeAssociation cross" href="javascript:void(0)" title="Remove"> <%= image_tag 'close.gif' , :width => 16%></a<br/>
+  <% end -%>
+
+</div>

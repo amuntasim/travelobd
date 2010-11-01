@@ -1,0 +1,17 @@
+<div class="f_bor article">
+
+  <div class="f_inner_right">
+    <h3>
+      <%=  reply.subject %>
+    </h3>
+    <h5>
+      <%= distance_of_time_in_words(reply.created_at, Time.now) %>
+      ago
+    </h5>
+
+
+    <%= reply.content %>
+
+
+  </div>
+</div>

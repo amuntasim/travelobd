@@ -1,0 +1,45 @@
+<% title 'My Saved Listing' %>
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>
+      My Saved Listing
+    </h2>
+  </div>
+<% end %>
+<div class="ad_business">
+  &nbsp;
+</div>
+<div class="firms_row">
+  <div class="firms_head">
+    My Saved Listing
+  </div>
+  <% @items.each do |item| %>
+    <div class="f_bor spot">
+      <div class="f_inner_bor">
+        <%= image_tag item.savable.main_image_url(:thumb), :width => 68, :height => 55 %>
+      </div>
+      <strong><%= item.savable_type %></strong>
+      <h3>
+        <%= link_to item.savable.title, "/#{item.savable_type.downcase}s/#{item.savable_id}" %>
+      </h3>
+
+      <div class="my_links">
+        <%= link_to 'Remove', "/users/remove_saved_item?sl_id=#{item.id}", :confirm => 'Are you sure?', :method => :post %>
+      </div>
+    </div>
+  <% end %>
+  <% if @items.total_pages > 1 %>
+    <div class="f_bor pagination">
+      <%= will_paginate  @items %>
+    </div>
+  <% end %>
+  <div class="firma_bottom"></div>
+</div>
+
+<style type="text/css">
+  .firms_row {
+    margin-left: 45px;
+  }
+</style>
+
+

@@ -1,0 +1,122 @@
+<div class="top_bar">
+  <div class="top_bar_box">
+    <% if current_user %>
+      <% if admin? %>
+        <span><%= link_to 'Administration', admin_path %></span>
+      <% else %>
+        <span><%= link_to 'Dashboard', dashboard_path %></span>
+      <% end %>
+    <% else %>
+      <%= t('welcome_guest') %>
+    <% end %>
+  </div>
+  <div class="top_bar_box">
+    <% unless current_user %>
+      <span><%= link_to 'Create Account', new_user_path %></span>
+      <span><%= link_to 'Login', login_path %></span>
+    <% else %>
+      <span><%= link_to 'Logout', logout_path %></span>
+
+    <% end %>
+  </div>
+  <div class="top_bar_box">
+    <% if I18n.locale.to_s == 'en' %>
+      <%= link_to(t('see_in_bn'), {:'lan'=>'bn', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
+    <% else %>
+      <%= link_to(t('see_in_en'), {:'lan'=>'en', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
+    <% end %>
+    <div class="login_and_other collapsed">
+      <%= t('login_other') %>
+      <%= image_tag 'down_arrow.jpg', :id=> 'login_down_arrow' %>
+      <%= image_tag 'up_arrow.jpg', :id=> 'login_up_arrow' %>
+    </div>
+  </div>
+
+  <!--<div class="logRow">
+    <ul>
+      <li><a href="#">Contact us</a></li>
+
+    </ul>
+  </div>
+  -->
+</div>
+<div class="heading">
+  <div class="logo">
+    <a href="/"></a>
+  </div>
+</div>
+<% if @ad_current_step.to_i > 0 %>
+  <div class="logoMenu">
+    <ul>
+      <li>
+        <%= link_to 'Login or Register', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,1)%>
+      </li>
+      <li>
+        <%= link_to 'Choose A Package', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,2)%>
+      </li>
+      <li>
+        <%= link_to 'Create Your Ad', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,3)%>
+      </li>
+      <li>
+        <%= link_to 'Submit Your Ad', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,4)%>
+      </li>
+    </ul>
+  </div>
+<% else %>
+  <div class="menuRow">
+    <ul id="eq_ddm">
+      <li>  <%= link_to 'Home', root_path, :class=> active_inactive_navigation('home') %> </li>
+      <li class="meddle_li"></li>
+      <li>  <%= link_to 'Ads For Sale', ads_for_sale_path, :class=> active_inactive_navigation('ads_for_sale') %>
+
+      </li>
+      <li class="meddle_li"></li>
+
+      <li>  <%= link_to 'Classifieds', 'javascript:void(0)', :class=> active_inactive_navigation('classifieds')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
+       <ul id="sub_nav_cls" class="sub_nav" >
+          <li> <%= link_to  'All Classifieds ', classifieds_path %> </li>
+          
+        </ul>
+      
+      </li>
+      <li class="meddle_li"></li>
+      <li>  <%= link_to 'Spots',  'javascript:void(0)', :class=> active_inactive_navigation('spot') + ' have_sub_nav', :sub_nav_id => 'sub_nav_dir' %>
+        <ul id="sub_nav_dir" class="sub_nav" >
+          <li> <%= link_to  'All Spots ', spots_path%> </li>
+          
+        </ul>
+       
+      </li>
+      <li class="meddle_li"></li>
+      <li>  <%= link_to 'Articles',  'javascript:void(0)', :class=> active_inactive_navigation('articles') + ' have_sub_nav', :sub_nav_id => 'sub_nav_art' %>
+       <ul id="sub_nav_art" class="sub_nav" >
+          <li> <%= link_to  'All Articles', articles_path%> </li>
+         
+        </ul>
+      
+      </li>
+      <li class="meddle_li"></li>
+      <li>
+        <%= link_to 'Place An Ad', place_an_ad_path, :class=> active_inactive_navigation('place_an_ad')  %>
+
+      </li>
+    </ul>
+  </div>
+<% end %>
+<% if !flash.empty? or @notice %>
+  <div id="flash_messages">
+    <% if @notice || flash[:notice]%>
+      <div class="flash_message notice">
+        <%= @notice %>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] || flash[:error]%>
+      <div class="flash_message error">
+        <%=  flash[:alert] %>
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

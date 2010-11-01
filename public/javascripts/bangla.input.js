@@ -1,0 +1,4 @@
+$.fn.banglaInput = function(options){
+
+
+};

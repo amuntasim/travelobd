@@ -1,0 +1,90 @@
+<%= content_for :js_css_include do %>
+  <%= javascript_include_tag 'jquery.validate' %>
+  <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+<% end %>
+
+<%= form_for(@feedback,  :html => { :multipart => true,:id=> 'feedback_frm'}) do |f| %>
+  <% @builder = f %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+        <% @feedback.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+
+  </div>
+
+  <div class="dir_sign_row">
+    <label>
+      <span>*</span> Name:
+    </label>
+    <%= f.text_field :name, :class=> 'txt' %>
+  </div>
+
+  <div class="dir_sign_row">
+    <label>
+      <span>*</span> Email:
+    </label>
+    <%= f.text_field :email, :class=> 'txt' %>
+  </div>
+
+  <div class="dir_sign_row">
+    <label>
+      <span>*</span> Subject:
+    </label>
+    <%= f.text_field :subject, :class=> 'txt' %>
+  </div>
+
+  <div class="dir_sign_row">
+    <label>
+      <span>*</span>Message:
+    </label>
+    <%= f.text_area :content, :class=> 'big_area' %>
+  </div>
+
+
+  <div class="dir_sign_row">
+    <label>&nbsp;</label>
+    <%= f.submit '', :class=>"subBtn" %>
+  </div>
+
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $('#feedback_frm').submit(function() {
+      // tinyMCE.triggerSave();
+    });
+    var validator = $("#feedback_frm").validate({
+      invalidHandler: function() {
+        $("#summary").html('<div class="dir_sign_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+      },
+      errorPlacement: function(error, element) {
+        error.remove();
+      },
+
+
+      rules: {
+        'feedback[name]': "required",
+        'feedback[email]' : {
+          required: true,
+          email: true
+        },
+        'feedback[subject]' : "required",
+        'feedback[content]' : "required"
+
+      }
+    });
+
+  });
+
+
+</script>

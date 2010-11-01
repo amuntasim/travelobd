@@ -1,0 +1,30 @@
+<% title 'Spot- '+@spot.name %>
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>Spot</h2>
+  </div>
+<% end %>
+
+<div class="article_box">
+  <!--curv start -->
+  <div class="bl">
+    <div class="br">
+      <div class="tl">
+        <div class="tr">
+          <div class="articleRow">
+            <div class="bread_crum">
+              <a href="#"><%= @spot.category %></a>
+              <span> > </span>
+              <a href="javascript:void(0)"><%= @spot.name %></a>
+            </div>
+            <div class="articleDesc">
+              <%= image_tag @spot.main_image_url %>
+              <%= raw @spot.detail %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--curv end -->
+</div>

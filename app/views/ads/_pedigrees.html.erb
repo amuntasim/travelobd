@@ -1,0 +1,15 @@
+<div id="main_pedigree_first" class="pedigree_column first_column">
+  <% (0..1).each do |position| %>
+    <%= render :partial => 'pedigree',:object=> @pedigrees[position], :locals => {:position => position}%>
+  <% end %>
+</div>
+<div id="main_pedigree_second" class="pedigree_column  second_column" >
+  <% (2..5).each do |position| %>
+    <%= render :partial => 'pedigree',:object=> @pedigrees[position], :locals => {:position => position}%>
+  <% end %>
+</div>
+<div id="main_pedigree_third" class="pedigree_column  third_column " >
+  <% (6..13).each do |position| %>
+    <%= render :partial => 'pedigree',:object=> @pedigrees[position], :locals => {:position => position}%>
+  <% end %>
+</div>

@@ -1,0 +1,68 @@
+<div class="footer">
+  <!--<div class="mid_top_bg"></div>-->
+  <div class="shade_footer">
+    <%= image_tag 'bottom_image1.png', :class=> 'bottom_image_1' %>
+    <%= image_tag 'bottom_image2.png', :class=> 'bottom_image_2' %>
+  </div>
+  <div class="mid_footer">
+    <div class="footer_desc">
+      <div class="q_link">
+        <h3>
+          <label>quick</label>
+          <span>Links</span>
+        </h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+
+        </ul>
+      </div>
+      <div class="q_link">
+        <h3>
+          <label>Tour</label>
+          <span>Package</span>
+        </h3>
+        <ul>
+
+          <li><a href="">Our Packages</a></li>
+        </ul>
+      </div>
+      <div class="s_link">
+        <h3>
+          <label>Site</label>
+          <span>Links</span>
+        </h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+
+        </ul>
+      </div>
+      <div class="k_link">
+        <h3>
+          <label>Keep in</label>
+          <span>touch</span>
+        </h3>
+
+        <div class="media_con">
+          <a href="#" class="in"></a>
+          <a href="#" class="fb"></a>
+          <a href="#" class="tw"></a>
+          <a href="#" class="flr"></a>
+          <a href="#" class="ms"></a>
+        </div>
+        <h3 style="margin-top: 15px; float: left">
+          <label>Tell Your</label>
+          <span>Friends</span>
+        </h3>
+        <div>
+          <%= form_tag tell_friends_path  do %>
+            <%= text_field_tag :emails, '', :id=> 'friends_email' %>
+            <%= submit_tag 'Tell' %>
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!--<div class="mid_bot_bg"></div>-->
+</div> 

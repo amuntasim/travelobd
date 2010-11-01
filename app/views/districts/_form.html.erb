@@ -1,0 +1,52 @@
+<%= form_for(@district) do |f| %>
+  <% if @district.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@district.errors.count, "error") %> prohibited this district from being saved:</h2>
+
+      <ul>
+        <% @district.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :division_id %><br />
+    <span id="division_ajax">
+      <%= f.select :division_id, @divisions.collect{|c| [c.name, c.id]}, :prompt=> 'Select Division' %>
+    </span>
+    <%= image_tag('loading.gif', :id=> 'loading_division', :style => 'display: none') %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $('select#district_country_id').change(function(){
+      //load comments
+      $('#district_district_id, #loading_division').toggle();
+      $.ajax({
+        url: '/districts/load_divisions?country_id='+$(this).val(),
+        type: 'get',
+        dataType: 'script',
+        success: function(results) {
+          $('#district_district_id').show();
+          $('#loading_division').hide();
+        }
+      });
+    });
+
+
+  });
+
+
+</script>

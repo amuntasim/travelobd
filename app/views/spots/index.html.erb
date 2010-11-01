@@ -1,0 +1,42 @@
+<% title @search_title %>
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>
+      Spots
+    </h2>
+  </div>
+<% end %>
+
+<div class="ad_business">
+  <%= link_to '+Add Your '+@search_title, new_spot_path(:category_id =>params[:category_id])  %>
+</div>
+
+<div class="firms_row">
+  <div class="firms_head">
+    <%= @search_title %>
+  </div>
+  <% @spots.each do |spot| %>
+    <div class="f_bor spot">
+      <div class="f_inner_bor">
+        <%= image_tag spot.main_image_url(:thumb), :width => 68, :height => 55 %>
+      </div>
+      <strong><%= spot.category %></strong>
+      <h3>
+        <%= link_to spot.name, spot_path(spot) %>
+      </h3>
+
+      <%= truncate(sanitize(spot.detail).gsub(/<\/?[^>]*>/, "") ,:length => 150)  %>
+
+    </div>
+  <% end %>
+  <% if @spots.total_pages > 1 %>
+    <div class="f_bor pagination">
+      <%= will_paginate  @spots %>
+    </div>
+  <% end %>
+  <div class="firma_bottom"></div>
+</div>
+
+
+
+

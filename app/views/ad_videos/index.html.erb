@@ -1,0 +1,46 @@
+<h1 class="admin_header">Listing ad videos</h1>
+<div class="admin_new_link"><%= link_to 'New Ad Video', new_ad_video_path %></div>
+<div class="msg_desc_info_big">
+
+  <div class="f_bor evenRow ">
+    <div class="fl w_200 pad_lr_5">
+      <strong>Add</strong>
+    </div>
+    <div class="fl w_130 pad_lr_5">
+      <strong>Code</strong>
+    </div>
+    <div class="fl w_130 pad_lr_5">
+
+    </div>
+    <div class="admin_links">
+
+    </div>
+  </div>
+  <% @ad_videos.each do |ad_video| %>
+
+    <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
+      <div class="fl w_200 pad_lr_5">
+        <%= ad_video.ad.title %>
+      </div>
+
+      <div class="fl w_130 pad_lr_5">
+        <%= ad_video.code %>;
+      </div>
+      <!--
+      <div class="fl w_130 pad_lr_5">
+
+      </div>-->
+
+      <div class="fl admin_links">
+        <span><%= link_to 'Show', ad_video %></span>
+        <span><%= link_to 'Edit', edit_ad_video_path(ad_video) %></span>
+        <span><%= link_to 'Destroy', ad_video, :confirm => 'Are you sure?', :method => :delete %></span>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
+
+

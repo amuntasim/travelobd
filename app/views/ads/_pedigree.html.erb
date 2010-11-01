@@ -1,0 +1,9 @@
+
+<% prefix = "pedigrees[#{position}]" %>
+<%= fields_for prefix, pedigree do |pedigree_form| -%>
+
+  <%= pedigree_form.text_field  :name %>
+
+      <!--<a class="removePedigree cross" href="javascript:void(0)" title="Remove"> <%= image_tag 'close.gif' , :width => 16%></a<br/>-->
+<% end -%>
+

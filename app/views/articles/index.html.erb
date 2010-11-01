@@ -1,0 +1,41 @@
+<% title @search_title %>
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>Articles</h2>
+  </div>
+<% end %>
+
+
+<div class="ad_business">
+  <%= link_to '+Write an article', new_article_path(:category_id =>params[:category_id])  %>
+</div>
+
+<div class="firms_row">
+  <div class="firms_head">
+    <%= @search_title %>
+  </div>
+  <% @articles.each do |article| %>
+    <div class="f_bor article">
+      <div class="f_inner_bor">
+        <%= image_tag article.main_image_url(:thumb), :width => 68, :height => 55 %>
+      </div>
+      <strong><%= article.category %></strong>
+      <h3>
+        <%= link_to article.title, article_path(article) %>
+      </h3>
+      
+        <%= truncate(sanitize(article.detail).gsub(/<\/?[^>]*>/, "") ,:length => 150)  %>
+     
+    </div>
+  <% end %>
+  <% if @articles.total_pages > 1 %>
+    <div class="f_bor pagination">
+      <%= will_paginate  @articles %>
+    </div>
+  <% end %>
+  <div class="firma_bottom"></div>
+</div>
+
+
+
+

@@ -1,0 +1,3 @@
+<% if @success%>
+$('#saved_item_li').html('<%= link_to 'Save This Ad', 'javascript:void(0)', :class => 'save_item', :savable_type => params[:savable_type],:item_id=> params[:savable_id] %>');
+<% end %>

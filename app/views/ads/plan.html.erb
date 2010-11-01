@@ -1,0 +1,69 @@
+<%= content_for :over_mid_content do %>
+  <div class="redhead_row">
+    <h2>Select Package</h2>
+  </div>
+<% end %>
+<div class="selectPage">
+  <div class="basicAd">
+    <div class="basic_left"></div>
+    <div class="basic_mid">
+      <div class="basic_head">Basic Ad</div>
+      <div class="basic_desc">
+                            	includes :
+        <ul>
+          <li>7 Photos</li>
+          <li>Access to marketing tools</li>
+          <li>A great way to test the online market for your ad.</li>
+        </ul>
+      </div>
+      <div class="b_price basic_desc">
+                            	$4.95
+        <span>For 3 months</span>
+      </div>
+      <%= link_to 'Choose Package', 'javascript:void(0)', :class =>'choose_btn', :location => place_an_ad_path(:f=>0) %>
+    </div>
+    <div class="basic_right"></div>
+  </div>
+
+  <div class="mostPop">
+    <div class="most_left"></div>
+    <div class="most_mid">
+      <div class="most_head">Featured
+        <span>MOST POPULAR</span>
+      </div>
+      <div class="most_desc">
+                            	includes :
+        <ul>
+          <li>15 Photos + 2 video links </li>
+          <li>Featured on our homepage</li>
+          <li>Listed on our monthly newsletter</li>
+          <li>Access to marketing tools</li>
+          <li>Promote your ad promotion packet</li>
+          <li>Excellent Success Rate</li>
+        </ul>
+      </div>
+      <div class="b_price most_desc">
+                            	$9.95
+        <span>For 6 months</span>
+      </div>
+      <div class="f_chose_btn">
+         <%= link_to 'Choose Package', 'javascript:void(0)', :class =>'choose_btn', :location => place_an_ad_path(:f=>true) %>
+      </div>
+
+    </div>
+    <div class="most_right"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+
+  $(document).ready(function() {
+    $('a.choose_btn').click(function(){
+      location.href = $(this).attr('location');
+    });
+  });
+
+
+</script>
+
