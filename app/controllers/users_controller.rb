@@ -42,7 +42,7 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         @user_session = UserSession.new
-        format.html { render :action => "new" }
+        format.html { render :action => "new" , :layout => 'application'}
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
