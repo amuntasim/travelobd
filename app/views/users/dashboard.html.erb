@@ -24,29 +24,6 @@
   <div class="msg_bot"></div>
 </div>
 
-<div class="msg_box clear" id="manage_ad">
-  <div class="msg_top"></div>
-  <div class="msg_desc" >
-    <h1>Manage My Ad Classified Ads</h1>
-    <div class="msg_desc_info_big">
-      <% if current_cart.line_items.size > 0 %>
-        <div class="order">You have an order in progrss. <a href="#">Click here </a> to complete order.</div>
-      <% end %>
-      <div class="list_msg">
-        <div class="msg_list_img">
-          <div class="list_img_bor"></div>
-          <%=link_to  'View Listing', my_ads_path %>
-          <%=link_to  'Delete Listing', my_ads_path %>
-        </div>
-        <div class="msg_list_desc" id="place_ad">You currently have  <%=link_to  pluralize(current_user.ads.size, 'Ad'), my_ads_path %> placed.
-          <%= link_to 'Place an Add', place_an_ad_path %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="msg_bot"></div>
-</div>
-
 <div class="msg_box clear" id="saved_listings">
   <div class="msg_top"></div>
   <div class="msg_desc" >
