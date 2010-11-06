@@ -12,8 +12,6 @@ class Ad < ActiveRecord::Base
   has_many :ad_associations
   has_many :videos, :class_name => 'AdVideo'
   has_many :associations, :through => :ad_associations
-  has_many :pedigrees, :conditions => {:child_id => nil}
-  has_many :all_pedigrees, :class_name => 'Pedigree'
   has_many :saved_listings, :as => :savable, :dependent => :destroy
 
 

@@ -1,7 +1,6 @@
 class CreateDivisions < ActiveRecord::Migration
   def self.up
     create_table :divisions do |t|
-      t.integer :district_id
       t.integer :country_id
       t.string :name
       t.string :code
