@@ -45,36 +45,19 @@
     <a href="/"></a>
   </div>
 </div>
-<% if @ad_current_step.to_i > 0 %>
-  <div class="logoMenu">
-    <ul>
-      <li>
-        <%= link_to 'Login or Register', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,1)%>
-      </li>
-      <li>
-        <%= link_to 'Choose A Package', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,2)%>
-      </li>
-      <li>
-        <%= link_to 'Create Your Ad', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,3)%>
-      </li>
-      <li>
-        <%= link_to 'Submit Your Ad', 'javascript:void(0)' , :class => ad_steps_class(@ad_current_step,4)%>
-      </li>
-    </ul>
-  </div>
-<% else %>
+
   <div class="menuRow">
     <ul id="eq_ddm">
       <li>  <%= link_to 'Home', root_path, :class=> active_inactive_navigation('home') %> </li>
       <li class="meddle_li"></li>
-      <li>  <%= link_to 'Ads For Sale', ads_for_sale_path, :class=> active_inactive_navigation('ads_for_sale') %>
+      <li>  <%= link_to 'Packages', ads_for_sale_path, :class=> active_inactive_navigation('packages') %>
 
       </li>
       <li class="meddle_li"></li>
 
-      <li>  <%= link_to 'Classifieds', 'javascript:void(0)', :class=> active_inactive_navigation('classifieds')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
+      <li>  <%= link_to 'Tour Operators', 'javascript:void(0)', :class=> active_inactive_navigation('operators')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
        <ul id="sub_nav_cls" class="sub_nav" >
-          <li> <%= link_to  'All Classifieds ', classifieds_path %> </li>
+          <li> <%= link_to  'All ', classifieds_path %> </li>
           
         </ul>
       
@@ -97,12 +80,11 @@
       </li>
       <li class="meddle_li"></li>
       <li>
-        <%= link_to 'Place An Ad', place_an_ad_path, :class=> active_inactive_navigation('place_an_ad')  %>
+        <%= link_to 'Tour Club', place_an_ad_path, :class=> active_inactive_navigation('tour_club')  %>
 
       </li>
     </ul>
   </div>
-<% end %>
 <% if !flash.empty? or @notice %>
   <div id="flash_messages">
     <% if @notice || flash[:notice]%>

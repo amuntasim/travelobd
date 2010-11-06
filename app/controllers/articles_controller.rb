@@ -7,10 +7,10 @@ class ArticlesController < ApplicationController
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
 
   
-  uses_tiny_mce :only =>[:new, :edit],:options => {
-    :width => '445px',
-    :height => '250px'
-  }
+#  uses_tiny_mce :only =>[:new, :edit],:options => {
+#    :width => '445px',
+#    :height => '250px'
+#  }
   
   # GET /articles
   # GET /articles.xml

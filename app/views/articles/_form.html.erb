@@ -1,6 +1,22 @@
 <%= content_for :js_css_include do %>
-  <%= javascript_include_tag 'jquery.validate' %>
+  <%= javascript_include_tag 'jquery.validate', 'bangla.input' %>
   <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+  <%= javascript_include_tag 'tiny_mce/tiny_mce_src.js' %>
+  <script type="text/javascript">
+    //<![CDATA[
+    tinyMCE.init({
+      editor_selector : 'mceEditor',
+      height : '250px',
+      language : 'en',
+      mode : 'textareas',
+      theme : 'simple',
+      width : '445px',
+      plugins : 'banglainput'
+    });
+    //]]>
+
+
+  </script>
 <% end %>
 
 <%= form_for(@article,  :html => { :multipart => true,:id=> 'article_frm'}) do |f| %>
@@ -33,12 +49,21 @@
     <%= f.text_field :title, :class=> 'txt' %>
   </div>
 
+  
   <div class="dir_sign_row">
     <label>
       <span>*</span>Detail:
     </label>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </div>
+
+<div class="dir_sign_row">
+    <label>
+      <span></span> Tag:
+    </label>
+    <%= f.text_field :tag_list, :class=> 'txt' %>
+  </div>
+
   <div class="dir_sign_row">
 
     <div class="f_edit_row mtop10">
@@ -112,7 +137,9 @@
     $(this).addMorePhoto('article_photos', allowed_images);
     $(this).deleteAsset('articles');
     $(this).makeMainPhoto('articles');
-    
+    $('#article_title').banglaInput();
+    $('#article_tag_list').banglaInput();
+   // $(tinyMCE.activeEditor).banglaInput();
   });
 
 
