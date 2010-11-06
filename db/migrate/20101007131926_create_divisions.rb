@@ -8,7 +8,6 @@ class CreateDivisions < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index(:divisions, :district_id)
   end
 
   def self.down
