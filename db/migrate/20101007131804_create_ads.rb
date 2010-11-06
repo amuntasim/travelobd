@@ -28,9 +28,7 @@ class CreateAds < ActiveRecord::Migration
     add_index(:ads, :featured)
     add_index(:ads, [:category_id, :user_id])
     add_index(:ads, [:district_id,:division_id, :active])
-    add_index(:ads, [:zip_code, :active])
-    add_index(:ads, [:price, :zip_code, :active])
-    add_index(:ads, [:division_id, :district_id, :breed_id, :price, :gender, :active])
+   
     
   end
 
