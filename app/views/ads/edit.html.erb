@@ -1,6 +1,8 @@
 <%= content_for :over_mid_content do %>
   <div class="redhead_row">
-    <h2>Edit <%= @ad.featured ?  'Featured' : 'Basic' %> Ad</h2>
+    <h2>Edit <%= @ad.featured ?  'Featured' : 'Basic' %> Package</h2>
   </div>
 <% end %>
-<%= render 'form' %>
+<div class="spot_box" id="article_form">
+  <%= render 'form' %>
+</div>

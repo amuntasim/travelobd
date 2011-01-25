@@ -1,22 +1,19 @@
 class Ad < ActiveRecord::Base
+  translates :title, :description, :short_description
+  
   has_many :videos, :class_name => 'AdVideo'
   has_many :assets, :class_name => 'AdAsset'
   has_one :main_image, :class_name => 'AdAsset', :conditions => {:main => true}
   belongs_to :user
   belongs_to :district
   belongs_to :division
-  belongs_to :country
-  belongs_to :breed
   has_many :ad_disciplines
-  has_many :disciplines, :through => :ad_disciplines
-  has_many :ad_associations
   has_many :videos, :class_name => 'AdVideo'
-  has_many :associations, :through => :ad_associations
   has_many :saved_listings, :as => :savable, :dependent => :destroy
 
-
-  accepts_nested_attributes_for :ad_disciplines
-  accepts_nested_attributes_for :ad_associations
+  has_friendly_id :title, :use_slug => true
+  
+  
   accepts_nested_attributes_for :videos
 
   has_one :line_item, :as=> 'purchasable'

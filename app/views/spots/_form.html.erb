@@ -33,9 +33,17 @@
     </label>
     <%= f.text_field :name %>
   </div>
+
+  <div class="dir_sign_row">
+    <label>
+      <span>*</span> Short Description:
+    </label>
+    <%= f.text_field :short_description %>
+  </div>
+
   <div class="dir_sign_row">
     <%= f.label :detail %>
-    <%= f.text_area :detail, :class => "mceEditor" %>
+    <%= f.text_area :detail, :class => "" %>
   </div>
   <div class="dir_sign_row">
     <label>
@@ -51,24 +59,7 @@
     <%= text_field_tag 'division_str', @spot.division ? @spot.division.name || @spot.division.code : '', :id=> 'division_auto_complete'  %>
     <%= f.hidden_field :division_id %>
   </div>
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Country:
-    </label>
-    <%= f.select :country_id, Country.all.collect{|c|[c.name, c.id]}, :prompt => 'Select Country' %>
-  </div>
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Zipcode:
-    </label>
-    <%= f.text_field :zip_code %>
-  </div>
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Phone:
-    </label>
-    <%= f.text_field :phone %>
-  </div>
+  
 
   <div class="dir_sign_row">
 

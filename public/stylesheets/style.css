@@ -102,7 +102,7 @@ ul li { list-style: none }
     float:left;
     background :url(/images/menu_repeat.jpg) repeat-x ;
     background-position: 0 -64px;
-     display:block }
+    display:block }
 
 .menuRow ul li.meddle_li {
     width: 2px;
@@ -145,7 +145,7 @@ h3{font-size:15px; color:#000000 ; }
 
 h1 {font-family: Georgia, Arial, Helvetica, sans-serif; font-size:30px; color:#000033; font-weight:normal }
 
-h2 {font-family: Georgia, Arial, Helvetica, sans-serif; font-size:30px; color:#990000; font-weight:normal }
+h2 {font-family: Georgia, Arial, Helvetica, sans-serif; font-size:30px; color:#0083AB; font-weight:normal }
 
 .listRow {float:left; width:260px; margin-bottom:28px; display:inline }
 
@@ -272,9 +272,6 @@ input#friends_email {padding: 3px 0; margin-top: 10px; width: 220px;}
 
 .dir_sign_row span {color:#9f1010}
 
-.dir_sign_row input{float:left; width:203px; background:url(/images/dir_input.jpg) no-repeat; height:24px; border:none; padding-top:5px; padding-left:5px}
-
-.dir_sign_row textarea{float:left; width:295px; background:url(/images/details_txt_bg.jpg) no-repeat; height:98px; border:none; padding:10px 0 0 5px}
 
 input.subBtn {float: left; width:152px; background:url(/images/sub_btn.jpg) no-repeat; height:37px; cursor:pointer; margin-left:20px; margin-top:20px; display:inline }
 
@@ -684,7 +681,7 @@ a:hover.ad_remove {text-decoration:none }
 
 /**/
 
-.edit_featured {float: left; width:935px }
+.edit_featured {float: left; width:635px }
 
 .f_edit_row {float:left; width:460px; margin-bottom:10px; display:inline }
 
@@ -752,3 +749,7 @@ a.browse_img { float:left; background:url(/images/browse_img.jpg) no-repeat; wid
 .tube_input_digree input{float:left; width:100px;background:url(/images/zip_input.jpg) no-repeat; height:24px; border:none; padding-top:5px; margin-bottom:10px; margin-left:80px }
 
 .bigleftmar {float: left;  clear:both; margin-left:400px; margin-top:30px; margin-bottom:20px }
+
+#article_form {width: 900px; margin-left:0}
+#article_form .dir_sign_row {width: 900px;}
+#article_form .dir_sign_row textarea {width: 600px; height: 600px}

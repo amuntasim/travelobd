@@ -23,7 +23,6 @@ input {padding: 0px 2px;}
 }
 .spot_box .dir_sign_row input.txt{
     width: 435px;
-    background:url("/images/input_bg_445.jpg") no-repeat scroll 0 0 transparent;
     padding: 0px 5px;
 }
 .spot_box .dir_sign_row {
@@ -217,7 +216,6 @@ div.pagination{
     float: left; width: 100px;
 }
 
-.dir_sign_row .f_edit_row{margin-left: 160px;}
 
 .dir_sign_row  .more_photos_form {float: left; width: 450px;}
 .more_photos_form .photo{float: left; width: 450px;}

@@ -110,9 +110,9 @@ class SpotsController < ApplicationController
   private
   def set_district_division
     if params[:spot][:division_id].blank?
-      division = Division.first(:conditions =>['country_id = ? AND (name = ? OR code = ?)',@spot.country_id, params[:division_str], params[:division_str]])
+      division = Division.includes(:translations).first(:conditions =>['(division_translations.name = ? OR code = ?)', params[:division_str], params[:division_str]])
       unless division
-        division = Division.new(:country_id => @spot.country_id, :name => params[:division_str])
+        division = Division.new( :name => params[:division_str])
         division.code = params[:division_str] if params[:division_str].length == 2
         division.save
       end
@@ -120,9 +120,9 @@ class SpotsController < ApplicationController
     end
 
     if params[:spot][:district_id].blank?
-      district = District.first(:conditions =>['country_id = ? AND name = ? ',@spot.country_id, params[:district_str]])
+      district = District.includes(:translations).first(:conditions =>['district_translations.name = ? ', params[:district_str]])
       unless district
-        district = District.new(:country_id => @spot.country_id, :division_id=> @spot.division_id,  :name => params[:district_str])
+        district = District.new( :division_id=> @spot.division_id,  :name => params[:district_str])
         district.division_id = @spot.division_id
         district.save
       end
@@ -132,9 +132,9 @@ class SpotsController < ApplicationController
 
   def update_district_division
     unless params[:division_str].blank?
-      division = Division.first(:conditions =>['country_id = ? AND (name = ? OR code = ?)',params[:spot][:country_id], params[:division_str], params[:division_str]])
+      division = Division.includes(:translations).first(:conditions =>['(division_translations.name = ? OR code = ?)', params[:division_str], params[:division_str]])
       unless division
-        division = Division.new(:country_id => params[:spot][:country_id], :name => params[:division_str])
+        division = Division.new( :name => params[:division_str])
         division.code = params[:division_str] if params[:division_str].length == 2
         division.save
       end
@@ -142,9 +142,9 @@ class SpotsController < ApplicationController
     end
 
     unless params[:division_str].blank?
-      district = District.first(:conditions =>['country_id = ? AND name = ? ',params[:spot][:country_id], params[:district_str]])
+      district = District.includes(:translations).first(:conditions =>['district_translations.name = ? ',params[:district_str]])
       unless district
-        district = District.new(:country_id => @spot.country_id, :division_id=> @spot.division_id,  :name => params[:district_str])
+        district = District.new( :division_id=> @spot.division_id,  :name => params[:district_str])
         district.division_id = params[:spot][:division_id]
         district.save
       end

@@ -89,7 +89,7 @@ class DistrictsController < ApplicationController
   end
 
   def autocomplete
-    districts = District.where(['name like ? ', "%#{params[:term]}%"]).includes(:division).limit(15)
+    districts = District.includes([:translations, :division]).where(['district_translations.name like ? ', "%#{params[:term]}%"]).limit(15)
     render :json => districts.collect {|c| {"id" => c.id, "label" => "#{c.name}, #{c.division.name if c.division}", "value" => c.name}}
   end
 

@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   
   before_filter :require_user_set_step, :only=> :new
   before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy]
-
+  before_filter lambda { @active_nav = 'packages'  }
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print ]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
 
@@ -18,7 +18,6 @@ class AdsController < ApplicationController
   # GET /ads/1.xml
   def show
     @already_saved = SavedListing.in_my_list(current_user.id, @ad.id, 'Ad') if current_user
-    @max_pedigree_position = @ad.all_pedigrees.order('position DESC').first.position rescue 0
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ad }
@@ -28,17 +27,15 @@ class AdsController < ApplicationController
   # GET /ads/new
   # GET /ads/new.xml
   def new
-    if params[:f].blank? 
-      @ad_current_step = 2
-      render :action => :plan
-      return
-    end
+    #    if params[:f].blank?
+    #      @ad_current_step = 2
+    #      render :action => :plan
+    #      return
+    #    end
     @ad_current_step = 3
     @ad = Ad.new
     @ad.featured = true if params[:f] == 'true'
 
-    @ad.ad_associations.build
-    @ad.ad_disciplines.build
     @ad.assets.build
     @ad.videos.build
     @pedigrees = []
@@ -53,8 +50,6 @@ class AdsController < ApplicationController
   # GET /ads/1/edit
   def edit
     @ad_settings = Element.ad_settings
-    @pedigrees = @ad.all_pedigrees
-    @max_pedigree_position = @ad.all_pedigrees.order('position DESC').first.position rescue 0
   end
 
   # POST /ads
@@ -62,14 +57,9 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     @ad.user_id = current_user.id
-    set_district_division
     respond_to do |format|
       if @ad.save
-        create_pedigrees
-        @line_item = LineItem.create!(:cart => current_cart, :purchasable_id => @ad.id, :purchasable_type=>'Ad', :quantity => 1, :price => @ad.listing_charge)
-        session[:ad_checkout] = true
-        redirect_to checkout_url
-        return
+        redirect_to ad_path(@ad), :notice => 'Package was successfully createds.'
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @ad.errors, :status => :unprocessable_entity }
@@ -80,11 +70,9 @@ class AdsController < ApplicationController
   # PUT /ads/1
   # PUT /ads/1.xml
   def update
-    update_district_division
     respond_to do |format|
       if @ad.update_attributes(params[:ad])
-        update_pedigrees
-        format.html { redirect_to(@ad, :notice => 'Ad was successfully updated.') }
+        format.html { redirect_to(ad_path(@ad), :notice => 'Package was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -99,7 +87,7 @@ class AdsController < ApplicationController
     @ad.destroy
 
     respond_to do |format|
-      format.html { redirect_to(ads_url) }
+      format.html { redirect_to(packages_url) }
       format.xml  { head :ok }
     end
   end

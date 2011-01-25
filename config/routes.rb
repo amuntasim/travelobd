@@ -86,6 +86,8 @@ Travelobd::Application.routes.draw do
   get "welcome/index"
   get "users/dashboard"
 
+  resources :packages, :controller => :ads
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -153,26 +155,7 @@ Travelobd::Application.routes.draw do
 
   match 'advance_search' =>'ads#advance_search'
 
-  #classifieds named routes
-  match 'ads_for_sale' => 'classifieds#index', :defaults => {:category_id =>1}
-
-  scope '/classified' do
-    match 'products' => 'classifieds#index', :defaults => {:category_id =>2}, :as => 'classified_products'
-    match 'trailers' => 'classifieds#index', :defaults => {:category_id =>3}, :as => 'classified_trailers'
-  end
-
-
-  #spots named routes
-  match 'farms_and_stables' => 'spots#index', :defaults => {:category_id =>1}
-  match 'ad_shows' => 'spots#index', :defaults => {:category_id =>2}
-  match 'organizations' => 'spots#index', :defaults => {:category_id =>3}
-
-  #articles named routes
-  match 'ad_news' => 'articles#index', :defaults => {:category_id =>1}
-  match 'hunter_jumper_ads' => 'articles#index', :defaults => {:category_id =>2}
-  match 'dressage_ads' => 'articles#index', :defaults => {:category_id =>3}
-  match 'western_ads' => 'articles#index', :defaults => {:category_id =>4}
-
+  
   #dashboard
   match 'dashboard'         => 'users#dashboard'
   match 'inbox'         => 'users#inbox'

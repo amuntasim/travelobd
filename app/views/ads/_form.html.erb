@@ -3,7 +3,7 @@
   <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
 <% end %>
 
-<%= form_for(@ad,  :html => { :multipart => true, :id=> 'ad_form'}) do |f| %>
+<%= form_for(@ad, :html => { :multipart => true, :id=> 'ad_form'}) do |f| %>
   <% @builder = f %>
   <% if @ad.errors.any? %>
     <div id="error_explanation">
@@ -17,182 +17,81 @@
     </div>
   <% end %>
 
-
-  <div class="article_box">
-    <!--curv start -->
-    <div class="bl">
-      <div class="br">
-        <div class="tl">
-          <div class="tr">
-            <div class="edit_featured">
-              <div class="f_edit_row">
-                <label> <span>*</span> Ad Type :</label>
-                <%= f.select :category_id, Article::CATEGORIES, :prompt=> 'Select Category' %>
-              </div>
+  <div class="dir_sign_row">
+    <label> <span>*</span>Category :</label>
+    <%= f.select :category_id, Ad::CATEGORIES, :prompt=> 'Select Category' %>
+  </div>
 
 
-              <div class="f_edit_row clear">
-                <label> <span>*</span> Ad Tittle :</label>
-                <%= f.text_field :title  %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> District :</label>
-                <input type="text" name="district_str" id="district_auto_complete" />
-                <%= f.hidden_field :district_id %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> Ad Name :</label>
-                <%= f.text_field :ad_name %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> Division :</label>
-                <input type="text" name="division_str" id="division_auto_complete"/>
-                <%= f.hidden_field :division_id %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> Short Description of your Ad :</label>
-                <%= f.text_field :short_description %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> Country :</label>
-                <%= f.select :country_id, Country.all.collect{|c|[c.name, c.id]}, :prompt => 'Select Country' %>
-              </div>
-
-              <div class="f_edit_row clear">
-                <label><span>*</span>  Asking Price :</label>
-                <%= f.text_field :price %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> Zip Code :</label>
-                <%= f.text_field :zip_code %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> Date of Birth :</label>
-                <%= f.text_field :birth_date %>
-              </div>
-
-              <div class="f_edit_row">
-                <label> <span>*</span> Phone# :</label>
-                <%= f.text_field :phone %>
-              </div>
-
-              <div class="f_edit_row" >
-                <label> <span>*</span> Temperament : <br/>(1=Bombproof, 10=Hot)</label>
-                <%= f.select :temperament, 1..10 %>
-              </div>
-              <div class="f_edit_row clear">
-                <label> <span>*</span> Breed :</label>
-                <%= f.select :breed_id, Breed.all.collect{ |b| [b.name, b.id]}, :prompt=> 'Select Breed' %>
-              </div>
-              <div class="f_edit_row clear">
-                <label> <span>*</span> Gnder :</label>
-                <div class="radio_area"><%= f.radio_button :gender, 'male' %> Male</div>
-                <div class="radio_area"><%= f.radio_button :gender, 'female' %> Female</div>
-              </div>
+  <div class="dir_sign_row">
+    <label> <span>*</span>Tittle :</label>
+    <%= f.text_field :title  %>
+  </div>
 
 
-              <div class="f_edit_row_big clear">
-                <label> <span>*</span> Describe Your Ad :</label>
-                <%= f.text_area :description %>
-              </div>
-
-              <div class="f_edit_row mtop10">
-                <h3>Disciplines:</h3>
-                <div class="f_edit_top"></div>
-                <div class="f_edit_mid" >
-                  <div id="ad_disciplines">
-                    <%= render :partial => 'discipline', :collection => @ad.ad_disciplines, :locals => { :form => f}%>
-                  </div>
-                  <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore adMoreDiscipline' %>
-  <%#= add_object_link("+Ad More", f, @ad.ad_disciplines.new, "discipline", "#ad_disciplines", 'adMore adMoreDiscipline') %>
-                </div>
-                <div class="f_edit_bot"></div>
-              </div>
-
-              <div class="f_edit_row mtop10 mleft">
-                <h3>Assotiations:</h3>
-                <div class="f_edit_top"></div>
-                <div class="f_edit_mid">
-                  <div id="ad_associations">
-                    <%= render :partial => 'association', :collection => @ad.ad_associations, :locals => { :form => f} %>
-                  </div>
-                  <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore adMoreAssociation' %>
-  <%#= add_object_link("+Ad More", f, @ad.ad_associations.new, "association", "#ad_associations", 'adMore adMoreAssociation') %>
-
-                </div>
-                <div class="f_edit_bot"></div>
-              </div>
-
-              <div class="edit_featured">
-                <div class="f_edit_row mtop10">
-                  <h3>Images <span style="font-size: 11px;">(<%= ad_photo_number_str(@ad) %>)</span></h3>
-                  <div class="f_edit_top"></div>
-                  <div class="f_edit_mid">
-                    <div class="edit_img_row">
-
-                      <% unless @ad.new_record? %>
-                        <%= render :partial => 'existing_photo', :collection => @ad.assets %>
-                      <% end %>
-
-                      <div  id="ad_photos">
-                        <%= render :partial => 'photo', :locals => { :form => f, :photo => @ad.assets.new } if @ad.new_record? %>
-                      </div>
-
-                    </div>
-                    <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
-  <%#= add_object_link("+Add More", f, @ad.assets.new, "photo", "#ad_images", 'adMore addMoreImage') %>
-                  </div>
-                  <div class="f_edit_bot"></div>
-                </div>
-                <% if @ad.featured? %>
-                  <div class="tubeRow">
-                    <div class="tube_input_area">
-                      <label>You Tube Video Link</label>
-                      <div id="ad_videos">
-                        <%= render :partial => 'video', :collection => @ad.videos, :locals => { :form => f} %>
-                      </div>
-                      <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore adMoreVideo' %>
-                    </div>
-                    <div class="tube_input_area" style="width: 325px">
-                      <label>Pedigree</label>
-                      <div id="ad_pedigrees" style="float: left; width: 325px">
-
-                        <div id="pedigree_first" class="pedigree_column">
-
-                        </div>
-                        <div id="pedigree_second" class="pedigree_column">
-
-                        </div>
-                        <div id="pedigree_third" class="pedigree_column  third_column">
-
-                        </div>
+  <div class="dir_sign_row">
+    <label> Short Description :</label>
+    <%= f.text_field :short_description %>
+  </div>
 
 
-                      </div>
-                      <br/>
-                      <%= link_to '+Ad More', 'javascript:void(0)', :class=>' adMorePedigree' %>
-                      <%= link_to '-Remove Last', 'javascript:void(0)', :class=>' removeLastPedigree' %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-              <div class="bigleftmar">
-                <input type="submit" class="submit" value="<%= @ad.new_record? ? "CREATE" : "UPDATE" %>"></input>
+  <div class="dir_sign_row">
+    <label><span>*</span>  Asking Price :</label>
+    <%= f.text_field :price %>
+  </div>
 
-              </div>
-            </div>
+
+  <div class="dir_sign_row">
+    <label> <span>*</span> Phone# :</label>
+    <%= f.text_field :phone %>
+  </div>
+
+
+
+  <div class="dir_sign_row">
+    <label> <span>*</span> Describe Your Package :</label>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="dir_sign_row">
+    <label> Image:</label>
+
+    <div class="f_edit_row">
+      <h3>Images <span style="font-size: 11px;">(<%= ad_photo_number_str(@ad) %>)</span></h3>
+      <div class="f_edit_top"></div>
+      <div class="f_edit_mid">
+        <div class="edit_img_row">
+
+          <% unless @ad.new_record? %>
+            <%= render :partial => 'existing_photo', :collection => @ad.assets %>
+          <% end %>
+
+          <div  id="ad_photos">
+            <%= render :partial => 'photo', :locals => { :form => f, :photo => @ad.assets.new } if @ad.new_record? %>
           </div>
+
         </div>
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+  <%#= add_object_link("+Add More", f, @ad.assets.new, "photo", "#ad_images", 'adMore addMoreImage') %>
       </div>
+      <div class="f_edit_bot"></div>
     </div>
-    <!--curv end -->
+    <% if @ad.featured? %>
+      <div class="tubeRow">
+        <div class="tube_input_area">
+          <label>You Tube Video Link</label>
+          <div id="ad_videos">
+            <%= render :partial => 'video', :collection => @ad.videos, :locals => { :form => f} %>
+          </div>
+          <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore adMoreVideo' %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+  <div class="bigleftmar">
+    <input type="submit" class="submit" value="<%= @ad.new_record? ? "CREATE" : "UPDATE" %>"></input>
+
   </div>
 
 
@@ -202,17 +101,6 @@
     <%= render(:partial => 'video', :locals => { :form => @builder}, :object => @ad.videos.new) %>
   </div>
 
-  <div id="new_pedigree_html">
-    <%= render 'pedigrees' %>
-  </div>
-
-  <div id="new_discipline_html">
-    <%= render(:partial => 'discipline', :locals => { :form => @builder}, :object => @ad.ad_disciplines.new) %>
-  </div>
-
-  <div id="new_association_html">
-    <%= render(:partial => 'association', :locals => { :form => @builder}, :object => @ad.ad_associations.new) %>
-  </div>
 
   <div id="new_photo_html">
     <%= render(:partial => 'photo', :locals => { :form => @builder}, :object => @ad.assets.new) %>
@@ -221,55 +109,10 @@
 </div>
 
 <style type="text/css">
-  .pedigree_column input{
-    width: 90px;
-    margin-bottom: 5px;
-    background:url("/images/pedigree_input_bg.jpg") no-repeat
-  }
-  .pedigree_column{
-    width: 90px;
-    margin-right: 8px;
-    float: left;
-  }
 
-  .first_column input{
-    margin-bottom:62px;
-    margin-top:48px;
-  }
-
-  .second_column input{
-    margin-bottom:27px;
-    margin-top:14px;
-  }
-  .third_column{
-    margin-right: 0
-  }
-  .hide_column {
-    display: none;
-  }
   .photo{
     float: left;
     width:100%;
-  }
-  .SI-FILES-STYLIZED label.cabinet
-  {
-    width: 158px;
-    height: 38px;
-    background: url(/images/browse_img.jpg) 0 0 no-repeat;
-
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .SI-FILES-STYLIZED label.cabinet input.file
-  {
-    position: relative;
-    height: 100%;
-    width: auto;
-    opadistrict: 0;
-    -moz-opadistrict: 0;
-    filter:progid:DXImageTransform.Microsoft.Alpha(opadistrict=0);
   }
 
   .f_edit_row input.photo {width: 260px; margin: 5px 0}
@@ -286,15 +129,7 @@
     float: left;
   }
 
-  #ad_pedigrees .pedigree {
-    float: left;
-    width: 240px;
 
-  }
-  #ad_pedigrees .cross {
-    margin: 5px;
-    float: left;
-  }
 
   .tube_input_area, .tube_input_digree {width: 240px;}
   .tube_input_digree input {margin-left: 108px;}
@@ -330,64 +165,6 @@
     allowed_videos =  <%=@ad_settings['featured_package_videos'] || 2 %>;
 <%end%>
 
-  
-  var max_pedigree_position = <%=@max_pedigree_position%>;
-  var current_pedigree_level = 0;
-  //var max_pedigree_position = 7;
-  
-  $.fn.displayFirstLevelPedigree= function(){
-    $('#pedigree_first').append($('#main_pedigree_first').html()).slideDown('slow');
-    current_pedigree_level = 1;
-  },
-
-  $.fn.displaySecondLevelPedigree = function(){
-
-    $('#pedigree_second').append($('#main_pedigree_second').html());
-    $('#pedigree_first').addClass('second_column');
-    current_pedigree_level = 2;
-  },
-  
-  $.fn.displayThirdLevelPedigree = function(){
-    $('#pedigree_third').append($('#main_pedigree_third').html());
-    $('#pedigree_first').removeClass('second_column');
-    $('#pedigree_first').addClass('first_column');
-    $('#pedigree_second').addClass('second_column');
-    current_pedigree_level = 3;
-  },
-
-  $.fn.hideFirstLevelPedigree= function(){
-    $('#pedigree_first').html('');
-    current_pedigree_level = 0;
-  },
-
-  $.fn.hideSecondLevelPedigree = function(){
-
-    $('#pedigree_second').html('');
-    $('#pedigree_first').removeClass('second_column');
-    current_pedigree_level = 1;
-  },
-
-  $.fn.hideThirdLevelPedigree = function(){
-    $('#pedigree_third').html('');
-    $('#pedigree_first').addClass('second_column');
-    $('#pedigree_first').removeClass('first_column');
-    $('#pedigree_second').removeClass('second_column');
-    current_pedigree_level = 2;
-  },
-
-
-  $.fn.displayPedigree= function(){
-    $(this).displayFirstLevelPedigree();
-    if(max_pedigree_position >= 2)
-      $(this).displaySecondLevelPedigree();
-
-    if(max_pedigree_position >= 6)
-      $(this).displayThirdLevelPedigree();
-
-
-  },
-
-
 
   
   SubmittingForm=function(form) {
@@ -396,7 +173,6 @@
 
 
   $(document).ready(function() {
-    $(this).displayPedigree();
         
     $('a.adMoreDiscipline').click(function(){
       var new_object_id = new Date().getTime() ;
@@ -463,27 +239,8 @@
       $(this).parents('.video').remove();
     });
 
-    $('a.adMorePedigree').click(function(){
-      if(current_pedigree_level == 0)
-        $(this).displayFirstLevelPedigree();
-      else if(current_pedigree_level == 1)
-        $(this).displaySecondLevelPedigree();
-      else if(current_pedigree_level == 2)
-        $(this).displayThirdLevelPedigree();
-      else
-        alert('Max level reached');
-    });
+    
 
-    $('a.removeLastPedigree').click(function(){
-      if(current_pedigree_level == 1)
-        $(this).hideFirstLevelPedigree();
-      else if(current_pedigree_level == 2)
-        $(this).hideSecondLevelPedigree();
-      else if(current_pedigree_level == 3)
-        $(this).hideThirdLevelPedigree();
-      else
-        alert('Nothing to remove!');
-    });
 
     $('#ad_birth_date').datepicker({
       changeMonth: true,
@@ -491,15 +248,6 @@
     });
 
    
-    //SI.Files.stylizeAll();
-    /*
-    $("input[type=file]").filestyle({
-      image: "/images/browse_img.jpg",
-      imageheight : 38,
-      imagewidth : 158,
-      width : 158
-    });
-     */
 
     $("#ad_form").validate({
       errorPlacement: function(error, element) {

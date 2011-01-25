@@ -44,11 +44,15 @@ doc\:clobber_plugins=
 doc\:clobber_rails=
 doc\:guides=
 doc\:plugins=
+doc\:plugins\:acts_as_taggable_on_steroids=
 doc\:plugins\:acts_as_tree=
 doc\:rails=
 doc\:reapp=
 doc\:rerails=
 environment=
+friendly_id\:make_slugs=Make slugs for a model.
+friendly_id\:redo_slugs=Regenereate slugs for a model.
+friendly_id\:remove_old_slugs=Destroy obsolete slugs older than DAYS=45 days.
 log\:clear=Truncates all *.log files in log/ to zero bytes
 middleware=Prints out your Rack middleware stack
 notes=Enumerate all annotations (use notes:optimize, :fixme, :todo for focus)

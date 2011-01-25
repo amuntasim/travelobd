@@ -36,11 +36,14 @@ GEM
       activesupport (~> 3.0.0)
     authlogic (2.1.6)
       activesupport
+    babosa (0.2.0)
     braintree (2.6.1)
       builder
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    friendly_id (3.1.7)
+      babosa (~> 0.2.0)
     globalize3 (0.0.7)
       activerecord (>= 3.0.0.rc)
     i18n (0.4.1)
@@ -92,6 +95,7 @@ PLATFORMS
 DEPENDENCIES
   activemerchant
   authlogic
+  friendly_id (~> 3.1)
   globalize3
   meta_search
   mysql2

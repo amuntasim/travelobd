@@ -1,13 +1,18 @@
 class Spot < ActiveRecord::Base
+  translates :name, :detail, :short_description
+  has_friendly_id :name, :use_slug => true
+  
   has_many :assets, :class_name => 'SpotAsset'
-   has_one :main_image, :class_name => 'SpotAsset', :conditions => {:main => true}
+  has_one :main_image, :class_name => 'SpotAsset', :conditions => {:main => true}
 
   belongs_to :user
 
+  scope :actives, where(:active => true)
+  
   validates :category_id, :presence => true
   validates :name, :presence => true
-  validates :country_id, :presence => true
   validates :district_id, :presence => true
+  validates :division_id, :presence => true
 
   belongs_to :user
   belongs_to :district
@@ -19,7 +24,7 @@ class Spot < ActiveRecord::Base
   accepts_nested_attributes_for :assets
 
   def main_image_url(style = :medium)
-     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
+    main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
   end
   
   def category

@@ -429,7 +429,7 @@ $.fn.ajaxSubmit = function(options) {
  * the form itself.
  */
 $.fn.ajaxForm = function(options) {
-	// in jQuery 1.3+ we can fix mistakes with the ready division
+	// in jQuery 1.3+ we can fix mistakes with the ready state
 	if (this.length === 0) {
 		var o = { s: this.selector, c: this.context };
 		if (!$.isReady && o.s) {

@@ -83,8 +83,8 @@ class DivisionsController < ApplicationController
   end
 
   def autocomplete
-    divisions = Division.where(['name like ? OR code = ?', "%#{params[:term]}%", "%#{params[:term]}%"]).limit(15)
-    render :json => divisions.collect {|s| {"id" => s.id, "label" => "#{s.name}, #{s.country.name}", "value" => s.name}}
+    divisions = Division.includes([:translations]).where(['division_translations.name like ? OR code = ?', "%#{params[:term]}%", "%#{params[:term]}%"]).limit(15)
+    render :json => divisions.collect {|d| {"id" => d.id, "label" => "#{d.name}", "value" => d.name}}
   end
   
 end

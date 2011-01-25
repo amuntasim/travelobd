@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
     @active_nav = 'home'
     @locations = District.includes(:division)
     @search = Ad.search(params[:search])
-
+    @spots = Spot.actives
   end
 
   def featured_ads

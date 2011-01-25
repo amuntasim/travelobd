@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  translates :title, :detail
+  has_friendly_id :title, :use_slug => true
   has_many :assets, :class_name => 'ArticleAsset'
   has_one :main_image, :class_name => 'ArticleAsset', :conditions => {:main => true}
 
@@ -9,6 +11,7 @@ class Article < ActiveRecord::Base
 
   accepts_nested_attributes_for :assets
   acts_as_taggable
+  
   def main_image_url(style = :medium)
     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
   end

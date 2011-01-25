@@ -26,8 +26,8 @@
   </div>
 <% end %>
 
-<div class="adWideArea">
-  <div class="good_ad_head"><%= @ad.title %></div>
+<div class="itemWideArea">
+  <div class="good_item_head"><%= @ad.title %></div>
 
   <div id="" class="good_slide_bor">
     <div id="photo_gallery" class="galleryview">
@@ -56,62 +56,17 @@
     </div>
   </div>
 
-  <!--
+  
 
-
-    <div class="good_slide_bor" align="center"><img src="img/good_ad.jpg"></div>
-    <div class="good_moving_bor">
-      <a href="#" class="slide_pre"></a>
-      <div class="slide_img"></div>
-      <div class="slide_img"></div>
-      <div class="slide_img"></div>
-      <div class="slide_img"></div>
-      <div class="slide_img"></div>
-      <div class="slide_img"></div>
-      <a href="#" class="slide_next"></a>
-    </div>
-  -->
-
-  <div class="ad_details">
+  <div class="item_details">
     <!--curv start -->
     <div class="bl">
       <div class="br">
         <!--<div class="tl">
             <div class="tr"> -->
-        <div class="good_ad_head">Ad Details:</div>
+        <div class="good_item_head">Ad Details:</div>
 
-        <div class="adDesc_row"><%= @ad.description %></div>
-        <!--</div>
-    </div> -->
-      </div>
-    </div>
-    <!--curv end -->
-  </div>
-
-  <div class="ad_details">
-    <!--curv start -->
-    <div class="bl">
-      <div class="br">
-        <!--<div class="tl">
-            <div class="tr"> -->
-        <div class="good_ad_head">Pedigree:</div>
-        <div class="pedigrees">
-          <div id="main_pedigree_first" class="pedigree_column first_column <%= ' second_column ' if @max_pedigree_position < 6 %><%= ' third_column ' if @max_pedigree_position < 2 %><%= 'hide_column' if @max_pedigree_position == 0 %>">
-            <% (0..1).each do |position| %>
-              <%= render :partial => 'pedigree',:object=> @ad.all_pedigrees[position], :locals => {:position => position}%>
-            <% end %>
-          </div>
-          <div id="main_pedigree_second" class="pedigree_column  second_column <%= ' third_column ' if @max_pedigree_position < 6 %><%= ' hide_column ' if @max_pedigree_position < 2 %>" >
-            <% (2..5).each do |position| %>
-              <%= render :partial => 'pedigree',:object=> @ad.all_pedigrees[position], :locals => {:position => position}%>
-            <% end %>
-          </div>
-          <div id="main_pedigree_third" class="pedigree_column  third_column <%= ' hide_column ' if @max_pedigree_position < 6 %>" >
-            <% (6..13).each do |position| %>
-              <%= render :partial => 'pedigree',:object=> @ad.all_pedigrees[position], :locals => {:position => position}%>
-            <% end %>
-          </div>
-        </div>
+        <div class="itemDesc_row"><%= @ad.description %></div>
         <!--</div>
     </div> -->
       </div>
@@ -121,57 +76,19 @@
 
 
 </div>
-<div class="adNarrowArea">
+<div class="itemNarrowArea">
   <div class="ash_narrow_box">
     <div class="ash_n_top"></div>
     <div class="ash_n_mid">
-      <div class="ash_desc_row">
-        <label>Ad Name:</label>
-        <div class="value">
-          <%= @ad.ad_name %>
-        </div>
-      </div>
+ 
       <div class="ash_desc_row">
         <label>Price:</label>
         <div class="value">
           <%= number_to_currency @ad.price %>
         </div>
       </div>
-      <div class="ash_desc_row">
-        <label>Location:</label>
-        <div class="value">
-          <%= @ad.location %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>Sex:</label>
-        <div class="value">
-          <%= @ad.gender %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>Height:</label>
-        <div class="value">
-          <%= @ad.height %>
-        </div>
-      </div>
-
-      <div class="ash_desc_row">Color:</div>
-      <div class="ash_desc_row">Marking:</div>
-      <div class="ash_desc_row">Foal Date:</div>
-      <div class="ash_desc_row">Weight:</div>
-      <div class="ash_desc_row">Registration:</div>
-      <div class="ash_desc_row">
-        <label>Discipline:</label>
-        <div class="value">
-          <%=raw  @ad.disciplines_str %>
-        </div>
-      </div>
-      <div class="ash_desc_row">Attributies:</div>
-      <div class="ash_desc_row">
-                            	Temperament:
-        <span>( 1= Bombproof, 10=Hot)</span>
-      </div>
+    
+     
 
     </div>
     <div class="ash_n_bot"></div>

@@ -16,6 +16,7 @@ gem 'rails3-jquery-autocomplete'
 #gem 'searchlogic'
 #gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem 'meta_search'
+gem "friendly_id", "~> 3.1"
 # Use unicorn as the web server
 # gem 'unicorn'
 
