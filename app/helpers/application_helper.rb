@@ -9,13 +9,14 @@ module ApplicationHelper
     css_class += ' selMenu' if current_step == position
     css_class
   end
+
   def active_inactive_navigation(nav_name)
     @active_nav == nav_name ? 'select' : ''
   end
 
   def add_object_link(name, form, object, partial, where, a_class='addMoreImage')
-    html = render(:partial => partial, :locals => { :form => form}, :object => object)
-    link_to_function name,  %{ if($(this).checkVideosAllowed()){
+    html = render(:partial => partial, :locals => {:form => form}, :object => object)
+    link_to_function name, %{ if($(this).checkVideosAllowed()){
       var new_object_id = new Date().getTime() ;
       var html = jQuery(#{js html}.replace(/index_to_replace_with_js/g, new_object_id)).hide();
       html.appendTo(jQuery("#{where}")).slideDown('slow');}
@@ -31,26 +32,37 @@ module ApplicationHelper
   end
 
   def timeago(time, options = {})
-   start_date = options.delete(:start_date) || Time.new
-   date_format = options.delete(:date_format) || :default
-   delta_minutes = (start_date.to_i - time.to_i).floor / 60
-   if delta_minutes.abs <= (8724*60)
-     distance = distance_of_time_in_words(delta_minutes)
-     if delta_minutes < 0
+    start_date = options.delete(:start_date) || Time.new
+    date_format = options.delete(:date_format) || :default
+    delta_minutes = (start_date.to_i - time.to_i).floor / 60
+    if delta_minutes.abs <= (8724*60)
+      distance = distance_of_time_in_words(delta_minutes)
+      if delta_minutes < 0
         return "#{distance} from now"
-     else
+      else
         return "#{distance} ago"
-     end
-   else
+      end
+    else
       return "on #{DateTime.now.to_formatted_s(date_format)}"
-   end
- end
+    end
+  end
 
   def fix_language_switch
-    if(session[:tmp_previous_request_method].to_s == 'post')
+    if (session[:tmp_previous_request_method].to_s == 'post')
       return "alert('#{t('language_switching_not_allowed')}'); return false;"
     end
     return 'return true;'
   end
 
+  def feature_list(obj)
+    html = ''
+    obj.features.each do |feature|
+      html += "<span class='feature'><li>#{feature.name}</li></span>"
+    end
+    raw(html)
+  end
+
+  def user_can_edit?(obj)
+    current_user && obj.user_id == current_user.id
+  end
 end

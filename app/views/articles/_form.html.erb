@@ -20,14 +20,14 @@
   <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
 
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Category:
     </label>
     <%= f.select :category_id, Article::CATEGORIES, :prompt=> 'Select Category' %>
   </div>
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Title:
     </label>
@@ -35,14 +35,14 @@
   </div>
 
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span>Detail:
     </label>
     <%= f.text_area :detail, :class => "tiny_redcloth" %>
   </div>
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span></span> Tag:
     </label>
@@ -50,7 +50,7 @@
   </div>
 
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>&nbsp;</label>
     <%= f.submit '', :class=>"subBtn" %>
   </div>
@@ -70,7 +70,7 @@
     });
     var validator = $("#article_frm").validate({
       invalidHandler: function() {
-        $("#summary").html('<div class="dir_sign_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+        $("#summary").html('<div class="item_form_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
       },
       errorPlacement: function(error, element) {
         error.remove();

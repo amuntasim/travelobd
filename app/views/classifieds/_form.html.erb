@@ -19,7 +19,7 @@
   <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
 
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Category:
     </label>
@@ -27,50 +27,50 @@
     <%= f.select :category_id, Classified::CATEGORIES, :prompt=> 'Select Category' %>
   </div>
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Name:
     </label>
     <%= f.text_field :name %>
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <%= f.label :detail %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> District:
     </label>
     <%= text_field_tag 'district_str', @classified.district ? @classified.district.name : '', :id=> 'district_auto_complete'  %>
     <%= f.hidden_field :district_id %>
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Division:
     </label>
     <%= text_field_tag 'division_str', @classified.division ? @classified.division.name || @classified.division.code : '', :id=> 'division_auto_complete'  %>
     <%= f.hidden_field :division_id %>
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Country:
     </label>
     <%= f.select :country_id, Country.all.collect{|c|[c.name, c.id]}, :prompt => 'Select Country' %>
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Zipcode:
     </label>
     <%= f.text_field :zip_code %>
   </div>
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>
       <span>*</span> Phone:
     </label>
     <%= f.text_field :phone %>
   </div>
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
 
     <div class="f_edit_row mtop10">
       <div class="f_edit_top"></div>
@@ -94,7 +94,7 @@
 
   </div>
 
-  <div class="dir_sign_row">
+  <div class="item_form_row">
     <label>&nbsp;</label>
 
     <%= f.submit '', :class=> 'subBtn' %>
@@ -117,7 +117,7 @@
 
     var validator = $("#classified_form").validate({
       invalidHandler: function() {
-        $("#summary").html('<div class="dir_sign_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+        $("#summary").html('<div class="item_form_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
       },
       errorPlacement: function(error, element) {
         error.remove();

@@ -1,4 +1,5 @@
 class SpotsController < ApplicationController
+
   before_filter :require_user, :only =>[:edit,:create, :update, :destroy ]
   before_filter lambda { @active_nav = 'spot'  }
 
@@ -18,9 +19,8 @@ class SpotsController < ApplicationController
     conditions = []
     conditions.add_condition!(:category_id =>params[:category_id] ) unless params[:category_id].blank?
     @spots = Spot.paginate(:page=> params[:page], :conditions => conditions)
-    @search_title = Spot::CATEGORIES.invert[params[:category_id].to_i] || 'All Business'
-    
-    render :action => 'index_admin', :layout => 'admin'  if admin?
+    @search_title = Spot::CATEGORIES.invert[params[:category_id].to_i] || 'All Spots'
+
   end
 
   # GET /spots/1
@@ -93,6 +93,15 @@ class SpotsController < ApplicationController
       format.html { redirect_to(spots_url) }
       format.xml  { head :ok }
     end
+  end
+
+   def search
+    @spot_search = Spot.search(params[:search])
+    ordering = " #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
+    @spots = @spot_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
+    @search_label = params[:label] || 'Spots : Search Results '
+    @paginate_items = @spots
+    render :index
   end
 
   def delete_asset

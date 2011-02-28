@@ -1,0 +1,53 @@
+<% title @search_title %>
+
+<div class="pageHead">
+  Hotels
+  <div class="pageHeadOptions">
+    <b>Sort by: </b> <%= link_to 'Price', '#' %>
+  </div>
+</div>
+
+<% @hotels.each do |hotel| %>
+    <div class="listItem">
+      <div class="fl listItemLogo">
+        <%= image_tag hotel.main_image_url(:thumb) %>
+      </div>
+
+      <div class="fl listItemDesc">
+        <div class="fl hotel_desc_info">
+          <div class="fl title">
+            <%= link_to truncate(hotel.title, :length => 50), hotel %>
+            <span class="star_rating" style="float:right; margin-top:2px;"><%=raw hotel_star_rating(hotel) %></span>
+            <h4>dhaka, bangladesh</h4>
+          </div>
+          <div class="fl description">
+            <%#= truncate(sanitize(hotel.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(hotel.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+          </div>
+
+        </div>
+        <div class="fl price_n_button">
+          <div class="fl price">
+            Starting from : <span><%= hotel.minimum_price %></span>
+          </div>
+          <div class="fl rating">
+            Like: 1000
+            <span style="float:right;">
+              Rating: 4
+            </span>
+          </div>
+          <%= link_to 'Details', hotel, :class => 'detail_link' %>
+          <%#= link_to 'Book This', hotel, :class => 'book_link' %>
+        </div>
+      </div>
+
+    </div>
+<% end %>
+
+
+
+
+
+
+
+

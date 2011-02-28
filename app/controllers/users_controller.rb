@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   before_filter :require_user, :except =>[:show, :new, :create, :save_item, :send_to_friends]
-  before_filter :require_admin_user, :only =>[:destroy ]
-  before_filter :load_user, :only =>[:show, :edit, :update, :destroy ]
+  before_filter :require_admin_user, :only =>[:destroy]
+  before_filter :load_user, :only =>[:show, :edit, :update, :destroy]
   layout 'dashboard'
   # GET /users
   # GET /users.xml
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    
+
   end
 
   # GET /users/new
@@ -22,8 +22,8 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_profile
-    @user_session = UserSession.new
-    @ad_current_step = 1
+    @user_session         = UserSession.new
+    @package_current_step = 1
     render :layout=> 'application'
   end
 
@@ -39,11 +39,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to(dashboard_url, :notice => 'Registration Successfull.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         @user_session = UserSession.new
-        format.html { render :action => "new" , :layout => 'application'}
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html { render :action => "new", :layout => 'application' }
+        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -51,14 +51,14 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(dashboard_url, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
-        format.html { render :action => "edit",  :layout=> 'dashboard' }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html { render :action => "edit", :layout=> 'dashboard' }
+        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -70,12 +70,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 
   def dashboard
-    @unread_messages = Message.where(:seller_id=> current_user.id,  :read=> false , :parent_id => nil).where(['user_id != ?', current_user.id])
+    @unread_messages = Message.where(:seller_id=> current_user.id, :read=> false, :parent_id => nil).where(['user_id != ?', current_user.id])
+    @hotels          = Hotel.where(:user_id => current_user.id)
   end
 
   def inbox
@@ -87,7 +88,7 @@ class UsersController < ApplicationController
   end
 
   def ads
-    @ads = Ad.where(:user_id=> current_user.id).order(:created_at).paginate(:page=> params[:page], :per_page => 10)
+    @packages = Package.where(:user_id=> current_user.id).order(:created_at).paginate(:page=> params[:page], :per_page => 10)
   end
 
   def save_item
@@ -119,7 +120,7 @@ class UsersController < ApplicationController
   def products
     @classifieds = Classified.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
   end
-  
+
   def spots
     @spots = Spot.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
   end
@@ -139,7 +140,7 @@ class UsersController < ApplicationController
       page << "$('#stf_summary').effect('highlight')"
     end
   end
-  
+
   private
   def load_user
     if admin?
@@ -150,5 +151,5 @@ class UsersController < ApplicationController
     @user = User.find(u_id)
   end
 
-  
+
 end

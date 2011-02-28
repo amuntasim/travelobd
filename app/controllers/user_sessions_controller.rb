@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
     @user.build_profile
     @user_session = UserSession.new
     if session[:ad_current_step]
-      @ad_current_step = session[:ad_current_step]
+      @package_current_step = session[:ad_current_step]
       session[:ad_current_step] = nil
     end
   end

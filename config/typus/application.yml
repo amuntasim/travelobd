@@ -1,0 +1,132 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Package:
+  fields:
+    default: title, category_id, user_id, short_description, price, district_id, division_id, zip_code, phone, active, featured, expire_at, user, district, division
+    form: title, category_id, user_id, short_description, price, district_id, division_id, zip_code, phone, description, active, featured, expire_at, user, district, division
+  order_by: 
+  relationships: ad_disciplines, assets, district, division, line_item, main_image, saved_listings, slug, slugs, translations, user, videos
+  filters: 
+  search: title
+  application: travelobd
+
+
+
+Article:
+  fields:
+    default: user_id, active, category_id, user
+    form: title, detail, active, category_id, user
+  order_by: 
+  relationships: assets, main_image, saved_listings, slug, slugs, taggings, tags, translations, user
+  filters: 
+  search: 
+  application: travelobd
+
+
+Classified:
+  fields:
+    default: category_id, name, district_id, division_id, country_id, zip_code, phone, user_id, active, country, user, district, division
+    form: category_id, name, detail, district_id, division_id, country_id, zip_code, phone, user_id, active, country, user, district, division
+  order_by: 
+  relationships: assets, country, district, division, main_image, saved_listings, user
+  filters: 
+  search: name
+  application: travelobd
+
+
+District:
+  fields:
+    default:  division, name
+    form:  division, name
+  order_by: 
+  relationships: division, translations
+  filters: 
+  search: 
+  application: travelobd
+
+Division:
+  fields:
+    default: name, code
+    form: name, code
+  order_by: 
+  relationships: districts, translations
+  filters: 
+  search: 
+  application: travelobd
+
+Element:
+  fields:
+    default: name, value
+    form: name, value
+  order_by: 
+  relationships: 
+  filters: 
+  search: name
+  application: travelobd
+
+Feedback:
+  fields:
+    default: name, email, subject, parent_id, parent
+    form: name, email, subject, content, parent_id, parent
+  order_by: 
+  relationships: children, parent
+  filters: 
+  search: name
+  application: travelobd
+
+
+Message:
+  fields:
+    default: seller_id, name, email, address, phone, created_by, read, user_id, title, ref_id, parent_id, seller, user, parent
+    form: seller_id, name, email, address, phone, content, created_by, read, user_id, title, ref_id, parent_id, seller, user, parent
+  order_by: 
+  relationships: children, parent, seller, user
+  filters: 
+  search: name, title
+  application: travelobd
+
+
+Profile:
+  fields:
+    default: user_id, first_name, last_name, address, district, division, zip_code, country_id, avatar_file_name, country, user
+    form: user_id, first_name, last_name, address, district, division, zip_code, country_id, avatar_file_name, country, user
+  order_by: 
+  relationships: country, user
+  filters: 
+  search: 
+  application: travelobd
+
+
+Spot:
+  fields:
+    default: category_id, district_id, division_id, zip_code, phone, user_id, active, country, user, district, division
+    form: category_id, district_id, division_id, zip_code, phone, user_id, active, country, user, district, division
+  order_by: 
+  relationships: assets, country, district, division, main_image, saved_listings, slug, slugs, translations, user
+  filters: 
+  search: 
+  application: travelobd
+
+
+StaticPage:
+  fields:
+    default: name, permalink
+    form: name, permalink, content
+  order_by: 
+  relationships: 
+  filters: 
+  search: name
+  application: travelobd
+
+User:
+  fields:
+    default: name, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, role
+    form: name, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, role
+  order_by: 
+  relationships: ads, profile
+  filters: 
+  search: name
+  application: travelobd
+

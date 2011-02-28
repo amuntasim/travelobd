@@ -1,0 +1,17 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Package: create, read, update, delete
+  Article: create, read, update, delete
+  Classified: create, read, update, delete
+  District: create, read, update, delete
+  Division: create, read, update, delete
+  Element: create, read, update, delete
+  Feedback: create, read, update, delete
+  Message: create, read, update, delete
+  Profile: create, read, update, delete
+  Spot: create, read, update, delete
+  StaticPage: create, read, update, delete
+  User: create, read, update, delete

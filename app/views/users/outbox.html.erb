@@ -26,6 +26,10 @@
             <div class="when">
               <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
             </div>
+            <div class="clear" style="float: right">
+              <%= link_to :Open, message %>
+              <%= link_to :Delete, message_path(message, :redirect_to => 'inbox'), :method => :delete, :confirm => 'You want to delete this message. Are you sure?' %>
+            </div>
           </div>
         <% end %>
       <% end %>

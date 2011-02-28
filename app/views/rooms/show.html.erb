@@ -1,0 +1,39 @@
+<% title 'Room- '+@room.name %>
+<%= content_for :over_mid_content do %>
+    <div class="redhead_row">
+      <h2>Room</h2>
+    </div>
+<% end %>
+
+<div class="article_box">
+  <!--curv start -->
+  <div class="bl">
+    <div class="br">
+      <div class="tl">
+        <div class="tr">
+          <div class="articleRow">
+            <div class="bread_crum">
+              <%= link_to @room.hotel, :target => '_blank' do %>
+                  <%= @room.hotel.name %>
+              <% end %>
+              <span> > </span>
+              <a href="javascript:void(0)"><%= @room.name %></a>
+            </div>
+            <div class="articleDesc">
+              <%= image_tag @room.main_image_url %>
+              <%= raw @room.description %>
+              <h3>Features:</h3>
+              <%= feature_list(@room) %>
+              <br/>
+
+              <h3>Price:</h3>
+              <%= @room.price %> BDT Per night
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--curv end -->
+</div>
+

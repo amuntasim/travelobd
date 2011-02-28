@@ -85,8 +85,8 @@ test\:integration=
 test\:plugins=
 test\:prepare=
 test\:profile=
-test\:recent=Run tests for recenttest:prepare / Test recent changes
-test\:uncommitted=Run tests for uncommittedtest:prepare / Test changes since last checkin (only Subversion and Git)
+test\:recent=Run tests for {:recent=>"test:prepare"} / Test recent changes
+test\:uncommitted=Run tests for {:uncommitted=>"test:prepare"} / Test changes since last checkin (only Subversion and Git)
 test\:units=
 time\:zones\:all=Displays all time zones, also available: time:zones:us, time:zones:local -- filter with OFFSET parameter, e.g., OFFSET=-6
 time\:zones\:local=
@@ -98,3 +98,4 @@ tmp\:create=Creates tmp directories for sessions, cache, sockets, and pids
 tmp\:pids\:clear=
 tmp\:sessions\:clear=
 tmp\:sockets\:clear=
+typus\:roles=List current roles.

@@ -1,160 +1,154 @@
 <%= content_for :js_css_include do %>
-  <%= javascript_include_tag 'jquery.validate' %>
-  <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+    <%= javascript_include_tag 'jquery.validate' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
 <% end %>
 
-<%= form_for(@spot, :html=> {:multipart => true,:id=> 'spot_form'}) do |f| %>
-  <% @builder = f %>
-  <% if @spot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
+<%= form_for(@spot, :html=> {:multipart => true, :id=> 'spot_form'}) do |f| %>
+    <% @builder = f %>
+    <% if @spot.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
 
-      <ul>
-        <% @spot.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% @spot.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+
     </div>
-  <% end %>
-  <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+    <div class="item_form_row">
+      <label>
+        <span>*</span> Category:
+      </label>
 
-  </div>
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Category:
-    </label>
+      <%= f.select :category_id, Spot::CATEGORIES, :prompt=> 'Select Category' %>
+    </div>
 
-    <%= f.select :category_id, Spot::CATEGORIES, :prompt=> 'Select Category' %>
-  </div>
+    <div class="item_form_row">
+      <label>
+        <span>*</span> Name:
+      </label>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Name:
-    </label>
-    <%= f.text_field :name %>
-  </div>
+    <div class="item_form_row">
+      <label>
+        <span>*</span> Short Description:
+      </label>
+      <%= f.text_field :short_description %>
+    </div>
 
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Short Description:
-    </label>
-    <%= f.text_field :short_description %>
-  </div>
+    <div class="item_form_row">
+      <%= f.label :detail %>
+      <%= f.text_area :description, :class => "" %>
+    </div>
+    <div class="item_form_row">
+      <label>
+        <span>*</span> Division:
+      </label>
+      <%= f.select :division_id, Division.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
 
-  <div class="dir_sign_row">
-    <%= f.label :detail %>
-    <%= f.text_area :detail, :class => "" %>
-  </div>
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> District:
-    </label>
-    <%= text_field_tag 'district_str', @spot.district ? @spot.district.name : '', :id=> 'district_auto_complete'  %>
-    <%= f.hidden_field :district_id %>
-  </div>
-  <div class="dir_sign_row">
-    <label>
-      <span>*</span> Division:
-    </label>
-    <%= text_field_tag 'division_str', @spot.division ? @spot.division.name || @spot.division.code : '', :id=> 'division_auto_complete'  %>
-    <%= f.hidden_field :division_id %>
-  </div>
-  
+    </div>
+    <div class="item_form_row">
+      <label>
+        <span>*</span>
+        District
+      </label>
+      <%= f.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
+      <%= image_tag 'spin.gif', :id => 'district_loading', :class => 'loading_image' %>
+    </div>
 
-  <div class="dir_sign_row">
 
-    <div class="f_edit_row mtop10">
-      <div class="f_edit_top"></div>
-      <div class="f_edit_mid">
+    <div class="item_form_row">
+      <label>
+        Active:
+      </label>
+      <%= f.check_box :active %>
+    </div>
+    <div class="item_form_row">
+      <label> Image:</label>
+
+      <div class="photo_box">
+        <!-- <h3>Images <span style="font-size: 11px;"><%#= ad_photo_number_str(@spot) %></span></h3>-->
         <div class="edit_img_row">
 
           <% unless @spot.new_record? %>
-            <%= render :partial => 'existing_photo', :collection => @spot.assets %>
+              <%= render :partial => 'existing_photo', :collection => @spot.assets %>
           <% end %>
 
-          <div  id="spot_photos" class="more_photos_form">
-            <%= render :partial => 'photo', :locals => { :form => f, :photo => @spot.assets.new } if @spot.new_record? %>
+          <div id="hotel_photos">
+            <%= render :partial => 'photo', :locals => {:form => f, :photo => @spot.assets.new} if @spot.new_record? %>
           </div>
 
         </div>
         <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
       </div>
-      <div class="f_edit_bot"></div>
     </div>
 
 
-  </div>
+    <div class="item_form_row">
+      <label>&nbsp;</label>
 
-
-  <div class="dir_sign_row">
-    <label>&nbsp;</label>
-
-    <%= f.submit '', :class=> 'subBtn' %>
-  </div>
+      <%= f.submit '', :class=> 'subBtn' %>
+    </div>
 <% end %>
 
 <div style="display: none">
 
   <div id="new_photo_html">
-    <%= render(:partial => 'photo', :locals => { :form => @builder}, :object => @spot.assets.new) %>
+    <%= render(:partial => 'photo', :locals => {:form => @builder}, :object => @spot.assets.new) %>
   </div>
 
 </div>
 <script type="text/javascript">
-  var allowed_images = 5;
-  
-  $(document).ready(function(){
-    
+    var allowed_images = 5;
+    $.fn.divisionChanged = function() {
+        $('#spot_division_id').change(function() {
+            $('#district_loading').toggle();
+            $.ajax({
+                url: '/welcome/load_districts?&target=spot_district_id&division_id=' + $(this).val(),
+                type: 'get',
+                dataType: 'script',
+                success: function(results) {
+                    $('#district_loading').toggle();
+                }
+            });
+        });
+    }
 
-    var validator = $("#spot_form").validate({
-      invalidHandler: function() {
-        $("#summary").html('<div class="dir_sign_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
-      },
-      errorPlacement: function(error, element) {
-        error.remove();
-      },
+    $(document).ready(function() {
 
 
-      rules: {
-        'spot[category_id]': "required",
-        'spot[name]' : "required",
-        'district_str' : "required",
-        'division_str' : "required",
-        'spot[country_id]' : "required",
-        'spot[zip_code]' : "required",
-        'spot[phone]' : "required"
-      
-      },
-      messages: {
-        comment: "Please enter a comment."
-      }
+        var validator = $("#spot_form").validate({
+            invalidHandler: function() {
+                $("#summary").html('<div class="item_form_row">' + validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+            },
+            errorPlacement: function(error, element) {
+                error.remove();
+            },
+
+
+            rules: {
+                'spot[category_id]': "required",
+                'spot[name]' : "required",
+                'division_id' : "required"
+
+            },
+            messages: {
+                comment: "Please enter a comment."
+            }
+        });
+
+
+
+        $(this).addMorePhoto('spot_photos', allowed_images);
+        $(this).deleteAsset('spots');
+        $(this).makeMainPhoto('spots');
+        $(this).divisionChanged();
     });
-
-    $('#district_auto_complete').autocomplete({
-      source: '/districts/autocomplete',
-      //width: '200px',
-      select: function(event, ui) {
-        $(this).val(ui.item.value);
-        $('#spot_district_id').val(ui.item.id);
-        return false;
-      }
-    });
-
-    $('#division_auto_complete').autocomplete({
-      source: '/divisions/autocomplete',
-      //width: '200px',
-      select: function(event, ui) {
-        $(this).val(ui.item.value);
-        $('#spot_division_id').val(ui.item.id);
-        return false;
-      }
-    });
-
-    
-    $(this).addMorePhoto('spot_photos', allowed_images);
-    $(this).deleteAsset('spots');
-    $(this).makeMainPhoto('spots');
-  });
 
 
 </script>

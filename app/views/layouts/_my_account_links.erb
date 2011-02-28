@@ -1,16 +1,10 @@
 <div class="acc_menu">
   <ul>
     <li>
-      <%= link_to 'Manage My Ads', action_name == 'dashboard' ? '#manage_ad' : my_ads_path%>
+      <%= link_to 'Manage My Packages', my_packages_path%>
     </li>
     <li>
-      <%= link_to 'My Saved Listings', action_name == 'dashboard' ? '#saved_listings' : my_saved_listings_path%>
-    </li>
-    <li>
-      <%= link_to 'Spot', action_name == 'dashboard' ? '#my_directiry' : my_spots_path%>
-    </li>
-    <li>
-      <%= link_to 'Manage My Product/Trailer Ads', action_name == 'dashboard' ? '#my_product' : my_products_path%>
+      <%= link_to 'My Saved Listings',  my_saved_listings_path%>
     </li>
     
   </ul>

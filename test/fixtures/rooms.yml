@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  name: MyString
+  description: MyText
+  price: 1.5
+  active: false
+
+two:
+  hotel_id: 1
+  name: MyString
+  description: MyText
+  price: 1.5
+  active: false

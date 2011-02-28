@@ -1,90 +1,68 @@
 <% title 'Dashboard' %>
-
-<%= content_for :over_mid_content do %>
-
-<% end %>
-
-
-<div class="mtop15 clear">
-  <h1>Welcome (<%= current_user.name %>),</h1>
-</div>
-<div class="msg_box clear">
-  <div class="msg_top"></div>
-  <div class="msg_desc">
-    <h1>My Message</h1>
-    <div class="msg_desc_info">You have
-      <%=link_to  pluralize(@unread_messages.size, 'message'), inbox_path %> unread
-      <br/>
-      <%= link_to 'Inbox', inbox_path %>
-      <br/>
-      <%= link_to 'Outbox', outbox_path %>
-    </div>
-
+<div class="dashboard_content_top">
+  <div class="fl dashboard_content_top_left">
+    <h2>
+      Dashboard
+    </h2>
   </div>
-  <div class="msg_bot"></div>
+  <div class="fl dashboard_content_top_right">
+    <%= render :partial=> 'layouts/my_account_links' %>
+  </div>
 </div>
 
-<div class="msg_box clear" id="saved_listings">
-  <div class="msg_top"></div>
-  <div class="msg_desc" >
-    <h1>My Saved Listing</h1>
-    <div class="msg_desc_info_big">
-      <div class="list_msg">
-        <div class="msg_list_img">
-          <div class="list_img_bor_fill"></div>
-          <%=link_to  'View Listing', my_saved_listings_path %>
-          <%=link_to  'Delete Listing', my_saved_listings_path %>
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    Messages
+  </div>
 
-        </div>
-        <!--<div class="msg_list_desc">You currently have no Ads placed. <a href="#">Place an Ad</a></div> -->
-      </div>
+</div>
+<div class="dashboard_content_item fl">
+  <div class="msg_desc_info">You have
+    <%= link_to pluralize(@unread_messages.size, 'message'), inbox_path %> unread
+    <br/>
+    <%= link_to 'Inbox', inbox_path %>
+    <br/>
+    <%= link_to 'Outbox', outbox_path %>
+  </div>
+</div>
+
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    My Hotels
+    <div class="add_link">
+      <%= link_to '+Add Hotel', new_hotel_path %>
     </div>
   </div>
-  <div class="msg_bot"></div>
+
 </div>
+<div class="dashboard_content_item fl">
+  <% if @hotels.size > 0 %>
+      <% @hotels.each do |hotel| %>
+          <div class=" <%= 'inactive' unless hotel.active %> dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag hotel.main_image_url(:thumb) %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+                <%= link_to hotel.name, hotel %>
+              </div>
 
-<div class="msg_box clear" id="my_product">
-  <div class="msg_top"></div>
-  <div class="msg_desc" >
-    <h1>Manage Product/Trailer Clissified Ads</h1>
-    <div class="msg_desc_info_big">
+              <div class="desc">
+                <%= truncate strip_tags(hotel.description), :length => 170 %>
+              </div>
 
-      <div class="list_msg">
-        <div class="msg_list_img">
-          <div class="list_img_bor"></div>
-          <%=link_to  'View Listing', my_products_path %>
-          <%=link_to  'Delete Listing', my_products_path %>
-        </div>
-        <div class="msg_list_desc">
-          <%= link_to '+Ad my Product/trailer for sale', new_classified_path, :class => 'ad_pro' %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="msg_bot"></div>
+            </div>
+            <div class="dc_item_links fl">
+              <%= link_to 'Show', hotel %>
+              <%= link_to 'Edit', edit_hotel_path(hotel) %>
+              <%= link_to 'Delete', '#' %>
+              <%= link_to 'Add Room', new_room_path(:hotel_id => hotel) %>
+            </div>
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        No Hotel Posted
+      </h3>
+  <% end %>
 </div>
-
-<div class="msg_box clear" id="my_directiry">
-  <div class="msg_top"></div>
-  <div class="msg_desc" >
-    <h1>Spot</h1>
-    <div class="msg_desc_info_big">
-      <div class="list_msg">
-        <div class="msg_list_img">
-          <div class="list_img_bor"></div>
-          <%=link_to  'View Listing', my_spots_path %>
-          <%=link_to  'Delete Listing', my_products_path %>
-        </div>
-        <div class="msg_list_desc">
-          <%= link_to '+Ad my Firm/Stable, Ad Shows, or Organization', new_spot_url, :class=> 'ad_pro' %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="msg_bot"></div>
-</div>
-
-
-
-
-

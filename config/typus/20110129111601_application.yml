@@ -1,0 +1,136 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+ArticleAsset:
+  fields:
+    default: article_id, photo_file_name, main, article
+    form: article_id, photo_file_name, main, article
+  order_by: 
+  relationships: article
+  filters: 
+  search: 
+  application: travelobd_asset
+
+Cart:
+  fields:
+    default: purchased_at, user_id
+    form: purchased_at, user_id
+  order_by: 
+  relationships: line_items, order
+  filters: 
+  search: 
+  application: travelobd_asset
+
+ClassifiedAsset:
+  fields:
+    default: classified_id, photo_file_name, classified
+    form: classified_id, photo_file_name, classified
+  order_by: 
+  relationships: classified
+  filters: 
+  search: 
+  application: travelobd_asset
+
+Country:
+  fields:
+    default: name, code
+    form: name, code
+  order_by: 
+  relationships: districts
+  filters: 
+  search: name
+  application: travelobd_asset
+
+LineItem:
+  fields:
+    default: price, cart_id, quantity, purchasable_id, cart
+    form: price, cart_id, quantity, purchasable_id, cart
+  order_by: 
+  relationships: cart
+  filters: 
+  search: 
+  application: travelobd_asset
+
+Order:
+  fields:
+    default: cart_id, ip_address, first_name, address, suite, city, state, zip_code, country, phone, email, name_on_card, card_expires_on, last_name, cart
+    form: cart_id, ip_address, first_name, address, suite, city, state, zip_code, country, phone, email, name_on_card, card_expires_on, last_name, cart
+  order_by: 
+  relationships: cart, transactions
+  filters: 
+  search: 
+  application: travelobd_asset
+
+OrderTransaction:
+  fields:
+    default: order_id, action, amount, success, authorization, message, order
+    form: order_id, action, amount, success, authorization, message, params, order
+  order_by: 
+  relationships: order
+  filters: 
+  search: 
+  application: travelobd_asset
+
+PackageAsset:
+  fields:
+    default: package_id, photo_file_name, main, ad
+    form: package_id, photo_file_name, main, ad
+  order_by: 
+  relationships: ad
+  filters: 
+  search: 
+  application: travelobd_asset
+
+PackageVideo:
+  fields:
+    default: package_id, code
+    form: package_id, code
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: travelobd_asset
+
+SavedListing:
+  fields:
+    default: user_id, savable_id, user
+    form: user_id, savable_id, user
+  order_by: 
+  relationships: user
+  filters: 
+  search: 
+  application: travelobd_asset
+
+SpotAsset:
+  fields:
+    default: spot_id, photo_file_name, main, spot
+    form: spot_id, photo_file_name, main, spot
+  order_by: 
+  relationships: spot
+  filters: 
+  search: 
+  application: travelobd_asset
+
+Hotel:
+  fields:
+    default: name, address,  active, featured
+    form: name, description, address, district, active, featured
+  order_by:
+  relationships: 
+  filters: district
+  search:
+  application: travelobd
+
+Feature:
+  fields:
+    default: name, for_hotel, active
+    form: name, for_hotel, active
+  order_by:
+  relationships:
+  filters: for_hotel
+  search:
+  application: travelobd
+
+
+

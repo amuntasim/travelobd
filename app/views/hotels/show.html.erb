@@ -1,0 +1,481 @@
+<% title 'Hotel- '+@hotel.name %>
+<%= content_for :js_css_include do %>
+    <%= javascript_include_tag 'jquery.easing.1.3', 'jquery.galleryview-1.1', 'jquery.timers-1.1.2', 'thickbox' %>
+    <%= javascript_include_tag 'jquery.validate' %>
+    <%= stylesheet_link_tag 'thickbox' %>
+<% end %>
+
+<%= content_for :over_mid_content do %>
+    <div class="redhead_row">
+      <div class="subLink">
+        <ul>
+          <li><a href="#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true" class="thickbox">Send
+            To a Friend</a>
+          </li>
+
+          <li>
+            <%= link_to 'Print This', print_hotel_path(@hotel) %>
+          </li>
+
+          <li id="saved_item_li">
+            <% if @already_saved %>
+                <%= link_to '[ Remove ]', 'javascript:void(0)', :class => 'remove_from_save_listing', :sl_id=> @already_saved.id, :savable_id => @hotel.id, :savable_type => 'Hotel' %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;
+            <% else %>
+                <%= link_to 'Save This Hotel', 'javascript:void(0)', :class => 'save_item', :savable_type => 'Hotel', :item_id=> @hotel.id %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+<% end %>
+
+<div class="itemWideArea">
+  <div class="good_item_head"><%= @hotel.title %></div>
+
+  <div id="" class="good_slide_bor">
+    <div id="photo_gallery" class="galleryview">
+      <div class="photo_gal_wraper">
+        <% @hotel.assets.each do |asset| %>
+            <div class="panel ">
+              <%= image_tag(asset.photo.url(:medium), :class=> 'panel_image', :photo_id =>asset.id, :width => 488, :height => 280) %>
+              <!--<div class="panel-overlay">
+
+               <p>sample description</p>
+             </div> -->
+
+            </div>
+        <% end %>
+      </div>
+      <div class="good_moving_bor">
+        <ul class="filmstrip">
+
+          <% @hotel.assets.each do |asset| %>
+              <li class="slide_img">
+                <%= image_tag(asset.photo.url(:thumb), :class=> 'panel_image', :photo_id =>asset.id, :width => 65, :height => 51) %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="item_details">
+    <!--curv start -->
+    <div class="bl">
+      <div class="br">
+        <!--<div class="tl">
+            <div class="tr"> -->
+        <div class="good_item_head ">Details:</div>
+
+        <div class="itemDesc_row">
+          <%= sanitize @hotel.description, :tags => %w(table tr td, p, ul, li, strong, i, b, u, a), :attributes => %w(id class style) %>
+
+        </div>
+        <!--</div>
+    </div> -->
+      </div>
+    </div>
+    <!--curv end -->
+  </div>
+
+  <div class="item_details">
+    <!--curv start -->
+    <div class="bl">
+      <div class="br">
+        <!--<div class="tl">
+            <div class="tr"> -->
+        <div class="good_item_head ">Rooms:</div>
+        <%= render :partial => 'rooms/room', :collection => @hotel.rooms %>
+        <!--</div>
+    </div> -->
+      </div>
+    </div>
+    <!--curv end -->
+  </div>
+
+
+</div>
+<div class="itemNarrowArea">
+  <div class="ash_narrow_box">
+    <div class="ash_n_top"></div>
+    <div class="ash_n_mid">
+      <div class="ash_desc_row">
+        <label>Division:</label>
+
+        <div class="value">
+          <%= @hotel.division.name %>
+        </div>
+      </div>
+      <div class="ash_desc_row">
+        <label>District:</label>
+
+        <div class="value">
+          <%= @hotel.district.name %>
+        </div>
+      </div>
+
+
+      <div class="ash_desc_row">
+        <label>Phone:</label>
+
+        <div class="value">
+          <%= @hotel.phone %>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="ash_n_bot"></div>
+  </div>
+
+  <div class="ash_narrow_box mtop15">
+    <h2>Contact:</h2>
+
+    <div class="white_top"></div>
+
+    <%= form_for Message.new, :url=>messages_path, :remote=> true, :html=> {:id=> 'message_form'} do |f| %>
+        <div class="white_mid">
+          <div id="message_status" class="white_Desc">
+
+          </div>
+          <div class="white_Desc">
+            <label>Your Name:</label>
+            <%= f.text_field :name %>
+          </div>
+          <div class="white_Desc">
+            <label>Email:</label>
+            <%= f.text_field :email %>
+          </div>
+          <div class="white_Desc">
+            <label>Your Location:</label>
+            <%= f.text_field :address %>
+          </div>
+          <div class="white_Desc">
+            <label>Your Phone#:</label>
+            <%= f.text_field :phone %>
+          </div>
+          <div class="white_Desc">
+            <label>Message Title:</label>
+            <%= f.text_field :title %>
+          </div>
+          <div class="white_Desc">
+            <label>Your Message:</label>
+            <%= f.text_area :content %>
+          </div>
+
+          <div class="anti">
+            <label>Anti-Spam Security Check (required) 6+1=</label>
+            <%= text_field_tag :spam_check %>
+          </div>
+
+          <div class="anti">
+            <%= hidden_field_tag :message_status, 'message_status' %>
+            <input name="" class="subBtn" type="submit" value="" id="submit_to_seller"/>
+            <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_seller', :style=> 'display:none' %>
+            <%= f.hidden_field :seller_id, :value => @hotel.user_id %>
+            <%= f.hidden_field :user_id, :value => @hotel.user_id %>
+            <%= f.hidden_field :ref_id, :value => @hotel.id %>
+            <%= f.hidden_field :ref_type, :value => 'Hotel' %>
+          </div>
+    <% end %>
+    </div>
+    <div class="white_bot"></div>
+  </div>
+
+
+</div>
+
+<div id="send_to_friend_lb" style="display: none">
+  <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_to_friend_lb', :title => 'close' %>
+  <% form_for :contact, :url => send_to_friends_path, :remote => true, :html=> {:id => 'send_to_friends_form'} do |f| %>
+
+      <h2>Send to Friends</h2>
+
+      <div id="stf_summary" style="margin-top: 5px;">
+
+      </div>
+      <p>
+        Enter Your Message Here:
+
+      </p>
+
+      <p class="message">
+        <%= text_area_tag :message %>
+
+      </p>
+
+      <p>
+        Enter Email Addresses Here:
+
+      </p>
+
+      <p class="message">
+        <%= text_area_tag :email %>
+
+      </p>
+
+
+      <p style="text-align: center">
+        <%= hidden_field_tag 'item_id', @hotel.id %>
+        <%= hidden_field_tag 'item_type', 'hotel' %>
+        <%= submit_tag "Send", :id =>'submit_to_friend' %>
+        <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_friend', :style=> 'display:none' %>
+      </p>
+  <% end %>
+
+</div>
+<style type="text/css">
+
+    .good_slide_bor {
+        height: 320px;
+        margin-bottom: 100px;
+    }
+
+    .good_slide_bor img {
+        margin: 0
+    }
+
+    div.panel {
+        margin-left: 100px !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    div.strip_wrapper {
+        top: 345px !important;
+        width: 530px !important;
+        left: 75px !important;
+
+    }
+
+    .good_moving_bor {
+        margin-top: 335px;
+        border: 1px solid #cccccc;
+
+    }
+
+    img.nav-prev {
+        left: 10px !important;
+        top: 356px !important;
+    }
+
+    img.nav-next {
+        left: 621px !important;
+        top: 356px !important;
+    }
+
+    .ash_desc_row .value {
+        width: 158px;
+        float: left;
+    }
+
+    #message_status {
+        float: left;
+        padding: 0px 5px;
+        margin: 0px 5px 5px 0px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    #message_status span.success {
+        color: green
+    }
+
+    #TB_window {
+        -moz-border-radius: 10px;
+    }
+
+    p.message textarea {
+        width: 390px;
+        height: 60px;
+    }
+
+    #close_send_to_friend_lb {
+        float: left;
+        position: absolute;
+        left: 399px;
+        top: 2px;
+        cursor: pointer;
+    }
+
+    .item_details .room {
+        float: left;
+        width: 100%;
+        padding:5px 0px;
+        background: #eeeeee;
+        margin-bottom:5px;
+    }
+
+    .item_details .room .title{  width: 150px;  padding:0px 10px }
+    .item_details .room .roomDesc{  width: 450px;  }
+    .item_details .room .links{  width: 50px; padding-left:10px }
+</style>
+<script type="text/javascript">
+    var resetMessageForm = function() {
+        $("#message_form").get(0).reset();
+    };
+
+    var resetSendToFriend = function() {
+        $("#send_to_friends_form").get(0).reset();
+
+    };
+
+
+    $.validator.methods.multipleEmailValidation = function(value, element, param) {
+        var emails = value.split(',');
+        var valid = (emails.length > 0); // make sure that value is not empty
+        var email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+
+        for (i = 0; i < emails.length; i++) {
+
+            var emailAddress = emails[i];
+            //alert(emailAddress);
+            //alert(email_regex.test(emailAddress));
+            valid = valid && email_regex.test(emailAddress); // logical and of all email validations
+        }
+        return valid;
+    };
+
+
+    $.fn.validateSendToFriend = function() {
+        var stf_validator = $("#send_to_friends_form").validate({
+            invalidHandler: function() {
+                $("#stf_summary").html('<div class="summary error">' + stf_validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+            },
+            errorPlacement: function(error, element) {
+                error.remove();
+            },
+
+
+            rules: {
+                message: "required",
+                email: {
+                    required: true,
+
+                    multipleEmailValidation: true
+
+                }
+            }
+        });
+    }
+    $(document).ready(function() {
+        $('#photo_gallery').galleryView({
+            /*
+             panel_width: 488,
+             panel_height: 280,
+             frame_width: 67,
+             frame_height: 51,
+             //overlay_height: 30,
+             //overlay_color: '#222',
+             //overlay_text_color: 'white',
+             caption_text_color: '#222',
+             background_color: 'transparent',
+             transition_speed: 0,
+             border: 'none',
+             nav_theme: 'custom',
+             easing: 'easeInOutQuad',
+             pause_on_hover: true
+             */
+
+
+            panel_width: 488,
+            panel_height: 280,
+            frame_width: 67,
+            frame_height: 51,
+            transition_speed: 500,
+            //transition_interval: 500,
+            background_color: 'transparent',
+            //overlay_text_color: 'white',
+            caption_text_color: '#222222',
+            border: 'none',
+            easing: 'easeInOutBack',
+            nav_theme: 'custom',
+            show_captions: true,
+            pause_on_hover: true,
+            fade_panels: false
+
+            /*
+             panel_width: 488,
+             panel_height: 280,
+             frame_width: 67,
+             frame_height: 51,
+             transition_speed: 1200,
+             background_color: '#222',
+             border: 'none',
+             easing: 'easeInOutBack',
+             pause_on_hover: true,
+             nav_theme: 'custom',
+             overlay_height: 52,
+             filmstrip_position: 'top',
+             overlay_position: 'top'
+             */
+        });
+
+
+        var message_validator = $("#message_form").validate({
+            errorPlacement: function(error, element) {
+                error.remove();
+            },
+            invalidHandler: function(e, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    var message = errors == 1
+                            ? 'You missed 1 field. It has been highlighted below'
+                            : 'You missed ' + errors + ' fields.  They have been highlighted below';
+                    $("div#message_status").html("<span class='error'>" + message + "</span>");
+                    $("div#message_status span.error").show();
+                } else {
+                    $("div#message_status span.error").hide();
+                }
+            },
+
+
+            rules: {
+                'message[name]': "required",
+                'message[email]': {
+                    required: true,
+                    email: true
+                },
+
+                'message[address]': "required",
+                'message[phone]': "required",
+                'message[title]': "required",
+                'message[content]': "required",
+                'spam_check': "required"
+                //ad_item_name: "required",
+                //ad_short_description: "required"
+
+            }
+        });
+        $("#message_form").bind("ajaxSend",
+                function() {
+                    $('#submit_to_seller').hide();
+                    $('#sending_to_seller').show();
+                }).bind("ajaxComplete",
+                function() {
+                    $('#sending_to_seller').hide();
+                    $('#submit_to_seller').show();
+                }).bind("ajax:success", resetMessageForm);
+
+        $("#send_to_friends_form").bind("ajaxSend",
+                function() {
+                    $('#submit_to_friend').hide();
+                    $('#sending_to_friend').show();
+                }).bind("ajaxComplete",
+                function() {
+                    $('#sending_to_friend').hide();
+                    $('#submit_to_friend').show();
+                }).bind("ajax:success", resetSendToFriend);
+        //(savable_type, anchor_class, container_id)
+        $('img.close_lb').click(function() {
+            tb_remove();
+        });
+
+        $(this).validateSendToFriend();
+
+
+    });
+
+
+</script>

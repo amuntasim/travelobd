@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)
+#  active      :boolean(1)      default(FALSE)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  category_id :integer(4)
+#
+
 class Article < ActiveRecord::Base
   translates :title, :detail
   has_friendly_id :title, :use_slug => true

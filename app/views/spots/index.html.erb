@@ -1,41 +1,50 @@
 <% title @search_title %>
-<%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>
-      Spots
-    </h2>
+
+<div class="pageHead">
+  Spots
+  <div class="pageHeadOptions">
+    <b>Sort by: </b> <%= link_to '...', '#' %>
   </div>
+</div>
+
+<% @spots.each do |spot| %>
+    <div class="listItem">
+      <div class="fl listItemLogo">
+        <%= image_tag spot.main_image_url(:thumb) %>
+      </div>
+
+      <div class="fl listItemDesc">
+        <div class="fl hotel_desc_info">
+          <div class="fl title">
+            <%= link_to truncate(spot.title, :length => 50), spot %>
+            <h4>dhaka, bangladesh</h4>
+          </div>
+          <div class="fl description">
+            <%#= truncate(sanitize(spot.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(spot.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+          </div>
+
+        </div>
+        <div class="fl price_n_button">
+          <div class="fl price">
+           foo bar
+          </div>
+          <div class="fl rating">
+            Like: 1000
+            <span style="float:right;">
+              Rating: 4
+            </span>
+          </div>
+          <%= link_to 'Details', spot, :class => 'detail_link' %>
+        </div>
+      </div>
+
+    </div>
 <% end %>
 
-<div class="ad_business">
-  <%= link_to '+Add Your '+@search_title, new_spot_path(:category_id =>params[:category_id])  %>
-</div>
 
-<div class="firms_row">
-  <div class="firms_head">
-    <%= @search_title %>
-  </div>
-  <% @spots.each do |spot| %>
-    <div class="f_bor spot">
-      <div class="f_inner_bor">
-        <%= image_tag spot.main_image_url(:thumb), :width => 68, :height => 55 %>
-      </div>
-      <strong><%= spot.category %></strong>
-      <h3>
-        <%= link_to spot.name, spot_path(spot) %>
-      </h3>
 
-      <%= truncate(sanitize(spot.detail).gsub(/<\/?[^>]*>/, "") ,:length => 150)  %>
 
-    </div>
-  <% end %>
-  <% if @spots.total_pages > 1 %>
-    <div class="f_bor pagination">
-      <%= will_paginate  @spots %>
-    </div>
-  <% end %>
-  <div class="firma_bottom"></div>
-</div>
 
 
 

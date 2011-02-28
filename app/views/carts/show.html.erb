@@ -4,12 +4,12 @@
   </div>
 <% end %>
 
-<div class="ad_info">
+<div class="package_info">
   <h1>Ad Information</h1>
-  <div class="ad_info_top"></div>
-  <div class="ad_info_mid">
-    <div class="ad_info_desc">
-      <img src="img/ad_info_pic.jpg" alt="">
+  <div class="package_info_top"></div>
+  <div class="package_info_mid">
+    <div class="package_info_desc">
+      <img src="img/package_info_pic.jpg" alt="">
       <p>Sam I am</p>
       <a href="#">Edit</a>
       <% for line_item in @cart.line_items %>
@@ -23,7 +23,7 @@
       <div class="ad_p"><%= number_to_currency @cart.total_price %></div>
     </div>
   </div>
-  <div class="ad_info_bot"></div>
+  <div class="package_info_bot"></div>
 </div>
 
 <div class="bill_info">

@@ -14,22 +14,22 @@ jQuery.fn.submitWithAjax = function() {
     return this;
 };
 
-$.fn.removePhotoField = function(){
-    $('span.removeImageField').click(function(){
+$.fn.removePhotoField = function() {
+    $('span.removeImageField').click(function() {
         $(this).parents('.photo').remove();
     });
 };
 
-$.fn.addMorePhoto = function(container, allowed_images){
-    $('a.addMoreImage').click(function(){
-        if(allowed_images && ($('span.removeImageField').length + $('a.del_photo').length) > allowed_images){
-            alert('Maximum allowed '+allowed_images);
+$.fn.addMorePhoto = function(container, allowed_images) {
+    $('a.addMoreImage').click(function() {
+        if (allowed_images && ($('span.removeImageField').length + $('a.del_photo').length) > allowed_images) {
+            alert('Maximum allowed ' + allowed_images);
             return false;
         }
-        else{
-            var new_object_id = new Date().getTime() ;
+        else {
+            var new_object_id = new Date().getTime();
             var html = $($('#new_photo_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-            html.appendTo($('#'+ container)).slideDown('slow');
+            html.appendTo($('#' + container)).slideDown('slow');
             $(this).removePhotoField();
         }
     });
@@ -38,13 +38,13 @@ $.fn.addMorePhoto = function(container, allowed_images){
 };
 
 
-$.fn.makeMainPhoto = function(resource){
-    $('input.mainCh').click(function(){
+$.fn.makeMainPhoto = function(resource) {
+    $('input.mainCh').click(function() {
         $('input.mainCh').attr('checked', false);
         $(this).attr('checked', true);
 
         $.ajax({
-            url: '/'+ resource +'/set_main_photo?asset_id='+$(this).attr('asset_id'),
+            url: '/' + resource + '/set_main_photo?asset_id=' + $(this).attr('asset_id'),
             type: 'post',
             dataType: 'script',
             success: function(results) {
@@ -55,12 +55,12 @@ $.fn.makeMainPhoto = function(resource){
     });
 };
 
-$.fn.deleteAsset = function(resource){
-    $('a.del_photo').click(function(){
-        if(confirm('Delete photo?')){
+$.fn.deleteAsset = function(resource) {
+    $('a.del_photo').click(function() {
+        if (confirm('Delete photo?')) {
             var div_to_remove = $(this).parent('.existing_image');
             $.ajax({
-                url: '/'+ resource +'/delete_asset?asset_id='+$(this).attr('asset_id'),
+                url: '/' + resource + '/delete_asset?asset_id=' + $(this).attr('asset_id'),
                 type: 'post',
                 dataType: 'script',
                 success: function(results) {
@@ -73,13 +73,13 @@ $.fn.deleteAsset = function(resource){
 };
 
 
-$.fn.saveItemToMyListing = function(){
-    $('a.save_item').click(function(){
+$.fn.saveItemToMyListing = function() {
+    $('a.save_item').click(function() {
         $.ajax({
-            url: '/users/save_item?savable_id='+$(this).attr('item_id')+'&savable_type='+ $(this).attr('savable_type'),
+            url: '/users/save_item?savable_id=' + $(this).attr('item_id') + '&savable_type=' + $(this).attr('savable_type'),
             type: 'post',
             dataType: 'script',
-            success: function(r){
+            success: function(r) {
                 $.fn.removeSavedItem();
             }
         });
@@ -87,30 +87,29 @@ $.fn.saveItemToMyListing = function(){
     });
 };
 
-$.fn.removeSavedItem = function(){
-    $('a.remove_from_save_listing').click(function(){
+$.fn.removeSavedItem = function() {
+    $('a.remove_from_save_listing').click(function() {
         $.ajax({
-            url: '/users/remove_saved_item?sl_id='+$(this).attr('sl_id')+'&savable_id='+$(this).attr('savable_id')+'&savable_type='+ $(this).attr('savable_type'),
+            url: '/users/remove_saved_item?sl_id=' + $(this).attr('sl_id') + '&savable_id=' + $(this).attr('savable_id') + '&savable_type=' + $(this).attr('savable_type'),
             type: 'post',
             dataType: 'script',
-            success: function(r){
+            success: function(r) {
                 $.fn.saveItemToMyListing();
             }
         });
     });
-} ;
+};
 
-$.fn.toggleLoginOther = function(){
-    $('.login_and_other').click(function(){
-        if($(this).hasClass('collapsed')){
+$.fn.toggleLoginOther = function() {
+    $('.login_and_other').click(function() {
+        if ($(this).hasClass('collapsed')) {
             $('.top_bar').animate({
                 "marginTop": "10px"
             }, "slow");
             $('#login_down_arrow').hide();
             $('#login_up_arrow').show();
         }
-        else
-        {
+        else {
             $('.top_bar').animate({
                 "marginTop": "-40px"
             }, "slow");
@@ -122,20 +121,42 @@ $.fn.toggleLoginOther = function(){
     });
 };
 
-$.fn.enableMenu = function(){
-    $('.sub_nav').mouseover(function(){
+$.fn.enableMenu = function() {
+    $('.sub_nav').mouseover(function() {
         mcancelclosetime();
     });
 
-    $('.sub_nav, a.have_sub_nav').mouseout(function(){
+    $('.sub_nav, a.have_sub_nav').mouseout(function() {
         mclosetime();
     });
 
-    $('a.have_sub_nav').mouseover(function(){
+    $('a.have_sub_nav').mouseover(function() {
         mopen($(this).attr('sub_nav_id'));
     });
 
 };
+
+$.fn.showHideSearchOption = function() {
+    var search_option = $('#search_option').val();
+    switch (search_option) {
+        case 'Packages':
+            $('.searchOption').hide();
+            $('#package_search_form').show();
+            break;
+        case 'Spots':
+            $('.searchOption').hide();
+            $('#spot_search_form').show();
+            break;
+        case 'Articles':
+            $('.searchOption').hide();
+            $('#article_search_form').show();
+            break;
+        default:
+            $('.searchOption').hide();
+            $('#hotel_search_form').show();
+    }
+};
+
 
 $(document).ready(function() {
     $("#new_task").submitWithAjax();
@@ -158,7 +179,10 @@ $(document).ready(function() {
     $(this).saveItemToMyListing();
     $(this).removeSavedItem();
     $(this).toggleLoginOther();
-   
+    $(this).showHideSearchOption();
+    $('#search_option').change(function() {
+        $(this).showHideSearchOption();
+    });
 })
 
 

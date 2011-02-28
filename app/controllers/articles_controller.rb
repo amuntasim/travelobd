@@ -108,6 +108,14 @@ class ArticlesController < ApplicationController
     render :nothing => true
   end
 
+  def search
+    search_obj = Article.search(params[:search])
+    ordering = "created_at DESC"
+    @articles = search_obj.order(ordering).paginate(:page=> params[:page], :per_page => 10)
+    @search_label = params[:label] || 'Articles : Search Results '
+  end
+
+  private
   def load_item
     @article = Article.find(params[:id])
   end

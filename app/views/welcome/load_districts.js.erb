@@ -1,0 +1,1 @@
+$("#<%=params['target']%> ").empty().find('option').remove().end().append('<option>--Select--</option><%= escape_javascript(options_from_collection_for_select(@districts, :id, :name))%>');

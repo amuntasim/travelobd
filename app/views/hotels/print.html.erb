@@ -1,0 +1,221 @@
+
+<style type="text/css" media="print">
+
+  .good_slide_bor{
+    height: 320px;
+    margin-bottom: 100px;
+  }
+  .good_slide_bor img {margin: 0}
+
+  div.panel {
+    margin-left: 100px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  div.strip_wrapper {
+    top: 345px !important;
+    width: 530px!important;
+    left: 75px !important;
+
+
+  }
+  .good_moving_bor{
+    margin-top: 335px;
+    border: 1px solid #cccccc;
+
+  }
+
+  img.nav-prev{
+    left:10px !important;
+    top:356px !important;
+  }
+  img.nav-next{
+    left:621px !important;
+    top:356px !important;
+  }
+
+  .pedigree_column input{
+    width: 208px;
+    margin-bottom: 5px;
+    background:url("/images/email_input_bg.jpg") no-repeat;
+
+  }
+  .pedigree_column{
+    width: 220px;
+    margin-right: 5px;
+    float: left;
+    margin-left: 5px;
+  }
+
+  .first_column input{
+    margin-bottom:62px;
+    margin-top:48px;
+  }
+
+  .second_column input{
+    margin-bottom:27px;
+    margin-top:14px;
+  }
+  .third_column{
+    margin-right: 0
+  }
+  .pedigrees  {padding-top: 10px;
+               float: left;
+  }
+  .pedigrees input {
+    height:24px;
+    padding-top:5px;
+    border: none;
+    text-align: center;
+
+  }
+  .hide_column {display: none}
+
+  .ash_desc_row .value {
+    width: 158px;
+    float: left;
+  }
+
+  #message_status { float: left;  padding:0px 5px; margin:0px 5px 5px 0px; text-align: center; font-size: 14px;}
+  #message_status span.success{color: green}
+
+</style>
+
+<div class="itemWideArea">
+  <div class="good_item_head"><%= @hotel.name %></div>
+
+  
+
+  <div class="item_details">
+    <!--curv start -->
+    <div class="bl">
+      <div class="br">
+        <!--<div class="tl">
+            <div class="tr"> -->
+        <div class="good_item_head">Horse Details:</div>
+
+        <div class="itemDesc_row"><%= @hotel.description %></div>
+        <!--</div>
+    </div> -->
+      </div>
+    </div>
+    <!--curv end -->
+  </div>
+
+
+</div>
+<div class="itemNarrowArea">
+  <div class="ash_narrow_box">
+    <div class="ash_n_top"></div>
+    <div class="ash_n_mid">
+      <div class="ash_desc_row">
+        <label>Division:</label>
+        <div class="value">
+          <%= @hotel.division.name %>
+        </div>
+      </div>
+      <div class="ash_desc_row">
+        <label>District:</label>
+        <div class="value">
+          <%= @hotel.district.name %>
+        </div>
+      </div>
+
+
+      <div class="ash_desc_row">
+        <label>Phone:</label>
+        <div class="value">
+          <%= @hotel.phone %>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="ash_n_bot"></div>
+  </div>
+
+</div>
+
+<style type="text/css">
+
+  .good_slide_bor{
+    height: 320px;
+    margin-bottom: 100px;
+  }
+  .good_slide_bor img {margin: 0}
+
+  div.panel {
+    margin-left: 100px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  div.strip_wrapper {
+    top: 345px !important;
+    width: 530px!important;
+    left: 75px !important;
+
+
+  }
+  .good_moving_bor{
+    margin-top: 335px;
+    border: 1px solid #cccccc;
+
+  }
+
+  img.nav-prev{
+    left:10px !important;
+    top:356px !important;
+  }
+  img.nav-next{
+    left:621px !important;
+    top:356px !important;
+  }
+
+  .pedigree_column input{
+    width: 208px;
+    margin-bottom: 5px;
+    background:url("/images/email_input_bg.jpg") no-repeat;
+
+  }
+  .pedigree_column{
+    width: 220px;
+    margin-right: 5px;
+    float: left;
+    margin-left: 5px;
+  }
+
+  .first_column input{
+    margin-bottom:62px;
+    margin-top:48px;
+  }
+
+  .second_column input{
+    margin-bottom:27px;
+    margin-top:14px;
+  }
+  .third_column{
+    margin-right: 0
+  }
+  .pedigrees  {padding-top: 10px;
+               float: left;
+  }
+  .pedigrees input {
+    height:24px;
+    padding-top:5px;
+    border: none;
+    text-align: center;
+
+  }
+  .hide_column {display: none}
+
+  .ash_desc_row .value {
+    width: 158px;
+    float: left;
+  }
+
+  #message_status { float: left;  padding:0px 5px; margin:0px 5px 5px 0px; text-align: center; font-size: 14px;}
+  #message_status span.success{color: green}
+
+</style>

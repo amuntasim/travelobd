@@ -19,32 +19,37 @@
         <%= yield :over_mid_content %>
         <!--middle start -->
         <div class="midContent">
-          <div class="myAccount">
-            <div class="acc_wide">
-              <%= render :partial=> 'layouts/my_account_links' %>
 
-              <%= yield %>
+          <div class="home_left fl">
+            <div class="home_left_header fl search_header">
+              <div class="home_left_header_content">
+                My Tools
+              </div>
+
             </div>
-            <div class="acc_narrow">
+            <div class="home_left_content">
               <div class="mytools">
-                <h2>My Tools</h2>
                 <ul>
                   <li><%= link_to 'Edit Profile', edit_user_profile_url(current_user) %></li>
                   <li><%= link_to 'Change Password', edit_user_path(:id=> 'xxx') %></li>
-                  <li><a href="#">How to Place An Ad</a></li>
-                  <li><a href="#">Sell Your Ad</a></li>
-                  <li><a href="#">Sell Your Trailer</a></li>
-                  <li><a href="#">Sell Your Product</a></li>
-                  <li><a href="#">Free Legal Forms</a></li>
                 </ul>
               </div>
+
             </div>
+          </div>
+
+          <div class="home_left_border fl">
+
+          </div>
+          <div class="dashboard_content fl">
+
+            <%= yield %>
           </div>
         </div>
 
+
+        <!--<div class="mid_bot_bg"></div>-->
       </div>
-     
-      <!--<div class="mid_bot_bg"></div>-->
       <!--middle end -->
 
       <!--footer start -->
@@ -56,3 +61,76 @@
     </div>
   </body>
 </html>
+
+
+<style type="text/css">
+  .midContent{padding-left: 0px; width: 990px;}
+
+
+  .home_left { width: 200px;}
+  .home_left_border {
+    width: 37px;
+    height: 1125px;
+    overflow: auto;
+    background:url("/images/separetor.png") no-repeat;
+  }
+  .home_middle {
+    width: 530px;
+    margin: 0px 10px;
+  }
+  .home_right {
+    width: 190px;
+  }
+
+  .home_left_header, .dashboard_content_header {
+    width: 200px;
+    height: 32px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .search_header{
+    background:url("/images/heading_repeat.jpg") repeat-x;
+  }
+
+  .home_left_header_content, .dashboard_content_header_content {
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+
+  .home_left_content {
+    padding: 10px;
+    width: 180px;
+  }
+
+  .home_left_content {
+    padding: 10px;
+    width: 180px;
+  }
+
+  .dashboard_content {
+    width: 720px;
+    margin-left: 20px;
+
+  }
+
+  .dashboard_content_header {width: 700px; margin-top: 10px; border-top: 1px solid #DFDFDF}
+  .dashboard_content_top {width:100%;float:left;}
+  .dashboard_content_item {width:676px; padding: 10px; border: 2px solid #DFDFDF; border-top:0; background: #ffffff;  }
+  .dashboard_content_top_left {width: 300px}
+  .dashboard_content_top_right {width: 400px; text-align: right; margin-top: 8px;}
+
+  .dc_item { width: 676px; margin-bottom: 7px; }
+
+  .dc_item_image {width: 75px;}
+  .dc_item_image img {width: 73px; height: 53px; border: 1px solid #cccccc}
+  .dc_item_text { width: 479px; margin: 0px 10px}
+
+  .dc_item_text .title { font-size: 14px; margin-bottom: 4px;}
+  .dc_item_links { font-weight: bold; width:102px;}
+  .dc_item_links a {color: #569A23; margin-left: 2px;}
+
+  .add_link {float: right; margin-right: 12px; }
+  .add_link a {color: #ffffff}
+</style>

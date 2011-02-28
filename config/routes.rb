@@ -1,7 +1,21 @@
 Travelobd::Application.routes.draw do
+
+  resources :rooms
+
   resources :password_reset
 
   resources :profiles
+
+  resources :hotels do
+    collection do
+      post :delete_asset
+      post :set_main_photo
+      get :search
+    end
+    member do
+      get :print
+    end
+  end
 
   resources :classifieds do
     collection do
@@ -10,38 +24,9 @@ Travelobd::Application.routes.draw do
     end
   end
 
-  resources :orders
+#
 
-  resources :line_items
-
-  resources :carts
-
-  resources :associations
-
-  resources :disciplines
-
-  resources :breeds
-
-  resources :ad_videos
-
-  resources :pedigrees
-
-  resources :countries
-
-  resources :districts do
-    collection do
-      get :autocomplete
-      get :load_divisions
-    end
-  end
-
-  resources :divisions do
-    collection do
-      get :autocomplete
-    end
-  end
-
-  resources :ads do
+  resources :packages do
     collection do
       post :delete_asset
       post :set_main_photo
@@ -59,18 +44,17 @@ Travelobd::Application.routes.draw do
     collection do
       post :delete_asset
       post :set_main_photo
+      get :search
     end
   end
 
   resources :elements
 
-  get "admin/index"
-
-
   resources :articles do
     collection do
       post :delete_asset
       post :set_main_photo
+      get :search
     end
   end
 
@@ -84,10 +68,10 @@ Travelobd::Application.routes.draw do
   end
 
   get "welcome/index"
+  get "welcome/load_districts"
   get "users/dashboard"
 
-  resources :packages, :controller => :ads
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -137,16 +121,14 @@ Travelobd::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  match 'login'          => 'user_sessions#new'
-  match 'logout'         => 'user_sessions#destroy'
-  match 'admin'         => 'ads#index'
-  match 'place_an_ad'         => 'ads#new'
+  match 'login' => 'user_sessions#new'
+  match 'logout' => 'user_sessions#destroy'
+  match 'place_an_ad' => 'ads#new'
 
-  match 'checkout' => 'carts#show'
+  #match 'checkout' => 'carts#show'
   root :to => "welcome#index"
 
   #ajax on home page
-  get 'welcome/ads_for_sale'
   get 'welcome/articles'
   get 'welcome/other_classifieds'
   get 'welcome/featured_ads'
@@ -155,20 +137,20 @@ Travelobd::Application.routes.draw do
 
   match 'advance_search' =>'ads#advance_search'
 
-  
+
   #dashboard
-  match 'dashboard'         => 'users#dashboard'
-  match 'inbox'         => 'users#inbox'
-  match 'outbox'         => 'users#outbox'
-  match 'my_ads'         => 'users#ads'
-  match 'my_saved_listings'         => 'users#saved_listings'
-  match 'my_spots'         => 'users#spots'
-  match 'my_products'         => 'users#products'
-  match 'send_to_friends'         => 'users#send_to_friends'
+  match 'dashboard' => 'users#dashboard'
+  match 'inbox' => 'users#inbox'
+  match 'outbox' => 'users#outbox'
+  match 'my_saved_listings' => 'users#saved_listings'
+  match 'my_spots' => 'users#spots'
+  match 'my_packages' => 'users#packages'
+  match 'my_hotels' => 'users#hotels'
+  match 'send_to_friends' => 'users#send_to_friends'
 
 
   #newly added
-  match 'tell_friends'         => 'users#tell_friends'
+  match 'tell_friends' => 'users#tell_friends'
 
 
 end

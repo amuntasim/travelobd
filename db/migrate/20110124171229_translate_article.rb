@@ -1,6 +1,12 @@
 class TranslateArticle < ActiveRecord::Migration
   def self.up
-    Article.create_translation_table! :title => :string, :detail => :text
+    create_table  :article_translations do |t|
+      t.column :article_id, :integer
+      t.column :locale, :string
+      t.column :title, :string
+      t.column :detail, :text
+      t.timestamps
+    end
     remove_columns :articles, :title, :detail
   end
 

@@ -1,0 +1,5 @@
+<div class="destination">
+  <%= form.fields_for :destinations, destination, :child_index => (destination.new_record? ? "index_to_replace_with_js" : nil) do |destination_form| %>
+      <%= destination_form.select 'destination_ids[]', District.all_active %>
+  <% end %>
+</div>

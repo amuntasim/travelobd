@@ -1,0 +1,52 @@
+<% title @search_title %>
+
+<div class="pageHead">
+  Packages
+  <div class="pageHeadOptions">
+    <b>Sort by: </b> <%= link_to 'Price', '#' %>
+  </div>
+</div>
+
+<% @packages.each do |package| %>
+    <div class="listItem">
+      <div class="fl listItemLogo">
+        <%= image_tag package.main_image_url(:thumb) %>
+      </div>
+
+      <div class="fl listItemDesc">
+        <div class="fl hotel_desc_info">
+          <div class="fl title">
+            <%= link_to truncate(package.title, :length => 50), package %>
+            <h4><%= package.location %></h4>
+          </div>
+          <div class="fl description">
+            <%#= truncate(sanitize(package.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(package.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+          </div>
+
+        </div>
+        <div class="fl price_n_button">
+          <div class="fl price">
+            Per Person  : <span><%= package.price %></span>
+          </div>
+          <div class="fl rating">
+            Like: 1000
+            <span style="float:right;">
+              Rating: 4
+            </span>
+          </div>
+          <%= link_to 'Details', package, :class => 'detail_link' %>
+          <%#= link_to 'Book This', package, :class => 'book_link' %>
+        </div>
+      </div>
+
+    </div>
+<% end %>
+
+
+
+
+
+
+
+

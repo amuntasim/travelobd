@@ -13,7 +13,7 @@
   <div class="firms_head">
     Classified Ads
   </div>
-  <% @ads.each do |ad| %>
+  <% @packages.each do |ad| %>
     <div class="f_bor spot">
       <div class="f_inner_bor">
         <%= image_tag ad.main_image_url(:thumb), :width => 68, :height => 55 %>
@@ -31,9 +31,9 @@
       </div>
     </div>
   <% end %>
-  <% if @ads.total_pages > 1 %>
+  <% if @packages.total_pages > 1 %>
     <div class="f_bor pagination">
-      <%= will_paginate  @ads %>
+      <%= will_paginate  @packages %>
     </div>
   <% end %>
   <div class="firma_bottom"></div>
@@ -44,9 +44,7 @@
     margin-top: 20px;
     margin-right: 57px;
   }
-  .firms_row {
-    margin-left: 45px;
-  }
+  
 </style>
 
 
