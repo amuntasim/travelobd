@@ -2,58 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/constant.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/package_itinerary.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/comments/_rate.js.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/comments/create.js.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/messages/_ajax_form.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/packages/_condition.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/packages/_contact.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/packages/_itinerary.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared_partials/_condition.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared_partials/_contact.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared_partials/_existing_photo.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared_partials/_photo.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared_partials/_policy.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/users/_upload_image.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/users/_uploaded_image.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/users/load_uploaded_images.js.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20110301094622_create_package_itineraries.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/travelobd.iml" afterPath="$PROJECT_DIR$/.idea/travelobd.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/sub_title_bg.jpg" afterPath="$PROJECT_DIR$/public/images/sub_title_bg.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/messages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/messages_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/packages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/packages_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/packages_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/packages_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/package.rb" afterPath="$PROJECT_DIR$/app/models/package.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/spot.rb" afterPath="$PROJECT_DIR$/app/models/spot.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/messages/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/messages/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/packages/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/packages/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/packages/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/packages/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/packages/new.html.erb" afterPath="$PROJECT_DIR$/app/views/packages/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/packages/show.html.erb" afterPath="$PROJECT_DIR$/app/views/packages/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spots/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/spots/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spots/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/spots/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spots/new.html.erb" afterPath="$PROJECT_DIR$/app/views/spots/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spots/show.html.erb" afterPath="$PROJECT_DIR$/app/views/spots/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20110228093422_create_package_destinations.rb" afterPath="$PROJECT_DIR$/db/migrate/20110228093422_create_package_destinations.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20110228103422_create_packages_spots.rb" afterPath="$PROJECT_DIR$/db/migrate/20110228103422_create_packages_spots.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/application.js" afterPath="$PROJECT_DIR$/public/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/bangla.input.js" afterPath="$PROJECT_DIR$/public/javascripts/bangla.input.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/jquery.galleryview-1.1.js" afterPath="$PROJECT_DIR$/public/javascripts/jquery.galleryview-1.1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/thickbox.js" afterPath="$PROJECT_DIR$/public/javascripts/thickbox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/tiny_redcloth.js" afterPath="$PROJECT_DIR$/public/javascripts/tiny_redcloth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style_override.css" afterPath="$PROJECT_DIR$/public/stylesheets/style_override.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20110228093422_create_package_destinations.rb" afterPath="$PROJECT_DIR$/db/migrate/20110228093422_create_packages_destinations.rb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -124,15 +73,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="655" column="1" selection-start="10001" selection-end="10009" vertical-scroll-proportion="15.777778">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/transports/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
@@ -151,10 +91,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="transport.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="transport.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/transport.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="41" selection-start="947" selection-end="947" vertical-scroll-proportion="0.71428573">
+            <state line="4" column="62" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20110228093422_create_packages_destinations.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20110228093422_create_packages_destinations.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -186,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20110308115711_create_transports_destinations_join_table.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20110228103422_create_packages_spots.rb" />
         <option value="$PROJECT_DIR$/app/views/transports/_condition.html.erb" />
         <option value="$PROJECT_DIR$/app/views/transports/index.html.erb" />
@@ -202,6 +150,7 @@
         <option value="$PROJECT_DIR$/app/views/transports/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/shared_partials/_policy.html.erb" />
         <option value="$PROJECT_DIR$/app/models/transport.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20110228093422_create_package_destinations.rb" />
       </list>
     </option>
   </component>
@@ -280,46 +229,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="migrate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="travelobd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="travelobd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="travelobd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="travelobd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared_partials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -664,13 +573,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/transports/_condition.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="25" selection-start="376" selection-end="376" vertical-scroll-proportion="-6.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/transports_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="129" column="22" selection-start="3509" selection-end="3509" vertical-scroll-proportion="-7.259259">
@@ -771,7 +673,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/transport.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="41" selection-start="947" selection-end="947" vertical-scroll-proportion="0.71428573">
+        <state line="4" column="62" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20110228093422_create_packages_destinations.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
