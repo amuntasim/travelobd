@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
 
-  before_filter :require_user, :only =>[:edit,:create, :update, :destroy ]
+  before_filter :require_user, :only =>[:new, :edit,:create, :update, :destroy ]
   before_filter lambda { @active_nav = 'spot'  }
 
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy ]
