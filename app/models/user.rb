@@ -23,11 +23,14 @@
 #
 
 class User < ActiveRecord::Base
+  ajaxful_rater
   has_one :profile
   has_many :ads
   attr_accessor :password_confirmation
 
+  has_many :uploaded_images, :class_name => 'TrUploadedImage'
   accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :uploaded_images
 
   acts_as_authentic do |c|
     c.login_field = :email

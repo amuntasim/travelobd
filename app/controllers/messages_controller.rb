@@ -47,7 +47,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.user_id = current_user.id if current_user
-    @status_div = params[:message_status] || 'message_status'
+    @status_div = params[:message_status_div] || 'message_status'
     respond_to do |format|
       if (current_user || params[:spam_check].to_i == 7) && @message.save
         @no_error = true

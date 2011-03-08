@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.7)
     abstract (1.0.0)
     actionmailer (3.0.1)
       actionpack (= 3.0.1)
@@ -32,6 +33,7 @@ GEM
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
     activesupport (3.0.1)
+    ajaxful_rating (3.0.0.beta3)
     annotate (2.4.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
@@ -96,7 +98,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   activemerchant
+  ajaxful_rating (~> 3.0.0.beta2)
   annotate
   authlogic
   friendly_id (~> 3.1)

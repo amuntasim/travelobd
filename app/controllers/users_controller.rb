@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_profile
-    @user_session         = UserSession.new
+    @user_session = UserSession.new
     @package_current_step = 1
     render :layout=> 'application'
   end
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
   def dashboard
     @unread_messages = Message.where(:seller_id=> current_user.id, :read=> false, :parent_id => nil).where(['user_id != ?', current_user.id])
-    @hotels          = Hotel.where(:user_id => current_user.id)
+    @hotels = Hotel.where(:user_id => current_user.id)
   end
 
   def inbox
@@ -141,13 +141,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def upload_images
+    @user = current_user.update_attributes(params[:user])
+    #output = render_to_string(:partial =>'users/uploaded_image', :collection => current_user.uploaded_images)
+    render :nothing =>  true
+    return
+  end
+
+  def load_uploaded_images
+    @uploaded_images = current_user.uploaded_images
+  end
+
   private
   def load_user
-    if admin?
-      u_id = params[:id]
-    else
-      u_id = current_user.id
-    end
+    u_id = admin? ? params[:id] : current_user.id
     @user = User.find(u_id)
   end
 

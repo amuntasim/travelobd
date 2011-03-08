@@ -1,20 +1,10 @@
-<%= content_for :over_mid_content do %>
-  <div class="redhead_row">
+<% title "Edit Spot:: #{@spot.title}"  %>
+<div class="dashboard_content_top">
+  <div class="fl dashboard_content_top_left">
     <h2>Edit Spot</h2>
   </div>
-<% end %>
-<div class="spot_box">
-  <!--curv start -->
-  <div class="bl">
-    <div class="br">
-      <div class="tl">
+</div>
+<div class="item_form">
+  <%= render 'form' %>
 
-        <div class="tr">
-          <div class="dir_row">
-            <%= render 'form' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

@@ -1,0 +1,49 @@
+<h2 style=" margin-bottom: 20px; margin-top: 5px;">Contact Seller</h2>
+
+<%= form_for Message.new, :url=>messages_path, :remote=> true, :html=> {:id=> 'message_form'} do |f| %>
+    <div id="message_status" class="white_Desc">
+
+    </div>
+    <div class="white_Desc">
+      <label>Your Name:</label>
+      <%= f.text_field :name %>
+    </div>
+    <div class="white_Desc">
+      <label>Email:</label>
+      <%= f.text_field :email %>
+    </div>
+    <div class="white_Desc">
+      <label>Your Location:</label>
+      <%= f.text_field :address %>
+    </div>
+    <div class="white_Desc">
+      <label>Your Phone#:</label>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="white_Desc">
+      <label>Message Title:</label>
+      <%= f.text_field :title %>
+    </div>
+    <div class="white_Desc">
+      <label>Your Message:</label>
+      <%= f.text_area :content %>
+    </div>
+
+    <div class="anti">
+      <label>Anti-Spam Security Check (required) 5+2=</label>
+      <%= text_field_tag :spam_check %>
+    </div>
+
+    <div class="submit_btn" style="padding-left:100px;" >
+      <%= hidden_field_tag :message_status_div, 'message_status' %>
+      <div id="submit_to_seller">
+      <input class="search_button" name="" value="Send" type="submit" >
+      <span class="search_button_right"> </span>
+                                 </div>
+      <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_seller', :style=> 'display:none' %>
+      <%= f.hidden_field :seller_id, :value => message_target.user_id %>
+      <%= f.hidden_field :user_id, :value => message_target.user_id %>
+      <%= f.hidden_field :ref_id, :value => message_target.id %>
+      <%= f.hidden_field :ref_type, :value => message_target.class %>
+    </div>
+<% end %>

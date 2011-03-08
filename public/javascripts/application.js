@@ -183,6 +183,18 @@ $(document).ready(function() {
     $('#search_option').change(function() {
         $(this).showHideSearchOption();
     });
+
+
+    $(this).keydown(function(e) {
+        if (e == null) { // ie
+            keycode = event.keyCode;
+        } else { // mozilla
+            keycode = e.which;
+        }
+        if (keycode == 27) { // close
+            top.tb_remove();
+        }
+    });
 })
 
 

@@ -205,8 +205,9 @@ ul li {
 
 .midContentMain {
     float: left;
-    width: 740px;
-    padding-left: 10px;
+    padding-left: 15px;
+    width: 738px;
+    margin-top:10px;
 }
 
 .wide_row {
@@ -304,7 +305,8 @@ h2 {
     font-family: Georgia, Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: #0083AB;
-    font-weight: normal
+    font-weight: normal;
+
 }
 
 .listRow {
@@ -314,33 +316,6 @@ h2 {
     display: inline
 }
 
-.list_img {
-    float: left;
-    width: 30px;
-    background: url(/images/item_icon_set.jpg) no-repeat 0 0;
-    height: 30px
-}
-
-.list_img_2 {
-    float: left;
-    width: 30px;
-    background: url(/images/item_icon_set.jpg) no-repeat 0 -32px;
-    height: 30px
-}
-
-.list_img_3 {
-    float: left;
-    width: 30px;
-    background: url(/images/item_icon_set.jpg) no-repeat 0 -65px;
-    height: 30px
-}
-
-.list_desc {
-    float: left;
-    width: 218px;
-    margin-left: 10px;
-    display: inline
-}
 
 a.read_more {
     text-decoration: underline;
@@ -1194,46 +1169,39 @@ input.adBtn {
     text-decoration: none;
 }
 
-.itemWideArea {
-    float: left;
-    width: 680px;
-}
-
-.itemNarrowArea {
-    float: left;
-    width: 280px;
-    margin-left: 20px;
-    display: inline
-}
-
 .good_item_head {
     float: left;
-    width: 670px;
-    background: url(/images/menu_repeat.jpg) repeat-x;
-    background-position: 0 -64px;
+    width: 692px;
+    background: url(/images/sub_title_bg.jpg) repeat-x ;
     height: 23px;
     font-size: 13px;
-    color: #FFFFFF;
+    color: #717173;
     padding: 6px 0 0 10px;
     font-weight: bold
 }
 
 .good_slide_bor {
     float: left;
-    width: 678px;
-    height: 375px;
+    width: 700px;
+    height: 420px;
+
+}
+
+.photo_gal_wraper {
+    width:698px;
+    float:left;
+    height:298px;
     border: 1px solid #CCCCCC;
-    background: #d9dde2
+    background: #ffffff;
 }
 
 .good_slide_bor img {
-    margin: 25px 0 25px 0px;
-    display: inline
+
 }
 
 .good_moving_bor {
     float: left;
-    width: 658px;
+    width: 678px;
     border: 1px solid #CCCCCC;
     height: 60px;
     margin-top: 10px;
@@ -1254,9 +1222,7 @@ a.slide_pre {
 
 .slide_img {
     float: left;
-    width: 65px;
     height: 51px;
-    border: 1px solid #CCCCCC;
     margin-right: 16px;
     margin-top: 5px
 }
@@ -1273,7 +1239,7 @@ a.slide_next {
 
 .item_details {
     float: left;
-    width: 680px;
+    width: 702px;
 
     margin-bottom: 0px;
     margin-top: 10px
@@ -1343,32 +1309,11 @@ a.slide_next {
     line-height: normal
 }
 
-.white_top {
-    float: left;
-    width: 280px;
-    background: url(/images/white_narrow_top.jpg) no-repeat;
-    height: 14px;
-    margin-top: 10px;
-    display: inline
-}
 
-.white_mid {
-    float: left;
-    width: 280px;
-    background: url(/images/white_narrow_mid.jpg) repeat-y
-}
-
-.white_bot {
-    float: left;
-    width: 280px;
-    background: url(/images/white_narrow_bot.jpg) no-repeat;
-    height: 14px
-}
 
 .white_Desc {
     float: left;
-    width: 260px;
-    margin-left: 10px;
+    width: 380px;
     margin-bottom: 10px;
     display: inline
 }
@@ -1381,13 +1326,13 @@ a.slide_next {
 
 .white_Desc input {
     float: left;
-    width: 150px;
+    width: 180px;
     border: 1px solid #000
 }
 
 .white_Desc textarea {
     float: left;
-    width: 260px;
+    width: 280px;
     height: 100px;
     border: 1px solid #000
 }
@@ -1408,32 +1353,6 @@ a.slide_next {
     float: left;
     width: 25px;
     border: 1px solid #000
-}
-
-.anti input.subBtn {
-    float: left;
-    width: 152px;
-    background: url(/images/sub_btn.jpg) no-repeat;
-    height: 37px;
-    cursor: pointer;
-    margin-left: 50px;
-    margin-top: 20px;
-
-    border: none
-}
-
-.pedigree_row {
-    float: left;
-    width: 110px;
-    margin-left: 80px;
-    display: inline
-}
-
-.pedigree_row input {
-    float: left;
-    width: 110px;
-    color: #cccccc;
-    border: 1px solid #cccccc
 }
 
 .mtop45 {
@@ -2106,11 +2025,12 @@ a:hover.ad_remove {
 
 .f_edit_row input {
     float: left;
-    width: 208px;
+    width: 203px;
     background: url(/images/email_input_bg.jpg) no-repeat;
     height: 24px;
     border: none;
     padding-top: 5px;
+    padding-right: 5px;
 }
 
 .f_edit_row select {
@@ -2375,6 +2295,7 @@ span.feature li {
 
 .home_left {
     width: 200px;
+    margin-top:10px;
 }
 
 .home_left_border {
@@ -2382,6 +2303,7 @@ span.feature li {
     height: 1125px;
     overflow: auto;
     background: url("/images/separetor.png") no-repeat;
+    background-position: -6px 0;
 }
 
 .home_middle {
@@ -2535,12 +2457,13 @@ span.feature li {
 }
 
 .item_form_row textarea {
-    width: 614px;
+    width: 604px;
     height: 260px;
     border: 2px solid #CCCCCC;
     -moz-border-radius: 10px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
+    padding:5px;
 }
 
 .home_left #search_option {
@@ -2559,6 +2482,7 @@ span.feature li {
     color: #FFFFFF;
     padding-bottom:3px;
     font-size:14px;
+    float:left;
 }
 
 .search_button_right {

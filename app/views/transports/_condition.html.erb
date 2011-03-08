@@ -1,0 +1,29 @@
+<div class="event condition">
+
+  <%= form.fields_for :conditions, condition, :child_index => (condition.new_record? ? "index_to_replace_with_js" : nil) do |condition_form| %>
+      <div class="package_event_time">
+        &nbsp;
+      </div>
+      <div class="package_contact_address">
+        Condition
+      </div>
+
+      <div class="package_event_time clear">
+       &nbsp;
+      </div>
+      <div class="package_contact_address">
+        <%= condition_form.text_area :detail, :class => 'event' %>
+      </div>
+
+
+      <div class="deleteLink">
+        <% if condition.new_record? %>
+            <span class="removeConditionField"> Remove</span>
+        <% else %>
+            <%= condition_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

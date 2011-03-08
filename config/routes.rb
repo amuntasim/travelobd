@@ -1,5 +1,7 @@
 Travelobd::Application.routes.draw do
 
+  resources :transports
+
   resources :rooms
 
   resources :password_reset
@@ -27,6 +29,8 @@ Travelobd::Application.routes.draw do
 #
 
   resources :packages do
+    resources :comments
+
     collection do
       post :delete_asset
       post :set_main_photo
@@ -35,6 +39,7 @@ Travelobd::Application.routes.draw do
     end
     member do
       get :print
+      post :rate
     end
   end
 
@@ -63,6 +68,8 @@ Travelobd::Application.routes.draw do
     collection do
       post :save_item
       post :remove_saved_item
+      get :load_uploaded_images
+      post :upload_images
     end
     resource :profile
   end

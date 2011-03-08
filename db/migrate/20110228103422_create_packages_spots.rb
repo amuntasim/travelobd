@@ -4,6 +4,7 @@ class CreatePackagesSpots < ActiveRecord::Migration
       t.integer :package_id
       t.integer :spot_id
     end
+    add_index :packages_spots, [:package_id, :spot_id]
   end
 
   def self.down

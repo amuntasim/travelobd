@@ -48,7 +48,7 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 		if(tb_detectMacXFF()){
 			$("#TB_overlay").addClass("TB_overlayMacFFBGHack");//use png overlay so hide flash
 		}else{
-			$("#TB_overlay").addClass("TB_overlayBG");//use background and opadistrict
+			$("#TB_overlay").addClass("TB_overlayBG");//use background and opacity
 		}
 		
 		if(caption===null){caption="";}

@@ -10,8 +10,8 @@ $.fn.banglaInput = function(options){
 
     var old_len =0;
     var current_char='';
-    
-   
+
+
 
     function hideKeyboardOption(){
 
@@ -19,7 +19,7 @@ $.fn.banglaInput = function(options){
 
 
 
-    
+
 
     function writePhonetic1(evnt){ /**************** Somewherein like*****************/
 
@@ -35,11 +35,11 @@ $.fn.banglaInput = function(options){
         var tempBangla = parsePhonetic1Carry(char_e,e); // get the single equivalent
         if(old_len==0){ //first character
             insertJointAtCursor(bangla,1);
-            
+
             parent_char=carry;
             old_len=1;
             return false;
-            
+
         }
         else if((bangla == "" && tempBangla !="")){ //that means it has no joint equivalent
             bangla = tempBangla;
@@ -214,7 +214,7 @@ $.fn.banglaInput = function(options){
 
     function insertJointAtCursor(myValue, len) {
 
-      
+
         var myField = active_obj;
         if (document.selection) {
             myField.focus();
@@ -229,7 +229,7 @@ $.fn.banglaInput = function(options){
         }
         //MOZILLA/NETSCAPE support
         else if (myField.selectionStart || myField.selectionStart == 0) {
-           
+
             myField.focus();
             var startPos = myField.selectionStart-len;
             var endPos = myField.selectionEnd;
@@ -238,11 +238,11 @@ $.fn.banglaInput = function(options){
             myField.val(myField.val().substring(0, startPos)
                 + myValue
                 + myField.val().substring(endPos, myField.val().length));
-           
+
             myField.selectionStart = startPos + myValue.length;
             myField.selectionEnd = startPos + myValue.length;
             myField.scrollTop = scrollTop;
-           
+
         } else {
             // alert();
             var scrollTop = myField.scrollTop;
@@ -260,7 +260,7 @@ $.fn.banglaInput = function(options){
     };
 
     function insertAtCursor(myValue) {
-      
+
         var myField = active_obj;
         if (document.selection) {
             //alert("hello2");
@@ -284,14 +284,14 @@ $.fn.banglaInput = function(options){
             myField.selectionStart = startPos + myValue.length;
             myField.selectionEnd = startPos + myValue.length;
             myField.scrollTop = scrollTop;
-             
+
         } else {
-             
+
             var scrollTop = myField.scrollTop;
             myField.val(myField.val()+myValue);
             myField.focus();
             myField.scrollTop = scrollTop;
-          
+
         }
     };
 
@@ -336,7 +336,7 @@ $.fn.banglaInput = function(options){
                     "left": (active_obj.offset().left + active_obj.width()-120) + "px",
                     "top":active_obj.offset().top-30 + "px"
                 } );
-                
+
                 $('select.bangla_option_select').val(active_obj.attr('active_keyboard'));
 
                 $('div.bangla_input_option').show();

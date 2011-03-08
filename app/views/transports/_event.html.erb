@@ -1,0 +1,27 @@
+<div class="event">
+
+  <%= form.fields_for :events, event, :child_index => (event.new_record? ? "index_to_replace_with_js" : nil) do |event_form| %>
+      <div class="package_event_time">
+        Time
+      </div>
+
+      <div class="package_event_detail">
+        Detail
+      </div>
+      <div class="package_event_time">
+        <%= event_form.text_field :time, :class => 'event' %>
+      </div>
+      <div class="package_event_detail">
+        <%= event_form.text_area :detail, :class => 'eventDetail' %>
+      </div>
+      <div class="deleteLink">
+        <% if event.new_record? %>
+            <span class="removeEventField"> Remove</span>
+        <% else %>
+            <%= event_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

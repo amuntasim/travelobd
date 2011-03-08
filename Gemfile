@@ -19,6 +19,8 @@ gem 'meta_search'
 gem "friendly_id", "~> 3.1"
 gem 'typus'
 gem 'annotate'
+gem 'ajaxful_rating', '~> 3.0.0.beta2'
+gem 'RedCloth'
 
 # Use unicorn as the web server
 # gem 'unicorn'

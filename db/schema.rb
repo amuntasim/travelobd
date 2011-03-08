@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110228103422) do
+ActiveRecord::Schema.define(:version => 20110308125809) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
 
   add_index "articles", ["user_id", "active"], :name => "index_articles_on_user_id_and_active"
 
+  create_table "assets", :force => true do |t|
+    t.integer  "assetable_id"
+    t.string   "assetable_type"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "classified_assets", :force => true do |t|
     t.integer  "classified_id"
     t.string   "photo_file_name"
@@ -88,6 +98,49 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
   add_index "classifieds", ["division_id", "district_id", "active"], :name => "index_classifieds_on_division_id_and_district_id_and_active"
   add_index "classifieds", ["user_id"], :name => "index_classifieds_on_user_id"
   add_index "classifieds", ["zip_code", "active"], :name => "index_classifieds_on_zip_code_and_active"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.boolean  "approved",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "condition_translations", :force => true do |t|
+    t.integer "condition_id"
+    t.string  "locale"
+    t.text    "detail"
+  end
+
+  create_table "conditions", :force => true do |t|
+    t.integer  "conditionable_id"
+    t.string   "conditionable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contact_translations", :force => true do |t|
+    t.integer  "contact_id"
+    t.string   "locale"
+    t.string   "name"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "contactable_id"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "contactable_type"
+  end
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -257,6 +310,21 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.datetime "updated_at"
   end
 
+  create_table "package_itineraries", :force => true do |t|
+    t.integer  "package_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "package_itinerary_translations", :force => true do |t|
+    t.integer  "package_itinerary_id"
+    t.string   "locale"
+    t.string   "title"
+    t.text     "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "package_translations", :force => true do |t|
     t.integer  "package_id"
     t.string   "locale"
@@ -266,6 +334,9 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.datetime "updated_at"
     t.string   "short_description"
     t.string   "location"
+    t.string   "price_includes"
+    t.string   "price_excludes"
+    t.string   "company"
   end
 
   create_table "package_videos", :force => true do |t|
@@ -286,8 +357,8 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.integer  "district_id"
     t.integer  "division_id"
     t.string   "phone"
-    t.boolean  "active",            :default => false
-    t.boolean  "featured",          :default => false
+    t.boolean  "active",                                          :default => false
+    t.boolean  "featured",                                        :default => false
     t.date     "expire_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -295,8 +366,9 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.date     "discount_till"
     t.date     "start_date"
     t.date     "end_date"
-    t.text     "destinations"
-    t.text     "destination"
+    t.boolean  "price_per_person",                                :default => true
+    t.string   "email"
+    t.decimal  "rating_average",    :precision => 6, :scale => 2, :default => 0.0
   end
 
   add_index "packages", ["category_id", "user_id"], :name => "index_ads_on_category_id_and_user_id"
@@ -314,6 +386,20 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.integer "spot_id"
   end
 
+  create_table "policies", :force => true do |t|
+    t.integer  "policiable_id"
+    t.string   "policiable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "policy_translations", :force => true do |t|
+    t.integer "policy_id"
+    t.string  "locale"
+    t.text    "title"
+    t.text    "detail"
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -329,6 +415,19 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rates", :force => true do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.integer  "stars",         :null => false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
+  add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
 
   create_table "room_assets", :force => true do |t|
     t.integer  "room_id"
@@ -394,6 +493,7 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "short_description"
+    t.text     "textilize_description"
   end
 
   create_table "spots", :force => true do |t|
@@ -413,6 +513,13 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
   add_index "spots", ["division_id", "district_id", "active"], :name => "index_spots_on_division_id_and_district_id_and_active"
   add_index "spots", ["user_id"], :name => "index_spots_on_user_id"
   add_index "spots", ["zip_code", "active"], :name => "index_spots_on_zip_code_and_active"
+
+  create_table "spots_transports", :id => false, :force => true do |t|
+    t.integer "transport_id"
+    t.integer "spot_id"
+  end
+
+  add_index "spots_transports", ["transport_id", "spot_id"], :name => "index_transports_spots_on_transport_id_and_spot_id"
 
   create_table "static_pages", :force => true do |t|
     t.string   "name"
@@ -435,6 +542,42 @@ ActiveRecord::Schema.define(:version => 20110228103422) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "tr_uploaded_images", :force => true do |t|
+    t.string   "label"
+    t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transport_translations", :force => true do |t|
+    t.integer  "transport_id"
+    t.string   "locale"
+    t.string   "name"
+    t.text     "description"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transports", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "web"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+  end
+
+  create_table "transports_destinations", :id => false, :force => true do |t|
+    t.integer "transport_id"
+    t.integer "district_id"
+  end
+
+  add_index "transports_destinations", ["transport_id", "district_id"], :name => "index_transports_destinations_on_transport_id_and_district_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

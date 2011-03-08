@@ -56,7 +56,7 @@
         <div>
           <%= form_tag tell_friends_path  do %>
             <%= text_field_tag :emails, '', :id=> 'friends_email' %>
-            <%= submit_tag 'Tell' %>
+            <%= submit_tag 'Tell', :onclick => 'return false;' %>
           <% end %>
         </div>
 

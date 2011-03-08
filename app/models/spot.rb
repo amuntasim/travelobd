@@ -16,7 +16,7 @@
 #
 
 class Spot < ActiveRecord::Base
-  translates :name, :description, :short_description
+  translates :name, :description, :short_description, :textilize_description
   has_friendly_id :name, :use_slug => true
 
   has_many :assets, :class_name => 'SpotAsset'
@@ -37,6 +37,8 @@ class Spot < ActiveRecord::Base
   belongs_to :division
   belongs_to :country
   has_many :saved_listings, :as => :savable, :dependent => :destroy
+
+  #before_save :save_textilize_description
 
   CATEGORIES = {'Hill' => 1, 'Sea' => 2, 'Wild' => 3, 'Nature' => 4}
   accepts_nested_attributes_for :assets
@@ -68,4 +70,16 @@ class Spot < ActiveRecord::Base
     address.compact.join(',')
   end
 
+  def save_textilize_description
+    tmp_description = description.clone
+    matches = tmp_description.scan(/\[(\w+)\](.*?)\[\/\w+\]/im)
+    matches.each do |match|
+      if Constant::TINY_REDCLOTH_TAGS.include?(match[0])
+        if match[0] == 'TRIMG'
+          tmp_description.gsub!("[#{match[0]}]#{match[1]}[/#{match[0]}]", "!#{match[1]}!")
+        end
+      end
+    end
+    self.textilize_description = tmp_description
+  end
 end

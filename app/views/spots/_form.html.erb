@@ -1,6 +1,6 @@
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.validate' %>
-    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+    <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
 
 <%= form_for(@spot, :html=> {:multipart => true, :id=> 'spot_form'}) do |f| %>
@@ -43,7 +43,7 @@
 
     <div class="item_form_row">
       <%= f.label :detail %>
-      <%= f.text_area :description, :class => "" %>
+      <%= f.text_area :description, :class => "tiny_redcloth" %>
     </div>
     <div class="item_form_row">
       <label>
@@ -89,10 +89,9 @@
     </div>
 
 
-    <div class="item_form_row">
-      <label>&nbsp;</label>
-
-      <%= f.submit '', :class=> 'subBtn' %>
+    <div class="submit_btn">
+      <%= f.submit :class => 'search_button' %>
+      <span class="search_button_right"> </span>
     </div>
 <% end %>
 
@@ -100,6 +99,36 @@
 
   <div id="new_photo_html">
     <%= render(:partial => 'photo', :locals => {:form => @builder}, :object => @spot.assets.new) %>
+  </div>
+
+  <div id="tiny_redcloth_image" style="display: none">
+    <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_tiny_redcloth_image', :title => 'close' %>
+    <h3>Uploaded Images
+      <small> [click on images to select]</small>
+    </h3>
+
+    <div id="tiny_redcloth_image_container">
+      <%= image_tag 'loadingAnimation.gif' %>
+    </div>
+
+    <div class="tiny_redcloth_image_form_container">
+      <%= form_for(current_user, :url => upload_images_users_path, :html=> {:multipart => true, :id=> 'user_image_upload_form'}) do |f| %>
+
+          <div id="user_uploaded_photos">
+            <%= render :partial => 'users/upload_image', :locals => {:form => f, :photo => current_user.uploaded_images.new} %>
+          </div>
+          <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImageToUpload' %>
+
+          <div class="actions fl">
+            <button value="Upload" id='submit_user_upload'>Upload</button>
+          </div>
+          <% @user_form_builder = f %>
+      <% end %>
+
+      <div id="new_user_image_html" style="display:none;">
+        <%= render :partial => 'users/upload_image', :locals => {:form => @user_form_builder, :photo => current_user.uploaded_images.new} %>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -118,6 +147,7 @@
             });
         });
     }
+
 
     $(document).ready(function() {
 
@@ -143,11 +173,13 @@
         });
 
 
-
         $(this).addMorePhoto('spot_photos', allowed_images);
         $(this).deleteAsset('spots');
         $(this).makeMainPhoto('spots');
         $(this).divisionChanged();
+        $('textarea.tiny_redcloth').tinyRedcloth();
+        //$('textarea.tiny_redcloth').banglaInput();
+
     });
 
 

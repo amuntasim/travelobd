@@ -1,0 +1,10 @@
+<%if @comment.errors.empty?%>
+$('#commentStatus').html('<b style="color:green">Comment successfully created. Your comment will be published soon. Thanks for your comment</b>');
+$("#comment_form").get(0).reset();
+<%else%>
+$('#commentStatus').html("<b style=\"color:red\">Comment save failed. Please try again <br/> <%= @comment.errors.full_messages.join(', ')%>. </b>");
+<%end%>
+
+$('#commentStatus').effect("highlight");
+
+

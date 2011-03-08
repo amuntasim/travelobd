@@ -314,11 +314,15 @@ div.pagination {
     color: #cccccc;
     font-weight: bold;
 }
+
 .pagination em, .pagination a {
     padding-top: 5px;
 }
 
-.pagination a.next_page,.pagination a.previous_page  {padding-top:1px}
+.pagination a.next_page, .pagination a.previous_page {
+    padding-top: 1px
+}
+
 .pagination em {
     color: #72AF3A
 }
@@ -327,7 +331,6 @@ div.pagination {
     float: left;
     margin-left: 250px;
 }
-
 
 .anti input {
     width: 20px;
@@ -417,4 +420,149 @@ div.photo {
 
 .loading_image {
     display: none
+}
+
+.photo {
+    float: left;
+    width: 100%;
+}
+
+.f_edit_row input.photo {
+    width: 270px;
+    margin: 5px 0
+}
+
+div#package_images {
+    width: 325px;
+}
+
+#package_videos .video {
+    float: left;
+    width: 240px;
+    padding: 5px 0;
+}
+
+#package_videos .cross {
+    margin: 5px;
+    float: left;
+}
+
+.tube_input_area, .tube_input_digree {
+    width: 240px;
+}
+
+.tube_input_digree input {
+    margin-left: 108px;
+}
+
+.f_edit_row_big textarea {
+    height: 85px;
+
+}
+
+.f_edit_row .radio_area {
+    float: left;
+    width: 120px;
+}
+
+.event {
+    float: left;
+}
+
+.package_events textarea.eventDetail {
+    width: 420px !important;
+    height: 80px !important;
+}
+
+.package_events .package_event_time {
+    width: 220px;
+    float: left;
+}
+
+.package_events .package_event_detail {
+    width: 435px;
+    float: left;
+}
+
+.package_events .deleteLink {
+    width: 50px;
+    float: left;
+    cursor: pointer;
+}
+
+.spot_in_package {
+    float: left;
+    width: 197px;
+    margin:5px 0;
+}
+
+.spot_in_package input {
+    margin-right: 3px;
+}
+
+.spot_in_package label {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    font-weight: normal;
+}
+
+.eventTitle {
+    color: #79B144;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+div.submit_btn {
+    margin-top: 10px;
+    float: left;
+}
+
+div.item_form .submit_btn {
+    margin-left: 250px;
+    float: left;
+}
+
+/*******User uploaded Images********/
+div#tiny_redcloth_image_container {
+    float: left;
+    width: 593px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+div.uploadedImage {
+    float: left;
+    width: 84px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #CCCCCC;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    cursor: pointer;
+}
+
+div.uploadedImage img {
+    border: 1px solid #CCCCCC;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*******END User uploaded Images********/
+
+.itemDetail img {
+    margin: 10px;
+    margin-left: 0;
+}
+
+.itemDetail ul li {
+    margin-left: 15px;
+    list-style: disc;
+}
+
+.itemDetail ol li {
+    margin-left: 15px;
 }

@@ -1,0 +1,29 @@
+<div class="event policy">
+
+  <%= form.fields_for :policies, policy, :child_index => (policy.new_record? ? "index_to_replace_with_js" : nil) do |policy_form| %>
+      <div class="package_event_time">
+        Policy Title
+      </div>
+      <div class="package_contact_address">
+        Policy details
+      </div>
+
+      <div class="package_event_time clear">
+        <%= policy_form.text_field :title, :class => 'event' %>
+      </div>
+      <div class="package_contact_address">
+        <%= policy_form.text_area :detail, :class => 'event' %>
+      </div>
+
+
+      <div class="deleteLink">
+        <% if policy.new_record? %>
+            <span class="removePolicyField"> Remove</span>
+        <% else %>
+            <%= policy_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

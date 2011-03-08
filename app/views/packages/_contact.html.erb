@@ -1,0 +1,43 @@
+<div class="event contact">
+
+  <%= form.fields_for :contacts, contact, :child_index => (contact.new_record? ? "index_to_replace_with_js" : nil) do |contact_form| %>
+      <div class="package_event_time">
+        Name
+      </div>
+      <div class="package_contact_address">
+        Email
+      </div>
+
+      <div class="package_event_time clear">
+        <%= contact_form.text_field :name, :class => 'event' %>
+      </div>
+      <div class="package_contact_address">
+        <%= contact_form.text_field :email, :class => 'event' %>
+      </div>
+
+      <div class="package_event_time clear">
+        Phone
+      </div>
+      <div class="package_contact_address fl">
+        Address
+      </div>
+
+
+      <div class="package_event_time clear">
+        <%= contact_form.text_field :phone, :class => 'event' %>
+      </div>
+      <div class="package_contact_address">
+        <%= contact_form.text_area :address, :class => 'event' %>
+      </div>
+
+      <div class="deleteLink">
+        <% if contact.new_record? %>
+            <span class="removeContactField"> Remove</span>
+        <% else %>
+            <%= contact_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

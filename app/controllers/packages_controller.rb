@@ -2,7 +2,7 @@ class PackagesController < ApplicationController
 
   before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy]
   before_filter lambda { @active_nav = 'packages' }
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print]
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print, :rate]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
   layout :choose_layout
   # GET /ads
@@ -147,6 +147,15 @@ class PackagesController < ApplicationController
     @max_pedigree_position = @package.all_pedigrees.order('position DESC').first.position rescue 0
     render :layout => 'print'
   end
+
+  def rate
+    @package.rate(params[:stars], current_user, params[:dimension])
+    respond_to do |format|
+      format.js {render :partial => '/comments/rate', :locals => {:obj => @package}}
+    end
+
+  end
+
 
   private
 
