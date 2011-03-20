@@ -48,11 +48,13 @@ class RoomsController < ApplicationController
           unless params[:add_more].blank?
             redirect_to new_room_path(:hotel_id => @room.hotel), :notice => 'Room was successfully created. You can add more..'
           else
-             redirect_to  @room.hotel, :notice => 'Room was successfully created.'
+            redirect_to @room.hotel, :notice => 'Room was successfully created.'
           end
         }
         format.xml { render :xml => @room, :status => :created, :location => @room }
       else
+        @features_for_room = Feature.for_room
+        @my_hotels = Hotel.my_hotels(current_user.id)
         format.html { render :action => "new" }
         format.xml { render :xml => @room.errors, :status => :unprocessable_entity }
       end
@@ -69,6 +71,8 @@ class RoomsController < ApplicationController
         format.html { redirect_to(@room, :notice => 'Room was successfully updated.') }
         format.xml { head :ok }
       else
+        @features_for_room = Feature.for_room
+        @my_hotels = Hotel.my_hotels(current_user.id)
         format.html { render :action => "edit" }
         format.xml { render :xml => @room.errors, :status => :unprocessable_entity }
       end
