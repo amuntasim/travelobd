@@ -1,0 +1,52 @@
+<% title @search_title || 'Tour Club list' %>
+
+<div class="pageHead">
+  Tour Clubs
+  <div class="pageHeadOptions">
+
+  </div>
+</div>
+
+<% @tour_clubs.each do |tour_club| %>
+    <div class="listItem">
+      <div class="fl listItemLogo">
+        <%= image_tag tour_club.logo.url() %>
+      </div>
+
+      <div class="fl listItemDesc">
+        <div class="fl hotel_desc_info">
+          <div class="fl title">
+            <%= link_to truncate(tour_club.name, :length => 50), tour_club %>
+            <h4>&nbsp;</h4>
+          </div>
+          <div class="fl description">
+            <%= truncate(sanitize(tour_club.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+          </div>
+
+        </div>
+        <div class="fl price_n_button">
+          <div class="fl">
+            <div class="fl price">
+
+            </div>
+            <div class="fl rating">
+              Like: 1000
+            <span style="float:right;">
+              Rating: 4
+            </span>
+            </div>
+          </div>
+          <%= link_to 'Details', tour_club, :class => 'detail_link' %>
+        </div>
+      </div>
+
+    </div>
+<% end %>
+
+
+
+
+
+
+
+

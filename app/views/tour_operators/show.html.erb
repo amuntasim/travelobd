@@ -1,0 +1,96 @@
+<% title @tour_operator.name %>
+<%= content_for :js_css_include do %>
+    <%= javascript_include_tag 'jquery.easing.1.3', 'jquery.galleryview-1.1', 'jquery.timers-1.1.2', 'thickbox' %>
+    <%= javascript_include_tag 'jquery.validate' %>
+    <%= stylesheet_link_tag 'thickbox' %>
+
+<% end %>
+
+<%= content_for :over_mid_content do %>
+    <div class="redhead_row">
+      <div class="subLink">
+        <ul>
+          <li>
+            <a href="#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true" class="thickbox">Send
+              Message to Package Owner</a>
+          </li>
+
+          <li><a href="#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true" class="thickbox">Send
+            To a Friend</a>
+          </li>
+
+          <li>
+            <%= link_to 'Print', print_tour_operator_path(@tour_operator) %>
+          </li>
+          <li id="saved_item_li">
+            <% if @already_saved %>
+                <%= link_to '[ Remove ]', 'javascript:void(0)', :class => 'remove_from_save_listing', :sl_id=> @already_saved.id, :savable_id => @tour_operator.id, :savable_type => 'Ad' %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;
+            <% else %>
+                <%= link_to 'Save This', 'javascript:void(0)', :class => 'save_item', :savable_type => 'Ad', :item_id=> @tour_operator.id %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+<% end %>
+
+<div class="pageHead">
+  <%= @tour_operator.name %>
+</div>
+
+
+<div class="item_details">
+
+  <div class="itemDetail"><%= @tour_operator.description %></div>
+
+
+  <div class="good_item_head">Our Services</div>
+  <div class="itemDetail">
+    <% @tour_operator.services.each do |service| %>
+        <div class="eventTitle clear"><b><%= service.title %></b></div>
+        <div class="eventDetail clear"><%= raw textilize service.detail %></div>
+    <% end %>
+  </div>
+
+  <div class="good_item_head">Policies</div>
+  <div class="itemDetail">
+    <% @tour_operator.policies.each do |policy| %>
+        <div class="eventTitle clear"><b><%= policy.title %></b></div>
+        <div class="eventDetail clear"><%= policy.detail %></div>
+    <% end %>
+  </div>
+
+  <div class="good_item_head">Contacts</div>
+  <div class="itemDetail">
+    <% @tour_operator.contacts.each do |contact| %>
+        <div class=" clear"><b><%= contact.name %></b></div>
+        <div class="eventDetail clear">Phone: <%= contact.phone %></div>
+    <% end %>
+  </div>
+
+  <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @tour_operator, :rating => true} %>
+
+
+</div>
+
+
+
+
+<div id="send_message_to_owner_lb" style="display: none">
+  <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>
+  <%= render :partial => 'messages/ajax_form', :locals => {:message_target => @tour_operator} %>
+
+</div>
+
+<%= render :partial => 'shared_partials/send_to_friends', :locals => {:item => 'tour_operator', :item_id => @tour_operator.id} %>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detail_page_photo_gallery').galleryView(TBD.DETAIL_PAGE_PHOTO_GALLERY_OPTIONS);
+
+    });
+
+
+</script>

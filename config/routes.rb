@@ -1,6 +1,49 @@
 Travelobd::Application.routes.draw do
 
-  resources :transports
+  resources :tour_clubs do
+    resources :comments
+    collection do
+      get :search
+    end
+
+    member do
+      get :print
+      post :rate
+    end
+  end
+
+  match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/failure' => 'users#failure'
+
+  resources :authentications
+
+  resources :tour_operators do
+    resources :comments
+    collection do
+      post :delete_asset
+      post :set_main_photo
+      get :search
+    end
+
+    member do
+      get :print
+      post :rate
+    end
+  end
+
+  resources :transports do
+    resources :comments
+    collection do
+      post :delete_asset
+      post :set_main_photo
+      get :search
+    end
+
+    member do
+      get :print
+      post :rate
+    end
+  end
 
   resources :rooms
 
@@ -9,20 +52,16 @@ Travelobd::Application.routes.draw do
   resources :profiles
 
   resources :hotels do
+    resources :comments
     collection do
       post :delete_asset
       post :set_main_photo
       get :search
+      get :load_spots
     end
     member do
       get :print
-    end
-  end
-
-  resources :classifieds do
-    collection do
-      post :delete_asset
-      post :set_main_photo
+      post :rate
     end
   end
 
@@ -46,20 +85,30 @@ Travelobd::Application.routes.draw do
   resources :messages
 
   resources :spots do
+    resources :comments
     collection do
       post :delete_asset
       post :set_main_photo
       get :search
+    end
+    member do
+      get :print
+      post :rate
     end
   end
 
   resources :elements
 
   resources :articles do
+    resources :comments
     collection do
       post :delete_asset
       post :set_main_photo
       get :search
+    end
+    member do
+      get :print
+      post :rate
     end
   end
 
@@ -79,55 +128,6 @@ Travelobd::Application.routes.draw do
   get "users/dashboard"
 
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
   match 'place_an_ad' => 'ads#new'
@@ -159,5 +159,6 @@ Travelobd::Application.routes.draw do
   #newly added
   match 'tell_friends' => 'users#tell_friends'
 
+  post 'assets/update_label', :as => :update_asset_label
 
 end

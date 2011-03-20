@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110308125809) do
+ActiveRecord::Schema.define(:version => 20110319094304) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -25,18 +25,6 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "article_assets", :force => true do |t|
-    t.integer  "article_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "main",               :default => false
-  end
-
-  add_index "article_assets", ["article_id"], :name => "index_article_assets_on_article_id"
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -65,39 +53,35 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "classified_assets", :force => true do |t|
-    t.integer  "classified_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "main",               :default => false
+    t.string   "label_en"
+    t.string   "label_bn"
   end
 
-  add_index "classified_assets", ["classified_id"], :name => "index_classified_assets_on_classified_id"
-
-  create_table "classifieds", :force => true do |t|
-    t.integer  "category_id"
-    t.string   "name"
-    t.text     "detail"
-    t.integer  "district_id"
-    t.integer  "division_id"
-    t.integer  "country_id"
-    t.string   "zip_code"
-    t.string   "phone"
+  create_table "authentications", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "active",      :default => true
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "classifieds", ["category_id", "user_id"], :name => "index_classifieds_on_category_id_and_user_id"
-  add_index "classifieds", ["division_id", "district_id", "active"], :name => "index_classifieds_on_division_id_and_district_id_and_active"
-  add_index "classifieds", ["user_id"], :name => "index_classifieds_on_user_id"
-  add_index "classifieds", ["zip_code", "active"], :name => "index_classifieds_on_zip_code_and_active"
+  create_table "branch_location_translations", :force => true do |t|
+    t.integer "branch_location_id"
+    t.string  "locale"
+    t.string  "location"
+    t.string  "address"
+    t.string  "phone"
+  end
+
+  create_table "branch_locations", :force => true do |t|
+    t.integer  "branchable_id"
+    t.string   "branchable_type"
+    t.integer  "district_id"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -149,6 +133,19 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.datetime "updated_at"
   end
 
+  create_table "departure_schedule_translations", :force => true do |t|
+    t.integer "departure_schedule_id"
+    t.string  "locale"
+    t.string  "route"
+    t.text    "time"
+  end
+
+  create_table "departure_schedules", :force => true do |t|
+    t.integer  "transport_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "disciplines", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -174,6 +171,11 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
   end
 
   add_index "districts", ["division_id"], :name => "index_districts_on_division_id"
+
+  create_table "districts_tour_operators", :id => false, :force => true do |t|
+    t.integer "district_id"
+    t.integer "tour_operator_id"
+  end
 
   create_table "division_translations", :force => true do |t|
     t.integer  "division_id"
@@ -241,10 +243,15 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
 
   add_index "hotel_assets", ["hotel_id"], :name => "index_hotel_assets_on_hotel_id"
 
+  create_table "hotel_translations", :force => true do |t|
+    t.integer "hotel_id"
+    t.string  "locale"
+    t.string  "name"
+    t.text    "description"
+    t.text    "address"
+  end
+
   create_table "hotels", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.text     "address"
     t.integer  "district_id"
     t.integer  "division_id"
     t.string   "phone"
@@ -260,10 +267,18 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.integer  "star_rating"
     t.string   "discount"
     t.date     "discount_till"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.integer  "total_rooms",    :default => 0
+    t.float    "starting_price", :default => 0.0
+  end
+
+  create_table "hotels_spots", :id => false, :force => true do |t|
+    t.integer "hotel_id"
+    t.integer "spot_id"
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "seller_id"
     t.string   "name"
     t.string   "email"
     t.string   "address"
@@ -279,21 +294,6 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.integer  "parent_id"
     t.string   "ref_type"
   end
-
-  add_index "messages", ["seller_id"], :name => "index_messages_on_seller_id"
-
-  create_table "package_assets", :force => true do |t|
-    t.integer  "package_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "main",               :default => false
-  end
-
-  add_index "package_assets", ["package_id"], :name => "index_ad_assets_on_ad_id"
 
   create_table "package_event_translations", :force => true do |t|
     t.integer  "package_event_id"
@@ -473,18 +473,6 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
-  create_table "spot_assets", :force => true do |t|
-    t.integer  "spot_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "main",               :default => false
-  end
-
-  add_index "spot_assets", ["spot_id"], :name => "index_spot_assets_on_spot_id"
-
   create_table "spot_translations", :force => true do |t|
     t.integer  "spot_id"
     t.string   "locale"
@@ -494,6 +482,9 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.datetime "updated_at"
     t.string   "short_description"
     t.text     "textilize_description"
+    t.text     "history"
+    t.text     "how_to_go"
+    t.text     "where_to_stay"
   end
 
   create_table "spots", :force => true do |t|
@@ -507,12 +498,19 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
   add_index "spots", ["category_id", "user_id"], :name => "index_spots_on_category_id_and_user_id"
   add_index "spots", ["division_id", "district_id", "active"], :name => "index_spots_on_division_id_and_district_id_and_active"
   add_index "spots", ["user_id"], :name => "index_spots_on_user_id"
   add_index "spots", ["zip_code", "active"], :name => "index_spots_on_zip_code_and_active"
+
+  create_table "spots_tour_operators", :id => false, :force => true do |t|
+    t.integer "spot_id"
+    t.integer "tour_operator_id"
+  end
 
   create_table "spots_transports", :id => false, :force => true do |t|
     t.integer "transport_id"
@@ -543,6 +541,61 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
     t.string "name"
   end
 
+  create_table "title_detail_attribute_translations", :force => true do |t|
+    t.integer "title_detail_attribute_id"
+    t.string  "locale"
+    t.string  "title"
+    t.text    "detail"
+  end
+
+  create_table "title_detail_attributes", :force => true do |t|
+    t.integer  "td_attributable_id"
+    t.string   "td_attributable_type"
+    t.string   "td_association_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tour_club_translations", :force => true do |t|
+    t.integer "tour_club_id"
+    t.string  "locale"
+    t.string  "name"
+    t.text    "description"
+  end
+
+  create_table "tour_clubs", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "active"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.integer  "members_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tour_operator_translations", :force => true do |t|
+    t.integer "tour_operator_id"
+    t.string  "locale"
+    t.string  "name"
+    t.text    "address"
+    t.text    "description"
+  end
+
+  create_table "tour_operators", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.boolean  "active"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.integer  "packages_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "web"
+    t.boolean  "featured",          :default => false
+  end
+
   create_table "tr_uploaded_images", :force => true do |t|
     t.string   "label"
     t.integer  "user_id"
@@ -566,10 +619,11 @@ ActiveRecord::Schema.define(:version => 20110308125809) do
   create_table "transports", :force => true do |t|
     t.integer  "user_id"
     t.string   "web"
-    t.boolean  "active"
+    t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.boolean  "featured",    :default => false
   end
 
   create_table "transports_destinations", :id => false, :force => true do |t|

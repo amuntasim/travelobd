@@ -1,37 +1,44 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% if @user.new_record? %>
-    <%= f.fields_for :profile, @user.profile do |pf| %>
-      <div class="field">
-        <%= pf.label :name %><br />
-        <%= pf.text_field :first_name %>
-      </div>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
     <% end %>
+    <% if @user.new_record? %>
+        <%= f.fields_for :profile, @user.profile do |pf| %>
+            <div class="field">
+              <%= pf.label :name %>
+              <br/>
+              <%= pf.text_field :first_name %>
+            </div>
+        <% end %>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
+        <div class="field">
+          <%= f.label :email %>
+          <br/>
+          <%= f.text_field :email %>
+        </div>
+    <% end %>
+    <% unless session[:omniauth] %>
+        <div class="field">
+          <%= f.label :password %>
+          <br/>
+          <%= f.password_field :password %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %>
+          <br/>
+          <%= f.password_field :password_confirmation %>
+        </div>
+    <% end %>
+    <div class="actions">
+      <%= submit_tag '', :class=>"creBtn" %>
+      Or <%= link_to 'Login', login_path %>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit '',:class=>"creBtn"%>
-  </div>
 <% end %>

@@ -59,7 +59,6 @@
       <div class="f_inner_right_row">
         <%= hidden_field_tag :message_status, 'message_status' %>
         <input name="" class="subBtn" type="submit" value=""/> <%= link_to 'Hide', 'javascript:void(0)',:class=> 'hide_reply_form' %>
-        <%= f.hidden_field :seller_id, :value => current_user.id  %>
         <%= f.hidden_field :parent_id, :value => @message.id  %>
         <%= f.hidden_field :ref_id, :value => @message.ref_id  %>
       </div>

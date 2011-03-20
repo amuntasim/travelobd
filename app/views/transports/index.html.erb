@@ -17,7 +17,7 @@
         <div class="fl hotel_desc_info">
           <div class="fl title">
             <%= link_to truncate(transport.name, :length => 50), transport %>
-            <h4><%= transport.locations %></h4>
+            <h4><%= raw transport.locations %></h4>
           </div>
           <div class="fl description">
             <%= truncate(sanitize(transport.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
@@ -25,15 +25,18 @@
 
         </div>
         <div class="fl price_n_button">
-          <div class="fl price">
+          <div class="fl">
+            <div class="fl price">
 
-          </div>
-          <div class="fl rating">
-            Like: 1000
+            </div>
+            <div class="fl rating">
+              Like: 1000
             <span style="float:right;">
               Rating: 4
             </span>
+            </div>
           </div>
+
           <%= link_to 'Details', transport, :class => 'detail_link' %>
           <%#= link_to 'Book This', transport, :class => 'book_link' %>
         </div>

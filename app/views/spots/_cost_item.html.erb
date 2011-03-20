@@ -1,0 +1,30 @@
+<div class="event cost_item">
+
+  <%= form.fields_for :cost_items, cost_item, :child_index => (cost_item.new_record? ? "index_to_replace_with_js" : nil) do |cost_item_form| %>
+      <div class="package_event_time">
+        Name
+      </div>
+      <div class="package_contact_address">
+        Detail
+      </div>
+
+      <div class="package_event_time clear">
+        <%= cost_item_form.text_field :title, :class => 'event' %>
+      </div>
+
+      <div class="package_contact_address">
+        <%= cost_item_form.text_area :detail, :class => 'event' %>
+        <%= cost_item_form.hidden_field :td_association_type, :value => :cost_item, :class => 'event' %>
+      </div>
+
+      <div class="deleteLink">
+        <% if cost_item.new_record? %>
+            <span class="removeCostItemField"> Remove</span>
+        <% else %>
+            <%= cost_item_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

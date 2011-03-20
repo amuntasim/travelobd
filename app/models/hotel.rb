@@ -21,19 +21,34 @@
 #
 
 class Hotel < ActiveRecord::Base
-  has_many :assets, :class_name => 'HotelAsset'
-  has_one :main_image, :class_name => 'HotelAsset', :conditions => {:main => true}
+  translates :name, :description, :address
+
+  has_many :assets, :as => :assetable
+  has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
 
   validates :category_id, :presence => true
   validates :name, :presence => true
   validates :district_id, :presence => true
-  validates :star_rating, :inclusion => {:in => 3..5}
+  validates :star_rating, :inclusion => {:in => 3..5}, :allow_nil => true
   belongs_to :user
   belongs_to :district
   belongs_to :division
   has_many :saved_listings, :as => :savable, :dependent => :destroy
   has_many :rooms
+  has_and_belongs_to_many :spots
+
+  has_many :contacts, :as => :contactable
+  has_many :policies, :as => :policiable
+  has_many :comments, :as => :commentable
+  has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
+
+
+  accepts_nested_attributes_for :assets, :allow_destroy => true
+  accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :policies, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
+
+  ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]
 
   has_friendly_id :name, :use_slug => true
 
@@ -42,6 +57,8 @@ class Hotel < ActiveRecord::Base
   CATEGORIES = {'Hotel' => 1, 'Apartment' => 2, 'Cottage' => 3}
 
   accepts_nested_attributes_for :assets
+
+  scope :featured , where(:featured => true).includes(:translations,:assets, :main_image, :slug)
 
   def main_image_url(style = :medium)
     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
@@ -64,6 +81,10 @@ class Hotel < ActiveRecord::Base
     address << district.name if district
     address << division.name if division
     address.compact.join(',')
+  end
+
+  def valid_lat_long?
+    latitude.length >= 2 && longitude.length >= 2
   end
 
   class << self

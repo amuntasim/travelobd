@@ -17,23 +17,24 @@
         <div class="fl hotel_desc_info">
           <div class="fl title">
             <%= link_to truncate(spot.title, :length => 50), spot %>
-            <h4>dhaka, bangladesh</h4>
+            <h4>&nbsp;</h4>
           </div>
           <div class="fl description">
-            <%#= truncate(sanitize(spot.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
-            <%= truncate(sanitize(spot.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(spot.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
           </div>
 
         </div>
         <div class="fl price_n_button">
-          <div class="fl price">
-           foo bar
-          </div>
-          <div class="fl rating">
-            Like: 1000
+          <div class="fl">
+            <div class="fl price">
+
+            </div>
+            <div class="fl rating">
+              Like: 1000
             <span style="float:right;">
               Rating: 4
             </span>
+            </div>
           </div>
           <%= link_to 'Details', spot, :class => 'detail_link' %>
         </div>

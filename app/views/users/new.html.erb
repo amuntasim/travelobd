@@ -1,29 +1,14 @@
 <% title 'Create New Account' %>
 
-<%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>Login or Create An Account</h2>
-  </div>
-<% end %>
-
-<div class="loginRow">
-  <div class="login_top"></div>
-  <div class="login_mid">
-    <div class="login_desc">
-      <h2>Login</h2>
-      <%= render 'user_sessions/form' %>
-
-    </div>
-  </div>
-  <div class="login_bot"></div>
-
-</div>
-
 <div class="createAcc">
   <div class="cre_top"></div>
   <div class="cre_mid">
     <div class="creDesc">
-      <h2>Create An Account</h2>
+         <% unless session[:omniauth] %>
+          <h1>Create New Account</h1>
+        <% else %>
+          <h1>Provide the followings [requires only once]</h1>
+        <% end %>
       <%= render 'form' %>
     </div>
   </div>

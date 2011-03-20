@@ -1,16 +1,16 @@
 class HotelsController < ApplicationController
-  before_filter :require_user, :only =>[:edit, :create, :update, :destroy]
+  before_filter :require_user, :only =>[:new, :edit, :create, :update, :destroy]
   before_filter lambda { @active_nav = 'hotels' }
 
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy]
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
 
   layout :choose_layout
 
-  uses_tiny_mce :only =>[:new, :edit], :options => {
-      :width => '445px',
-      :height => '250px'
-  }
+#  uses_tiny_mce :only =>[:new, :edit], :options => {
+#      :width => '445px',
+#      :height => '250px'
+#  }
 
   # GET /hotels
   # GET /hotels.xml
@@ -38,6 +38,7 @@ class HotelsController < ApplicationController
   def new
     @hotel = Hotel.new
     @features_for_hotel = Feature.for_hotel
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @hotel }
@@ -124,8 +125,12 @@ class HotelsController < ApplicationController
   end
 
   def print
-    @max_pedigree_position = @hotel.all_pedigrees.order('position DESC').first.position rescue 0
     render :layout => 'print'
+  end
+
+  def load_spots
+    @spots = Spot.where(:active => true, :district_id => params[:district_id])
+    @attached_spots = Hotel.find(params[:hotel_id]).spots rescue []
   end
 
   private

@@ -12,66 +12,6 @@ ArticleAsset:
   search: 
   application: travelobd_asset
 
-Cart:
-  fields:
-    default: purchased_at, user_id
-    form: purchased_at, user_id
-  order_by: 
-  relationships: line_items, order
-  filters: 
-  search: 
-  application: travelobd_asset
-
-ClassifiedAsset:
-  fields:
-    default: classified_id, photo_file_name, classified
-    form: classified_id, photo_file_name, classified
-  order_by: 
-  relationships: classified
-  filters: 
-  search: 
-  application: travelobd_asset
-
-Country:
-  fields:
-    default: name, code
-    form: name, code
-  order_by: 
-  relationships: districts
-  filters: 
-  search: name
-  application: travelobd_asset
-
-LineItem:
-  fields:
-    default: price, cart_id, quantity, purchasable_id, cart
-    form: price, cart_id, quantity, purchasable_id, cart
-  order_by: 
-  relationships: cart
-  filters: 
-  search: 
-  application: travelobd_asset
-
-Order:
-  fields:
-    default: cart_id, ip_address, first_name, address, suite, city, state, zip_code, country, phone, email, name_on_card, card_expires_on, last_name, cart
-    form: cart_id, ip_address, first_name, address, suite, city, state, zip_code, country, phone, email, name_on_card, card_expires_on, last_name, cart
-  order_by: 
-  relationships: cart, transactions
-  filters: 
-  search: 
-  application: travelobd_asset
-
-OrderTransaction:
-  fields:
-    default: order_id, action, amount, success, authorization, message, order
-    form: order_id, action, amount, success, authorization, message, params, order
-  order_by: 
-  relationships: order
-  filters: 
-  search: 
-  application: travelobd_asset
-
 PackageAsset:
   fields:
     default: package_id, photo_file_name, main, ad
@@ -131,6 +71,4 @@ Feature:
   filters: for_hotel
   search:
   application: travelobd
-
-
 

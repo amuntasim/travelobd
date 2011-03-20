@@ -1,0 +1,33 @@
+<div class="good_item_head">
+  Comments
+
+</div>
+<div class="itemDetail" style="padding-left:0">
+
+  <% item.approved_comments.each do |comment| %>
+      <div class="comment">
+        <div class="eventDetail eventTitle clear">
+          <%= comment.comment_by %> Says
+          <small style="color:#101050; font-weight: normal;">
+            On <%= comment.created_at.strftime('%d %B, %Y %H:%M:%S') %></small>
+        </div>
+        <div class="eventDetail clear">
+          <%= comment.content %>
+        </div>
+      </div>
+  <% end %>
+
+  <div class="eventTitle">
+    Your Comment
+    <% if rating %>
+        <div style="float:right">
+          Rating <%= ratings_for item %>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="commentForm">
+
+    <%= render :partial => 'comments/form', :locals => {:comment => item.comments.new, :commentable => item} %>
+  </div>
+</div>

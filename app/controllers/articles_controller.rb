@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_filter :require_user, :only =>[:edit,:create, :update ]
+  before_filter :require_user, :only =>[:new, :edit,:create, :update ]
   before_filter :require_admin_user, :only =>[:destroy ]
   before_filter lambda { @active_nav = 'articles'  }
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy ]

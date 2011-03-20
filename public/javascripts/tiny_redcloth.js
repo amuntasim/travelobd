@@ -1,5 +1,4 @@
 $.fn.tinyRedcloth = function(options) {
-
     var opts = $.extend($.fn.tinyRedcloth.defaults, options);
 
     var active_obj = '';
@@ -18,6 +17,17 @@ $.fn.tinyRedcloth = function(options) {
         });
     }
 
+    function insertImageURL() {
+        if ($('#inserted_url').val().length > 10) {
+            var str = '!' + $('#inserted_url').val() + '!'
+            insertAtCursor(str);
+            tb_remove();
+        } else {
+            alert('put valid image url before hit \'GO\'');
+        }
+    }
+
+
     function loadUploadedImages() {
         $.ajax({
             url: '/users/load_uploaded_images',
@@ -32,7 +42,12 @@ $.fn.tinyRedcloth = function(options) {
     function handleImageSelectOrUpload() {
         var $this = this;
 
+        $('#inserted_url_button').click(function() {
+            insertImageURL();
+        });
+
         tb_show("Upload/Select Image", '#TB_inline?dd=4&width=600&height=500&inlineId=tiny_redcloth_image&modal=true');
+        $('#inserted_url').val('');
         $('#close_tiny_redcloth_image').css({"float": "right" }).click(function() {
             tb_remove()
         });
@@ -68,6 +83,7 @@ $.fn.tinyRedcloth = function(options) {
         });
         loadUploadedImages();
     }
+
 
     function insertAtCursor(myValue) {
 
@@ -110,9 +126,13 @@ $.fn.tinyRedcloth = function(options) {
     return this.each(function() {
         active_obj = $(this);
 
+        $(this).focus(function() {
+            active_obj = $(this);
+        });
+
 
         if (active_obj.attr('trc_option_enabled') === undefined) {
-            var option_html = '<ul tiny_redcloth_for="' + active_obj.attr('id') + '" class="tiny_redcloth_buttons">';
+            var option_html = '<ul id="tiny_redcloth_buttons_' + $(this).attr('id') + '" tiny_redcloth_for="' + active_obj.attr('id') + '" class="tiny_redcloth_buttons">';
             option_html += '<li class="tiny_redcloth_button B"  task="bold"> B </li>';
             option_html += '<li class="tiny_redcloth_button I"  task="italic"> I </li>';
             option_html += '<li class="tiny_redcloth_button U"  task="underline"> U </li>';
@@ -122,20 +142,21 @@ $.fn.tinyRedcloth = function(options) {
             option_html += '</ul>';
 
             $('ul.tiny_redcloth_buttons').each(function() {
-                $(this).hide();
+                //$(this).hide();
                 if (!($(this).attr('tiny_redcloth_for') === undefined)) {
                     $('#' + $(this).attr('tiny_redcloth_for')).removeAttr('trc_option_enabled');
                 }
             });
 
             active_obj.parent().append(option_html);
-
-            $('ul.tiny_redcloth_buttons').css({
+            $('ul#tiny_redcloth_buttons_' + $(this).attr('id')).css({
                 "position": "absolute",
                 "left": active_obj.offset().left + "px",
                 "top":active_obj.offset().top - 30 + "px" ,
                 'cursor': 'pointer'
             });
+
+
 
             $('ul.tiny_redcloth_buttons li').css({
                 "float": "left",
@@ -148,7 +169,7 @@ $.fn.tinyRedcloth = function(options) {
 
             active_obj.attr('trc_option_enabled', 1);
 
-            $('li.tiny_redcloth_button').click(function() {
+            $('ul#tiny_redcloth_buttons_' + $(this).attr('id') + ' li.tiny_redcloth_button').click(function() {
                 var range = active_obj.getSelection();
                 active_obj_scroll_top = active_obj.get(0).scrollTop;
                 switch ($(this).attr('task')) {
@@ -159,7 +180,6 @@ $.fn.tinyRedcloth = function(options) {
                     case  'bold': {
                         active_obj.replaceSelection('*' + range.text + '*');
                         active_obj.setCursorPosition(range.end + 2);
-
                         break;
                     }
                     case  'italic': {
@@ -201,6 +221,7 @@ $.fn.tinyRedcloth = function(options) {
 
 
     });
+
 
 };
 

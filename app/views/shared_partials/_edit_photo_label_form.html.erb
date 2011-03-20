@@ -1,0 +1,20 @@
+<h2 style=" margin-bottom: 20px; margin-top: 5px;">Edit label</h2>
+
+<%= form_for Asset.new, :url=> update_asset_label_path, :remote=> true, :html=> {:id=> 'edit_asset_label_form'} do |f| %>
+    <div id="edit_label_status" class="white_Desc">
+
+    </div>
+    <div class="white_Desc">
+      <label>Image Description:</label>
+      <%= text_area_tag :asset_label %>
+    </div>
+
+    <div class="submit_btn" style="padding-left:100px;">
+      <div id="submit_to_update">
+        <input class="search_button" name="" value="Update" type="submit">
+        <span class="search_button_right"> </span>
+      </div>
+      <%= image_tag 'loadingAnimation.gif', :id => 'edit_asset_label', :style=> 'display:none' %>
+      <%= hidden_field_tag :asset_id %>
+    </div>
+<% end %>

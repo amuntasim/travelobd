@@ -28,8 +28,8 @@ class Package < ActiveRecord::Base
   translates :title, :description, :short_description, :location, :price_includes, :price_excludes, :company
 
   has_many :videos, :class_name => 'PackageVideo'
-  has_many :assets, :class_name => 'PackageAsset'
-  has_one :main_image, :class_name => 'PackageAsset', :conditions => {:main => true}
+  has_many :assets, :as => :assetable
+  has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
   belongs_to :district
   belongs_to :division
@@ -54,12 +54,10 @@ class Package < ActiveRecord::Base
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :conditions, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
 
-  has_one :line_item, :as=> 'purchasable'
 
   ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]
 
 
-  #accepts_nested_attributes_for :pedigrees
 
   CATEGORIES = {'cat1' => 1, 'cat2' => 2, 'cat3' => 3}
 
@@ -70,27 +68,5 @@ class Package < ActiveRecord::Base
   def category
     category_id ? CATEGORIES.invert[category_id] : nil
   end
-
-  def listing_charge
-    if self.featured
-      Element.find_all_by_name('featured_package_price').value rescue 9.95
-    else
-      Element.find_all_by_name('basic_package_price').value rescue 4.95
-    end
-  end
-
-  def purchased
-    self.update_attribute(:active, true)
-  end
-
-
-  def self.find_random(random_count, options = {})
-    if random_count > count(options)
-      all(options).sort_by { rand }
-    else
-      all(options.merge({:offset => rand(count(options) - random_count + 1), :limit => random_count})).sort_by { rand }
-    end
-  end
-
 
 end

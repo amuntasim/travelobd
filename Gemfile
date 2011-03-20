@@ -13,14 +13,13 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'tiny_mce', '0.1.3'
 gem 'activemerchant'
 gem 'rails3-jquery-autocomplete'
-#gem 'searchlogic'
-#gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem 'meta_search'
 gem "friendly_id", "~> 3.1"
 gem 'typus'
 gem 'annotate'
 gem 'ajaxful_rating', '~> 3.0.0.beta2'
 gem 'RedCloth'
+gem 'omniauth'
 
 # Use unicorn as the web server
 # gem 'unicorn'

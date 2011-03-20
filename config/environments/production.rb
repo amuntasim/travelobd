@@ -47,3 +47,5 @@ Travelobd::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+#for travelobd.heroku.com
+GMAP_API_KEY = 'ABQIAAAAv-CgURh0ryzzvdQmlxW74RT_9_5jAsPMaBYXvDK3bNxuXGBSlxQ3c1tPLdcLVABM6WCu7OgkOSQ6Kg'

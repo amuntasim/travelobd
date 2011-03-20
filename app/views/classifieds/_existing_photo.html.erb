@@ -1,8 +1,0 @@
-<div class="edit_box_img existing_image">
-  <div class="e_bor">
-    <%= image_tag existing_photo.photo.url(:thumb) %>
-  </div>
-  <%= link_to 'Delete Photo', 'javascript:void(0)', :asset_id => existing_photo.id, :class => 'del_photo'  %>
-  <%= check_box_tag "main_check_#{existing_photo.id}", existing_photo.id, existing_photo.main?, :asset_id =>existing_photo.id,  :class=> 'mainCh' %>
-  Main Photo
-</div>

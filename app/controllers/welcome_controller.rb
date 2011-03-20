@@ -1,10 +1,8 @@
 class WelcomeController < ApplicationController
   def index
     @active_nav = 'home'
-    @locations = District.includes(:division)
     @search = Package.search(params[:search])
-    @spots = Spot.actives
-    @packages = Package.limit(3)
+    @packages = Package.includes(:translations,:assets, :main_image, :slug).limit(10)
   end
 
   def featured_ads

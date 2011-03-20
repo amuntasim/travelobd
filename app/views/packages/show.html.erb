@@ -11,7 +11,9 @@
     <div class="redhead_row">
       <div class="subLink">
         <ul>
-          <li><a href="#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true" class="thickbox">Send Message to Package Owner</a>
+          <li>
+            <a href="#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true" class="thickbox">Send
+              Message to Package Owner</a>
           </li>
 
           <li><a href="#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true" class="thickbox">Send
@@ -37,31 +39,7 @@
   <%= @package.title %>
 </div>
 
-
-<div id="" class="good_slide_bor">
-  <div id="photo_gallery" class="galleryview">
-
-    <% @package.assets.each do |asset| %>
-        <div class="panel ">
-          <%= image_tag(asset.photo.url(:medium), :class=> 'panel_image', :photo_id =>asset.id, :width => 680, :height => 280) %>
-          <!--<div class="panel-overlay">
-
-           <p>sample description</p>
-         </div> -->
-
-        </div>
-        <ul class="filmstrip">
-          <% @package.assets.each do |asset| %>
-              <li class="slide_img">
-                <%= image_tag(asset.photo.url(:thumb), :class=> 'panel_image', :photo_id =>asset.id, :width => 60, :height => 51) %>
-              </li>
-          <% end %>
-        </ul>
-    <% end %>
-
-  </div>
-</div>
-
+<%= render :partial => 'shared_partials/detail_page_photo_gallery', :locals => {:items => @package.assets} %>
 
 <div class="item_details">
 
@@ -80,11 +58,11 @@
       <div class="good_item_head">Tour Itineraries</div>
       <div class="itemDetail">
         <% if @package.spots.size > 0 %>
-             <div class="eventTitle clear">Interesting Places</div>
-            <div class="eventDetail clear"><%= raw package_spots_links(@package) %></div>
+            <div class="eventTitle">Interesting Places</div>
+            <div class="eventDetail"><%= raw package_spots_links(@package) %></div>
         <% end %>
         <% @package.itineraries.each do |itinerary| %>
-            <div class="eventTitle clear"><%= itinerary.title %></div>
+            <div class="eventTitle"><%= itinerary.title %></div>
             <div class="eventDetail clear"><%= itinerary.detail %></div>
         <% end %>
       </div>
@@ -93,7 +71,8 @@
   <div class="good_item_head">Tour Cost</div>
   <div class="itemDetail">
     <div class="eventDetail eventTitle clear"> Tour Cost :
-      <span style="color: #FF7D01; font-size:20px;"><%= @package.price  %> <span style="font-weight:normal; font-size:12px">BDT. <%= raw price_str(@package) %></span> </span>
+      <span style="color: #FF7D01; font-size:20px;"><%= @package.price %>
+        <span style="font-weight:normal; font-size:12px">BDT. <%= raw price_str(@package) %></span> </span>
     </div>
     <div class=" eventTitle">Price Includes</div>
     <div class="eventDetail "><%= @package.price_includes %></div>
@@ -114,329 +93,31 @@
   <div class="itemDetail">
     <div class="eventDetail eventTitle clear"><%= @package.company %></div>
     <% @package.contacts.each do |contact| %>
-        <div class="eventDetail clear"><b><%= contact.name %></b></div>
-        <div class="eventDetail clear"><%= contact.phone %></div>
+        <div class=" clear"><b><%= contact.name %></b></div>
+        <div class="eventDetail clear">Phone: <%= contact.phone %></div>
     <% end %>
   </div>
 
-  <div class="good_item_head">
-    Comments
 
-  </div>
-  <div class="itemDetail" style="padding-left:0">
-
-    <% @package.approved_comments.each do |comment| %>
-        <div class="comment">
-          <div class="eventDetail eventTitle clear"><%= comment.comment_by %> Says
-            <small style="color:#101050;"> On <%= comment.created_at.strftime('%d %B, %Y %H:%M:%S') %></small>
-          </div>
-          <div class="eventDetail clear"><b><%= comment.content %></b></div>
-        </div>
-    <% end %>
-
-    <div class="eventTitle">
-      Your Comment
-      <div style="float:right">
-        Rating <%= ratings_for @package %>
-      </div>
-    </div>
-    <div class="commentForm">
-
-      <%= render :partial => 'comments/form', :locals => {:comment => @package.comments.new, :commentable => @package} %>
-    </div>
-  </div>
+  <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @package, :rating => true} %>
 
 
 </div>
-
-
-
 
 <div id="send_message_to_owner_lb" style="display: none">
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>
-  <%= render :partial => 'messages/ajax_form', :locals => { :message_target => @package } %>
+  <%= render :partial => 'messages/ajax_form', :locals => {:message_target => @package} %>
 
 </div>
 
+<%= render :partial => 'shared_partials/send_to_friends', :locals => {:item => 'package', :item_id => @package.id} %>
 
-<div id="send_to_friend_lb" style="display: none">
-  <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_to_friend_lb', :title => 'close' %>
-  <% form_for :contact, :url => send_to_friends_path, :remote => true, :html=> {:id => 'send_to_friends_form'} do |f| %>
-
-      <h2>Send to Friends</h2>
-
-      <div id="stf_summary" style="margin-top: 5px;">
-
-      </div>
-      <p>
-        Enter Your Message Here:
-
-      </p>
-
-      <p class="message">
-        <%= text_area_tag :message %>
-
-      </p>
-
-      <p>
-        Enter Email Addresses Here:
-
-      </p>
-
-      <p class="message">
-        <%= text_area_tag :email %>
-
-      </p>
-
-
-      <p style="text-align: center">
-        <%= hidden_field_tag 'item_id', @package.id %>
-        <%= hidden_field_tag 'item_type', 'ad' %>
-        <%= submit_tag "Send", :id =>'submit_to_friend' %>
-        <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_friend', :style=> 'display:none' %>
-      </p>
-  <% end %>
-
-
-
-</div>
 <style type="text/css">
-        /*
-         div.panel {
-             margin: 10px !important;
-         }
 
-         img.nav-prev {
-             left: 10px !important;
-             top: 356px !important;
-         }
-
-         img.nav-next {
-             left: 621px !important;
-             top: 356px !important;
-         }
-        */
-    .ash_desc_row .value {
-        width: 158px;
-        float: left;
-    }
-
-    #message_status {
-        float: left;
-        padding: 0px 5px;
-        margin: 0px 5px 5px 0px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    #message_status span.success {
-        color: green
-    }
-
-    #TB_window {
-        -moz-border-radius: 10px;
-    }
-
-    p.message textarea {
-        width: 390px;
-        height: 60px;
-    }
-
-    #close_send_to_friend_lb, #close_send_message_to_owner_lb
-    {
-        float: left;
-        position: absolute;
-        left: 399px;
-        top: 2px;
-        cursor: pointer;
-    }
-
-    .itemDetail {
-        padding: 10px;
-        float: left;
-    }
-
-    .packageEvent {
-        float: left;
-        margin-bottom: 10px;
-    }
-
-    .packageEvent .packageEventTime {
-        float: left;
-        width: 200px;
-    }
-
-    .packageEventData .packageEventTime {
-        margin-left: 10px;
-    }
-
-    .packageEvent .packageEventDetail {
-        float: left;
-        width: 440px;
-        margin-left: 10px;
-    }
-
-    .eventDetail {
-        margin-top:1px;
-        margin-bottom:15px;
-    }
-
-    .condition ul li {
-        margin-left: 15px;
-        padding: 5px 0;
-        list-style: circle;
-    }
-
-    .comment {
-        padding: 10px;
-        padding-top: 0px;
-        border: 2px solid #CCCCCC;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        -webkit-border-radius: 10px;
-        width: 676px;
-        margin-bottom: 10px;
-
-    }
 </style>
 <script type="text/javascript">
-    var resetMessageForm = function() {
-        $("#message_form").get(0).reset();
-    };
-
-    var resetSendToFriend = function() {
-        $("#send_to_friends_form").get(0).reset();
-
-    };
-
-    $.validator.methods.multipleEmailValidation = function(value, element, param) {
-        var emails = value.split(',');
-        var valid = (emails.length > 0); // make sure that value is not empty
-        var email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
-
-        for (i = 0; i < emails.length; i++) {
-
-            var emailAddress = emails[i];
-            //alert(emailAddress);
-            //alert(email_regex.test(emailAddress));
-            valid = valid && email_regex.test(emailAddress); // logical and of all email validations
-        }
-        return valid;
-    };
-
-
-    $.fn.validateSendToFriend = function() {
-        var stf_validator = $("#send_to_friends_form").validate({
-            invalidHandler: function() {
-                $("#stf_summary").html('<div class="summary error">' + stf_validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
-            },
-            errorPlacement: function(error, element) {
-                error.remove();
-            },
-
-
-            rules: {
-                message: "required",
-                email: {
-                    required: true,
-
-                    multipleEmailValidation: true
-
-                }
-            }
-        });
-    }
     $(document).ready(function() {
-        $('#photo_gallery').galleryView({
-            panel_width: 680,
-            panel_height: 280,
-            panel_padding: 10,
-            panel_border: '1px solid #cccccc',
-            panel_bottom_margin: 10,
-            frame_width: 64,
-            frame_height: 55,
-            strip_padding: 10,
-            //strip_border: '1px solid #cccccc',
-            strip_border: '1px solid #F2F1EC',
-            strip_background: '#F2F1EC',
-            frame_size: 10,
-            transition_speed: 600,
-            transition_interval: 6000,
-            //overlay_height: 30,
-            //overlay_color: '#222',
-            //overlay_text_color: 'white',
-            caption_text_color: '#222',
-            background_color: 'transparent',
-            border: 'none',
-            nav_theme: 'light',
-            easing: 'easeInOutQuad',
-            hide_nav_buttons: true,
-            pause_on_hover: true
-
-        });
-
-
-        var message_validator = $("#message_form").validate({
-            errorPlacement: function(error, element) {
-                error.remove();
-            },
-            invalidHandler: function(e, validator) {
-                var errors = validator.numberOfInvalids();
-                if (errors) {
-                    var message = errors == 1
-                            ? 'You missed 1 field. It has been highlighted below'
-                            : 'You missed ' + errors + ' fields.  They have been highlighted below';
-                    $("div#message_status").html("<span class='error'>" + message + "</span>");
-                    $("div#message_status span.error").show();
-                } else {
-                    $("div#message_status span.error").hide();
-                }
-            },
-
-
-            rules: {
-                'message[name]': "required",
-                'message[email]': {
-                    required: true,
-                    email: true
-                },
-
-                'message[address]': "required",
-                'message[phone]': "required",
-                'message[title]': "required",
-                'message[content]': "required",
-                'spam_check': "required"
-                //ad_ad_name: "required",
-                //ad_short_description: "required"
-
-            }
-        });
-        $("#message_form").bind("ajaxSend",
-                function() {
-                    $('#submit_to_seller').hide();
-                    $('#sending_to_seller').show();
-                }).bind("ajaxComplete",
-                function() {
-                    $('#sending_to_seller').hide();
-                    $('#submit_to_seller').show();
-                }).bind("ajax:success", resetMessageForm);
-
-        $("#send_to_friends_form").bind("ajaxSend",
-                function() {
-                    $('#submit_to_friend').hide();
-                    $('#sending_to_friend').show();
-                }).bind("ajaxComplete",
-                function() {
-                    $('#sending_to_friend').hide();
-                    $('#submit_to_friend').show();
-                }).bind("ajax:success", resetSendToFriend);
-        //(savable_type, anchor_class, container_id)
-        $('img.close_lb').click(function() {
-            tb_remove();
-        });
-
-        $(this).validateSendToFriend();
+        $('#detail_page_photo_gallery').galleryView(TBD.DETAIL_PAGE_PHOTO_GALLERY_OPTIONS);
     });
-
 
 </script>

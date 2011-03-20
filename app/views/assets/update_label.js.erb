@@ -1,0 +1,4 @@
+$('.existing_image img#asset_<%=@asset.id%>').attr('title', '<%= @asset.label%>');
+$('.existing_image a#asset_link_<%=@asset.id%>').attr('title', '<%= @asset.label%>');
+$('#edit_label_status').html('Updated Successfully!');
+setTimeout(function() { tb_remove();}, 1000);

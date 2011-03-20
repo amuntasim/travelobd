@@ -1,41 +1,43 @@
 <% title @search_title %>
-<%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>Articles</h2>
+<div class="pageHead">
+  Articles
+  <div class="pageHeadOptions">
+
   </div>
-<% end %>
-
-
-<div class="ad_business">
-  <%= link_to '+Write an article', new_article_path(:category_id =>params[:category_id])  %>
 </div>
 
-<div class="firms_row">
-  <div class="firms_head">
-    <%= @search_title %>
-  </div>
-  <% @articles.each do |article| %>
-    <div class="f_bor article">
-      <div class="f_inner_bor">
-        <%= image_tag article.main_image_url(:thumb), :width => 68, :height => 55 %>
+<% @articles.each do |article| %>
+    <div class="listItem">
+      <div class="fl listItemLogo">
+        <%= image_tag article.main_image_url(:thumb) %>
       </div>
-      <strong><%= article.category %></strong>
-      <h3>
-        <%= link_to article.title, article_path(article) %>
-      </h3>
-      
-        <%= truncate(sanitize(article.detail).gsub(/<\/?[^>]*>/, "") ,:length => 150)  %>
-     
+
+      <div class="fl listItemDesc">
+        <div class="fl hotel_desc_info">
+          <div class="fl title">
+            <%= link_to truncate(article.title, :length => 50), article %>
+            <h4><%= article.category  %></h4>
+          </div>
+          <div class="fl description">
+            <%= truncate(sanitize(article.detail).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+          </div>
+
+        </div>
+        <div class="fl price_n_button">
+          <div class="fl">
+            <div class="fl price">
+
+            </div>
+            <div class="fl rating">
+              Like: 1000
+            <span style="float:right;">
+              Rating: 4
+            </span>
+            </div>
+          </div>
+          <%= link_to 'Details', article, :class => 'detail_link' %>
+        </div>
+      </div>
+
     </div>
-  <% end %>
-  <% if @articles.total_pages > 1 %>
-    <div class="f_bor pagination">
-      <%= will_paginate  @articles %>
-    </div>
-  <% end %>
-  <div class="firma_bottom"></div>
-</div>
-
-
-
-
+<% end %>

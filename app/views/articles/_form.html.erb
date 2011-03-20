@@ -1,101 +1,98 @@
 <%= content_for :js_css_include do %>
-  <%= javascript_include_tag 'jquery.validate', 'bangla.input', 'tiny_redcloth' %>
-  <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
-
+    <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
 
-<%= form_for(@article,  :html => { :multipart => true,:id=> 'article_frm'}) do |f| %>
-  <% @builder = f %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<%= form_for(@article, :html => {:multipart => true, :id=> 'article_frm'}) do |f| %>
+    <% @builder = f %>
+    <% if @article.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+          <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+
     </div>
-  <% end %>
-  <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+    <div class="item_form_row">
+      <label>
+        <span>*</span> Category:
+      </label>
+      <%= f.select :category_id, Article::CATEGORIES, :prompt=> 'Select Category' %>
+    </div>
 
-  </div>
-  <div class="item_form_row">
-    <label>
-      <span>*</span> Category:
-    </label>
-    <%= f.select :category_id, Article::CATEGORIES, :prompt=> 'Select Category' %>
-  </div>
-
-  <div class="item_form_row">
-    <label>
-      <span>*</span> Title:
-    </label>
-    <%= f.text_field :title, :class=> 'txt' %>
-  </div>
+    <div class="item_form_row">
+      <label>
+        <span>*</span> Title:
+      </label>
+      <%= f.text_field :title, :class=> 'txt' %>
+    </div>
 
 
-  <div class="item_form_row">
-    <label>
-      <span>*</span>Detail:
-    </label>
-    <%= f.text_area :detail, :class => "tiny_redcloth" %>
-  </div>
+    <div class="item_form_row">
+      <label>
+        <span>*</span>Detail:
+      </label>
+      <%= f.text_area :detail, :class => "tiny_redcloth" %>
+    </div>
 
-  <div class="item_form_row">
-    <label>
-      <span></span> Tag:
-    </label>
-    <%= f.text_field :tag_list, :class=> 'txt' %>
-  </div>
+    <div class="item_form_row">
+      <label>
+        <span></span> Tag:
+      </label>
+      <%= f.text_field :tag_list, :class=> 'txt' %>
+    </div>
 
 
-  <div class="item_form_row">
-    <label>&nbsp;</label>
-    <%= f.submit '', :class=>"subBtn" %>
-  </div>
-
+    <div class="submit_btn">
+      <%= f.submit :class => 'search_button' %>
+      <span class="search_button_right"> </span>
+    </div>
 
 <% end %>
 
+<%= render :partial => 'shared_partials/tiny_redcloth_image' %>
 
 
 <script type="text/javascript">
 
-  var allowed_images = 5;
-  
-  $(document).ready(function() {
-    $('#article_frm').submit(function() {
-      tinyMCE.triggerSave();
+    var allowed_images = 5;
+
+    $(document).ready(function() {
+        var validator = $("#article_frm").validate({
+            invalidHandler: function() {
+                $("#summary").html('<div class="item_form_row">' + validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+            },
+            errorPlacement: function(error, element) {
+                error.remove();
+            },
+
+
+            rules: {
+                'article[category_id]': "required",
+                'article[title]' : "required",
+                'article[detail]' : "required"
+
+            },
+            messages: {
+                comment: "Please enter a comment."
+            }
+        });
+
+        //TBD.DHTML.addMorePhoto('article_photos', allowed_images);
+        //TBD.ASSETS.deleteAsset('articles');
+        //TBD.ASSETS.makeMainPhoto('articles');
+        $('#article_title').banglaInput();
+        $('#article_tag_list').banglaInput();
+        $('#article_detail').banglaInput();
+        $('textarea.tiny_redcloth').tinyRedcloth();
     });
-    var validator = $("#article_frm").validate({
-      invalidHandler: function() {
-        $("#summary").html('<div class="item_form_row">'+validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
-      },
-      errorPlacement: function(error, element) {
-        error.remove();
-      },
-
-
-      rules: {
-        'article[category_id]': "required",
-        'article[title]' : "required",
-        'article[detail]' : "required"
-
-      },
-      messages: {
-        comment: "Please enter a comment."
-      }
-    });
-    
-    //$(this).addMorePhoto('article_photos', allowed_images);
-    //$(this).deleteAsset('articles');
-    //$(this).makeMainPhoto('articles');
-    $('#article_title').banglaInput();
-    $('#article_tag_list').banglaInput();
-    $('#article_detail').banglaInput();
-    $('textarea.tiny_redcloth').tinyRedcloth();
-  });
 
 
 </script>

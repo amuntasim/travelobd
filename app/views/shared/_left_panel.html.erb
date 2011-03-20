@@ -9,14 +9,14 @@
   <label>Type</label>
 
   <div class="fields">
-    <%= select_tag :search_option, options_for_select(['Hotels','Spots', 'Packages', 'Articles'], params[:search_option]) %>
+    <%= select_tag :search_option, options_for_select(['Hotels', 'Spots', 'Packages', 'Articles'], params[:search_option]) %>
   </div>
   <div id="hotel_search_form" class="searchOption">
     <%= form_for @hotel_search || Hotel.search, :url=> search_hotels_path do |f| %>
         <div class="search_row">
           <label>Location:</label>
 
-          <%= f.select :district_id_equals, District.all.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
+          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
 
         </div>
 
@@ -24,7 +24,7 @@
 
           <%= hidden_field_tag :search_option, 'Hotels' %>
           <input type="submit" class="search_button" name="" value="Search"/>
-           <span class="search_button_right"> </span>
+          <span class="search_button_right"> </span>
         </div>
     <% end %>
   </div>
@@ -34,18 +34,18 @@
         <div class="search_row">
           <label>Location:</label>
 
-          <%= f.select :district_id_equals, District.all.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
+          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
 
         </div>
 
         <div class="ad_btn">
-           <%= hidden_field_tag :search_option, 'Spots' %>
+          <%= hidden_field_tag :search_option, 'Spots' %>
           <input type="submit" class="search_button" name="" value="Search"/>
-           <span class="search_button_right"> </span>
+          <span class="search_button_right"> </span>
         </div>
     <% end %>
   </div>
-  <div id="package_search_form"  class="searchOption">
+  <div id="package_search_form" class="searchOption">
     <%= form_for @package_search || Package.search, :url=> search_packages_path do |f| %>
         <div class="search_row">
           <label>Date:</label>
@@ -64,12 +64,12 @@
         <div class="ad_btn">
           <%= hidden_field_tag :search_option, 'Packages' %>
           <input type="submit" class="search_button" name="" value="Search"/>
-           <span class="search_button_right"> </span>
+          <span class="search_button_right"> </span>
         </div>
     <% end %>
   </div>
 
-  <div id="article_search_form"  class="searchOption">
+  <div id="article_search_form" class="searchOption">
     <%= form_for @article_search || Article.search, :url=> search_articles_path do |f| %>
         <div class="search_row">
           <label>what:</label>
@@ -80,39 +80,96 @@
           <div class="ad_btn">
             <%= hidden_field_tag :search_option, 'Articles' %>
             <input type="submit" class="search_button" name="" value="Search"/>
-           <span class="search_button_right"> </span>
+            <span class="search_button_right"> </span>
           </div>
     <% end %>
     </div>
   </div>
 </div>
+
 <div class="home_left_header fl featured_hotel_header">
   <div class="home_left_header_content">
+
+    <%= 'Featured Agents' %>
+  </div>
+
+</div>
+<div class="home_left_content fl ">
+  <% if @featured_tour_operators.size > 0 %>
+
+      <ul id="left_side_featured_tour_operators" class="box-slide">
+        <% @featured_tour_operators.each do |tour_operator| %>
+            <li>
+              <%= link_to tour_operator, :target => '_blank' do %>
+                  <%= image_tag tour_operator.logo.url, :width => '175px' %>
+                  <div class="title">
+                    <%= tour_operator.name %>
+                  </div>
+
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+
+<div class="home_left_header fl featured_hotel_header">
+  <div class="home_left_header_content">
+
     <%= t 'featured_hotel' %>
   </div>
 
 </div>
-<div class="home_left_content fl">
-  featured hotels
+<div class="home_left_content fl ">
+  <% if @featured_hotels.size > 0 %>
+      <ul id="left_side_featured_hotels" class="box-slide">
+        <% @featured_hotels.each do |hotel| %>
+            <li>
+              <%= link_to hotel, :target => '_blank' do %>
+                  <%= image_tag hotel.main_image_url(:medium), :width => '175px' %>
+                  <div class="title">
+                    <%= hotel.title %>
+                  </div>
+                  <div class="address">
+                    <%= hotel.location %>
+                  </div>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
 </div>
 
 <div class="home_left_header fl latest_article_header">
   <div class="home_left_header_content">
-    <%= t 'latest_article' %>
+    Latest Articles
   </div>
-
 </div>
-<div class="home_left_content fl" id="articles">
 
+<div class="home_left_content fl">
+  <%= render :partial => 'welcome/article', :collection => @articles %>
 </div>
 
 <div class="home_left_header fl featured_transport_header">
   <div class="home_left_header_content">
     <%= t 'featured_transport' %>
   </div>
-
-</div>
-<div class="home_left_content fl">
-  featured transports
 </div>
 
+<div class="home_left_content fl ">
+  <% if @featured_transports.size > 0 %>
+      <ul id="left_side_featured_transports" class="box-slide">
+        <% @featured_transports.each do |transport| %>
+            <li>
+              <%= link_to transport, :target => '_blank' do %>
+                  <%= image_tag transport.main_image_url(:medium), :width => '175px' %>
+                  <div class="title">
+                    <%= transport.name %>
+                  </div>
+
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

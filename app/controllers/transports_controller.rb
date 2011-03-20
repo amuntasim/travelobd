@@ -7,7 +7,7 @@ class TransportsController < ApplicationController
   # GET /ads
   # GET /ads.xml
   def index
-    @transports = Transport.paginate(:page=> params[:page], :per_page => 15)
+    @transports = Transport.paginate(:page=> params[:page], :per_page => 3)
     @paginate_items = @transports
     render :action => 'index_admin', :layout => 'admin' if admin?
   end
@@ -39,7 +39,7 @@ class TransportsController < ApplicationController
     @transport.user_id = current_user.id
     respond_to do |format|
       if @transport.save
-        redirect_to transport_path(@transport), :notice => 'Transport was successfully createds.'
+        format.html {redirect_to(@transport, :notice => 'Transport was successfully created.')}
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @transport.errors, :status => :unprocessable_entity }
@@ -51,10 +51,9 @@ class TransportsController < ApplicationController
   # PUT /ads/1.xml
   def update
     params[:transport][:destination_ids] ||= []
-
     respond_to do |format|
       if @transport.update_attributes(params[:transport])
-        format.html { redirect_to(transport_path(@transport), :notice => 'Transport was successfully updated.') }
+        format.html { redirect_to(@transport, :notice => 'Transport was successfully updated.') }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -132,3 +131,5 @@ class TransportsController < ApplicationController
     ['new', 'edit'].include?(action_name) ? 'dashboard' : 'application'
   end
 end
+
+

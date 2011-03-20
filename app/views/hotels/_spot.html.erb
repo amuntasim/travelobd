@@ -1,0 +1,4 @@
+<div class="spot_in_package">
+  <%= check_box_tag "hotel[spot_ids][]", spot.id, attached_spots.include?(spot),  :id => dom_id(spot) %>
+  <label for="<%= dom_id(spot) %>"><%= spot.name %></label>
+</div>

@@ -1,0 +1,33 @@
+<div class="event side_scene">
+
+  <%= form.fields_for :side_scenes, side_scene, :child_index => (side_scene.new_record? ? "index_to_replace_with_js" : nil) do |side_scene_form| %>
+      <div class="package_event_time">
+        Name
+      </div>
+      <div class="package_contact_address">
+        Detail
+      </div>
+
+
+
+      <div class="package_event_time clear">
+        <%= side_scene_form.text_field :title, :class => 'event' %>
+      </div>
+
+      <div class="package_contact_address">
+        <%= side_scene_form.text_area :detail, :class => 'event' %>
+        <%= side_scene_form.hidden_field :td_association_type, :value => :side_scene, :class => 'event' %>
+
+      </div>
+
+      <div class="deleteLink">
+        <% if side_scene.new_record? %>
+            <span class="removeSideSceneField"> Remove</span>
+        <% else %>
+            <%= side_scene_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

@@ -32,7 +32,6 @@
 
   $(document).ready(function() {
     $('select#district_country_id').change(function(){
-      //load comments
       $('#district_district_id, #loading_division').toggle();
       $.ajax({
         url: '/districts/load_divisions?country_id='+$(this).val(),

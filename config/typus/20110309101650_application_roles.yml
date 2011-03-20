@@ -1,0 +1,21 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Asset: create, read, update, delete
+  BranchLocation: create, read, update, delete
+  Comment: create, read, update, delete
+  Condition: create, read, update, delete
+  Contact: create, read, update, delete
+  Country: create, read, update, delete
+  DepartureSchedule: create, read, update, delete
+  HotelAsset: create, read, update, delete
+  PackageEvent: create, read, update, delete
+  PackageItinerary: create, read, update, delete
+  Policy: create, read, update, delete
+  Rate: create, read, update, delete
+  Room: create, read, update, delete
+  RoomAsset: create, read, update, delete
+  TrUploadedImage: create, read, update, delete
+  Transport: create, read, update, delete

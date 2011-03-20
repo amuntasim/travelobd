@@ -75,16 +75,17 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @unread_messages = Message.where(:seller_id=> current_user.id, :read=> false, :parent_id => nil).where(['user_id != ?', current_user.id])
-    @hotels = Hotel.where(:user_id => current_user.id)
+    @unread_messages = Message.where(['user_id = ? AND created_by <> ?',current_user.id, current_user.id]).where(:read=> false)
+    @saved_items = SavedListing.where(:user_id => current_user.id)
+    @hotels = current_user.hotels
   end
 
   def inbox
-    @messages = Message.where(:seller_id=> current_user.id, :parent_id => nil).where(['user_id != ?', current_user.id]).order(:created_at).paginate(:page=> params[:page], :per_page => 20)
+    @messages = Message.where(['user_id = ? AND created_by <> ?', current_user.id, current_user.id]).order(:created_at).paginate(:page=> params[:page], :per_page => 20)
   end
 
   def outbox
-    @messages = Message.where(:user_id=> current_user.id, :parent_id => nil).order(:created_at).paginate(:page=> params[:page], :per_page => 20)
+    @messages = Message.where(:created_by => current_user.id).order(:created_at).paginate(:page=> params[:page], :per_page => 20)
   end
 
   def ads

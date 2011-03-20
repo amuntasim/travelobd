@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  branchable_id: 1
+  branchable_type: MyString
+  district_id: 1
+  phone: MyString
+
+two:
+  branchable_id: 1
+  branchable_type: MyString
+  district_id: 1
+  phone: MyString

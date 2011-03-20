@@ -1,0 +1,20 @@
+<% if items.size > 0 %>
+    <div id="" class="good_slide_bor">
+      <div id="detail_page_photo_gallery" class="galleryview">
+
+        <% items.each do |asset| %>
+            <div class="panel ">
+              <%= image_tag(asset.photo.url(:medium), :class=> 'panel_image', :photo_id =>asset.id, :width => 680, :height => 280) %>
+            </div>
+            <ul class="filmstrip">
+              <% items.each do |asset| %>
+                  <li class="slide_img">
+                    <%= image_tag(asset.photo.url(:thumb), :class=> 'panel_image', :photo_id =>asset.id, :width => 60, :height => 51) %>
+                  </li>
+              <% end %>
+            </ul>
+        <% end %>
+
+      </div>
+    </div>
+<% end %>

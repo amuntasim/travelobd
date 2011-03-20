@@ -1,30 +1,30 @@
 <div class="top_bar">
   <div class="top_bar_box">
     <% if current_user %>
-      <% if admin? %>
-        <span><%= link_to 'Administration', admin_path %></span>
-      <% else %>
-        <span><%= link_to 'Dashboard', dashboard_path %></span>
-      <% end %>
+        <% if admin? %>
+            <span><%= link_to 'Administration', admin_path %></span>
+        <% else %>
+            <span><%= link_to 'Dashboard', dashboard_path %></span>
+        <% end %>
     <% else %>
-      <%= t('welcome_guest') %>
+        <%= t('welcome_guest') %>
     <% end %>
   </div>
   <div class="top_bar_box">
     <% unless current_user %>
-      <span><%= link_to 'Create Account', new_user_path %></span>
-      <span><%= link_to 'Login', login_path %></span>
+        <span><%= link_to 'Create Account', new_user_path %></span>
+        <span><%= link_to 'Login', login_path %></span>
     <% else %>
-      <span><%= link_to 'Logout', logout_path %></span>
+        <span><%= link_to 'Logout', logout_path %></span>
 
     <% end %>
   </div>
   <div class="top_bar_box">
     <% if I18n.locale.to_s == 'en' %>
-      <%#= link_to(t('see_in_bn'), {:'lan'=>'bn', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
-      <%= link_to(t('see_in_bn'), '#') %>
+        <%#= link_to(t('see_in_bn'), {:'lan'=>'bn', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
+        <%= link_to(t('see_in_bn'), '#') %>
     <% else %>
-      <%= link_to(t('see_in_en'), {:'lan'=>'en', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
+        <%= link_to(t('see_in_en'), {:'lan'=>'en', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
     <% end %>
     <div class="login_and_other collapsed">
       <%= t('login_other') %>
@@ -33,13 +33,7 @@
     </div>
   </div>
 
-  <!--<div class="logRow">
-    <ul>
-      <li><a href="#">Contact us</a></li>
 
-    </ul>
-  </div>
-  -->
 </div>
 <div class="heading">
   <div class="logo">
@@ -47,59 +41,76 @@
   </div>
 </div>
 
-  <div class="menuRow">
-    <ul id="eq_ddm">
-      <li>  <%= link_to 'Home', root_path, :class=> active_inactive_navigation('home') %> </li>
-      <li class="meddle_li"></li>
-      <li>  <%= link_to 'Packages', packages_path, :class=> active_inactive_navigation('packages') %>
+<div class="menuRow">
+  <ul id="eq_ddm">
+    <li>  <%= link_to 'Home', root_path, :class=> active_inactive_navigation('home') %> </li>
+    <li class="meddle_li"></li>
+    <li>  <%= link_to 'Packages', packages_path, :class=> active_inactive_navigation('packages') %>
 
-      </li>
-      <li class="meddle_li"></li>
+    </li>
+    <li class="meddle_li"></li>
 
-      <li>  <%= link_to 'Tour Operators', 'javascript:void(0)', :class=> active_inactive_navigation('operators')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
-       <ul id="sub_nav_cls" class="sub_nav" >
-          <li> <%= link_to  'All ', classifieds_path %> </li>
-          
-        </ul>
-      
-      </li>
-      <li class="meddle_li"></li>
-      <li>  <%= link_to 'Spots',  'javascript:void(0)', :class=> active_inactive_navigation('spot') + ' have_sub_nav', :sub_nav_id => 'sub_nav_dir' %>
-        <ul id="sub_nav_dir" class="sub_nav" >
-          <li> <%= link_to  'All Spots ', spots_path%> </li>
-          
-        </ul>
-       
-      </li>
-      <li class="meddle_li"></li>
-      <li>  <%= link_to 'Articles',  'javascript:void(0)', :class=> active_inactive_navigation('articles') + ' have_sub_nav', :sub_nav_id => 'sub_nav_art' %>
-       <ul id="sub_nav_art" class="sub_nav" >
-          <li> <%= link_to  'All Articles', articles_path%> </li>
-         
-        </ul>
-      
-      </li>
-      <li class="meddle_li"></li>
-      <li>
-        <%= link_to 'Tour Club', root_path, :class=> active_inactive_navigation('tour_club')  %>
+    <li>  <%= link_to 'Hotels', hotels_path, :class=> active_inactive_navigation('hotels')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_hotels' %>
+      <ul id="sub_nav_hotels" class="sub_nav">
+        <li> <%= link_to 'All ', hotels_path %> </li>
+      </ul>
 
-      </li>
-    </ul>
-  </div>
+    </li>
+
+    <li class="meddle_li"></li>
+
+    <li>  <%= link_to 'Tour Operators', tour_operators_path, :class=> active_inactive_navigation('operators')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
+      <ul id="sub_nav_cls" class="sub_nav">
+        <li> <%= link_to 'All ', tour_operators_path %> </li>
+      </ul>
+
+    </li>
+      <li class="meddle_li"></li>
+    <li>  <%= link_to 'Transports', transports_path, :class=> active_inactive_navigation('transports')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_transports' %>
+      <ul id="sub_nav_transports" class="sub_nav">
+        <li> <%= link_to 'All ', transports_path %> </li>
+      </ul>
+
+    </li>
+
+
+    <li class="meddle_li"></li>
+    <li>  <%= link_to 'Spots', spots_path, :class=> active_inactive_navigation('spot') + ' have_sub_nav', :sub_nav_id => 'sub_nav_dir' %>
+      <ul id="sub_nav_dir" class="sub_nav">
+        <li> <%= link_to 'All Spots ', spots_path %> </li>
+
+      </ul>
+
+    </li>
+    <li class="meddle_li"></li>
+    <li>  <%= link_to 'Articles', articles_path, :class=> active_inactive_navigation('articles') + ' have_sub_nav', :sub_nav_id => 'sub_nav_art' %>
+      <ul id="sub_nav_art" class="sub_nav">
+        <li> <%= link_to 'All Articles', articles_path %> </li>
+
+      </ul>
+
+    </li>
+    <li class="meddle_li"></li>
+    <li>
+      <%= link_to 'Tour Club', tour_clubs_path, :class=> active_inactive_navigation('tour_club') %>
+
+    </li>
+  </ul>
+</div>
 <% if !flash.empty? or @notice %>
-  <div id="flash_messages">
-    <% if @notice || flash[:notice]%>
-      <div class="flash_message notice">
-        <%= @notice %>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <div id="flash_messages">
+      <% if @notice || flash[:notice] %>
+          <div class="flash_message notice">
+            <%= @notice %>
+            <%= flash[:notice] %>
+          </div>
+      <% end %>
 
-    <% if flash[:alert] || flash[:error]%>
-      <div class="flash_message error">
-        <%=  flash[:alert] %>
-        <%= flash[:error] %>
-      </div>
-    <% end %>
-  </div>
+      <% if flash[:alert] || flash[:error] %>
+          <div class="flash_message error">
+            <%= flash[:alert] %>
+            <%= flash[:error] %>
+          </div>
+      <% end %>
+    </div>
 <% end %>

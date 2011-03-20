@@ -25,16 +25,6 @@ Article:
   application: travelobd
 
 
-Classified:
-  fields:
-    default: category_id, name, district_id, division_id, country_id, zip_code, phone, user_id, active, country, user, district, division
-    form: category_id, name, detail, district_id, division_id, country_id, zip_code, phone, user_id, active, country, user, district, division
-  order_by: 
-  relationships: assets, country, district, division, main_image, saved_listings, user
-  filters: 
-  search: name
-  application: travelobd
-
 
 District:
   fields:
@@ -79,8 +69,8 @@ Feedback:
 
 Message:
   fields:
-    default: seller_id, name, email, address, phone, created_by, read, user_id, title, ref_id, parent_id, seller, user, parent
-    form: seller_id, name, email, address, phone, content, created_by, read, user_id, title, ref_id, parent_id, seller, user, parent
+    default:  name, email, address, phone, created_by, read, user_id, title, ref_id, parent_id, user, parent
+    form:  name, email, address, phone, content, created_by, read, user_id, title, ref_id, parent_id, user, parent
   order_by: 
   relationships: children, parent, seller, user
   filters: 

@@ -14,62 +14,19 @@ jQuery.fn.submitWithAjax = function() {
     return this;
 };
 
-$.fn.removePhotoField = function() {
-    $('span.removeImageField').click(function() {
-        $(this).parents('.photo').remove();
-    });
-};
+$.validator.methods.multipleEmailValidation = function(value, element, param) {
+    var emails = value.split(',');
+    var valid = (emails.length > 0); // make sure that value is not empty
+    var email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
 
-$.fn.addMorePhoto = function(container, allowed_images) {
-    $('a.addMoreImage').click(function() {
-        if (allowed_images && ($('span.removeImageField').length + $('a.del_photo').length) > allowed_images) {
-            alert('Maximum allowed ' + allowed_images);
-            return false;
-        }
-        else {
-            var new_object_id = new Date().getTime();
-            var html = $($('#new_photo_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-            html.appendTo($('#' + container)).slideDown('slow');
-            $(this).removePhotoField();
-        }
-    });
+    for (i = 0; i < emails.length; i++) {
 
-    $(this).removePhotoField();
-};
-
-
-$.fn.makeMainPhoto = function(resource) {
-    $('input.mainCh').click(function() {
-        $('input.mainCh').attr('checked', false);
-        $(this).attr('checked', true);
-
-        $.ajax({
-            url: '/' + resource + '/set_main_photo?asset_id=' + $(this).attr('asset_id'),
-            type: 'post',
-            dataType: 'script',
-            success: function(results) {
-                alert('main phot set!');
-            }
-        });
-
-    });
-};
-
-$.fn.deleteAsset = function(resource) {
-    $('a.del_photo').click(function() {
-        if (confirm('Delete photo?')) {
-            var div_to_remove = $(this).parent('.existing_image');
-            $.ajax({
-                url: '/' + resource + '/delete_asset?asset_id=' + $(this).attr('asset_id'),
-                type: 'post',
-                dataType: 'script',
-                success: function(results) {
-                    div_to_remove.remove();
-                }
-            });
-        }
-    });
-
+        var emailAddress = emails[i];
+        //alert(emailAddress);
+        //alert(email_regex.test(emailAddress));
+        valid = valid && email_regex.test(emailAddress); // logical and of all email validations
+    }
+    return valid;
 };
 
 
@@ -157,20 +114,210 @@ $.fn.showHideSearchOption = function() {
     }
 };
 
+$.fn.editPhotoLabel = function() {
+    $('a.edit_asset_label').click(function() {
+        $('#edit_label_status').html('');
+        tb_show('Edit Label', '#TB_inline?dd=4&width=400&height=250&inlineId=edit_asset_label_lb&modal=true');
+        $('#asset_label').val($(this).attr('title'));
+        $('#asset_id').val($(this).attr('asset_id'));
+//        $.ajax({
+//            url: '/' + resource + '/edit_photo_label?asset_id=' + $(this).attr('asset_id'),
+//            type: 'post',
+//            dataType: 'script',
+//            success: function(results) {
+//                alert('main phot set!');
+//            }
+//        });
+
+    });
+};
+
+var TBD = {
+    LEFT_SLIDER_OPTIONS: {
+        mode: 'fade',
+        auto: true,
+        controls: true,
+        pager: true,
+        randomStart: true   ,
+        autoStart: true,
+        autoHover: false,
+        autoDelay: 0,
+        stopAuto: true
+    },
+
+    DETAIL_PAGE_PHOTO_GALLERY_OPTIONS : {
+      panel_width: 680,
+        panel_height: 280,
+        panel_padding: 10,
+        panel_border: '1px solid #cccccc',
+        panel_bottom_margin: 10,
+        frame_width: 64,
+        frame_height: 55,
+        strip_padding: 10,
+        //strip_border: '1px solid #cccccc',
+        strip_border: '1px solid #F2F1EC',
+        strip_background: '#F2F1EC',
+        frame_size: 10,
+        transition_speed: 600,
+        transition_interval: 6000,
+        //overlay_height: 30,
+        //overlay_color: '#222',
+        //overlay_text_color: 'white',
+        caption_text_color: '#222',
+        background_color: 'transparent',
+        border: 'none',
+        nav_theme: 'light',
+        easing: 'easeInOutQuad',
+        hide_nav_buttons: true,
+        pause_on_hover: true
+    },
+
+    DHTML : {
+        addMoreItem : function(clickableSelector, source, placeHolder, removeSelector, itemClass) {
+            $(clickableSelector).click(function() {
+                var new_object_id = new Date().getTime();
+                var html = $($(source).html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
+                html.appendTo($(placeHolder)).slideDown('slow');
+                TBD.DHTML.removeDHTMLItem(removeSelector, itemClass);
+            });
+
+            TBD.DHTML.removeDHTMLItem(removeSelector, itemClass);
+        },
+
+        removeDHTMLItem : function(selector, itemClass) {
+            $(selector).click(function() {
+                $(this).parents('.' + itemClass).remove();
+            });
+        },
+
+        addMorePhoto : function(container, allowed_images) {
+            $('a.addMoreImage').click(function() {
+                if (allowed_images && ($('#' + container + 'span.removeImageField').length + $('a.del_photo').length) > allowed_images) {
+                    alert('Maximum allowed ' + allowed_images);
+                    return false;
+                }
+                else {
+                    var new_object_id = new Date().getTime();
+                    var html = $($('#new_photo_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
+                    html.appendTo($('#' + container)).slideDown('slow');
+                }
+                TBD.DHTML.removeDHTMLItem('span.removeImageField', 'photo');
+            });
+        },
+        checkUncheckSpot : function(that) {
+            if (!$(that).attr('checked')) {
+                $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
+                    $(this).removeAttr('checked');
+                });
+                $('.spot_of_district_' + $(that).attr('value')).hide();
+            }
+            else {
+                $('.spot_of_district_' + $(that).attr('value')).show();
+                $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
+                    if ($(this).attr('prev_checked') == 'true')
+                        $(this).attr('checked', 'checked');
+                });
+            }
+
+        }
+    },
+
+    ASSETS : {
+        makeMainPhoto : function(resource) {
+            $('input.mainCh').click(function() {
+                $('input.mainCh').attr('checked', false);
+                $(this).attr('checked', true);
+
+                $.ajax({
+                    url: '/' + resource + '/set_main_photo?asset_id=' + $(this).attr('asset_id'),
+                    type: 'post',
+                    dataType: 'script',
+                    success: function(results) {
+                        alert('main phot set!');
+                    }
+                });
+
+            });
+        },
+
+        deleteAsset : function(resource) {
+            $('a.del_photo').click(function() {
+                if (confirm('Delete photo?')) {
+                    var div_to_remove = $(this).parent('.existing_image');
+                    $.ajax({
+                        url: '/' + resource + '/delete_asset?asset_id=' + $(this).attr('asset_id'),
+                        type: 'post',
+                        dataType: 'script',
+                        success: function(results) {
+                            div_to_remove.remove();
+                        }
+                    });
+                }
+            });
+
+        }
+    },
+
+    GENERAL : {
+        slideFeaturedHotels:function() {
+            $('#left_side_featured_hotels').bxSlider(TBD.LEFT_SLIDER_OPTIONS);
+        }
+        ,
+
+        slideFeaturedTransports:function() {
+            $('#left_side_featured_transports').bxSlider(TBD.LEFT_SLIDER_OPTIONS);
+        }
+        ,
+
+        slideFeaturedAgents:function() {
+            $('#left_side_featured_tour_operators').bxSlider(TBD.LEFT_SLIDER_OPTIONS);
+        }
+        ,
+
+        closeTBOnEscape:function() {
+            $(this).keydown(function(e) {
+                if (e == null) { // ie
+                    keycode = event.keyCode;
+                } else { // mozilla
+                    keycode = e.which;
+                }
+                if (keycode == 27) { // close
+                    top.tb_remove();
+                }
+            });
+        }
+    }
+}
+
+
+$.maxZIndex = $.fn.maxZIndex = function(opt) {
+    /// <summary>
+    /// Returns the max zOrder in the document (no parameter)
+    /// Sets max zOrder by passing a non-zero number
+    /// which gets added to the highest zOrder.
+    /// </summary>
+    /// <param name="opt" type="object">
+    /// inc: increment value,
+    /// group: selector for zIndex elements to find max for
+    /// </param>
+    /// <returns type="jQuery" />
+    var def = { inc: 10, group: "*" };
+    $.extend(def, opt);
+    var zmax = 0;
+    $(def.group).each(function() {
+        var cur = parseInt($(this).css('z-index'));
+        zmax = cur > zmax ? cur : zmax;
+    });
+    if (!this.jquery)
+        return zmax;
+
+    return this.each(function() {
+        zmax += def.inc;
+        $(this).css("z-index", zmax);
+    });
+}
 
 $(document).ready(function() {
-    $("#new_task").submitWithAjax();
-
-    $('a.cloneTask').click(function() {
-        $.ajax({
-            url: jQuery(this).attr('href'),
-            type: 'get',
-            dataType: 'script'
-        });
-
-        return false;
-    });
-
     setTimeout(function() {
         $('#flash_messages').fadeOut();
     }, 5000);
@@ -180,21 +327,110 @@ $(document).ready(function() {
     $(this).removeSavedItem();
     $(this).toggleLoginOther();
     $(this).showHideSearchOption();
+    $(this).editPhotoLabel();
     $('#search_option').change(function() {
         $(this).showHideSearchOption();
     });
 
+    $('.close_lb').click(function() {
+        tb_remove();
+    });
+    $('.searchDate').datepicker({
+        changeMonth: true,
+        changeYear: true
+        //beforeShow: function() {$('#ui-datepicker-div').maxZIndex(); }
+    });
 
-    $(this).keydown(function(e) {
-        if (e == null) { // ie
-            keycode = event.keyCode;
-        } else { // mozilla
-            keycode = e.which;
-        }
-        if (keycode == 27) { // close
-            top.tb_remove();
+    TBD.GENERAL.closeTBOnEscape();
+    TBD.GENERAL.slideFeaturedHotels();
+    TBD.GENERAL.slideFeaturedTransports();
+    TBD.GENERAL.slideFeaturedAgents();
+
+
+
+    var validateSendToFriend = function() {
+        var stf_validator = $("#send_to_friends_form").validate({
+            invalidHandler: function() {
+                $("#stf_summary").html('<div class="summary error">' + stf_validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+            },
+            errorPlacement: function(error, element) {
+                error.remove();
+            },
+
+            rules: {
+                message: "required",
+                email: {
+                    required: true,
+
+                    multipleEmailValidation: true
+
+                }
+            }
+        });
+    };
+
+    var message_validator = $("#message_form").validate({
+        errorPlacement: function(error, element) {
+            error.remove();
+        },
+        invalidHandler: function(e, validator) {
+            var errors = validator.numberOfInvalids();
+            if (errors) {
+                var message = errors == 1
+                        ? 'You missed 1 field. It has been highlighted below'
+                        : 'You missed ' + errors + ' fields.  They have been highlighted below';
+                $("div#message_status").html("<span class='error'>" + message + "</span>");
+                $("div#message_status span.error").show();
+            } else {
+                $("div#message_status span.error").hide();
+            }
+        },
+
+
+        rules: {
+            'message[name]': "required",
+            'message[email]': {
+                required: true,
+                email: true
+            },
+
+            'message[address]': "required",
+            'message[phone]': "required",
+            'message[title]': "required",
+            'message[content]': "required",
+            'spam_check': "required"
+            //ad_ad_name: "required",
+            //ad_short_description: "required"
+
         }
     });
+    $("#message_form").bind("ajaxSend",
+            function() {
+                $('#submit_to_seller').hide();
+                $('#sending_to_seller').show();
+            }).bind("ajaxComplete",
+            function() {
+                $('#sending_to_seller').hide();
+                $('#submit_to_seller').show();
+            }).bind("ajax:success", function() {
+        $("#message_form").get(0).reset();
+    });
+
+    $("#send_to_friends_form").bind("ajaxSend",
+            function() {
+                $('#submit_to_friend').hide();
+                $('#sending_to_friend').show();
+            }).bind("ajaxComplete",
+            function() {
+                $('#sending_to_friend').hide();
+                $('#submit_to_friend').show();
+            }).bind("ajax:success", function() {
+        $("#send_to_friends_form").get(0).reset();
+    });
+
+
+    validateSendToFriend();
+
 })
 
 

@@ -41,17 +41,32 @@
       <%= f.text_field :short_description %>
     </div>
 
-    <div class="item_form_row">
+    <div class="item_form_row" id="history_wrapper">
+      <%= f.label :history %>
+      <%= f.text_area :history, :class => "tiny_redcloth" %>
+    </div>
+
+    <div class="item_form_row" id="description_wrapper">
       <%= f.label :detail %>
       <%= f.text_area :description, :class => "tiny_redcloth" %>
     </div>
+
+    <div class="item_form_row">
+      <%= f.label :how_to_go %>
+      <%= f.text_area :how_to_go %>
+    </div>
+    <div class="item_form_row">
+      <%= f.label :where_to_stay %>
+      <%= f.text_area :where_to_stay %>
+    </div>
+
     <div class="item_form_row">
       <label>
         <span>*</span> Division:
       </label>
       <%= f.select :division_id, Division.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
-
     </div>
+
     <div class="item_form_row">
       <label>
         <span>*</span>
@@ -63,11 +78,57 @@
 
 
     <div class="item_form_row">
-      <label>
-        Active:
-      </label>
-      <%= f.check_box :active %>
+      <label> Latitude:</label>
+      <%= f.text_field :latitude %>
     </div>
+
+    <div class="item_form_row">
+      <label> Longitude:</label>
+      <%= f.text_field :longitude %>
+    </div>
+
+
+
+    <div class="item_form_row">
+      <label class="wider"> Side Scenes:</label>
+
+      <div class="f_edit_row photo_box" style="width:705px;">
+
+
+        <div id="spot_side_scenes" class="package_events">
+
+          <% unless @spot.new_record? %>
+              <%= render :partial => 'side_scene', :collection => @spot.side_scenes, :locals => {:form => f} %>
+          <% end %>
+          <%= render :partial => 'side_scene', :locals => {:form => f, :side_scene => @spot.side_scenes.new} if @spot.new_record? || @spot.side_scenes.size == 0 %>
+        </div>
+
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreSideScene' %>
+      </div>
+
+    </div>
+
+    <div class="item_form_row">
+      <label class="wider"> Cost Ideas:</label>
+
+      <div class="f_edit_row photo_box" style="width:705px;">
+
+
+        <div id="spot_cost_items" class="package_events">
+
+          <% unless @spot.new_record? %>
+              <%= render :partial => 'cost_item', :collection => @spot.cost_items, :locals => {:form => f} %>
+          <% end %>
+          <%= render :partial => 'cost_item', :locals => {:form => f, :cost_item => @spot.cost_items.new} if @spot.new_record? || @spot.cost_items.size == 0 %>
+        </div>
+
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreCostItem' %>
+      </div>
+
+    </div>
+
+
+
     <div class="item_form_row">
       <label> Image:</label>
 
@@ -76,11 +137,11 @@
         <div class="edit_img_row">
 
           <% unless @spot.new_record? %>
-              <%= render :partial => 'existing_photo', :collection => @spot.assets %>
+              <%= render :partial => 'shared_partials/existing_photo', :collection => @spot.assets %>
           <% end %>
 
-          <div id="hotel_photos">
-            <%= render :partial => 'photo', :locals => {:form => f, :photo => @spot.assets.new} if @spot.new_record? %>
+          <div id="spot_photos">
+            <%= render :partial => 'shared_partials/photo', :locals => {:form => f, :photo => @spot.assets.new} if @spot.new_record? %>
           </div>
 
         </div>
@@ -98,43 +159,28 @@
 <div style="display: none">
 
   <div id="new_photo_html">
-    <%= render(:partial => 'photo', :locals => {:form => @builder}, :object => @spot.assets.new) %>
+    <%= render(:partial => 'shared_partials/photo', :locals => {:form => @builder}, :object => @spot.assets.new) %>
   </div>
 
-  <div id="tiny_redcloth_image" style="display: none">
-    <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_tiny_redcloth_image', :title => 'close' %>
-    <h3>Uploaded Images
-      <small> [click on images to select]</small>
-    </h3>
 
-    <div id="tiny_redcloth_image_container">
-      <%= image_tag 'loadingAnimation.gif' %>
-    </div>
-
-    <div class="tiny_redcloth_image_form_container">
-      <%= form_for(current_user, :url => upload_images_users_path, :html=> {:multipart => true, :id=> 'user_image_upload_form'}) do |f| %>
-
-          <div id="user_uploaded_photos">
-            <%= render :partial => 'users/upload_image', :locals => {:form => f, :photo => current_user.uploaded_images.new} %>
-          </div>
-          <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImageToUpload' %>
-
-          <div class="actions fl">
-            <button value="Upload" id='submit_user_upload'>Upload</button>
-          </div>
-          <% @user_form_builder = f %>
-      <% end %>
-
-      <div id="new_user_image_html" style="display:none;">
-        <%= render :partial => 'users/upload_image', :locals => {:form => @user_form_builder, :photo => current_user.uploaded_images.new} %>
-      </div>
-    </div>
+  <div id="new_side_scene_html">
+    <%= render(:partial => 'side_scene', :locals => {:form => @builder}, :object => @spot.side_scenes.new) %>
+  </div>
+  <div id="new_cost_item_html">
+    <%= render(:partial => 'cost_item', :locals => {:form => @builder}, :object => @spot.cost_items.new) %>
   </div>
 
+  <%= render :partial => 'shared_partials/edit_asset_label' %>
 </div>
+
+<%= render :partial => 'shared_partials/tiny_redcloth_image' %>
+
+<style type="text/css ">
+
+</style>
 <script type="text/javascript">
     var allowed_images = 5;
-    $.fn.divisionChanged = function() {
+    divisionChanged = function() {
         $('#spot_division_id').change(function() {
             $('#district_loading').toggle();
             $.ajax({
@@ -146,11 +192,13 @@
                 }
             });
         });
-    }
+    };
 
 
     $(document).ready(function() {
 
+        TBD.DHTML.addMoreItem('a.addMoreSideScene', '#new_side_scene_html', '#spot_side_scenes', 'span.removeSideSceneField', 'side_scene');
+        TBD.DHTML.addMoreItem('a.addMoreCostItem', '#new_cost_item_html', '#spot_cost_items', 'span.removeCostItemField', 'cost_item');
 
         var validator = $("#spot_form").validate({
             invalidHandler: function() {
@@ -159,7 +207,6 @@
             errorPlacement: function(error, element) {
                 error.remove();
             },
-
 
             rules: {
                 'spot[category_id]': "required",
@@ -172,15 +219,13 @@
             }
         });
 
-
-        $(this).addMorePhoto('spot_photos', allowed_images);
-        $(this).deleteAsset('spots');
-        $(this).makeMainPhoto('spots');
-        $(this).divisionChanged();
+        TBD.DHTML.addMorePhoto('spot_photos', allowed_images);
+        TBD.ASSETS.deleteAsset('spots');
+        TBD.ASSETS.makeMainPhoto('spots');
+        divisionChanged();
         $('textarea.tiny_redcloth').tinyRedcloth();
         //$('textarea.tiny_redcloth').banglaInput();
 
     });
-
 
 </script>

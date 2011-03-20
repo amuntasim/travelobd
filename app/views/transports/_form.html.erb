@@ -1,6 +1,6 @@
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.validate' %>
-    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+    <%= javascript_include_tag 'jquery.validate', 'thickbox' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
 
 <%= form_for(@transport, :html => {:multipart => true, :id=> 'transport_form'}) do |f| %>
@@ -41,7 +41,6 @@
     </div>
 
 
-
     <div class="item_form_row">
       <label> Destinations:</label>
 
@@ -72,7 +71,6 @@
     </div>
 
 
-
     <div class="item_form_row">
       <label> Image:</label>
 
@@ -81,11 +79,11 @@
         <div class="edit_img_row">
 
           <% unless @transport.new_record? %>
-              <%= render :partial => 'existing_photo', :collection => @transport.assets %>
+              <%= render :partial => 'shared_partials/existing_photo', :collection => @transport.assets %>
           <% end %>
 
           <div id="transport_photos">
-            <%= render :partial => 'photo', :locals => {:form => f, :photo => @transport.assets.new} if @transport.new_record? %>
+            <%= render :partial => 'shared_partials/photo', :locals => {:form => f, :photo => @transport.assets.new} if @transport.new_record? %>
           </div>
 
         </div>
@@ -96,25 +94,45 @@
     </div>
 
 
-
     <div class="item_form_row">
-      <label> Contacts:</label>
+      <label class="wider"> Branch Locations:</label>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
 
-        <div id="transport_contacts" class="package_events">
+        <div id="transport_branch_locations" class="package_events">
 
           <% unless @transport.new_record? %>
-              <%= render :partial => 'shared_partials/contact', :collection => @transport.contacts, :locals => {:form => f} %>
+              <%= render :partial => 'shared_partials/branch_location', :collection => @transport.branch_locations, :locals => {:form => f} %>
           <% end %>
-          <%= render :partial => 'shared_partials/contact', :locals => {:form => f, :contact => @transport.contacts.new} if @transport.new_record? || @transport.contacts.size == 0 %>
+          <%= render :partial => 'shared_partials/branch_location', :locals => {:form => f, :branch_location => @transport.branch_locations.new} if @transport.new_record? || @transport.branch_locations.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreContact' %>
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreBranchLocation' %>
       </div>
 
     </div>
+
+    <div class="item_form_row">
+      <label class="wider"> Departure Schedules:</label>
+
+      <div class="f_edit_row photo_box" style="width:705px;">
+
+
+        <div id="transport_departure_schedules" class="package_events">
+
+          <% unless @transport.new_record? %>
+              <%= render :partial => 'departure_schedule', :collection => @transport.departure_schedules, :locals => {:form => f} %>
+          <% end %>
+          <%= render :partial => 'departure_schedule', :locals => {:form => f, :departure_schedule => @transport.departure_schedules.new} if @transport.new_record? || @transport.departure_schedules.size == 0 %>
+        </div>
+
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreDepartureSchedule' %>
+      </div>
+
+    </div>
+
+
 
     <div class="item_form_row">
       <label> Policies:</label>
@@ -135,6 +153,24 @@
 
     </div>
 
+    <div class="item_form_row">
+      <label> Contacts:</label>
+
+      <div class="f_edit_row photo_box" style="width:705px;">
+
+
+        <div id="transport_contacts" class="package_events">
+
+          <% unless @transport.new_record? %>
+              <%= render :partial => 'shared_partials/contact', :collection => @transport.contacts, :locals => {:form => f} %>
+          <% end %>
+          <%= render :partial => 'shared_partials/contact', :locals => {:form => f, :contact => @transport.contacts.new} if @transport.new_record? || @transport.contacts.size == 0 %>
+        </div>
+
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreContact' %>
+      </div>
+
+    </div>
 
 
     <div class="submit_btn">
@@ -158,226 +194,62 @@
     <%= render(:partial => 'shared_partials/policy', :locals => {:form => @builder}, :object => @transport.policies.new) %>
   </div>
 
+  <div id="new_departure_schedule_html">
+    <%= render(:partial => 'departure_schedule', :locals => {:form => @builder}, :object => @transport.departure_schedules.new) %>
+  </div>
 
+  <div id="new_branch_location_html">
+    <%= render(:partial => 'shared_partials/branch_location', :locals => {:form => @builder}, :object => @transport.branch_locations.new) %>
+  </div>
+
+  <%= render :partial => 'shared_partials/edit_asset_label' %>
 </div>
 
+
+
 <style type="text/css">
-    .package_contact_address {
-        float: left;
-        width: 425px;
-    }
 
-    .package_contact_address textarea {
-        background: none;
-        border: 1px solid #ccc;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        float: left;
-        height: 60px;
-        padding-top: 5px;
-        width: 400px;
-    }
 
-    .event {
-        margin-bottom: 15px;
-    }
 </style>
 <script type="text/javascript">
     var allowed_images = 10;
 
+    $(document).ready(function() {
+        TBD.DHTML.addMoreItem('a.addMoreContact', '#new_contact_html', '#transport_contacts', 'span.removeContactField', 'contact');
+        TBD.DHTML.addMoreItem('a.addMorePolicy', '#new_policy_html', '#transport_policies', 'span.removePolicyField', 'policy');
+        TBD.DHTML.addMoreItem('a.addMoreBranchLocation', '#new_branch_location_html', '#transport_branch_locations', 'span.removeBranchLocationField', 'branch_location');
+        TBD.DHTML.addMoreItem('a.addMoreDepartureSchedule', '#new_departure_schedule_html', '#transport_departure_schedules', 'span.removeDepartureScheduleField', 'departure_schedule');
+        TBD.DHTML.addMoreItem('a.addMoreDestination', '#new_destination_html', '#transport_destinations', 'span.removeDestinationField', 'destination');
 
-    $.fn.checkUncheckSpot = function() {
-        if (!$(this).attr('checked')) {
-            $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
-                $(this).removeAttr('checked');
-            });
-            $('.spot_of_district_' + $(this).attr('value')).hide();
-        }
-        else {
-            $('.spot_of_district_' + $(this).attr('value')).show();
-            $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
-                if ($(this).attr('prev_checked') == 'true')
-                    $(this).attr('checked', 'checked');
-            });
-        }
-
-    },
-
-            $.fn.handleDistrictSelection = function() {
-                $(".district_in_transport input[type='checkbox']").change(function () {
-                    $(this).checkUncheckSpot();
-                });
-
+        $("#transport_form").validate({
+            errorPlacement: function(error, element) {
+                error.remove();
             },
 
-            $.fn.removePEvent = function() {
-                $(this).parents('.event').remove();
+            rules: {
+                'transport[category_id]': "required",
+                'transport[title]' : "required",
+                'transport[price]': "required"
             },
-            $.fn.removePItinerary = function() {
-                $(this).parents('.itinerary').remove();
-            },
-            $.fn.removePContact = function() {
-                $(this).parents('.contact').remove();
-            },
+            messages: {
+                comment: "Please enter a comment."
+            }
+        });
 
-            $.fn.removePDestination = function() {
-                $(this).parents('.destination').remove();
-            },
-            $.fn.removePPolicies = function() {
-                $(this).parents('.policy').remove();
-            },
+        $('#transport_discount_till, #transport_start_date, #transport_end_date').datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
 
+        TBD.DHTML.addMorePhoto('transport_photos', allowed_images);
+        TBD.ASSETS.deleteAsset('transports');
+        TBD.ASSETS.makeMainPhoto('transports');
 
-            $(document).ready(function() {
+        $(".district_in_transport input[type='checkbox']").each(function () {
+            TBD.DHTML.checkUncheckSpot(this);
+        });
 
-                $('a.addMoreContact').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_contact_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_contacts')).slideDown('slow');
-                    $('span.removeContactField').click(function() {
-                        $(this).removePContact();
-                    });
-
-                    $('span.removeContactField').click(function() {
-                        $(this).removePContact();
-                    });
-                });
-
-                $('span.removeContactField').click(function() {
-                    $(this).removePContact();
-                });
-
-                $('a.addMorePolicy').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_policy_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_policies')).slideDown('slow');
-                    $('span.removePolicyField').click(function() {
-                        $(this).removePPolicy();
-                    });
-
-                    $('span.removePolicyField').click(function() {
-                        $(this).removePPolicy();
-                    });
-                });
-
-                $('span.removePolicyField').click(function() {
-                    $(this).removePPolicy();
-                });
-
-
-                $('a.addMoreDestination').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_destination_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_destinations')).slideDown('slow');
-                    $('span.removeDestinationField').click(function() {
-                        $(this).removePDestination();
-                    });
-
-                    $('span.removeDestinationField').click(function() {
-                        $(this).removePDestination();
-                    });
-                });
-
-                $('span.removeDestinationField').click(function() {
-                    $(this).removePDestination();
-                });
-
-                $('a.addMoreEvent').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_event_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_events')).slideDown('slow');
-                    $('span.removeEventField').click(function() {
-                        $(this).removePEvent();
-                    });
-
-                    $('span.removeEventField').click(function() {
-                        $(this).removePEvent();
-                    });
-                });
-
-                $('span.removeEventField').click(function() {
-                    $(this).removePEvent();
-                });
-
-
-                $('a.addMoreItinerary').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_itinerary_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_itineraries')).slideDown('slow');
-                    $('span.removeItineraryField').click(function() {
-                        $(this).removePItinerary();
-                    });
-
-                    $('span.removeItineraryField').click(function() {
-                        $(this).removePItinerary();
-                    });
-                });
-
-                $('span.removeItineraryField').click(function() {
-                    $(this).removePItinerary();
-                });
-
-
-                $('span.removeImageField').click(function() {
-                    $(this).parents('.photo').remove();
-                });
-
-
-                $('a.adMoreVideo').click(function() {
-                    if ($($('a.removeVideo')).length > allowed_videos) {
-                        alert('Maximum allowed ' + allowed_videos);
-                        return false;
-                    }
-                    else {
-                        var new_object_id = new Date().getTime();
-                        var html = $($('#new_video_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                        html.appendTo($('#package_videos')).slideDown('slow');
-                        $('a.removeVideo').click(function() {
-                            $(this).parents('.video').remove();
-                        });
-                    }
-
-                });
-
-                $('a.removeVideo').click(function() {
-                    $(this).parents('.video').remove();
-                });
-
-
-                $("#package_form").validate({
-                    errorPlacement: function(error, element) {
-                        error.remove();
-                    },
-
-
-                    rules: {
-                        'package[category_id]': "required",
-                        'package[title]' : "required",
-                        'package[price]': "required"
-                        //package_package_name: "required",
-                        //package_short_description: "required"
-
-                    },
-                    messages: {
-                        comment: "Please enter a comment."
-                    }
-                });
-
-                $('#package_discount_till, #package_start_date, #package_end_date').datepicker({
-                    changeMonth: true,
-                    changeYear: true
-                });
-                $(this).addMorePhoto('package_photos', allowed_images);
-                $(this).deleteAsset('packages');
-                $(this).makeMainPhoto('packages');
-                $(this).handleDistrictSelection();
-
-                $(".district_in_transport input[type='checkbox']").each(function () {
-                    $(this).checkUncheckSpot();
-                });
-
-            });
+    });
 
 
 </script>

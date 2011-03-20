@@ -1,29 +1,25 @@
-<%= content_for :over_mid_content do %>
-    <div class="redhead_row">
-      <h2>Articles</h2>
-    </div>
-<% end %>
-<div class="article_box">
-  <!--curv start -->
-  <div class="bl">
-    <div class="br">
-      <div class="tl">
-        <div class="tr">
-          <div class="articleRow">
-            <div class="bread_crum">
-              <a href="#"><%= @article.category %></a>
-              <span> > </span>
-              <a href="#"><%= @article.title %></a>
-            </div>
-            <div class="articleDesc">
-              <%= image_tag @article.main_image_url %>
-              <%= raw @article.detail %>
-            </div>
-          </div>
+<% title @article.title %>
 
-        </div>
-        /div>
-      </div>
-    </div>
-  </div>
+
+
+<div class="pageHead">
+  <%= @article.title %>
 </div>
+
+<div class="item_details">
+
+  <div class="itemDetail"><%= raw textilize @article.detail %></div>
+
+  <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @article, :rating => true} %>
+
+</div>
+
+
+<script type="text/javascript ">
+
+    $(document).ready(function() {
+
+    });
+
+
+</script>

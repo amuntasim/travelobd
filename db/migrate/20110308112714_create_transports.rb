@@ -3,7 +3,7 @@ class CreateTransports < ActiveRecord::Migration
     create_table :transports do |t|
       t.integer :user_id
       t.string :web
-      t.boolean :active
+      t.boolean :active, :default => true
 
       t.timestamps
     end

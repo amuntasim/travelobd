@@ -5,7 +5,6 @@
 admin:
   Package: create, read, update, delete
   Article: create, read, update, delete
-  Classified: create, read, update, delete
   District: create, read, update, delete
   Division: create, read, update, delete
   Element: create, read, update, delete

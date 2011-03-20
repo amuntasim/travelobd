@@ -1,0 +1,43 @@
+<div class="event branch_location">
+
+  <%= form.fields_for :branch_locations, branch_location, :child_index => (branch_location.new_record? ? "index_to_replace_with_js" : nil) do |branch_location_form| %>
+      <div class="package_event_time">
+        District
+      </div>
+      <div class="package_contact_address">
+        Location Name
+      </div>
+
+      <div class="package_event_time clear">
+        <%= branch_location_form.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--',  :class => 'event' %>
+      </div>
+      <div class="package_contact_address">
+        <%= branch_location_form.text_field :location, :class => 'event' %>
+      </div>
+
+      <div class="package_event_time clear">
+        Phone
+      </div>
+      <div class="package_contact_address fl">
+        Address
+      </div>
+
+      <div class="package_event_time clear">
+        <%= branch_location_form.text_field :phone, :class => 'event' %>
+      </div>
+
+      <div class="package_contact_address">
+        <%= branch_location_form.text_area :address, :class => 'event' %>
+      </div>
+
+      <div class="deleteLink">
+        <% if branch_location.new_record? %>
+            <span class="removeBranchLocationField"> Remove</span>
+        <% else %>
+            <%= branch_location_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

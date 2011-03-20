@@ -1,0 +1,5 @@
+<% if @already_saved %>
+    <%= link_to '[ Remove ]', 'javascript:void(0)', :class => 'remove_from_save_listing', :sl_id=> @already_saved.id, :savable_id => savable.id, :savable_type => savable.class.name %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;
+<% else %>
+    <%= link_to 'Save This Hotel', 'javascript:void(0)', :class => 'save_item', :savable_type => savable.class.name, :item_id=> savable.id %>
+<% end %>

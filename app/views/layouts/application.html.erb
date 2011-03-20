@@ -3,8 +3,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title><%= @title || "Welcome" %></title>
-  <%= stylesheet_link_tag 'style', 'style_override', 'menu' %>
-  <%= javascript_include_tag 'jquery.min', 'jquery-ui', 'rails', 'menu', 'application' %>
+  <%= stylesheet_link_tag 'style', 'menu', 'bx_styles' %>
+
+  <%= javascript_include_tag 'jquery.min', 'jquery-ui', 'jquery.validate', 'rails', 'menu', 'application', 'jquery.bxSlider.min' %>
   <%= yield :js_css_include %>
   <%= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
@@ -13,7 +14,7 @@
 
 <body>
 <div class="wrapper">
-  <div class="wrap_bdoy">
+  <div class="wrap_body">
     <!--heading start -->
     <%= render 'layouts/header' %>
     <!--heading end -->

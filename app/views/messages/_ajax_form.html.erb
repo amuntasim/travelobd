@@ -1,4 +1,4 @@
-<h2 style=" margin-bottom: 20px; margin-top: 5px;">Contact Seller</h2>
+<h2 style=" margin-bottom: 20px; margin-top: 5px;">Contact Owner</h2>
 
 <%= form_for Message.new, :url=>messages_path, :remote=> true, :html=> {:id=> 'message_form'} do |f| %>
     <div id="message_status" class="white_Desc">
@@ -41,7 +41,6 @@
       <span class="search_button_right"> </span>
                                  </div>
       <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_seller', :style=> 'display:none' %>
-      <%= f.hidden_field :seller_id, :value => message_target.user_id %>
       <%= f.hidden_field :user_id, :value => message_target.user_id %>
       <%= f.hidden_field :ref_id, :value => message_target.id %>
       <%= f.hidden_field :ref_type, :value => message_target.class %>

@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: users
@@ -23,6 +24,7 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :authentications
   ajaxful_rater
   has_one :profile
   has_many :ads
@@ -31,11 +33,16 @@ class User < ActiveRecord::Base
   has_many :uploaded_images, :class_name => 'TrUploadedImage'
   accepts_nested_attributes_for :profile
   accepts_nested_attributes_for :uploaded_images
+  has_many :hotels
 
   acts_as_authentic do |c|
     c.login_field = :email
     c.validate_login_field false
     # c.validate_password_field = false
+  end
+
+  def name
+     profile ? profile.full_name : self.read_attribute(:name)
   end
 
   def is_admin

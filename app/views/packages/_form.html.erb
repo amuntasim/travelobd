@@ -131,11 +131,11 @@
         <div class="edit_img_row">
 
           <% unless @package.new_record? %>
-              <%= render :partial => 'existing_photo', :collection => @package.assets %>
+              <%= render :partial => 'shared_partials/existing_photo', :collection => @package.assets %>
           <% end %>
 
           <div id="package_photos">
-            <%= render :partial => 'photo', :locals => {:form => f, :photo => @package.assets.new} if @package.new_record? %>
+            <%= render :partial => 'shared_partials/photo', :locals => {:form => f, :photo => @package.assets.new} if @package.new_record? %>
           </div>
 
         </div>
@@ -269,30 +269,11 @@
     <%= render(:partial => 'condition', :locals => {:form => @builder}, :object => @package.conditions.new) %>
   </div>
 
-
+  <%= render :partial => 'shared_partials/edit_asset_label' %>
 </div>
 
 <style type="text/css">
-    .package_contact_address {
-        float: left;
-        width: 425px;
-    }
 
-    .package_contact_address textarea {
-        background: none;
-        border: 1px solid #ccc;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        float: left;
-        height: 60px;
-        padding-top: 5px;
-        width: 400px;
-    }
-
-    .event {
-        margin-bottom: 15px;
-    }
 </style>
 <script type="text/javascript">
     var allowed_images = 10;
@@ -303,197 +284,59 @@
     <%end%>
 
 
-    $.fn.checkUncheckSpot = function() {
-        if (!$(this).attr('checked')) {
-            $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
-                $(this).removeAttr('checked');
-            });
-            $('.spot_of_district_' + $(this).attr('value')).hide();
-        }
-        else {
-            $('.spot_of_district_' + $(this).attr('value')).show();
-            $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
-                if ($(this).attr('prev_checked') == 'true')
-                    $(this).attr('checked', 'checked');
-            });
-        }
+    $(document).ready(function() {
+        TBD.DHTML.addMoreItem('a.addMoreContact', '#new_contact_html', '#package_contacts', 'span.removeContactField', 'contact');
+        TBD.DHTML.addMoreItem('a.addMoreCondition', '#new_condition_html', '#package_conditions', 'span.removeConditionField', 'condition');
+        TBD.DHTML.addMoreItem('a.addMoreDestination', '#new_destination_html', '#package_destinations', 'span.removeDestinationField', 'destination');
+        TBD.DHTML.addMoreItem('a.addMoreEvent', '#new_event_html', '#package_events', 'span.removeEventField', 'event');
+        TBD.DHTML.addMoreItem('a.addMoreItinerary', '#new_itinerary_html', '#package_itineraries', 'span.removeItineraryField', 'itinerary');
 
-    },
+        $('a.adMoreVideo').click(function() {
+            if ($($('a.removeVideo')).length > allowed_videos) {
+                alert('Maximum allowed ' + allowed_videos);
+                return false;
+            }
+            else {
+                var new_object_id = new Date().getTime();
+                var html = $($('#new_video_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
+                html.appendTo($('#package_videos')).slideDown('slow');
+                TBD.DHTML.removeDHTMLItem('a.removeVideo', 'video');
+            }
 
-            $.fn.handleDistrictSelection = function() {
-                $(".district_in_package input[type='checkbox']").change(function () {
-                    $(this).checkUncheckSpot();
-                });
+        });
+        TBD.DHTML.removeDHTMLItem('a.removeVideo', 'video');
 
+
+        $("#package_form").validate({
+            errorPlacement: function(error, element) {
+                error.remove();
             },
 
-            $.fn.removePEvent = function() {
-                $(this).parents('.event').remove();
+            rules: {
+                'package[category_id]': "required",
+                'package[title]' : "required",
+                'package[price]': "required"
+
             },
-            $.fn.removePItinerary = function() {
-                $(this).parents('.itinerary').remove();
-            },
-            $.fn.removePContact = function() {
-                $(this).parents('.contact').remove();
-            },
+            messages: {
+                comment: "Please enter a comment."
+            }
+        });
 
-            $.fn.removePDestination = function() {
-                $(this).parents('.destination').remove();
-            },
-            $.fn.removePConditions = function() {
-                $(this).parents('.condition').remove();
-            },
+        $('#package_discount_till, #package_start_date, #package_end_date').datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
 
+        TBD.DHTML.addMorePhoto('package_photos', allowed_images);
+        TBD.ASSETS.deleteAsset('packages');
+        TBD.ASSETS.makeMainPhoto('packages');
 
-            $(document).ready(function() {
+        $(".district_in_package input[type='checkbox']").each(function () {
+            TBD.DHTML.checkUncheckSpot(this);
+        });
 
-                $('a.addMoreContact').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_contact_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_contacts')).slideDown('slow');
-                    $('span.removeContactField').click(function() {
-                        $(this).removePContact();
-                    });
-
-                    $('span.removeContactField').click(function() {
-                        $(this).removePContact();
-                    });
-                });
-
-                $('span.removeContactField').click(function() {
-                    $(this).removePContact();
-                });
-
-                $('a.addMoreCondition').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_condition_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_conditions')).slideDown('slow');
-                    $('span.removeConditionField').click(function() {
-                        $(this).removePCondition();
-                    });
-
-                    $('span.removeConditionField').click(function() {
-                        $(this).removePCondition();
-                    });
-                });
-
-                $('span.removeConditionField').click(function() {
-                    $(this).removePCondition();
-                });
-
-
-                $('a.addMoreDestination').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_destination_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_destinations')).slideDown('slow');
-                    $('span.removeDestinationField').click(function() {
-                        $(this).removePDestination();
-                    });
-
-                    $('span.removeDestinationField').click(function() {
-                        $(this).removePDestination();
-                    });
-                });
-
-                $('span.removeDestinationField').click(function() {
-                    $(this).removePDestination();
-                });
-
-                $('a.addMoreEvent').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_event_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_events')).slideDown('slow');
-                    $('span.removeEventField').click(function() {
-                        $(this).removePEvent();
-                    });
-
-                    $('span.removeEventField').click(function() {
-                        $(this).removePEvent();
-                    });
-                });
-
-                $('span.removeEventField').click(function() {
-                    $(this).removePEvent();
-                });
-
-
-                $('a.addMoreItinerary').click(function() {
-                    var new_object_id = new Date().getTime();
-                    var html = $($('#new_itinerary_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                    html.appendTo($('#package_itineraries')).slideDown('slow');
-                    $('span.removeItineraryField').click(function() {
-                        $(this).removePItinerary();
-                    });
-
-                    $('span.removeItineraryField').click(function() {
-                        $(this).removePItinerary();
-                    });
-                });
-
-                $('span.removeItineraryField').click(function() {
-                    $(this).removePItinerary();
-                });
-
-
-                $('span.removeImageField').click(function() {
-                    $(this).parents('.photo').remove();
-                });
-
-
-                $('a.adMoreVideo').click(function() {
-                    if ($($('a.removeVideo')).length > allowed_videos) {
-                        alert('Maximum allowed ' + allowed_videos);
-                        return false;
-                    }
-                    else {
-                        var new_object_id = new Date().getTime();
-                        var html = $($('#new_video_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-                        html.appendTo($('#package_videos')).slideDown('slow');
-                        $('a.removeVideo').click(function() {
-                            $(this).parents('.video').remove();
-                        });
-                    }
-
-                });
-
-                $('a.removeVideo').click(function() {
-                    $(this).parents('.video').remove();
-                });
-
-
-                $("#package_form").validate({
-                    errorPlacement: function(error, element) {
-                        error.remove();
-                    },
-
-
-                    rules: {
-                        'package[category_id]': "required",
-                        'package[title]' : "required",
-                        'package[price]': "required"
-                        //package_package_name: "required",
-                        //package_short_description: "required"
-
-                    },
-                    messages: {
-                        comment: "Please enter a comment."
-                    }
-                });
-
-                $('#package_discount_till, #package_start_date, #package_end_date').datepicker({
-                    changeMonth: true,
-                    changeYear: true
-                });
-                $(this).addMorePhoto('package_photos', allowed_images);
-                $(this).deleteAsset('packages');
-                $(this).makeMainPhoto('packages');
-                $(this).handleDistrictSelection();
-
-                $(".district_in_package input[type='checkbox']").each(function () {
-                    $(this).checkUncheckSpot();
-                });
-
-            });
+    });
 
 
 </script>

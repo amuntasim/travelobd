@@ -1,0 +1,164 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Asset:
+  fields:
+    default: assetable_id, photo_file_name, main, label_en, label_bn
+    form: assetable_id, photo_file_name, main, label_en, label_bn
+  order_by: 
+  relationships: 
+  filters: 
+  search: 
+  application: travelobd
+
+BranchLocation:
+  fields:
+    default: branchable_id, district_id, phone, district
+    form: branchable_id, district_id, phone, district
+  order_by: 
+  relationships: district, translations
+  filters: 
+  search: 
+  application: travelobd
+
+Comment:
+  fields:
+    default: user_id, name, email, commentable, approved, user
+    form: user_id, name, email, content, commentable_id, approved, user
+  order_by: 
+  relationships: user
+  filters:
+  search: name
+  application: travelobd
+
+Condition:
+  fields:
+    default: conditionable_id
+    form: conditionable_id
+  order_by: 
+  relationships: translations
+  filters: 
+  search: 
+  application: travelobd
+
+Contact:
+  fields:
+    default: contactable_id, email, phone
+    form: contactable_id, email, phone
+  order_by: 
+  relationships: translations
+  filters: 
+  search: 
+  application: travelobd
+
+Country:
+  fields:
+    default: name, code
+    form: name, code
+  order_by: 
+  relationships: districts
+  filters: 
+  search: name
+  application: travelobd
+
+DepartureSchedule:
+  fields:
+    default: transport_id, transport
+    form: transport_id, transport
+  order_by: 
+  relationships: translations, transport
+  filters: 
+  search: 
+  application: travelobd
+
+HotelAsset:
+  fields:
+    default: hotel_id, photo_file_name, main, hotel
+    form: hotel_id, photo_file_name, main, hotel
+  order_by: 
+  relationships: hotel
+  filters: 
+  search: 
+  application: travelobd
+
+PackageEvent:
+  fields:
+    default: package_id
+    form: package_id
+  order_by: 
+  relationships: translations
+  filters: 
+  search: 
+  application: travelobd
+
+PackageItinerary:
+  fields:
+    default: package_id
+    form: package_id
+  order_by: 
+  relationships: translations
+  filters: 
+  search: 
+  application: travelobd
+
+Policy:
+  fields:
+    default: policiable_id
+    form: policiable_id
+  order_by: 
+  relationships: translations
+  filters: 
+  search: 
+  application: travelobd
+
+Rate:
+  fields:
+    default: rater_id, rateable_id, stars, dimension, rater
+    form: rater_id, rateable_id, stars, dimension, rater
+  order_by: 
+  relationships: rater
+  filters: 
+  search: 
+  application: travelobd
+
+Room:
+  fields:
+    default: hotel_id, name, price, active, total_room, user_id, user, hotel
+    form: hotel_id, name, description, price, active, total_room, user_id, user, hotel
+  order_by: 
+  relationships: assets, features, hotel, main_image, user
+  filters: 
+  search: name
+  application: travelobd
+
+RoomAsset:
+  fields:
+    default: room_id, photo_file_name, main, room
+    form: room_id, photo_file_name, main, room
+  order_by: 
+  relationships: room
+  filters: 
+  search: 
+  application: travelobd
+
+TrUploadedImage:
+  fields:
+    default: label, user_id, photo_file_name, user
+    form: label, user_id, photo_file_name, user
+  order_by: 
+  relationships: user
+  filters: 
+  search: 
+  application: travelobd
+
+Transport:
+  fields:
+    default: user, web, active, category, featured
+    form: user_id, web, active, category_id, user
+  order_by: 
+  relationships:
+  filters:  featured, active
+  search: 
+  application: travelobd
+

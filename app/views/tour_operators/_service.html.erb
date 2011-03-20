@@ -1,0 +1,32 @@
+<div class="event service">
+
+  <%= form.fields_for :services, service, :child_index => (service.new_record? ? "index_to_replace_with_js" : nil) do |service_form| %>
+      <div class="package_event_time">
+        Name
+      </div>
+      <div class="package_contact_address">
+        Detail [start line with *[space]  if you want to see it as bullet list ( * foo )   ]
+      </div>
+
+
+
+      <div class="package_event_time clear">
+        <%= service_form.text_field :title, :class => 'event' %>
+      </div>
+
+      <div class="package_contact_address">
+        <%= service_form.text_area :detail, :class => 'event' %>
+        <%= service_form.hidden_field :td_association_type, :value => :service, :class => 'event' %>
+      </div>
+
+      <div class="deleteLink">
+        <% if service.new_record? %>
+            <span class="removeCostItemField"> Remove</span>
+        <% else %>
+            <%= service_form.check_box :_destroy %>
+            Delete
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

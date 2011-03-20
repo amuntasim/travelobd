@@ -16,3 +16,4 @@ admin:
   SpotAsset: create, read, update, delete
   Hotel: all
   Feature: all
+

@@ -14,9 +14,10 @@ module PackagesHelper
   def package_spots_links(package)
     html = []
     package.spots.each do |spot|
-      html << link_to(spot.name, spot, :target => '_blank')
+      html << '<li>' + link_to(spot.name, spot, :target => '_blank') + '</li>'
     end
-    html.join(', ')
+
+    "<ul>" + html.join(' ') + '</ul>'
   end
 
 end
