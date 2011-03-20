@@ -49,7 +49,7 @@ class Spot < ActiveRecord::Base
   #before_save :save_textilize_description
 
   CATEGORIES = {'Hill' => 1, 'Sea' => 2, 'Wild' => 3, 'Nature' => 4}
-  accepts_nested_attributes_for :assets
+  accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :side_scenes, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :cost_items, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]

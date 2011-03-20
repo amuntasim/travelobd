@@ -14,19 +14,19 @@
 #
 
 class Room < ActiveRecord::Base
-  has_many :assets, :class_name => 'RoomAsset'
-  has_one :main_image, :class_name => 'RoomAsset', :conditions => {:main => true}
+  has_many :assets, :as => :assetable
+  has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
   belongs_to :hotel
 
   validates :hotel_id, :presence => true
   validates :name, :presence => true
   validates :price, :numericality => true, :presence => true
-  validates :total_room, :numericality => true
+  validates :total_room, :numericality => true, :allow_blank => true
 
   has_and_belongs_to_many :features, :delete_sql => 'DELETE FROM features_rooms WHERE  room_id = #{id} AND feature_id = #{record.id}'
 
-  accepts_nested_attributes_for :assets
+  accepts_nested_attributes_for :assets, :reject_if => :all_blank
 
   after_save :update_hotel_total_rooms_and_starting_price
 
@@ -45,9 +45,9 @@ class Room < ActiveRecord::Base
   private
   def update_hotel_total_rooms_and_starting_price
     if total_room_changed?
-      hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i - total_room_was + total_room)
+      hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i - total_room_was.to_i + total_room.to_i)
     else
-       hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i + total_room)
+      hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i + total_room.to_i)
     end
 
   end

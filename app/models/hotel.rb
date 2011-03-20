@@ -44,7 +44,7 @@ class Hotel < ActiveRecord::Base
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
 
 
-  accepts_nested_attributes_for :assets, :allow_destroy => true
+  accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :policies, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
 
@@ -56,7 +56,6 @@ class Hotel < ActiveRecord::Base
 
   CATEGORIES = {'Hotel' => 1, 'Apartment' => 2, 'Cottage' => 3}
 
-  accepts_nested_attributes_for :assets
 
   scope :featured , where(:featured => true).includes(:translations,:assets, :main_image, :slug)
 

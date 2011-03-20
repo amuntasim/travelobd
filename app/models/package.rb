@@ -48,7 +48,7 @@ class Package < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :videos, :reject_if => lambda { |a| a[:code].length < 10 }, :allow_destroy => true
-  accepts_nested_attributes_for :assets, :allow_destroy => true
+  accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :events, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :itineraries, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true

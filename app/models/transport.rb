@@ -17,7 +17,7 @@ class Transport < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
 
 
-  accepts_nested_attributes_for :assets, :allow_destroy => true
+  accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :policies, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :branch_locations, :reject_if => lambda { |a| a[:location].blank? }, :allow_destroy => true

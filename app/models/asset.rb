@@ -3,6 +3,9 @@ class Asset < ActiveRecord::Base
                     :url => "/assets/common_photos/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/common_photos/:id/:style/:basename.:extension"
 
+  validates_attachment_presence :photo
+  validates_attachment_size :photo, :less_than => 2.megabytes
+
   belongs_to :assetable, :polymorphic => true
   attr_accessor :photo_label
   before_save :update_localized_label

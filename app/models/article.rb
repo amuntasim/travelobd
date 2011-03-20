@@ -21,7 +21,8 @@ class Article < ActiveRecord::Base
 
   CATEGORIES = {'Category 1' => 1, 'Category 2' => 2, 'Category 3' => 3, 'Category 4' => 4}
 
-  accepts_nested_attributes_for :assets
+  accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
+
   acts_as_taggable
   has_many :comments, :as => :commentable
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
