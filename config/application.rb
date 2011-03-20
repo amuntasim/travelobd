@@ -40,3 +40,5 @@ module Travelobd
     config.filter_parameters += [:password]
   end
 end
+
+FB_APP_ID = '106632129690'

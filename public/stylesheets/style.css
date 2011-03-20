@@ -1385,3 +1385,176 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
     padding: 0px 6px 3px;
     text-shadow: none;
 }
+
+/* FOR Login and create account */
+.loginRow {
+    float: left;
+    width: 250px;
+    margin-left: 25px;
+    margin-top: 30px;
+    display: inline
+}
+
+.login_top {
+    float: left;
+    width: 250px;
+    background: url(/images/login_top_bg.jpg) no-repeat bottom;
+    height: 10px
+}
+
+.login_mid {
+    float: left;
+    width: 250px;
+    background: url(/images/login_mid_bg.jpg) repeat-y;
+}
+
+.login_bot {
+    float: left;
+    width: 250px;
+    background: url(/images/login_bot_bg.jpg) no-repeat;
+    height: 10px
+}
+
+.login_desc {
+    float: left;
+    width: 230px;
+    margin-left: 10px
+}
+
+.login_desc h2 {
+    float: left;
+    width: 230px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 20px;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    color: #26344c;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-bottom: 15px
+}
+
+.log_input_row {
+    float: left;
+    width: 230px;
+    margin-bottom: 15px
+}
+
+.log_input_row label {
+    float: left;
+    width: 130px
+}
+
+.log_input_row label {
+    margin-bottom: 10px;
+    font-size: 15px
+}
+
+.log_input_row input {
+    width: 230px;
+    float: left;
+    border: 1px solid #cccccc;
+    height: 25px;
+    padding-top: 5px
+}
+
+.log_input_row a {
+    float: right;
+    font-size: 11px;
+    text-decoration: underline
+}
+
+input.login_now {
+    float: left;
+    width: 111px;
+    background: url(/images/login_now.jpg) no-repeat;
+    height: 32px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    margin-left: 55px;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    outline: none;
+    margin-bottom: 10px
+}
+
+.createAcc {
+    float: left;
+    width: 400px;
+    margin-left: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: inline
+}
+
+.cre_top {
+    float: left;
+    background: url(/images/create_acc_top.jpg) no-repeat;
+    width: 400px;
+    height: 10px
+}
+
+.cre_mid {
+    float: left;
+    background: url(/images/create_acc_mid.jpg) repeat-y;
+    width: 400px;
+}
+
+.cre_bot {
+    float: left;
+    background: url(/images/create_acc_bot.jpg) no-repeat;
+    width: 400px;
+    height: 10px
+}
+
+.creDesc {
+    float: left;
+    width: 302px;
+    margin-left: 50px;
+}
+
+.creDesc h2 {
+    float: left;
+    width: 302px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 20px;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    color: #26344c;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-bottom: 5px
+}
+
+.creDesc label, .creDesc input {
+    float: left;
+    width: 302px;
+    font-size: 15px
+}
+
+.creDesc label {
+    line-height: 25px
+}
+
+.creDesc input {
+    border: 1px solid #cccccc;
+    height: 30px;
+    padding-top: 10px
+}
+
+.creDesc input.creBtn {
+    float: left;
+    width: 302px;
+    background: url(/images/cre_btn.jpg) no-repeat;
+    height: 52px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer
+}
+
+/* END FOR Login and create account */
+
