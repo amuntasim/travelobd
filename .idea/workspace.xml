@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,15 +41,6 @@
         <entry file="file://$PROJECT_DIR$/app/views/tour_operators/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="84" column="129" selection-start="2890" selection-end="3019" vertical-scroll-proportion="-6.125">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/articles/show.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="93" selection-start="276" selection-end="276" vertical-scroll-proportion="-6.0416665">
               <folding />
             </state>
           </provider>
@@ -109,10 +100,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="0.18656716">
+            <state line="89" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="-3.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="0" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.3421687">
               <folding />
             </state>
           </provider>
@@ -154,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layouts/print.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/app/views/hotels/show.html.erb" />
@@ -170,6 +169,7 @@
         <option value="$PROJECT_DIR$/app/controllers/packages_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/spots_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
       </list>
     </option>
   </component>
@@ -658,13 +658,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="78.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/packages/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="119.25">
@@ -767,7 +760,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="0.18656716">
+        <state line="89" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.3421687">
           <folding />
         </state>
       </provider>
