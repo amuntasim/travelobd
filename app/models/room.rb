@@ -45,9 +45,9 @@ class Room < ActiveRecord::Base
   private
   def update_hotel_total_rooms_and_starting_price
     if total_room_changed?
-      hotel.update_attribute(:total_rooms, hotel.total_rooms - total_room_was + total_room)
+      hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i - total_room_was + total_room)
     else
-       hotel.update_attribute(:total_rooms, hotel.total_rooms + total_room)
+       hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i + total_room)
     end
 
   end
