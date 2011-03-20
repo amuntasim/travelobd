@@ -558,7 +558,7 @@ input#friends_email {
 }
 
 
-.f_edit_row input, .item_form_row input {
+.f_edit_row input[type=text], .item_form_row input[type=text] {
     float: left;
     width: 203px;
     height: 24px;

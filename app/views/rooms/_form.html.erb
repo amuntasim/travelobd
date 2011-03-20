@@ -38,17 +38,20 @@
       <%= f.text_area :description %>
     </div>
 
+
     <div class="item_form_row">
       <%= f.label :features %>
-      <% @features_for_room.each do |feature| %>
-          <%= check_box_tag "room[feature_ids][]", feature.id, room_feature_present?(feature) -%>
-          <%= feature.name -%>
-
-      <% end %>
-
+      <div class="f_edit_row photo_box">
+        <% @features_for_room.each do |feature| %>
+            <div class="room_feature">
+              <%= check_box_tag "room[feature_ids][]", feature.id, room_feature_present?(feature) -%>
+              <span>
+              <%= feature.name -%>
+              </span>
+            </div>
+        <% end %>
+      </div>
     </div>
-
-
 
     <div class="item_form_row">
       <label>
@@ -107,6 +110,20 @@
   </div>
 
 </div>
+
+<style type="text/css">
+   .room_feature {
+        width: 188px;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        margin-top: 3px;
+    }
+
+    .room_feature span, .room_feature input {
+        float: left
+    }
+</style>
 <script type="text/javascript">
     var allowed_images = 5;
 

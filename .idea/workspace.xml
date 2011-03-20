@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/hotels/show.html.erb" afterPath="$PROJECT_DIR$/app/views/hotels/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/hotels/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/hotels/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/rooms/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/rooms/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
     </list>
     <ignored path="travelobd.iws" />
@@ -60,10 +57,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/hotels/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="2" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.8291457">
+            <state line="64" column="2" selection-start="1874" selection-end="1874" vertical-scroll-proportion="-13.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="259" column="25" selection-start="7623" selection-end="7623" vertical-scroll-proportion="0.60301507">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/rooms/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="122" column="43" selection-start="3570" selection-end="3570" vertical-scroll-proportion="-10.333333">
               <folding />
             </state>
           </provider>
@@ -99,7 +114,7 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1435" column="0" selection-start="21815" selection-end="21815" vertical-scroll-proportion="0.0">
+            <state line="560" column="61" selection-start="8186" selection-end="8186" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,8 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/spots/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/articles/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/tour_clubs/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
@@ -151,12 +164,14 @@
         <option value="$PROJECT_DIR$/app/controllers/spots_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
-        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/views/hotels/show.html.erb" />
+        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/app/views/rooms/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/hotels/_form.html.erb" />
       </list>
     </option>
   </component>
@@ -627,20 +642,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/spots_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="54" selection-start="2612" selection-end="2612" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3103" selection-end="3103" vertical-scroll-proportion="-3.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="7" selection-start="242" selection-end="242" vertical-scroll-proportion="-4.375">
@@ -690,13 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1435" column="0" selection-start="21815" selection-end="21815" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/welcome.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="0" selection-start="1237" selection-end="1237" vertical-scroll-proportion="-16.916666">
@@ -734,7 +728,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/hotels/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="2" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.8291457">
+        <state line="64" column="2" selection-start="1874" selection-end="1874" vertical-scroll-proportion="-13.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="560" column="61" selection-start="8186" selection-end="8186" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rooms/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="43" selection-start="3570" selection-end="3570" vertical-scroll-proportion="-10.333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="259" column="25" selection-start="7623" selection-end="7623" vertical-scroll-proportion="0.60301507">
           <folding />
         </state>
       </provider>
