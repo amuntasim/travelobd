@@ -87,31 +87,7 @@
   </div>
 </div>
 
-<div class="home_left_header fl featured_hotel_header">
-  <div class="home_left_header_content">
 
-    <%= 'Featured Agents' %>
-  </div>
-
-</div>
-<div class="home_left_content fl ">
-  <% if @featured_tour_operators.size > 0 %>
-
-      <ul id="left_side_featured_tour_operators" class="box-slide">
-        <% @featured_tour_operators.each do |tour_operator| %>
-            <li>
-              <%= link_to tour_operator, :target => '_blank' do %>
-                  <%= image_tag tour_operator.logo.url, :width => '175px' %>
-                  <div class="title">
-                    <%= tour_operator.name %>
-                  </div>
-
-              <% end %>
-            </li>
-        <% end %>
-      </ul>
-  <% end %>
-</div>
 
 <div class="home_left_header fl featured_hotel_header">
   <div class="home_left_header_content">
