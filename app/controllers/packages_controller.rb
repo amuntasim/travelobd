@@ -132,7 +132,8 @@ class PackagesController < ApplicationController
 
   def search
     @package_search = Package.search(params[:search])
-    ordering = "featured DESC, #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
+    #ordering = "featured DESC, #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
+    ordering = "featured DESC, #{ params[:order] unless params[:order].blank? } "
     @packages = @package_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
     @search_label = params[:label] || 'Hotels : Search Results '
     @paginate_items = @packages

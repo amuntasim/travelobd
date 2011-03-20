@@ -107,9 +107,9 @@ class ApplicationController < ActionController::Base
   def load_required_instance_variables
     @districts = District.includes(:translations,[:division,:translations])
     @articles = Article.includes(:slug).order(:created_at).limit(5)
-    @featured_hotels = Hotel.featured.order('RAND()').limit(5)
-    @featured_transports = Transport.featured.order('RAND()').limit(5)
-    @featured_tour_operators = TourOperator.featured.order('RAND()').limit(5)
+    @featured_hotels = Hotel.featured.order('').limit(5)
+    @featured_transports = Transport.featured.order('').limit(5)
+    @featured_tour_operators = TourOperator.featured.order('').limit(5)
     @spots = Spot.actives
   end
 
