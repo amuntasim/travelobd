@@ -20,19 +20,20 @@
     <% end %>
   </div>
   <div class="top_bar_box">
+    <div class="login_and_other collapsed">
+      <%= t('login_other') %>
+      <%= image_tag 'down_arrow.jpg', :id=> 'login_down_arrow' %>
+      <%= image_tag 'up_arrow.jpg', :id=> 'login_up_arrow' %>
+    </div>
+
     <% if I18n.locale.to_s == 'en' %>
         <%#= link_to(t('see_in_bn'), {:'lan'=>'bn', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
         <%= link_to(t('see_in_bn'), '#') %>
     <% else %>
         <%= link_to(t('see_in_en'), {:'lan'=>'en', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
     <% end %>
-    <div class="login_and_other collapsed">
-      <%= t('login_other') %>
-      <%= image_tag 'down_arrow.jpg', :id=> 'login_down_arrow' %>
-      <%= image_tag 'up_arrow.jpg', :id=> 'login_up_arrow' %>
-    </div>
-  </div>
 
+  </div>
 
 </div>
 <div class="heading">
@@ -65,7 +66,7 @@
       </ul>
 
     </li>
-      <li class="meddle_li"></li>
+    <li class="meddle_li"></li>
     <li>  <%= link_to 'Transports', transports_path, :class=> active_inactive_navigation('transports')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_transports' %>
       <ul id="sub_nav_transports" class="sub_nav">
         <li> <%= link_to 'All ', transports_path %> </li>

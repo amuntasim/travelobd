@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
 
   validates :name, :presence => true, :unless => :user_id
   validates :email, :presence => true, :unless => :user_id
+  validates :content, :presence => true
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create } , :unless => :user_id
 
   def comment_by

@@ -74,13 +74,14 @@ ul li {
 
 .login_and_other {
     background-color: #8AB935;
-    padding: 5px 21px;
+    padding: 4px 21px;
     cursor: pointer;
     position: absolute;
     z-index: 11;
-    margin-left: 138px;
-    margin-top: 3px;
     width: 118px;
+    top:40px;
+    left:740px;
+
 }
 
 .login_and_other img {
@@ -878,7 +879,7 @@ div.ui-datepicker-div {
 }
 
 select {
-    padding-right: 5px !important
+    padding: 3px;
 }
 
 input {
