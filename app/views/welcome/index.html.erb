@@ -15,7 +15,7 @@
       <% @spots.each do |spot| %>
         <div class="panel ">
           <%= image_tag(spot.main_image_url(:medium), :class=> 'panel_image', :photo_id =>spot.id,:width => 505) %>
-          <div class="panel-overlay">
+          <div class="panel-overlay" style="padding:5px;">
             <h2>
               <%= spot.name %>
             </h2>
@@ -56,17 +56,17 @@
           <div class="fl description">
             <%= truncate(package.description*7, :length => 100) %>
           </div>
-          <div class="fl rating">
-            Like: 1000 <br/>
-            Rating: 4
-          </div>
+          <!--<div class="fl rating">-->
+            <!--Like: 1000 <br/>-->
+            <!--Rating: 4-->
+          <!--</div>-->
         </div>
         <div class="fl price_n_button">
           <div class="fl price">
             Price: <span><%= package.price %></span> Tk/Person
           </div>
           <%= link_to 'Details', package, :class => 'detail_link' %>
-          <%= link_to 'Book This', package, :class => 'book_link' %>
+          <%#= link_to 'Book This', package, :class => 'book_link' %>
         </div>
       </div>
 
@@ -91,20 +91,20 @@
     padding: 10px;
   }
 
-  .gallery_wrapper h2 {color: #FFFFFF}
+  .gallery_wrapper h2 {color: #FFFFFF; margin-top:5px;}
 
 
   .panel-overlay p span { width: 388px;  }
 
   .panel-overlay p a {
     float: right;
-    font-size: 16px;
+    font-size: 12px;
   }
   .gallery_controll_images {
     margin-left: 348px;
-    margin-top: 1px;
+    margin-top: 3px;
     color: #777;
-    font-size: 16px
+    font-size: 13px
   }
 
   .gallery_controll_images span {
@@ -113,6 +113,7 @@
 
   .gallery_controll_images span.nav-prev {
     margin-right: 15px;
+      margin-left:10px;
   }
 
   .gallery_controll_images img {
@@ -147,7 +148,7 @@
 
   .package_desc .title a{color: #77B045; font-size: 18px; font-weight: bold}
 
-  .package_desc .description { width: 270px; padding-top: 5px;}
+  .package_desc .description { width: 355px; padding-top: 5px;}
   .package_desc .rating { width: 65px; border: 1px solid #CCC; padding: 5px;  margin-left: 8px;}
   .package_desc_info {height: 87px; }
 
@@ -255,7 +256,7 @@
       panel_width: 505,
       panel_height: 230,
       overlay_height: 60,
-      overlay_opacity: 0.5,
+      overlay_opacity: 0.4,
       overlay_color: '#333',
       transition_speed: 1500,
       transition_interval: 5000,

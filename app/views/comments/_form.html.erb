@@ -1,4 +1,4 @@
-<div  style="width:100%">
+<div style="width:100%">
   <div id="commentStatus" style="padding:10px 0">
 
   </div>
@@ -19,5 +19,10 @@
       <%= f.label :content %><br/>
       <%= f.text_area :content, :rows => 7, :cols => 60 %>
     </p>
-    <p><%= f.submit "Submit" %></p>
+    <p>
+    <div class="submit_btn" style="margin-left:117px;">
+      <%= f.submit :class => 'search_button' %>
+      <span class="search_button_right"> </span>
+    </div>
+    </p>
 <% end %>

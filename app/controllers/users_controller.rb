@@ -36,20 +36,29 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(dashboard_url, :notice => 'Registration Successfull.') }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
+    if session[:omniauth]
+      if (User.where(:email => params[:user][:email]).size == 0)
+        rand_pass = rand(32**6).to_s(32)
+        @user.password = rand_pass
+        @user.password_confirmation = rand_pass
+        @user.apply_omniauth(session[:omniauth])
       else
-        @user_session = UserSession.new
-        format.html { render :action => "new", :layout => 'application' }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
+        @user = User.where(:email => params[:user][:email]).first
+        @user.authentications.build(:provider => session[:omniauth]['provider'], :uid => session[:omniauth]['uid'])
       end
+      @user.save!
+      session[:omniauth] = nil unless @user.new_record?
+      redirect_to dashboard_url
+    elsif @user.save
+      redirect_to(dashboard_url, :notice => 'Registration Successfull.')
+    else
+      @user_session = UserSession.new
+      render :action => "new"
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
+# PUT /users/1
+# PUT /users/1.xml
   def update
 
     respond_to do |format|
@@ -63,8 +72,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
+# DELETE /users/1
+# DELETE /users/1.xml
   def destroy
     @user.destroy
 
@@ -75,7 +84,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @unread_messages = Message.where(['user_id = ? AND created_by <> ?',current_user.id, current_user.id]).where(:read=> false)
+    @unread_messages = Message.where(['user_id = ? AND created_by <> ?', current_user.id, current_user.id]).where(:read=> false)
     @saved_items = SavedListing.where(:user_id => current_user.id)
     @hotels = current_user.hotels
   end
@@ -86,10 +95,6 @@ class UsersController < ApplicationController
 
   def outbox
     @messages = Message.where(:created_by => current_user.id).order(:created_at).paginate(:page=> params[:page], :per_page => 20)
-  end
-
-  def ads
-    @packages = Package.where(:user_id=> current_user.id).order(:created_at).paginate(:page=> params[:page], :per_page => 10)
   end
 
   def save_item
@@ -118,13 +123,46 @@ class UsersController < ApplicationController
     @items = SavedListing.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
   end
 
-  def products
-    @classifieds = Classified.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
+  def hotels
+    @active_dashboard_nav = 'my_hotels'
+    @hotels = current_user.hotels.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @hotels
   end
 
   def spots
-    @spots = Spot.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
+    @active_dashboard_nav = 'my_spots'
+    @spots = current_user.spots.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @spots
+    end
+  
+  def articles
+    @active_dashboard_nav = 'my_articles'
+    @articles = current_user.articles.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @articles
   end
+
+  def transports
+    @active_dashboard_nav = 'my_transports'
+    @transports = current_user.transports
+  end
+
+  def packages
+    @active_dashboard_nav = 'my_packages'
+    @packages = current_user.packages.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @packages
+  end
+
+  def clubs
+     @active_dashboard_nav = 'my_clubs'
+  end
+
+  def rooms
+    @active_dashboard_nav = 'my_rooms'
+    conditions = params[:hotel_id].blank? ? {} : {:hotel_id => params[:hotel_id]}
+    @rooms = current_user.rooms.where(conditions).paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @rooms
+  end
+
 
   def send_to_friends
     unless current_user
@@ -145,7 +183,7 @@ class UsersController < ApplicationController
   def upload_images
     @user = current_user.update_attributes(params[:user])
     #output = render_to_string(:partial =>'users/uploaded_image', :collection => current_user.uploaded_images)
-    render :nothing =>  true
+    render :nothing => true
     return
   end
 

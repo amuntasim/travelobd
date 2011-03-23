@@ -9,6 +9,7 @@ Travelobd::Application.routes.draw do
     member do
       get :print
       post :rate
+      post :join_leave
     end
   end
 
@@ -153,6 +154,10 @@ Travelobd::Application.routes.draw do
   match 'my_spots' => 'users#spots'
   match 'my_packages' => 'users#packages'
   match 'my_hotels' => 'users#hotels'
+  match 'my_rooms' => 'users#rooms'
+  match 'my_transports' => 'users#transports'
+  match 'my_clubs' => 'users#clubs'
+  match 'my_articles' => 'users#articles'
   match 'send_to_friends' => 'users#send_to_friends'
 
 

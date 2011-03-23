@@ -45,8 +45,15 @@
         <div class="home_left_content">
           <div class="mytools">
             <ul>
-              <li><%= link_to 'Edit Profile', edit_user_profile_url(current_user) %></li>
-              <li><%= link_to 'Change Password', edit_user_path(:id=> 'xxx') %></li>
+              <li><%= link_to 'Edit Profile', edit_user_profile_url(current_user), :class=> active_inactive_dashboard_navigation('edit_profile') %></li>
+              <li><%= link_to 'Change Password', edit_user_path(:id=> 'xxx'), :class=> active_inactive_dashboard_navigation('change_password') %></li>
+              <li><%= link_to 'My Hotels', my_hotels_path, :class=> active_inactive_dashboard_navigation('my_hotels') %></li>
+              <li><%= link_to 'My Hotel Rooms', my_rooms_path, :class=> active_inactive_dashboard_navigation('my_rooms') %></li>
+              <li><%= link_to 'My Listed Spots', my_spots_path, :class=> active_inactive_dashboard_navigation('my_spots') %></li>
+              <li><%= link_to 'My Listed Packages', my_packages_path, :class=> active_inactive_dashboard_navigation('my_packages') %></li>
+              <li><%= link_to 'My Listed Transports', my_transports_path, :class=> active_inactive_dashboard_navigation('my_transports') %></li>
+              <li><%= link_to 'My Tour Clubs', my_clubs_path, :class=> active_inactive_dashboard_navigation('my_clubs') %></li>
+              <li><%= link_to 'My Articles', my_articles_path, :class=> active_inactive_dashboard_navigation('my_articles') %></li>
             </ul>
           </div>
 
@@ -59,6 +66,11 @@
       <div class="dashboard_content fl">
 
         <%= yield %>
+        <% if @paginate_items %>
+            <div class="pagination">
+              <%= will_paginate @paginate_items, :class => 'pagination_body', :prev_label => image_tag('left_arrow.png'), :next_label => image_tag('right_arrow.png') %>
+            </div>
+        <% end %>
       </div>
     </div>
 
@@ -168,7 +180,7 @@
 
     .dc_item {
         width: 676px;
-        margin-bottom: 7px;
+        margin-bottom: 10px;
     }
 
     .dc_item_image {

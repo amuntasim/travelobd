@@ -1,0 +1,6 @@
+$('#join_leave_container .links').html('<%= escape_javascript(raw join_or_leave_club(@tour_club)) %>');
+var html = $('<p> Your request submitted successfully to moderators.</p>').effect("highlight", {}, 2000);
+
+html.appendTo($('#join_leave_container')).slideDown('slow');
+setTimeout('html.remove()', 2500);
+

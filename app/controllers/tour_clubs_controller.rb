@@ -1,7 +1,7 @@
 class TourClubsController < ApplicationController
-  before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy]
+  before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy, :join_leave]
   before_filter lambda { @active_nav = 'tour_clubs' }
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print, :rate]
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print, :rate, :join_leave]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
   layout :choose_layout
   # GET /ads
@@ -114,6 +114,9 @@ class TourClubsController < ApplicationController
 
   end
 
+  def join_leave
+     @tour_club.join_leave!(current_user)
+  end
 
   private
 

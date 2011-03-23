@@ -1,8 +1,6 @@
 <% title @tour_club.name %>
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.easing.1.3', 'jquery.galleryview-1.1', 'jquery.timers-1.1.2', 'thickbox' %>
     <%= javascript_include_tag 'jquery.validate' %>
-    <%= stylesheet_link_tag 'thickbox' %>
 <% end %>
 
 <div class="pageHead">
@@ -10,8 +8,40 @@
 </div>
 
 <div class="item_details">
-  <div class="itemDetail">
+  <div class="itemDetail pad_TL0">
     <%= @tour_club.description %>
+  </div>
+  <div class="eventDetail clear">
+    <fb:like href="<%= tour_club_url(:id => @tour_club.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="like" font="segoe ui" colorscheme="light"/>
+  </div>
+
+  <div class="eventDetail clear" id="join_leave_container">
+    <div class="links">
+      <%= raw join_or_leave_club(@tour_club) %>
+    </div>
+
+    <%= image_tag 'loadingAnimation.gif', :style => 'display:none' %>
   </div>
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @tour_club, :rating => true} %>
 </div>
+<script type="text/javascript">
+    joinOrLeave = function() {
+        $('#join_leave_container .links a').click(function() {
+            $('#join_leave_container .links a').hide();
+            $('#join_leave_container  img').show();
+            $.ajax({
+                url: '/tour_clubs/' + $(this).attr('club_id') + '/join_leave',
+                type: 'post',
+                dataType: 'script',
+                success: function(results) {
+                    $('#join_leave_container  img').hide();
+                    $('#join_leave_container .links a').show();
+                    joinOrLeave();
+                }
+            });
+        });
+    }
+    $(document).ready(function() {
+        joinOrLeave();
+    });
+</script>

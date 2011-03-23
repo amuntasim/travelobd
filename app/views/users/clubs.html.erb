@@ -1,40 +1,39 @@
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    My Hotels
+    My Created Clubs
     <div class="add_link">
-      <%= link_to '+Add Hotel', new_hotel_path %>
+      <%= link_to '+Add Club', new_tour_club_path %>
     </div>
   </div>
 
 </div>
 <div class="dashboard_content_item fl">
-  <% if @hotels.size > 0 %>
-      <% @hotels.each do |hotel| %>
-          <div class=" <%= 'inactive' unless hotel.active %> dc_item fl ">
+  <% if current_user.created_clubs.size > 0 %>
+      <% current_user.created_clubs.each do |club| %>
+          <div class=" <%= 'inactive' unless club.active %> dc_item fl ">
             <div class="dc_item_image fl">
-              <%= image_tag hotel.main_image_url(:thumb) %>
+              <%= image_tag club.logo.url %>
             </div>
             <div class="dc_item_text fl">
               <div class="title">
-                <%= link_to hotel.name, hotel %>
+                <%= link_to club.name, club %>
               </div>
 
               <div class="desc">
-                <%= truncate strip_tags(hotel.description), :length => 170 %>
+                <%= truncate strip_tags(club.description), :length => 170 %>
               </div>
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Show', hotel %>
-              <%= link_to 'Edit', edit_hotel_path(hotel) %>
+              <%= link_to 'Show', club %>
+              <%= link_to 'Edit', edit_tour_club_path(club) %>
               <%= link_to 'Delete', '#' %>
-              <%= link_to 'Add Room', new_room_path(:hotel_id => hotel) %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No Hotel Posted
+        No Tour Club Created
       </h3>
   <% end %>
 </div>

@@ -156,7 +156,7 @@ var TBD = {
         strip_padding: 10,
         //strip_border: '1px solid #cccccc',
         strip_border: '1px solid #F2F1EC',
-        strip_background: '#F2F1EC',
+        strip_background: '#d1d1d1',
         frame_size: 10,
         transition_speed: 600,
         transition_interval: 6000,
@@ -322,7 +322,7 @@ $(document).ready(function() {
         $('#flash_messages').fadeOut();
     }, 5000);
 
-    $(this).enableMenu();
+    //$(this).enableMenu();
     $(this).saveItemToMyListing();
     $(this).removeSavedItem();
     $(this).toggleLoginOther();

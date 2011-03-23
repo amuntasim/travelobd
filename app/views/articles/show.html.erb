@@ -8,7 +8,12 @@
 
 <div class="item_details">
 
-  <div class="itemDetail"><%= raw textilize @article.detail %></div>
+  <div class="itemDetail pad_TL0">
+    <%= raw textilize @article.detail %>
+  </div>
+  <div class="itemDetail">
+    <fb:like href="<%= article_url(:id => @article.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="like" font="segoe ui" colorscheme="light"/>
+  </div>
 
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @article, :rating => true} %>
 

@@ -38,7 +38,7 @@
 
 <%= render :partial => 'shared_partials/detail_page_photo_gallery', :locals => {:items => @hotel.assets} %>
 
-<div class="itemDetail">
+<div class="itemDetail ">
 
   <div class="eventTitle "><b>Hotel Details</b></div>
   <% if @hotel.star_rating %>
@@ -62,8 +62,9 @@
   <div class="eventDetail">
     <%= raw textilize @hotel.description %>
   </div>
-  <fb:like href="<%=hotel_url(:id => @hotel.id ,  :host => request.host, :port => request.port)%>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light" />
-
+  <div class="eventDetail">
+    <fb:like href="<%= hotel_url(:id => @hotel.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+  </div>
 </div>
 
 <div class="good_item_head">Rooms Tariff</div>
@@ -119,7 +120,7 @@
   <% end %>
 </div>
 
-<%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @hotel, :rating => true}  %>
+<%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @hotel, :rating => true} %>
 
 
 <div id="send_message_to_owner_lb" style="display: none">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110319094304) do
+ActiveRecord::Schema.define(:version => 20110320102827) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -231,18 +231,6 @@ ActiveRecord::Schema.define(:version => 20110319094304) do
     t.integer  "parent_id"
   end
 
-  create_table "hotel_assets", :force => true do |t|
-    t.integer  "hotel_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "main"
-  end
-
-  add_index "hotel_assets", ["hotel_id"], :name => "index_hotel_assets_on_hotel_id"
-
   create_table "hotel_translations", :force => true do |t|
     t.integer "hotel_id"
     t.string  "locale"
@@ -276,6 +264,17 @@ ActiveRecord::Schema.define(:version => 20110319094304) do
   create_table "hotels_spots", :id => false, :force => true do |t|
     t.integer "hotel_id"
     t.integer "spot_id"
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "memberable_id"
+    t.string   "memberable_type"
+    t.boolean  "approved",           :default => false
+    t.boolean  "leave_request",      :default => false
+    t.datetime "leave_request_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", :force => true do |t|
@@ -428,18 +427,6 @@ ActiveRecord::Schema.define(:version => 20110319094304) do
 
   add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
   add_index "rates", ["rater_id"], :name => "index_rates_on_rater_id"
-
-  create_table "room_assets", :force => true do |t|
-    t.integer  "room_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.boolean  "main",               :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "room_assets", ["room_id"], :name => "index_room_assets_on_room_id"
 
   create_table "rooms", :force => true do |t|
     t.integer  "hotel_id"

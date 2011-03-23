@@ -1,0 +1,43 @@
+<%= form_tag '', :method => :get do %>
+    <label>Hotel</label> <%= select_tag :hotel_id, options_from_collection_for_select(current_user.hotels, :id, :name, params[:hotel_id]), :include_blank => '--All--'   %>
+    <%= submit_tag 'Filter'  %>
+<% end %>
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    My Hotel Rooms
+    <div class="add_link">
+      <%= link_to '+Add Hotel', new_room_path %>
+    </div>
+  </div>
+
+</div>
+<div class="dashboard_content_item fl">
+  <% if @rooms.size > 0 %>
+      <% @rooms.each do |room| %>
+          <div class=" <%= 'inactive' unless room.active %> dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag room.main_image_url(:thumb) %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+                <%= link_to room.name, room %>
+              </div>
+
+              <div class="desc">
+                <%= truncate strip_tags(room.description), :length => 170 %>
+              </div>
+
+            </div>
+            <div class="dc_item_links fl">
+              <%= link_to 'Show', room %>
+              <%= link_to 'Edit', edit_room_path(room) %>
+              <%= link_to 'Delete', '#' %>
+            </div>
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        No Hotel Room Posted
+      </h3>
+  <% end %>
+</div>
