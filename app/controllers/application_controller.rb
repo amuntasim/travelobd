@@ -113,4 +113,7 @@ class ApplicationController < ActionController::Base
     @spots = Spot.actives
   end
 
+  def message_receiver_expects_email?(message)
+     message.owner && message.owner.message_notification?
+  end
 end

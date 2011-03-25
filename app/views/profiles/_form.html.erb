@@ -1,48 +1,63 @@
-<%= form_for(@profile, :html => { :multipart => true, :id=> 'profile_form'}) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<%= form_for(@profile, :html => {:multipart => true, :id=> 'profile_form'}) do |f| %>
+    <% if @profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-        <% @profile.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% @profile.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field item_form_row">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
     </div>
-  <% end %>
-  <div class="field item_form_row">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :district %>
-    <%= f.text_field :district %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :division %>
-    <%= f.text_field :division %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :zip_code %>
-    <%= f.text_field :zip_code %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :country_id %>
-    <%= f.select :country_id, Country.all.collect{|c|[c.name, c.id]}, :prompt => 'Select Country' %>
-  </div>
-  <div class="field item_form_row">
-    <%= f.label :avatar %>
-   <%= f.file_field :avatar, :class => 'photo' %>
-  </div>
-  <div class="actions item_form_row">
-    <%= f.submit '', :class=> 'subBtn' %>
-  </div>
+    <div class="field item_form_row">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field item_form_row">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field item_form_row">
+      <%= f.label :district %>
+      <%= f.text_field :district %>
+    </div>
+    <div class="field item_form_row">
+      <%= f.label :division %>
+      <%= f.text_field :division %>
+    </div>
+    <div class="field item_form_row">
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
+    </div>
+    <div class="field item_form_row">
+      <%= f.label :country_id %>
+      <%= f.select :country_id, Country.all.collect { |c| [c.name, c.id] }, :prompt => 'Select Country' %>
+    </div>
+    <div class="field item_form_row">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="item_form_row">
+      <%= f.label :settings %>
+      <div class="f_edit_row photo_box">
+        <%= f.fields_for :user, current_user do |usf| %>
+            <div class="clear">
+              <%= usf.check_box :message_notification -%>
+
+              Message notification email
+
+            </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="submit_btn">
+      <%= f.submit :class => 'search_button' %>
+      <span class="search_button_right"> </span>
+    </div>
 <% end %>

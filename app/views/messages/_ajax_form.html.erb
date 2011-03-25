@@ -6,11 +6,11 @@
     </div>
     <div class="white_Desc">
       <label>Your Name:</label>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :value => current_user ? current_user.name : '' %>
     </div>
     <div class="white_Desc">
       <label>Email:</label>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :value => current_user ? current_user.email : '' %>
     </div>
     <div class="white_Desc">
       <label>Your Location:</label>
@@ -28,18 +28,18 @@
       <label>Your Message:</label>
       <%= f.text_area :content %>
     </div>
-
-    <div class="anti">
-      <label>Anti-Spam Security Check (required) 5+2=</label>
-      <%= text_field_tag :spam_check %>
-    </div>
-
-    <div class="submit_btn" style="padding-left:100px;" >
+    <% unless current_user %>
+        <div class="anti">
+          <label>Anti-Spam Security Check (required) 5+2=</label>
+          <%= text_field_tag :spam_check %>
+        </div>
+    <% end %>
+    <div class="submit_btn" style="padding-left:130px;">
       <%= hidden_field_tag :message_status_div, 'message_status' %>
       <div id="submit_to_seller">
-      <input class="search_button" name="" value="Send" type="submit" >
-      <span class="search_button_right"> </span>
-                                 </div>
+        <input class="search_button" name="" value="Send" type="submit">
+        <span class="search_button_right"> </span>
+      </div>
       <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_seller', :style=> 'display:none' %>
       <%= f.hidden_field :user_id, :value => message_target.user_id %>
       <%= f.hidden_field :ref_id, :value => message_target.id %>

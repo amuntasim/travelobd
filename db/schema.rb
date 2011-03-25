@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110320102827) do
+ActiveRecord::Schema.define(:version => 20110325142151) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -127,11 +127,20 @@ ActiveRecord::Schema.define(:version => 20110320102827) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "name"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "country_translations", :force => true do |t|
+    t.integer  "country_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "country_translations", ["country_id"], :name => "index_country_translations_on_country_id"
 
   create_table "departure_schedule_translations", :force => true do |t|
     t.integer "departure_schedule_id"
@@ -628,8 +637,8 @@ ActiveRecord::Schema.define(:version => 20110320102827) do
     t.string   "persistence_token"
     t.string   "single_access_token"
     t.string   "perishable_token"
-    t.integer  "login_count",         :default => 0, :null => false
-    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.integer  "login_count",          :default => 0,    :null => false
+    t.integer  "failed_login_count",   :default => 0,    :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -638,6 +647,7 @@ ActiveRecord::Schema.define(:version => 20110320102827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.boolean  "message_notification", :default => true
   end
 
   add_index "users", ["email", "crypted_password"], :name => "index_users_on_email_and_crypted_password"

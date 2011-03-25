@@ -1,40 +1,58 @@
+<% title 'Outbox' %>
+
+
+<div class="mtop15 clear">
+  <h1>Welcome ( <%= current_user.name %> )</h1>
+</div>
+
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    My Hotels
-    <div class="add_link">
-      <%= link_to '+Add Hotel', new_hotel_path %>
-    </div>
+    <div class="fl">Outbox</div>
   </div>
-
 </div>
+
 <div class="dashboard_content_item fl">
-  <% if @hotels.size > 0 %>
-      <% @hotels.each do |hotel| %>
-          <div class=" <%= 'inactive' unless hotel.active %> dc_item fl ">
-            <div class="dc_item_image fl">
-              <%= image_tag hotel.main_image_url(:thumb) %>
+  <% if @messages.size > 0 %>
+  <% @messages.each do |message| %>
+      <%= link_to message_path(message) do %>
+          <div class="message <%= cycle 'evenRow', 'oddRow' %>>
+            <div class="sent_by">
+              <%= message.name %>[<%= message.email %>]
             </div>
-            <div class="dc_item_text fl">
-              <div class="title">
-                <%= link_to hotel.name, hotel %>
-              </div>
-
-              <div class="desc">
-                <%= truncate strip_tags(hotel.description), :length => 170 %>
-              </div>
-
+            <div class="title">
+              <%= truncate(message.title, :length => 100) %>
             </div>
-            <div class="dc_item_links fl">
-              <%= link_to 'Show', hotel %>
-              <%= link_to 'Edit', edit_hotel_path(hotel) %>
-              <%= link_to 'Delete', '#' %>
-              <%= link_to 'Add Room', new_room_path(:hotel_id => hotel) %>
+            <div class="when">
+              <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
             </div>
           </div>
       <% end %>
-  <% else %>
+  <% end %>
+   <% else %>
       <h3>
-        No Hotel Posted
+        No messages
       </h3>
   <% end %>
 </div>
+
+
+<style type="text/css">
+    .message .sent_by {
+        width: 190px;
+        float: left
+    }
+
+    .message .title {
+        width: 316px;
+        float: left;
+        margin: 0px 5px;
+    }
+
+    .message .when {
+        width: 150px;
+        float: left
+    }
+
+</style>
+
+

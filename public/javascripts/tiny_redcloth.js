@@ -312,8 +312,6 @@ new function($) {
         else if (el.selectionStart || el.selectionStart == '0') {
             pos = el.selectionStart;
         }
-
-
         return pos;
     }
 

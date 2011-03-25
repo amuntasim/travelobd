@@ -10,7 +10,10 @@
 #
 
 class Country < ActiveRecord::Base
+   translates :name
+
   has_many :districts
+  has_many :divisions
 
   validates :name, :presence => true
 end

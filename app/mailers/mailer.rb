@@ -7,7 +7,7 @@ class Mailer < ActionMailer::Base
 
   def send_message(msg)
     @message = msg
-    mail(:to => "#{@message.seller.full_name} <#{@message.seller.email}>", :subject => @message.title, :from => @message.user ? "#{@message.user.full_name} <#{@message.user.email}>" : "#{@message.name} <#{@message.email}>")
+    mail(:to => "#{@message.owner.full_name} <#{@message.owner.email}>", :subject => @message.title, :from => @message.user ? "#{@message.user.full_name} <#{@message.user.email}>" : "#{@message.name} <#{@message.email}>")
   end
 
   def send_feedback(feedback)

@@ -46,12 +46,12 @@ class MessagesController < ApplicationController
   # POST /messages.xml
   def create
     @message = Message.new(params[:message])
-    @message.user_id = current_user.id if current_user
+    @message.created_by = current_user.id if current_user
     @status_div = params[:message_status_div] || 'message_status'
     respond_to do |format|
       if (current_user || params[:spam_check].to_i == 7) && @message.save
         @no_error = true
-        Mailer.send_message(@message).deliver
+        Mailer.send_message(@message).deliver  if message_receiver_expects_email?(@message)
         format.html { redirect_to(@message.root, :notice => 'Message was successfully created.') }
         format.js 
       else

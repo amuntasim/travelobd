@@ -6,16 +6,20 @@
 
 
 <div class="mtop15 clear">
-  <h1>Welcome (<%= current_user.name %>),</h1>
+  <h1>Welcome ( <%= current_user.name %> )</h1>
 </div>
-<div class="msg_box clear">
-  <div class="msg_top"></div>
-  <div class="msg_desc">
-    <h1>Inbox</h1>
-    <div class="msg_desc_info">
-      <% @messages.each do |message| %>
-        <%= link_to message_path(message) do %>
-          <div class="message <%= cycle 'evenRow', 'oddRow' %> <%= 'unread'  unless message.read?%>">
+
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    <div class="fl">Inbox</div>
+  </div>
+
+</div>
+<div class="dashboard_content_item fl">
+  <% if @messages.size > 0 %>
+  <% @messages.each do |message| %>
+      <%= link_to message_path(message) do %>
+          <div class="message <%= cycle 'evenRow', 'oddRow' %> <%= 'unread' unless message.read? %>">
             <div class="sent_by">
               <%= message.name %>[<%= message.email %>]
             </div>
@@ -27,36 +31,40 @@
               <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
             </div>
           </div>
-        <% end %>
       <% end %>
-    </div>
-
-  </div>
-  
-  <div class="msg_bot"></div>
-  
-</div>
-
-<% if @messages.total_pages > 1 %>
-    <div class="message clear pagination">
-      <%= will_paginate  @messages %>
-    </div>
   <% end %>
+   <% else %>
+      <h3>
+        No messages
+      </h3>
+  <% end %>
+</div>
 
 
 <style type="text/css">
-  .message .sent_by {width: 190px; float: left}
-  .message .title {width: 330px; float: left; margin: 0px 5px;}
-  .message .when {width: 150px; float: left}
-  .msg_top{
-    background:url("/images/navy_blue_big_top.jpg") no-repeat scroll 0 0 transparent;
-    width: 720px;
-  }
-  .msg_box {width: 720px}
-  .msg_desc {width: 700px}
-  .msg_desc_info {width: 690px}
-  .unread {border: 1px dashed #0000cc; }
-  .unread .title {width: 328px}
+    .message .sent_by {
+        width: 190px;
+        float: left
+    }
+
+    .message .title {
+        width: 316px;
+        float: left;
+        margin: 0px 5px;
+    }
+
+    .message .when {
+        width: 150px;
+        float: left
+    }
+
+    .unread {
+        border: 1px dashed #0000cc;
+    }
+
+    .unread .title {
+        width: 314px
+    }
 </style>
 
 
