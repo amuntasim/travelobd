@@ -30,6 +30,7 @@ class Hotel < ActiveRecord::Base
   validates :category_id, :presence => true
   validates :name, :presence => true
   validates :district_id, :presence => true
+
   validates :star_rating, :inclusion => {:in => 3..5}, :allow_nil => true
   belongs_to :user
   belongs_to :district

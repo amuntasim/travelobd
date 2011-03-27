@@ -6,17 +6,15 @@ $.fn.banglaInput = function(options) {
     var carry = '';
     var lastcarry = '';
     var parent_char = '';
-    var prev_char = '';
+    var prevChar = '';
 
     var old_len = 0;
     var current_char = '';
-
+    var leftCar = false; //requires for bijoy e-kar i-kar etc
 
     function hideKeyboardOption() {
 
     }
-
-    ;
 
 
     function writePhonetic1(evnt) {
@@ -30,10 +28,14 @@ $.fn.banglaInput = function(options) {
         lastcarry = carry;
         carry += "" + char_e;	 //append the current character pressed to the carry
 
-        var bangla = parsePhonetic1Carry(carry, e); // get the combined equivalent
+        var bangla = '';
+        if (carry.length > 1)
+            bangla = parsePhonetic1Carry(carry, e); // get the combined equivalent
         var tempBangla = parsePhonetic1Carry(char_e, e); // get the single equivalent
+
+
         if (old_len == 0) { //first character
-            insertJointAtCursor(bangla, 1);
+            insertAtCursor(tempBangla);
 
             parent_char = carry;
             old_len = 1;
@@ -61,7 +63,6 @@ $.fn.banglaInput = function(options) {
         return true;
     }
 
-    ;
 
     function parsePhonetic1Carry(code, e) {
 
@@ -72,7 +73,6 @@ $.fn.banglaInput = function(options) {
             return phonetic1[code];
     }
 
-    ;
 
     function writePhonetic2(evnt) {
 
@@ -115,14 +115,13 @@ $.fn.banglaInput = function(options) {
         return true;
     }
 
-    ;
 
     function parsePhoneticCarry(code, e) {
         var len = code.length;
         current_char = code.charAt(len - 1);
         var temp = lastcarry + current_char;
         if (len > 1) {
-            prev_char = code.substring(0, len - 1);
+            prevChar = code.substring(0, len - 1);
             //alert(current_char);
 
         }
@@ -138,15 +137,15 @@ $.fn.banglaInput = function(options) {
             return '';
         }
         else {
-            if (!phonetic_c[carry] && phonetic_c[prev_char])
-                parent_char = prev_char;
+            if (!phonetic_c[carry] && phonetic_c[prevChar])
+                parent_char = prevChar;
 
             if (phonetic_v[parent_char] && phonetic_v[code]) {
                 //alert(parent_char);
                 space = false;
                 return ( phonetic_v[code]);
             }
-            else if ((prev_char == ' ' || space) && phonetic_v[current_char]) {
+            else if ((prevChar == ' ' || space) && phonetic_v[current_char]) {
                 space = false;
                 return ( phonetic_v[current_char]);
             }
@@ -161,7 +160,7 @@ $.fn.banglaInput = function(options) {
                     return phonetic_v[code];
 
             }
-            else if ((phonetic_v[prev_char] && phonetic_v[code])) {
+            else if ((phonetic_v[prevChar] && phonetic_v[code])) {
                 space = false;
                 return (phonetic_v[code]);
             }
@@ -174,28 +173,120 @@ $.fn.banglaInput = function(options) {
 
     }
 
-    ;
 
     function writeUnijoy(evnt) {
-        var e = evnt.keyCode ? evnt.keyCode : evnt.which; // get the keycode
-        var char_e = String.fromCharCode(e); // get the character equivalent to this keycode
+        var e = evnt.keyCode ? evnt.keyCode : evnt.which;
+        var char_e = String.fromCharCode(e);
         if (e == 8 || e == 32 || e == 46) {
             return true;
         }
 
         lastcarry = carry;
-        carry += "" + char_e;	 //append the current character pressed to the carry
+        carry += "" + char_e;
+
+        var bangla = '';
+        if (carry.length > 1)
+            bangla = parseUniijoyCarry(carry, e); // get the combined equivalent
+        var tempBangla = parseUniijoyCarry(char_e, e); // get the single equivalent
 
 
-        bangla = parseunijoyCarry(carry, e); // get the combined equivalent
-        tempBangla = parseunijoyCarry(char_e, e); // get the single equivalent
-
-        if (old_len == 0) {
-            insertAtCursor(bangla, 1);
+        if (old_len == 0) { //first character
+            insertAtCursor(tempBangla);
             old_len = 1;
             return false;
         }
         else if ((bangla == "" && tempBangla != "")) { //that means it has no joint equivalent
+            bangla = tempBangla;
+            if (bangla == "") {
+                carry = "";
+                return false;
+            }
+            else {// found one equivalent
+                carry = char_e;
+                //prev_dis=bangla;
+                insertAtCursor(bangla);
+                old_len = bangla.length;
+                return false;
+            }
+        }
+        else if (bangla != "") {//joint equivalent found
+            insertAtCursor(bangla);
+            old_len = bangla.length;
+            return false;
+        }
+        return true;
+    }
+
+
+    function parseUnijoyCarry(code, e) {
+        //this function just returns a bangla equivalent for a given keystroke
+        //or a joint one
+        //just read the array - if found then return the bangla eq.
+        //otherwise return a null value
+        if (!unijoy[code]) {
+            if (e == 92)
+                return 'ত্‍';   // khondo to
+            else if (e == 124)
+                return 'ঃ';     // bishorgho
+            return ''; //return a null value
+        }
+        else
+            return ( unijoy[code]);
+    }
+
+
+    function writeBijoy(evnt) {
+        var e = evnt.keyCode ? evnt.keyCode : evnt.which;
+        var char_e = String.fromCharCode(e);
+        if (e == 8 || e == 32 || e == 46) {
+            return true;
+        }
+
+        if (leftCar) {
+            if (unijoy_consonants.indexOf(char_e) >= 0) {
+
+                insertJointAtCursor(unijoy[char_e], 1);
+
+                insertAtCursor(unijoy[prevChar]);
+                old_len = 1;
+                leftCar = false;
+                prevChar = '';
+                return false;
+            }
+            else {
+                leftCar = false;
+            }
+        }
+
+        if ('cCd'.indexOf(char_e) >= 0) {// found left car
+            if (prevChar.length == 0 || ( unijoy_consonants.indexOf(prevChar) < 0)) {
+                leftCar = true;
+                prevChar = char_e;
+
+            }
+            else {
+                leftCar = false;
+
+            }
+
+        }
+
+
+        lastcarry = carry;
+        carry += "" + char_e;
+
+        var bangla = '';
+        if (carry.length > 1)
+            bangla = parseBijoyCarry(carry, e); // get the combined equivalent
+        var tempBangla = parseBijoyCarry(char_e, e); // get the single equivalent
+
+
+        if (old_len == 0) { //first character
+            insertAtCursor(tempBangla);
+            old_len = 1;
+            return false;
+        }
+        else if ((bangla == "" && tempBangla != "")) { // no joint equivalent
             bangla = tempBangla;
             if (bangla == "") {
                 carry = "";
@@ -217,12 +308,33 @@ $.fn.banglaInput = function(options) {
         return true;
     }
 
-    ;
+
+    function parseBijoyCarry(code, e) {
+        //this function just returns a bangla equivalent for a given keystroke
+        //or a joint one
+        //just read the array - if found then return the bangla eq.
+        //otherwise return a null value
+        var len = code.length;
+        if (len > 1) {
+            prevChar = code.substring(0, len - 1);
+        }
+        if (code == 'X')
+            return 'ৗ';
+        else if (!unijoy[code]) {
+            if (e == 92)
+                return 'ত্‍';   // khondo to
+            else if (e == 124)
+                return 'ঃ';     // bishorgho
+            return ''; //return a null value
+        }
+        else
+            return ( unijoy[code]);
+    }
 
     function insertJointAtCursor(myValue, len) {
 
-
         var myField = active_obj;
+        active_obj_scroll_top = active_obj.get(0).scrollTop;
         if (document.selection) {
             myField.focus();
             sel = document.selection.createRange();
@@ -237,7 +349,6 @@ $.fn.banglaInput = function(options) {
         //MOZILLA/NETSCAPE support
         else if (myField.selectionStart || myField.selectionStart == 0) {
 
-            myField.focus();
             var startPos = myField.selectionStart - len;
             var endPos = myField.selectionEnd;
             var scrollTop = myField.scrollTop;
@@ -248,10 +359,8 @@ $.fn.banglaInput = function(options) {
 
             myField.selectionStart = startPos + myValue.length;
             myField.selectionEnd = startPos + myValue.length;
-            myField.scrollTop = scrollTop;
 
         } else {
-            // alert();
             var scrollTop = myField.scrollTop;
             var curPos = myField.getCursorPosition()
             myField.val(
@@ -259,108 +368,99 @@ $.fn.banglaInput = function(options) {
                             + myValue
                             + myField.val().substring(curPos + len - 1, myField.val().length)
                     );
-            myField.focus();
-            myField.scrollTop = scrollTop;
+
         }
+        myField.adjustScrollTop(active_obj_scroll_top);
         //document.getElementById("len").innerHTML = len;
 
     }
 
-    ;
 
     function insertAtCursor(myValue) {
 
-        var myField = active_obj;
+        var myField = $(active_obj);
+        active_obj_scroll_top = active_obj.get(0).scrollTop;
         if (document.selection) {
-            //alert("hello2");
             myField.focus();
             sel = document.selection.createRange();
             sel.text = myValue;
             sel.collapse(true);
             sel.select();
         }
-        //MOZILLA/NETSCAPE support
         else if (myField.selectionStart || myField.selectionStart == 0) {
-
             var startPos = myField.selectionStart;
             var endPos = myField.selectionEnd;
-            var scrollTop = myField.scrollTop;
+            //var scrollTop = myField.scrollTop;
             startPos = (startPos == -1 ? myField.val().length : startPos );
             myField.val(myField.val().substring(0, startPos)
                     + myValue
                     + myField.val().substring(endPos, myField.val().length));
-            myField.focus();
+            myField.setCursorPosition(endPos + myValue.length);
             myField.selectionStart = startPos + myValue.length;
             myField.selectionEnd = startPos + myValue.length;
-            myField.scrollTop = scrollTop;
+            //myField.scrollTop = active_obj_scroll_top;
+
 
         } else {
-
-            var scrollTop = myField.scrollTop;
-            myField.val(myField.val() + myValue);
-            myField.focus();
-            myField.scrollTop = scrollTop;
+            var curPos = myField.getCursorPosition();
+            myField.val(
+                    myField.val().substring(0, curPos)
+                            + myValue
+                            + myField.val().substring(curPos, myField.val().length)
+                    );
+            myField.setCursorPosition(curPos + myValue.length);
 
         }
+        myField.adjustScrollTop(active_obj_scroll_top);
+
     }
 
-    ;
-
-    function parseunijoyCarry(code, e) {
-        //this function just returns a bangla equivalent for a given keystroke
-        //or a joint one
-        //just read the array - if found then return the bangla eq.
-        //otherwise return a null value
-        if (!unijoy[code]) {
-            if (e == 92)
-                return 'ত্‍';   // khondo to
-            else if (e == 124)
-                return 'ঃ';     // bishorgho
-            return ''; //return a null value
-        }
-        else
-            return ( unijoy[code]);
-    }
-
-    ;
 
     return this.each(function() {
         active_obj = $(this);
+        if (active_obj.attr('active_keyboard') === undefined)
+            active_obj.attr('active_keyboard', opts.keyboard);
+
+        if (active_obj.attr('option_enabled') === undefined) {
+            var option_html = '<div bangla_option_for="' + active_obj.attr('id') + '" id="bangla_option_for_' + active_obj.attr('id') + '" class="bangla_input_option">';
+            option_html += '<span>Keyboard</span>';
+            option_html += '<select class="bangla_option_select"  style="padding:1px"><option value="phonetic1">ফনেটিক</option><option value="unijoy">ইউনিজয়</option><option value="bijoy">বিজয়</option><option value="english">English</option></select>';
+            option_html += '</div>';
+
+            $('div.bangla_input_option').each(function() {
+                $(this).hide();
+                if (!($(this).attr('bangla_option_for') === undefined)) {
+                    $('#' + $(this).attr('bangla_option_for')).removeAttr('option_enabled');
+                }
+            });
+
+            active_obj.parent().append(option_html);
+            $('div#bangla_option_for_' + active_obj.attr('id')).css({
+                "position": "absolute",
+                "left": (active_obj.offset().left + active_obj.width() - 120) + "px",
+                "top":active_obj.offset().top - 30 + "px"
+            });
+
+            $('select.bangla_option_select').val(active_obj.attr('active_keyboard'));
+
+            $('div.bangla_input_option').show();
+            active_obj.attr('option_enabled', 1);
+            $('select.bangla_option_select').change(function() {
+                active_obj.attr('active_keyboard', $(this).val());
+            });
+        }
+
+        $('.bangla_input_option').hide();
+
         $(this).focus(function() {
             active_obj = $(this);
+            $('.bangla_input_option').hide();
+            $('div#bangla_option_for_' + active_obj.attr('id')).show();
 
-            if (active_obj.attr('active_keyboard') === undefined)
-                active_obj.attr('active_keyboard', opts.keyboard);
+        });
 
-            if (active_obj.attr('option_enabled') === undefined) {
-                var option_html = '<div bangla_option_for="' + active_obj.attr('id') + '" id="bangla_option_for_"' + active_obj.attr('id') + ' class="bangla_input_option">';
-                option_html += '<span>Keyboard</span>';
-                option_html += '<select class="bangla_option_select" ><option value="phonetic1">ফনেটিক</option><option value="unijoy">ইউনিজয়</option><option value="english">English</option></select>';
-                option_html += '</div>';
-
-                $('div.bangla_input_option').each(function() {
-                    $(this).hide();
-                    if (!($(this).attr('bangla_option_for') === undefined)) {
-                        $('#' + $(this).attr('bangla_option_for')).removeAttr('option_enabled');
-                    }
-                });
-
-                active_obj.parent().append(option_html);
-                $('div#bangla_option_for_' + active_obj.attr('id')).css({
-                    "position": "absolute",
-                    "left": (active_obj.offset().left + active_obj.width() - 120) + "px",
-                    "top":active_obj.offset().top - 30 + "px"
-                });
-
-                alert('dd');
-                $('select.bangla_option_select').val(active_obj.attr('active_keyboard'));
-
-                $('div.bangla_input_option').show();
-                active_obj.attr('option_enabled', 1);
-                $('select.bangla_option_select').change(function() {
-                    active_obj.attr('active_keyboard', $(this).val());
-                });
-            }
+        $(this).focusout(function() {
+            // $('div#bangla_option_for_' + active_obj.attr('id')).hide();
         });
 
         $('select.bangla_option_select').change(function() {
@@ -404,10 +504,11 @@ $.fn.banglaInput = function(options) {
 
             var e = evnt.keyCode ? evnt.keyCode : evnt.which;
             if (e == 8 || e == 32 || e == 13) {
-                carry = " ";
+                carry = '';
                 lastcarry = '';
                 parent_char = '';
-                prev_char = '';
+                prevChar = '';
+                leftCar = false;
 
                 space = true;
                 return true;
@@ -440,6 +541,11 @@ $.fn.banglaInput = function(options) {
                 }
 
                 case 'english' :{
+                    break;
+                }
+
+                case 'bijoy' :{
+                    return writeBijoy(evnt);
                     break;
                 }
 
@@ -518,6 +624,8 @@ $.fn.banglaInput.defaults = {
 var unijoy = new Array();
 var unijoy3 = new Array();
 var unijoy4 = new Array();
+//var unijoy_consonants = ['h','H','j', 'J','k','K', 'l', 'L','v','V','b', 'B', 'n','N', 'm', 'M', 'q', 'w', 'W', 'e', 'E', 'r', 'R', 't', 'T', 'y', 'Y', 'u', 'U', 'i', 'I','o', 'O', 'p', 'P'];
+var unijoy_consonants = 'hHjJkKlLvVbBnNmMqwWeErRtTyYuUiIoOpP';
 
 unijoy['a'] = 'ৃ'; //wri kar
 unijoy['A'] = 'র্'; //ref
@@ -531,7 +639,7 @@ unijoy3['d'] = 'ই'; //I kar
 unijoy['f'] = 'া'; //a kar
 unijoy['F'] = 'অ'; //shore  o
 unijoy3['f'] = 'আ'; //shore  a
-unijoy['g'] = '্'; //joiner
+unijoy['g'] = '্'; //
 unijoy['G'] = '|'; //dari
 unijoy3['g'] = '্‌'; //hashant
 unijoy['h'] = 'ব'; //bo
@@ -903,3 +1011,5 @@ phonetic1['6'] = '৬';
 phonetic1['7'] = '৭';
 phonetic1['8'] = '৮';
 phonetic1['9'] = '৯';
+
+

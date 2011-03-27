@@ -16,12 +16,12 @@
           </ul>
         </div>
     <% end %>
-    <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+    <div class="form_summary" id="summary">
 
     </div>
     <div class="item_form_row">
       <label>
-        <span>*</span> Category:
+        Category<span>*</span>:
       </label>
 
       <%= f.select :category_id, Hotel::CATEGORIES, :prompt=> 'Select Category' %>
@@ -29,7 +29,7 @@
 
     <div class="item_form_row">
       <label>
-        <span>*</span> Name:
+        Name<span>*</span>:
       </label>
       <%= f.text_field :name %>
     </div>
@@ -57,7 +57,7 @@
       <%= f.label :features %>
       <div class="f_edit_row photo_box">
         <% @features_for_hotel.each do |feature| %>
-            <div class="hotel_feature">
+            <div class="hotel_feature spot_in_package">
               <%= check_box_tag "hotel[feature_ids][]", feature.id, hotel_feature_present?(feature) -%>
               <span>
               <%= feature.name -%>
@@ -69,15 +69,14 @@
 
     <div class="item_form_row">
       <label>
-        <span>*</span> Division:
+        Division<span>*</span>:
       </label>
       <%= f.select :division_id, Division.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
 
     </div>
     <div class="item_form_row">
       <label>
-        <span>*</span>
-        District
+        District <span>*</span>:
       </label>
       <%= f.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
       <%= image_tag 'spin.gif', :id => 'district_loading', :class => 'loading_image' %>
@@ -86,19 +85,19 @@
 
     <div class="item_form_row">
       <label>
-        <span>*</span> Phone:
+        Phone<span>*</span>:
       </label>
       <%= f.text_field :phone %>
     </div>
     <div class="item_form_row">
       <label>
-        <span>*</span> Discount:
+        Discount:
       </label>
       <%= f.text_field :discount %>
     </div>
     <div class="item_form_row">
       <label>
-        <span>*</span> Discount till:
+        Discount till:
       </label>
       <%= f.text_field :discount_till %>
     </div>
@@ -139,10 +138,8 @@
     <div class="item_form_row">
       <label> Image:</label>
 
-      <div class="photo_box">
-        <!-- <h3>Images <span style="font-size: 11px;"><%#= ad_photo_number_str(@hotel) %></span></h3>-->
+       <div class="f_edit_row photo_box">
         <div class="edit_img_row">
-
           <% unless @hotel.new_record? %>
               <%= render :partial => 'shared_partials/existing_photo', :collection => @hotel.assets %>
           <% end %>
@@ -298,8 +295,8 @@
 
     $(document).ready(function() {
 
-        TBD.DHTML.addMoreItem('a.addMoreContact', '#new_contact_html', '#hotel_contacts','span.removeContactField', 'contact');
-        TBD.DHTML.addMoreItem('a.addMorePolicy', '#new_policy_html', '#hotel_policies','span.removePolicyField', 'policy');
+        TBD.DHTML.addMoreItem('a.addMoreContact', '#new_contact_html', '#hotel_contacts', 'span.removeContactField', 'contact');
+        TBD.DHTML.addMoreItem('a.addMorePolicy', '#new_policy_html', '#hotel_policies', 'span.removePolicyField', 'policy');
 
         var validator = $("#hotel_form").validate({
             invalidHandler: function() {

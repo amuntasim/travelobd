@@ -27,12 +27,16 @@
 class Package < ActiveRecord::Base
   translates :title, :description, :short_description, :location, :price_includes, :price_excludes, :company
 
+  validates :category_id, :presence => true
+  validates :title, :presence => true
+  validates :price, :presence => true
+  validates :short_description, :presence => true
+
   has_many :videos, :class_name => 'PackageVideo'
   has_many :assets, :as => :assetable
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
-  belongs_to :district
-  belongs_to :division
+
   has_many :events, :class_name => 'PackageEvent'
   has_many :itineraries, :class_name => 'PackageItinerary'
   has_many :contacts, :as => :contactable
@@ -56,7 +60,6 @@ class Package < ActiveRecord::Base
 
 
   ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]
-
 
 
   CATEGORIES = {'cat1' => 1, 'cat2' => 2, 'cat3' => 3}

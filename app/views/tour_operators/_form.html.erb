@@ -17,6 +17,7 @@
           </ul>
         </div>
     <% end %>
+    <div class="form_summary" id="summary"></div>
 
     <div class="item_form_row">
       <label> Category<span>*</span>:</label>
@@ -136,7 +137,7 @@
 
 
     <div class="submit_btn">
-      <%= f.submit :class => 'search_button', :style => 'width:140px' %>
+      <%= f.submit :class => 'search_button' %>
       <span class="search_button_right"> </span>
     </div>
 
@@ -151,7 +152,7 @@
     <%= render(:partial => 'shared_partials/policy', :locals => {:form => @builder}, :object => @tour_operator.policies.new) %>
   </div>
 
-<div id="new_service_html">
+  <div id="new_service_html">
     <%= render(:partial => 'tour_operators/service', :locals => {:form => @builder}, :object => @tour_operator.services.new) %>
   </div>
 
@@ -168,129 +169,27 @@
     var allowed_images = 10;
 
 
-    $.fn.checkUncheckSpot = function() {
-        if (!$(this).attr('checked')) {
-            $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
-                $(this).removeAttr('checked');
-            });
-            $('.spot_of_district_' + $(this).attr('value')).hide();
-        }
-        else {
-            $('.spot_of_district_' + $(this).attr('value')).show();
-            $('.spot_of_district_' + $(this).attr('value')).children('input[type="checkbox"]').each(function() {
-                if ($(this).attr('prev_checked') == 'true')
-                    $(this).attr('checked', 'checked');
-            });
-        }
-
-    }
-
-
-    $.fn.handleDistrictSelection = function() {
-        $(".district_in_tour_operator input[type='checkbox']").change(function () {
-            $(this).checkUncheckSpot();
-        });
-
-    }
-
-
-    $.fn.removePContact = function() {
-        $(this).parents('.contact').remove();
-    }
-
-    $.fn.removePService = function() {
-        $(this).parents('.service').remove();
-    }
-
-    $.fn.removePDepartureSchedule = function() {
-        $(this).parents('.departure_schedule').remove();
-    }
-
-    $.fn.removePBranchLocation = function() {
-        $(this).parents('.branch_location').remove();
-    }
-
-    $.fn.removePDestination = function() {
-        $(this).parents('.destination').remove();
-    }
-    $.fn.removePPolicies = function() {
-        $(this).parents('.policy').remove();
-    }
-
-
     $(document).ready(function() {
 
-        $('a.addMoreContact').click(function() {
-            var new_object_id = new Date().getTime();
-            var html = $($('#new_contact_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-            html.appendTo($('#tour_operator_contacts')).slideDown('slow');
-            $('span.removeContactField').click(function() {
-                $(this).removePContact();
-            });
+        TBD.DHTML.addMoreItem('a.addMoreContact', '#new_contact_html', '#tour_operator_contacts', 'span.removeContactField', 'contact');
+        TBD.DHTML.addMoreItem('a.addMorePolicy', '#new_policy_html', '#tour_operator_policies', 'span.removePolicyField', 'policy');
+        TBD.DHTML.addMoreItem('a.addMoreService', '#new_service_html', '#tour_operator_services', 'span.removeServiceField', 'service');
 
-            $('span.removeContactField').click(function() {
-                $(this).removePContact();
-            });
-        });
+        var validator = $("#tour_operator_form").validate({
+            invalidHandler: function() {
+                $("#summary").html('<div class="item_form_row">' + validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+                //$('textarea.tiny_redcloth').removeAttr('trc_option_enabled');
+                //$('textarea.tiny_redcloth').tinyRedcloth();
 
-        $('span.removeContactField').click(function() {
-            $(this).removePContact();
-        });
-
-        $('a.addMoreService').click(function() {
-            var new_object_id = new Date().getTime();
-            var html = $($('#new_service_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-            html.appendTo($('#tour_operator_services')).slideDown('slow');
-            $('span.removeServiceField').click(function() {
-                $(this).removePService();
-            });
-
-            $('span.removeServiceField').click(function() {
-                $(this).removePService();
-            });
-        });
-
-        $('span.removeServiceField').click(function() {
-            $(this).removePService();
-        });
-
-
-        $('a.addMorePolicy').click(function() {
-            var new_object_id = new Date().getTime();
-            var html = $($('#new_policy_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
-            html.appendTo($('#tour_operator_policies')).slideDown('slow');
-            $('span.removePolicyField').click(function() {
-                $(this).removePPolicy();
-            });
-
-            $('span.removePolicyField').click(function() {
-                $(this).removePPolicy();
-            });
-        });
-
-        $('span.removePolicyField').click(function() {
-            $(this).removePPolicy();
-        });
-
-
-        $('span.removeImageField').click(function() {
-            $(this).parents('.photo').remove();
-        });
-
-
-        $("#tour_operator_form").validate({
+            },
             errorPlacement: function(error, element) {
                 error.remove();
             },
 
-
             rules: {
                 'tour_operator[category_id]': "required",
-                'tour_operator[title]' : "required",
-                'tour_operator[price]': "required"
-                //tour_operator_tour_operator_name: "required",
-                //tour_operator_short_description: "required"
-
+                'tour_operator[name]' : "required",
+                'tour_operator[description]': "required"
             },
             messages: {
                 comment: "Please enter a comment."
@@ -301,11 +200,14 @@
             changeMonth: true,
             changeYear: true
         });
-        $(this).handleDistrictSelection();
 
-        $(".district_in_tour_operator input[type='checkbox']").each(function () {
-            $(this).checkUncheckSpot();
+        $(".district_in_tour_operator input[type='checkbox']").click(function () {
+            TBD.DHTML.checkUncheckSpot(this);
         });
+        $(".district_in_tour_operator input[type='checkbox']").each(function () {
+            TBD.DHTML.checkUncheckSpot(this);
+        });
+
 
     });
 

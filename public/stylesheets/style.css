@@ -12,6 +12,7 @@ body {
     font-size: 12px;
     background: #eef3fa;
     color: #000;
+    line-height: 18px;
 }
 
 a {
@@ -79,8 +80,8 @@ ul li {
     position: absolute;
     z-index: 11;
     width: 118px;
-    top:40px;
-    left:740px;
+    top: 40px;
+    left: 740px;
 
 }
 
@@ -175,7 +176,6 @@ ul li {
     margin-top: 10px;
 }
 
-
 h3 {
     font-size: 15px;
     color: #000000;
@@ -192,7 +192,6 @@ h2 {
 
 }
 
-
 .ar_desc {
     float: left;
     width: 180px;
@@ -205,12 +204,9 @@ h2 {
     color: #547442
 }
 
-
 .footer {
     float: left;
     width: 1000px;
-    padding-bottom: 30px;
-
 }
 
 .shade_footer {
@@ -296,7 +292,6 @@ h2 {
     width: 250px
 }
 
-
 .media_con {
     float: left;
     width: 295px;
@@ -376,8 +371,6 @@ input#friends_email {
     margin-bottom: 2px;
 }
 
-
-
 .item_form_row span {
     color: #9f1010
 }
@@ -405,14 +398,12 @@ input#friends_email {
     text-decoration: none
 }
 
-
 .f_chose_btn {
     float: left;
     width: 270px;
     margin-left: 30px;
     margin-top: 6px
 }
-
 
 .subLink {
     float: right;
@@ -477,7 +468,6 @@ input#friends_email {
     margin-bottom: 0px;
     margin-top: 10px
 }
-
 
 .white_Desc {
     float: left;
@@ -553,9 +543,8 @@ input#friends_email {
 
 .mytools ul li a:hover {
     text-decoration: underline;
-    color:#0000ee;
+    color: #0000ee;
 }
-
 
 .f_edit_row input[type=text], .item_form_row input[type=text] {
     float: left;
@@ -580,7 +569,7 @@ a.adMore {
 
 .edit_img_row {
     float: left;
-    width: 450px;
+    width: 100%;
     display: inline
 }
 
@@ -610,11 +599,9 @@ a.del_photo {
     margin-bottom: 8px
 }
 
-
 .edit_box_img span {
     float: left
 }
-
 
 .photo_box {
     float: left;
@@ -629,7 +616,6 @@ a.del_photo {
 .inactive {
     background: url(/images/inactive.gif);
 }
-
 
 .midContent {
     padding-left: 0px;
@@ -770,7 +756,7 @@ a.del_photo {
     border: 1px solid #CCC;
     padding: 2px 5px;
     margin-left: 8px;
-    float:right;
+    float: right;
 }
 
 .package_desc_info {
@@ -816,18 +802,21 @@ a.del_photo {
 .search_button {
     background: url("/images/submit_btn.png");
     text-align: center;
-    padding-left: 5px;
     height: 28px;
     margin-top: 10px;
     margin-left: 35px;
     border: none;
     color: #FFFFFF;
-    padding-bottom: 3px;
+    padding: 0px 10px;
     font-size: 14px;
     float: left;
+    cursor:pointer;
+    padding-bottom:2px;
 }
 
-.ad_btn .search_button {margin-left:55px;}
+.ad_btn .search_button {
+    margin-left: 55px;
+}
 
 .search_button_right {
     background: url("/images/submit_btn.png") -4px 28px;
@@ -886,7 +875,6 @@ input {
     padding: 0px 2px;
 }
 
-
 .evenRow {
     background: #aaaaaa;
     color: #ffffff;
@@ -903,13 +891,13 @@ input {
 
 .deleteExistingImage, span.removeImageField, span.addMoreImage {
     cursor: pointer;
-    font-size: 14px;
-    font-weight: bold
 }
 
 span.removeImageField {
     margin-top: 8px;
+    margin-left:8px;
     float: left;
+
 }
 
 .spot_photo {
@@ -925,9 +913,7 @@ span.removeImageField {
 /*.existing_image {float: left; width: 96px; padding: 5px; border: 1px}*/
 
 a.addMoreImage {
-    font-size: 14px;
-    font-weight: bold;
-    color: #9F1010
+
 }
 
 .spot_box input.subBtn {
@@ -952,7 +938,6 @@ a.addMoreImage {
     overflow: hidden
 }
 
-
 .fl {
     float: left
 }
@@ -960,7 +945,6 @@ a.addMoreImage {
 .pad_lr_5 {
     padding: 0px 5px
 }
-
 
 .error {
     background: lightsalmon !important;
@@ -993,7 +977,6 @@ a.addMoreImage {
     padding: 10px;
 }
 
-
 .e_bor img {
     width: 96px;
     height: 66px;
@@ -1022,7 +1005,7 @@ div.pagination {
 
 .pagination em {
     color: #72AF3A;
-    font-style:normal;
+    font-style: normal;
 }
 
 .pagination_body {
@@ -1048,11 +1031,9 @@ div.pagination {
     width: 226px;
 }
 
-
 #stf_summary {
     text-align: center;
 }
-
 
 div.photo {
     float: left;
@@ -1087,7 +1068,6 @@ div#package_images {
     float: left;
 }
 
-
 .f_edit_row .radio_area {
     float: left;
     width: 120px;
@@ -1118,6 +1098,10 @@ div#package_images {
     cursor: pointer;
 }
 
+.item_form_row input[type=checkbox]{
+    float:left;
+    margin:3px;
+}
 .spot_in_package {
     float: left;
     width: 197px;
@@ -1126,6 +1110,8 @@ div#package_images {
 
 .spot_in_package input {
     margin-right: 3px;
+    margin-top: 2px;
+    float: left;
 }
 
 .spot_in_package label {
@@ -1223,9 +1209,8 @@ textarea.tiny_redcloth {
 
 div.photo {
     float: left;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid #cccccc;
+    padding: 5px 0;
+    margin: 5px 0;
 }
 
 div.photo textarea {
@@ -1356,11 +1341,12 @@ ul.box-slide {
 }
 
 ul.box-slide  img {
-    outline:none;
+    outline: none;
 }
 
-
-#ui-datepicker-div {z-index:10999 !important;}
+#ui-datepicker-div {
+    z-index: 10999 !important;
+}
 
 a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
     text-decoration: none;
@@ -1374,13 +1360,14 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
     padding: 0 0 0 1px;
     text-decoration: none;
 }
+
 .fb_button_text {
     background: url("http://b.static.ak.fbcdn.net/rsrc.php/zL/r/FGFbc80dUKj.png") repeat scroll 0 0 #5F78AB;
     border-bottom: 1px solid #1A356E;
     border-top: 1px solid #879AC0;
     color: #FFFFFF;
     display: block;
-    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
     font-weight: bold;
     margin: 1px 1px 0 21px;
     padding: 0px 6px 3px;
@@ -1557,4 +1544,13 @@ input.login_now {
 
 /* END FOR Login and create account */
 
-.pad_TL0 {padding-top:0; padding-left:0}
+.pad_TL0 {
+    padding-top: 0;
+    padding-left: 0
+}
+
+.form_summary {
+    font-size: 16px;
+    font-weight: bold;
+    color: #9f1010
+}

@@ -55,7 +55,6 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(params[:spot])
     @spot.user_id = current_user.id
-    set_district_division
     respond_to do |format|
       if @spot.save
         format.html { redirect_to(@spot, :notice => 'Spot was successfully created.') }
@@ -71,7 +70,6 @@ class SpotsController < ApplicationController
   # PUT /spots/1.xml
   def update
     @spot = Spot.find(params[:id])
-    update_district_division
     respond_to do |format|
       if @spot.update_attributes(params[:spot])
         format.html { redirect_to(@spot, :notice => 'Spot was successfully updated.') }
@@ -118,49 +116,6 @@ class SpotsController < ApplicationController
     render :nothing => true
   end
   private
-  def set_district_division
-    if params[:spot][:division_id].blank?
-      division = Division.includes(:translations).first(:conditions =>['(division_translations.name = ? OR code = ?)', params[:division_str], params[:division_str]])
-      unless division
-        division = Division.new( :name => params[:division_str])
-        division.code = params[:division_str] if params[:division_str].length == 2
-        division.save
-      end
-      @spot.division_id = division.id
-    end
-
-    if params[:spot][:district_id].blank?
-      district = District.includes(:translations).first(:conditions =>['district_translations.name = ? ', params[:district_str]])
-      unless district
-        district = District.new( :division_id=> @spot.division_id,  :name => params[:district_str])
-        district.division_id = @spot.division_id
-        district.save
-      end
-      @spot.district_id = district.id
-    end
-  end
-
-  def update_district_division
-    unless params[:division_str].blank?
-      division = Division.includes(:translations).first(:conditions =>['(division_translations.name = ? OR code = ?)', params[:division_str], params[:division_str]])
-      unless division
-        division = Division.new( :name => params[:division_str])
-        division.code = params[:division_str] if params[:division_str].length == 2
-        division.save
-      end
-      params[:spot][:division_id] ||= division.id
-    end
-
-    unless params[:division_str].blank?
-      district = District.includes(:translations).first(:conditions =>['district_translations.name = ? ',params[:district_str]])
-      unless district
-        district = District.new( :division_id=> @spot.division_id,  :name => params[:district_str])
-        district.division_id = params[:spot][:division_id]
-        district.save
-      end
-      params[:spot][:district_id] ||= district.id
-    end
-  end
 
   def choose_layout
     ['index'].include?(action_name) ? 'admin' : 'application'
