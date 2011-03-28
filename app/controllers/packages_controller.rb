@@ -58,7 +58,7 @@ class PackagesController < ApplicationController
     @package.user_id = current_user.id
     respond_to do |format|
       if @package.save
-        redirect_to package_path(@package), :notice => 'Package was successfully createds.'
+        format.html {redirect_to package_path(@package), :notice => 'Package was successfully createds.'}
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @package.errors, :status => :unprocessable_entity }

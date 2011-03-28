@@ -10,6 +10,7 @@ $.fn.banglaInput = function(options) {
     var old_len = 0;
     var current_char = '';
     var leftCar = false; //requires for bijoy e-kar i-kar etc
+    var leftCarForJoint = '';
     var vowelJoint = false;
 
     function hideKeyboardOption() {
@@ -260,9 +261,49 @@ $.fn.banglaInput = function(options) {
         var tempBangla = parseBijoyCarry(char_e, e); // get the single equivalent
 
 
+        if (leftCar) {
+            if (bijoy_constants.indexOf(char_e) >= 0) {
+                if (vowelJoint) {
+                    var tmp_position = active_obj.val().lastIndexOf(bijoy_key_maps[leftCarForJoint], active_obj.getCursorPosition())
+                    if (tmp_position >= 0) {
+                        tmp_container = []
+                        for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
+                            tmp_container.push(active_obj.val()[i]);
+                        }
+
+                        insertJointAtCursor(tmp_container.pop(), tmp_container.length + 1);
+                        for (var j = tmp_container.length - 1; j >= 0; j--) {
+                            if (tmp_container[j] != bijoy_key_maps[leftCarForJoint]) {
+                                insertAtCursor(tmp_container[j]);
+                            }
+                        }
+                        insertAtCursor(bijoy_key_maps[char_e]);
+                        insertAtCursor(bijoy_key_maps[leftCarForJoint]);
+                    }
+                    leftCar = false;
+                    leftCarForJoint = '';
+                    vowelJoint = false;
+
+                }
+                else {
+                    insertJointAtCursor(bijoy_key_maps[char_e], 1);
+                    insertAtCursor(bijoy_key_maps[prevChar]);
+                    old_len = 1;
+                    leftCar = false;
+                    leftCarForJoint = prevChar;
+                }
+                return false;
+            }
+        }
+
         if (vowelJoint) {
-            if (unijoy3[char_e]) {
-                insertJointAtCursor(unijoy3[char_e], 1);
+            if (bijoy_key_maps3[char_e]) {
+                if (bijoy_key_maps3[prevChar]) {
+                    insertJointAtCursor(unijoy3[char_e], 1);
+                }
+                else {
+                    insertAtCursor(unijoy3[char_e])
+                }
                 vowelJoint = false;
                 return false;
             }
@@ -273,32 +314,12 @@ $.fn.banglaInput = function(options) {
 
         if (char_e == 'g') {// found vowel joint
             vowelJoint = true;
-        }
-
-        if (leftCar) {
-            if (unijoy_consonants.indexOf(char_e) >= 0) {
-                insertJointAtCursor(unijoy[char_e], 1);
-                insertAtCursor(unijoy[prevChar]);
-                old_len = 1;
-                leftCar = false;
-                return false;
-            }
-            else {
-                leftCar = false;
-            }
+            if (leftCarForJoint.length > 0)
+                leftCar = true;
         }
 
         if ('cCd'.indexOf(char_e) >= 0) {// found left car
-            if (prevChar.length == 0 || ( unijoy_consonants.indexOf(prevChar) < 0)) {
-                leftCar = true;
-                prevChar = char_e;
-
-            }
-            else {
-                leftCar = false;
-
-            }
-
+            leftCar = true;
         }
 
 
@@ -342,7 +363,7 @@ $.fn.banglaInput = function(options) {
 
         if (code == 'X')
             return 'ৗ';
-        else if (!unijoy[code]) {
+        else if (!bijoy_key_maps[code]) {
             if (e == 92)
                 return 'ত্‍';   // khondo to
             else if (e == 124)
@@ -350,7 +371,7 @@ $.fn.banglaInput = function(options) {
             return ''; //return a null value
         }
         else
-            return ( unijoy[code]);
+            return ( bijoy_key_maps[code]);
     }
 
     function insertJointAtCursor(myValue, len) {
@@ -493,8 +514,8 @@ $.fn.banglaInput = function(options) {
 
             switch (ev.keyCode) {
                 case 16:
-                 opts.shiftMode = true;
-                 break;
+                    opts.shiftMode = true;
+                    break;
                 case 17:
                     opts.ctrlMode = true;
                     break;
@@ -632,7 +653,7 @@ new function($) {
 
 $.fn.banglaInput.defaults = {
     //keyboard: 'phonetic1',
-    keyboard: 'unijoy',
+    keyboard: 'bijoy',
     space: true,
     shiftMode: false,
     ctrlMode: false,
@@ -644,395 +665,536 @@ $.fn.banglaInput.defaults = {
 
 // For Unicode characters
 
-var unijoy = new Array();
-var unijoy3 = new Array();
-var unijoy4 = new Array();
-//var unijoy_consonants = ['h','H','j', 'J','k','K', 'l', 'L','v','V','b', 'B', 'n','N', 'm', 'M', 'q', 'w', 'W', 'e', 'E', 'r', 'R', 't', 'T', 'y', 'Y', 'u', 'U', 'i', 'I','o', 'O', 'p', 'P'];
-var unijoy_consonants = 'hHjJkKlLvVbBnNmMqwWeErRtTyYuUiIoOpP';
+var unijoy = {
+    'a':'ৃ', //wri kar
+    'A':'র্', //ref
+    'a':'ঋ', //wri
+    's':'ু', //u kar
+    'S':'ূ', //U kar
+    's':'উ', // wrossho u
+    'd':'ি', //i kar
+    'D':'ী', //I kar
+    'd':'ই', //I kar
+    'f':'া', //a kar
+    'F':'অ', //shore  o
+    'f':'আ', //shore  a
+    'g':'্', //
+    'G':'|', //dari
+    'g':'্‌', //hashant
+    'h':'ব', //bo
+    'H':'ভ', //vo
+    'h':'ৰ', //bo with diagonal
+    'j':'ক', //ko
+    'J':'খ', //kho
+    'k':'ত', //to
+    'K':'থ', //tho
+    'l':'দ', //do
+    'L':'ধ', //dho
+    'Z':'্য', //zo fola
+    'z':'্র', //ro fola
+    'z':'ৢ', // hsnt li
+    'x':'ো', //o kar
+    'X':'ৌ', //ou kar
+    'x':'ৌও', //oo
+    'x':'ৗ', //???
+    'c':'ে', //e kar
+    'C':'ৈ', //oi kar
+    'c':'এ', //e
+    'c':'ৠ', //wri +wri kar
+    'v':'র', //ro
+    'V':'ল', //lo
+    'v':'ৱ', //ro with diagonal
+    'v':'ৣ', //li +li
+    'b':'ন', //dontnnoo no
+    'B':'ণ', //murdhonno no
+    'b':'ৄ', //double wri
+    'n':'স', //dontnnoo ssho
+    'N':'ষ', //murdhonno sho
+    'm':'ম', //mo
+    '.':'়', //nukta
+    'M':'শ', //talobbo ssho
+    'q':'ঙ', //uma
+    'Q':'ং', //onursha
+    'q':'ঌ', //li
+    'w':'য', //zo
+    'W':'য়', //ontosto
+    'w':'ৡ', //li..
+    'e':'ড', //ddo
+    'E':'ঢ', //ddho
+    'e':'ঈ', //dirgho e
+    'r':'প', //po
+    'R':'ফ', //fo
+    't':'ট', //tto
+    'T':'ঠ', //ttho
+    'y':'চ', //cho
+    'Y':'ছ', //co
+    'u':'জ', //b jo
+    'U':'ঝ', //jho
+    'u':'ঊ', //dirgho u
+    'i':'হ', //ho
+    'I':'ঞ', //eo
+    'i':'ঐ', //oi
+//'i'] ='';
+    'o':'গ', //go
+    'O':'ঘ', //gho
+    'o':'ঔ', //ou
+    'p':'ড়', //ddo e bindu ro
+    'P':'ঢ়', //ddho e bindu ro
+//'\'':'ড়';
+//'|':'ঢ়', //bishorgho
+    '&':'ঁ', //chondrobindu
 
-unijoy['a'] = 'ৃ'; //wri kar
-unijoy['A'] = 'র্'; //ref
-unijoy3['a'] = 'ঋ';  //wri
-unijoy['s'] = 'ু'; //u kar
-unijoy['S'] = 'ূ'; //U kar
-unijoy3['s'] = 'উ'; // wrossho u
-unijoy['d'] = 'ি'; //i kar
-unijoy['D'] = 'ী'; //I kar
-unijoy3['d'] = 'ই'; //I kar
-unijoy['f'] = 'া'; //a kar
-unijoy['F'] = 'অ'; //shore  o
-unijoy3['f'] = 'আ'; //shore  a
-unijoy['g'] = '্'; //
-unijoy['G'] = '|'; //dari
-unijoy3['g'] = '্‌'; //hashant
-unijoy['h'] = 'ব'; //bo
-unijoy['H'] = 'ভ'; //vo
-unijoy3['h'] = 'ৰ'; //bo with diagonal
-unijoy['j'] = 'ক'; //ko
-unijoy['J'] = 'খ'; //kho
-unijoy['k'] = 'ত'; //to
-unijoy['K'] = 'থ'; //tho
-unijoy['l'] = 'দ'; //do
-unijoy['L'] = 'ধ'; //dho
-unijoy['z'] = '্য'; //zo fola
-unijoy['Z'] = '্র'; //ro fola
-unijoy3['z'] = 'ৢ'; // hsnt li
-unijoy['x'] = 'ো'; //o kar
-unijoy['X'] = 'ৌ'; //ou kar
-unijoy3['x'] = 'ৌও'; //oo
-unijoy4['x'] = 'ৗ'; //???
-unijoy['c'] = 'ে'; //e kar
-unijoy['C'] = 'ৈ'; //oi kar
-unijoy3['c'] = 'এ'; //e
-unijoy4['c'] = 'ৠ'; //wri +wri kar
-unijoy['v'] = 'র'; //ro
-unijoy['V'] = 'ল'; //lo
-unijoy3['v'] = 'ৱ'; //ro with diagonal
-unijoy4['v'] = 'ৣ'; //li +li
-unijoy['b'] = 'ন'; //dontnnoo no
-unijoy['B'] = 'ণ'; //murdhonno no
-unijoy4['b'] = 'ৄ'; //double wri
-unijoy['n'] = 'স'; //dontnnoo ssho
-unijoy['N'] = 'ষ'; //murdhonno sho
-unijoy['m'] = 'ম'; //mo
-unijoy3['.'] = '়'; //nukta
-unijoy['M'] = 'শ'; //talobbo ssho
-unijoy['q'] = 'ঙ'; //uma
-unijoy['Q'] = 'ং'; //onursha
-unijoy3['q'] = 'ঌ'; //li
-unijoy['w'] = 'য'; //zo
-unijoy['W'] = 'য়'; //ontosto
-unijoy4['w'] = 'ৡ'; //li..
-unijoy['e'] = 'ড'; //ddo
-unijoy['E'] = 'ঢ'; //ddho
-unijoy3['e'] = 'ঈ'; //dirgho e
-unijoy['r'] = 'প'; //po
-unijoy['R'] = 'ফ'; //fo
-unijoy['t'] = 'ট'; //tto
-unijoy['T'] = 'ঠ'; //ttho
-unijoy['y'] = 'চ'; //cho
-unijoy['Y'] = 'ছ'; //co
-unijoy['u'] = 'জ'; //b jo
-unijoy['U'] = 'ঝ'; //jho
-unijoy3['u'] = 'ঊ'; //dirgho u
-unijoy['i'] = 'হ'; //ho
-unijoy['I'] = 'ঞ'; //eo
-unijoy3['i'] = 'ঐ'; //oi
-//unijoy4['i'] ='';
-unijoy['o'] = 'গ'; //go
-unijoy['O'] = 'ঘ'; //gho
-unijoy3['o'] = 'ঔ'; //ou
-unijoy['p'] = 'ড়'; //ddo e bindu ro
-unijoy['P'] = 'ঢ়'; //ddho e bindu ro
-//unijoy['\''] = 'ড়';
-//unijoy['|'] = 'ঢ়'; //bishorgho
-unijoy['&'] = 'ঁ'; //chondrobindu
+    '0':'০',
+    '0':'৸',
+    '1':'১',
+    '1':'৴',
+    '2':'২',
+    '2':'৵',
+    '3':'৩',
+    '3':'৶',
+    '4':'৪',
+    '4':'|',
+    '$':'৳',
+    '5':'৫',
+    '5':'৲',
+    '6':'৬',
+    '^':'÷',
+    '7':'৭',
+    '7':'৺',
+    '8':'৮',
+    '9':'৯',
+    '-':'৸'
+}
 
-unijoy['0'] = '০';
-unijoy4['0'] = '৸';
-unijoy['1'] = '১';
-unijoy4['1'] = '৴';
-unijoy['2'] = '২';
-unijoy4['2'] = '৵';
-unijoy['3'] = '৩';
-unijoy4['3'] = '৶';
-unijoy['4'] = '৪';
-unijoy4['4'] = '|';
-unijoy['$'] = '৳';
-unijoy['5'] = '৫';
-unijoy4['5'] = '৲';
-unijoy['6'] = '৬';
-unijoy['^'] = '÷';
-unijoy['7'] = '৭';
-unijoy4['7'] = '৺';
-unijoy['8'] = '৮';
-unijoy['9'] = '৯';
-unijoy4['-'] = '৸';
+var unijoy3 = {
+    'a':'ঋ', //wri
+    's':'উ', // wrossho u
+    'd':'ই', //I kar
+    'f':'আ', //shore  a
+    'g':'্‌', //hashant
+    'h':'ৰ', //bo with diagonal
+    'z':'ৢ', // hsnt li
+    'x':'ৌও', //oo
+    'c':'এ', //e
+    'v':'ৱ', //ro with diagonal
+    '.':'়', //nukta
+    'q':'ঌ', //li
+    'e':'ঈ', //dirgho e
+    'u':'ঊ', //dirgho u
+    'i':'ঐ', //oi
+    'o':'ঔ' //ou
+}
 
+var unijoy4 = {
+    'x':'ৗ', //???
+    'c':'ৠ', //wri +wri kar
+    'v':'ৣ', //li +li
+    'b':'ৄ', //double wri
+    'w':'ৡ', //li..
+    '0':'৸',
+    '1':'৴',
+    '2':'৵',
+    '3':'৶',
+    '4':'|',
+    '5':'৲',
+    '7':'৺',
+    '-':'৸'
+}
 
 // phonetic bangla equivalents
 
-var phonetic = new Array();
-var phonetic_v = new Array();
-var phonetic_c = new Array();
+var phonetic = {
+    'k':'ক', // ko
+    'q':'ক', // ko
+    'Q':'ক', // ko
+    'oi':'ৈ', // oi kar
+    'Oi':'ঐ', // oi
 
+    'i':'ি', // hrossho i kar
+    'I':'ই', // hrossho i
+    'ii':'ী', // dirgho i kar
+    'Ii':'ঈ', // dirgho i
+    'e':'ে', // e kar
+    'E':'এ', // E
+    'U':'উ', // hrossho u
+    'W':'উ', // hrossho u
+    'u':'ু', // hrossho u kar
+    'uu':'ূ', // dirgho u kar
+    'Uu':'ঊ', // dirgho u
+    'Ww':'ঊ', // dirgho u
+    'Oo':'ঊ', // dirgho u
+    'r':'র', // ro
+    'a':'া', // a kar
+    'Aa':'আ', // shore a
+    'A':'অ', // shore o
+    's':'স', // dontyo so
+    't':'ত', // to
+    'kh':'খ', // Kho ////
+    'n':'ন', // dontyo no
+    'nH':'ণ', // murdhonyo no
+    'tt':'ট', // tto
+    'tH':'ঠ', // ttho
+    'd':'দ', // do
+    'dh':'ধ', // dho
+    'b':'ব', // bo
+    'v':'ভ', // bho
+    'rr':'ড়', // doye bindu ro
+    'rh':'ঢ়', // dhoye bindu ro
+    'g':'গ', // go
+    'gh':'ঘ', // gho
+    'h':'হ', // ho
+    'nY':'ঞ', // yo
+    'z':'জ', // borgio jo
+    'zh':'ঝ', // jho
+    'jh':'ঝ', // jho
+    'ch':'চ', // cho
+    'c':'ছ', // ccho
+    'th':'থ', // tho
+    'p':'প', // po
+    'f':'ফ', // fo
+    'dd':'ড', // ddo
+    'dH':'ঢ', // ddho
 
-phonetic['k'] = 'ক'; // ko
-phonetic['q'] = 'ক'; // ko
-phonetic['Q'] = 'ক'; // ko
-phonetic['oi'] = 'ৈ'; // oi kar
-phonetic['Oi'] = 'ঐ'; // oi
-
-phonetic['i'] = 'ি'; // hrossho i kar
-phonetic['I'] = 'ই'; // hrossho i
-phonetic['ii'] = 'ী'; // dirgho i kar
-phonetic['Ii'] = 'ঈ'; // dirgho i
-phonetic['e'] = 'ে'; // e kar
-phonetic['E'] = 'এ'; // E
-phonetic['U'] = 'উ'; // hrossho u
-phonetic['W'] = 'উ'; // hrossho u
-phonetic['u'] = 'ু'; // hrossho u kar
-phonetic['uu'] = 'ূ'; // dirgho u kar
-phonetic['Uu'] = 'ঊ'; // dirgho u
-phonetic['Ww'] = 'ঊ'; // dirgho u
-phonetic['Oo'] = 'ঊ'; // dirgho u
-phonetic['r'] = 'র'; // ro
-phonetic['a'] = 'া'; // a kar
-phonetic['Aa'] = 'আ'; // shore a
-phonetic['A'] = 'অ'; // shore o
-phonetic['s'] = 'স'; // dontyo so
-phonetic['t'] = 'ত'; // to
-phonetic['kh'] = 'খ'; // Kho ////
-phonetic['n'] = 'ন'; // dontyo no
-phonetic['nH'] = 'ণ'; // murdhonyo no
-phonetic['tt'] = 'ট'; // tto
-phonetic['tH'] = 'ঠ'; // ttho
-phonetic['d'] = 'দ'; // do
-phonetic['dh'] = 'ধ'; // dho
-phonetic['b'] = 'ব'; // bo
-phonetic['v'] = 'ভ'; // bho
-phonetic['rr'] = 'ড়';	 // doye bindu ro
-phonetic['rh'] = 'ঢ়';	 // dhoye bindu ro
-phonetic['g'] = 'গ';	// go
-phonetic['gh'] = 'ঘ';	// gho
-phonetic['h'] = 'হ';	// ho
-phonetic['nY'] = 'ঞ';	// yo
-phonetic['z'] = 'জ';	// borgio jo
-phonetic['zh'] = 'ঝ'; // jho
-phonetic['jh'] = 'ঝ'; // jho
-phonetic['ch'] = 'চ'; // cho
-phonetic['c'] = 'ছ'; // ccho
-phonetic['th'] = 'থ'; // tho
-phonetic['p'] = 'প'; // po
-phonetic['f'] = 'ফ'; // fo
-phonetic['dd'] = 'ড'; // ddo
-phonetic['dH'] = 'ঢ'; // ddho
-
-phonetic['j'] = 'য';  // ontoshyo zo
-phonetic['y'] = 'য়';	// ontostho yo
-phonetic['Y'] = 'য়';	// ontostho yo
-phonetic['nG'] = 'ঙ';	// Uma
-phonetic['Ng'] = 'ং';	// uniswor
-phonetic['l'] = 'ল';	// lo
-phonetic['m'] = 'ম';	// mo
-phonetic['sh'] = 'শ';	// talobyo sho
-phonetic['ss'] = 'ষ'; // mordhonyo sho
-phonetic['O'] = 'ও'; // o
-phonetic['o'] = 'ো';  //o kar
-phonetic['ou'] = 'ৌ'; // ou kar
-phonetic['Ou'] = 'ঔ'; // OU
-phonetic['w'] = 'ঔ'; // OU
-phonetic['tt'] = 'ট'; // tto
-phonetic[':'] = 'ঃ'; // bisworgo
-phonetic["."] = "|"; // dari
-phonetic[".."] = "়"; // fullstop
-//phonetic['tX'] = 'ত্‍'; // hosonto
-phonetic['tX'] = 'ত্‍‌';
-phonetic['Ny'] = 'ঁ'; // chondrobindu
-phonetic['x'] = '্য'; // jo fola
-phonetic['X'] = '্য'; // jo fola
-phonetic['wr'] = 'ৃ'; // wri kar
+    'j':'য', // ontoshyo zo
+    'y':'য়', // ontostho yo
+    'Y':'য়', // ontostho yo
+    'nG':'ঙ', // Uma
+    'Ng':'ং', // uniswor
+    'l':'ল', // lo
+    'm':'ম', // mo
+    'sh':'শ', // talobyo sho
+    'ss':'ষ', // mordhonyo sho
+    'O':'ও', // o
+    'o':'ো', //o kar
+    'ou':'ৌ', // ou kar
+    'Ou':'ঔ', // OU
+    'w':'ঔ', // OU
+    'tt':'ট', // tto
+    ':':'ঃ', // bisworgo
+    ".":"|", // dari
+    "..":"়", // fullstop
+//'tX':'ত্‍', // hosonto
+    'tX':'ত্‍‌', //
+    'Ny':'ঁ', // chondrobindu
+    'x':'্য', // jo fola
+    'X':'্য', // jo fola
+    'wr':'ৃ', // wri kar
 //End Set
 ///////shift key//////////
-phonetic['K'] = '্ক';
-phonetic['Kh'] = '্খ';
-phonetic['G'] = '্গ';
-phonetic['Gh'] = '্ঘ';
-phonetic['NG'] = '্ঙ';
-phonetic['Ch'] = '্চ';
-phonetic['C'] = '্ছ';
-phonetic['Z'] = '্জ';
-phonetic['Zh'] = '্ঝ';
-phonetic['Jh'] = '্ঝ';
-phonetic['NY'] = '্ঞ';
-phonetic['Tt'] = '্ট';
-phonetic['TH'] = '্ঠ';
-phonetic['Dd'] = '্ড';
-phonetic['DH'] = '্ঢ';
-phonetic['NH'] = '্ণ';
-phonetic['T'] = '্ত';
-phonetic['Th'] = '্থ';
-phonetic['D'] = '্দ';
-phonetic['Dh'] = '্ধ';
-phonetic['N'] = '্ন';
-phonetic['P'] = '্প';
-phonetic['F'] = '্ফ';
-phonetic['B'] = '্ব';
-phonetic['V'] = '্ভ';
-phonetic['M'] = '্ম';
-phonetic['J'] = '্য';
-phonetic['R'] = '্র';
-phonetic['L'] = '্ল';
-phonetic['Sh'] = '্শ';
-phonetic['Ss'] = '্ষ';
-phonetic['S'] = '্স';
-phonetic['H'] = '্হ';
-phonetic['Rr'] = '্ড়';
-phonetic['Rh'] = '্ঢ়';
+    'K':'্ক',
+    'Kh':'্খ',
+    'G':'্গ',
+    'Gh':'্ঘ',
+    'NG':'্ঙ',
+    'Ch':'্চ',
+    'C':'্ছ',
+    'Z':'্জ',
+    'Zh':'্ঝ',
+    'Jh':'্ঝ',
+    'NY':'্ঞ',
+    'Tt':'্ট',
+    'TH':'্ঠ',
+    'Dd':'্ড',
+    'DH':'্ঢ',
+    'NH':'্ণ',
+    'T':'্ত',
+    'Th':'্থ',
+    'D':'্দ',
+    'Dh':'্ধ',
+    'N':'্ন',
+    'P':'্প',
+    'F':'্ফ',
+    'B':'্ব',
+    'V':'্ভ',
+    'M':'্ম',
+    'J':'্য',
+    'R':'্র',
+    'L':'্ল',
+    'Sh':'্শ',
+    'Ss':'্ষ',
+    'S':'্স',
+    'H':'্হ',
+    'Rr':'্ড়',
+    'Rh':'্ঢ়',
 
-phonetic['0'] = '০';
-phonetic['1'] = '১';
-phonetic['2'] = '২';
-phonetic['3'] = '৩';
-phonetic['4'] = '৪';
-phonetic['5'] = '৫';
-phonetic['6'] = '৬';
-phonetic['7'] = '৭';
-phonetic['8'] = '৮';
-phonetic['9'] = '৯';
+    '0':'০',
+    '1':'১',
+    '2':'২',
+    '3':'৩',
+    '4':'৪',
+    '5':'৫',
+    '6':'৬',
+    '7':'৭',
+    '8':'৮',
+    '9':'৯'
+}
+
+
 //////////////////////set of vowel//////////
-phonetic_v['o'] = 'অ';
-phonetic_v['a'] = 'আ';
-phonetic_v['i'] = 'ই';
-phonetic_v['I'] = 'ই';
-phonetic_v['Ii'] = 'ঈ';
-phonetic_v['u'] = 'উ';
-//phonetic_v['U']='ঊ';
-phonetic_v['ri'] = 'ঋ';
-phonetic_v['e'] = 'এ';
-phonetic_v['oi'] = 'ঐ';
-phonetic_v['O'] = 'ও';
-phonetic_v['ou'] = 'ঔ';
-phonetic_v['Ou'] = 'ঔ';
-phonetic_v['wr'] = 'ঋ';
+var phonetic_v = {
+    'o':'অ',
+    'a':'আ',
+    'i':'ই',
+    'I':'ই',
+    'Ii':'ঈ',
+    'u':'উ',
+//'U']='ঊ',
+    'ri':'ঋ',
+    'e':'এ',
+    'oi':'ঐ',
+    'O':'ও',
+    'ou':'ঔ',
+    'Ou':'ঔ',
+    'wr':'ঋ'
+}
 
 ///////////////////SET OF CONSONANT////////////////
-phonetic_c['k'] = 'ক';
-phonetic_c['kh'] = 'খ';
-phonetic_c['g'] = 'গ';
-phonetic_c['gh'] = 'ঘ';
-//phonetic_c['nG']='ঙ';
-phonetic_c['ch'] = 'চ';
-phonetic_c['c'] = 'ছ';
-phonetic_c['z'] = 'জ';
-phonetic_c['zh'] = 'ঝ';
-phonetic_c['jh'] = 'ঝ';
-//phonetic_c['nY']='ঞ';
-phonetic_c['tt'] = 'ট';
-phonetic_c['tH'] = 'ঠ';
-phonetic_c['dd'] = 'ড';
-phonetic_c['dH'] = 'ঢ';
-phonetic_c['nH'] = 'ণ';
-phonetic_c['t'] = 'ত';
-phonetic_c['th'] = 'থ';
-phonetic_c['d'] = 'দ';
-phonetic_c['dh'] = 'ধ';
-phonetic_c['n'] = 'ন';
-phonetic_c['p'] = 'প';
-phonetic_c['f'] = 'ফ';
-phonetic_c['b'] = 'ব';
-phonetic_c['v'] = 'ভ';
-phonetic_c['m'] = 'ম';
-phonetic_c['j'] = 'য';
-phonetic_c['r'] = 'র';
-phonetic_c['l'] = 'ল';
-phonetic_c['sh'] = 'শ';
-phonetic_c['ss'] = 'ষ';
-phonetic_c['s'] = 'স';
-phonetic_c['h'] = 'হ';
-phonetic_c['rr'] = 'ড়';
-phonetic_c['rh'] = 'ঢ়';
-phonetic_c['x'] = '্য';
-
+var phonetic_c = {
+    'k':'ক',
+    'kh':'খ',
+    'g':'গ',
+    'gh':'ঘ',
+//'nG']='ঙ',
+    'ch':'চ',
+    'c':'ছ',
+    'z':'জ',
+    'zh':'ঝ',
+    'jh':'ঝ',
+//'nY']='ঞ',
+    'tt':'ট',
+    'tH':'ঠ',
+    'dd':'ড',
+    'dH':'ঢ',
+    'nH':'ণ',
+    't':'ত',
+    'th':'থ',
+    'd':'দ',
+    'dh':'ধ',
+    'n':'ন',
+    'p':'প',
+    'f':'ফ',
+    'b':'ব',
+    'v':'ভ',
+    'm':'ম',
+    'j':'য',
+    'r':'র',
+    'l':'ল',
+    'sh':'শ',
+    'ss':'ষ',
+    's':'স',
+    'h':'হ',
+    'rr':'ড়',
+    'rh':'ঢ়',
+    'x':'্য'
+}
 /****************** Phonetic 1 (Somewhere type)*************/
-var phonetic1 = new Array();
+var phonetic1 = {
 // phonetic1 bangla equivalents
-phonetic1['k'] = 'ক'; // ko
-phonetic1['kh'] = 'খ'; // Kho ////
-phonetic1['K'] = 'খ'; // Kho ////
-phonetic1['g'] = 'গ';	// go
-phonetic1['gh'] = 'ঘ';	// gho
-phonetic1['G'] = 'ঘ';	// gho
-phonetic1['Ng'] = 'ঙ';	// Uma
+    'k':'ক', // ko
+    'kh':'খ', // Kho ////
+    'K':'খ', // Kho ////
+    'g':'গ',    // go
+    'gh':'ঘ',    // gho
+    'G':'ঘ',    // gho
+    'Ng':'ঙ',    // Uma
 
-phonetic1['ch'] = 'চ'; // cho
-phonetic1['c'] = 'চ'; // cho
-phonetic1['C'] = 'ছ'; // ccho
-phonetic1['j'] = 'জ';	// borgio jo
-phonetic1['jh'] = 'ঝ'; // jho
-phonetic1['J'] = 'ঝ'; // jho
-phonetic1['NG'] = 'ঞ';	// yo
+    'ch':'চ', // cho
+    'c':'চ', // cho
+    'C':'ছ', // ccho
+    'j':'জ',    // borgio jo
+    'jh':'ঝ', // jho
+    'J':'ঝ', // jho
+    'NG':'ঞ',    // yo
 
-phonetic1['t'] = 'ট'; // tto
-phonetic1['th'] = 'ঠ'; // ttho
-phonetic1['d'] = 'ড'; // ddo
-phonetic1['dh'] = 'ঢ'; // ddho
-phonetic1['N'] = 'ণ'; // murdhonyo no
+    't':'ট', // tto
+    'th':'ঠ', // ttho
+    'd':'ড', // ddo
+    'dh':'ঢ', // ddho
+    'N':'ণ', // murdhonyo no
 
-phonetic1['T'] = 'ত'; // to
-phonetic1['Th'] = 'থ'; // tho
-phonetic1['D'] = 'দ'; // do
-phonetic1['Dh'] = 'ধ'; // dho
-phonetic1['n'] = 'ন'; // dontyo no
+    'T':'ত', // to
+    'Th':'থ', // tho
+    'D':'দ', // do
+    'Dh':'ধ', // dho
+    'n':'ন', // dontyo no
 
-phonetic1['p'] = 'প'; // po
-phonetic1['ph'] = 'ফ'; // fo
-phonetic1['f'] = 'ফ'; // fo
-phonetic1['b'] = 'ব'; // bo
-phonetic1['w'] = 'ব'; // bo
-phonetic1['v'] = 'ভ'; // bho
-phonetic1['bh'] = 'ভ'; // bho
-phonetic1['m'] = 'ম';	// mo
+    'p':'প', // po
+    'ph':'ফ', // fo
+    'f':'ফ', // fo
+    'b':'ব', // bo
+    'w':'ব', // bo
+    'v':'ভ', // bho
+    'bh':'ভ', // bho
+    'm':'ম',    // mo
 
-phonetic1['z'] = 'য';  // ontoshyo zo
-phonetic1['r'] = 'র'; // ro
-phonetic1['l'] = 'ল';	// lo
-phonetic1['sh'] = 'শ';	// talobyo sho
-//phonetic1['S']='শ';	// talobyo sho
-phonetic1['S'] = 'ষ'; // mordhonyo sho
-phonetic1['s'] = 'স'; // dontyo so
+    'z':'য',  // ontoshyo zo
+    'r':'র', // ro
+    'l':'ল',    // lo
+    'sh':'শ',    // talobyo sho
+//'S']='শ',	// talobyo sho
+    'S':'ষ', // mordhonyo sho
+    's':'স', // dontyo so
 
-//phonetic1['h'] = '\u200c';
-phonetic1['h'] = 'হ';// ho
-phonetic1['H'] = 'ঃ';	// bisworgo
-phonetic1['R'] = 'ড়';	 // doye bindu ro
-phonetic1['Rh'] = 'ঢ়';	 // dhoye bindu ro
-phonetic1['y'] = 'য়';	// ontostho yo
-
-
-phonetic1['tt'] = 'ৎ';
-phonetic1['ng'] = 'ং';	// uniswor
-phonetic1['HH'] = 'ঃ'; // bisworgo
-phonetic1['NN'] = 'ঁ'; // chondrobindu
+//'h':'\u200c',
+    'h':'হ',// ho
+    'H':'ঃ',    // bisworgo
+    'R':'ড়',     // doye bindu ro
+    'Rh':'ঢ়',     // dhoye bindu ro
+    'y':'য়',    // ontostho yo
 
 
-phonetic1['a'] = 'া'; // a kar
-phonetic1['i'] = 'ি'; // hrossho i kar
-phonetic1['ii'] = 'ী'; // dirgho i kar
-phonetic1['u'] = 'ু'; // hrossho u kar
-phonetic1['uu'] = 'ূ'; // dirgho u kar
-phonetic1['wr'] = 'ৃ'; // wri kar
-phonetic1['e'] = 'ে'; // e kar
-phonetic1['oi'] = 'ৈ'; // oi kar
-phonetic1['o'] = 'ো';  //o kar
-phonetic1['ou'] = 'ৌ'; // ou kar
-phonetic1['+'] = '্';
-phonetic1['++'] = '+';
-phonetic1['Hh'] = '্‌‌‌' + '\u200c';  //Hoshont
-phonetic1['Y'] = '্য';
-phonetic1["."] = "।"; // dari
-
-phonetic1['ao'] = 'অ';
-phonetic1['A'] = 'আ';
-phonetic1['I'] = 'ই';
-phonetic1['II'] = 'ঈ';
-phonetic1['U'] = 'উ';
-phonetic1['UU'] = 'ঊ';
-phonetic1['WR'] = 'ঋ';
-phonetic1['E'] = 'এ';
-phonetic1['OI'] = 'ঐ';
-phonetic1['O'] = 'ও';
-phonetic1['OU'] = 'ঔ';
-
-phonetic1['0'] = '০';
-phonetic1['1'] = '১';
-phonetic1['2'] = '২';
-phonetic1['3'] = '৩';
-phonetic1['4'] = '৪';
-phonetic1['5'] = '৫';
-phonetic1['6'] = '৬';
-phonetic1['7'] = '৭';
-phonetic1['8'] = '৮';
-phonetic1['9'] = '৯';
+    'tt':'ৎ',
+    'ng':'ং',    // uniswor
+    'HH':'ঃ', // bisworgo
+    'NN':'ঁ', // chondrobindu
 
 
+    'a':'া', // a kar
+    'i':'ি', // hrossho i kar
+    'ii':'ী', // dirgho i kar
+    'u':'ু', // hrossho u kar
+    'uu':'ূ', // dirgho u kar
+    'wr':'ৃ', // wri kar
+    'e':'ে', // e kar
+    'oi':'ৈ', // oi kar
+    'o':'ো',  //o kar
+    'ou':'ৌ', // ou kar
+    '+':'্',
+    '++':'+',
+    'Hh':'্‌‌‌' + '\u200c',  //Hoshont
+    'Y':'্য',
+    ".":"।", // dari
+
+    'ao':'অ',
+    'A':'আ',
+    'I':'ই',
+    'II':'ঈ',
+    'U':'উ',
+    'UU':'ঊ',
+    'WR':'ঋ',
+    'E':'এ',
+    'OI':'ঐ',
+    'O':'ও',
+    'OU':'ঔ',
+
+    '0':'০',
+    '1':'১',
+    '2':'২',
+    '3':'৩',
+    '4':'৪',
+    '5':'৫',
+    '6':'৬',
+    '7':'৭',
+    '8':'৮',
+    '9':'৯'
+}
+var bijoy_constants = 'hHjJkKlLvVbBnNmMqwWeErRtTyYuUiIoOpP';
+
+var bijoy_key_maps = {
+    "0":"০",
+    "1":"১",
+    "2":"২",
+    "3":"৩",
+    "4":"৪",
+    "5":"৫",
+    "6":"৬",
+    "7":"৭",
+    "8":"৮",
+    "9":"৯",
+
+    "a":"ৃ",
+    "A":"র্",
+    "d":"ি",
+    "D":"ী",
+    "s":"ু",
+    "S":"ূ",
+    "f":"া",
+    "F":"অ",
+    "g":"্",
+    "G":"।",
+    "h":"ব",
+    "H":"ভ",
+    "j":"ক",
+    "J":"খ",
+    "k":"ত",
+    "K":"থ",
+    "l":"দ",
+    "L":"ধ",
+    "z":"্র",
+    "Z":"্য",
+    "X":"ৗ",
+    "c":"ে",
+    "C":"ৈ",
+    "v":"র",
+    "V":"ল",
+    "b":"ন",
+    "B":"ণ",
+    "n":"স",
+    "N":"ষ",
+    "m":"ম",
+    "M":"শ",
+
+    "q":"ঙ",
+    "Q":"ং",
+    "w":"য",
+    "W":"য়",
+    "e":"ড",
+    "E":"ঢ",
+    "r":"প",
+    "R":"ফ",
+    "t":"ট",
+    "T":"ঠ",
+    "y":"চ",
+    "Y":"ছ",
+    "u":"জ",
+    "U":"ঝ",
+    "i":"হ",
+    "I":"ঞ",
+    "o":"গ",
+    "O":"ঘ",
+    "p":"ড়",
+    "P":"ঢ়",
+    "&":"ঁ",
+    "$":"৳",
+    "`":"‌",
+    "~":"‍",
+    "\\":"ৎ",
+    "|":"ঃ"
+};
+
+//third layer characters
+var bijoy_key_maps3 = {
+    "a":"ঋ",
+    "s":"উ",
+    "d":"ই",
+    "f":"আ",
+    "g":"্" ,
+    "h":"ৰ",
+    "z":'ৢ' ,
+    'x':'ৌও' ,
+    'c':'এ',
+    'v':'ৱ',
+    '.':'়' ,
+    'q':'ঌ',
+    'D':'ঈ',
+    'S':'ঊ',
+    'C':'ঐ',
+    'X':'ঔ',
+    "x":"ও"
+};
+
+var bijoy_key_maps4 = {
+    'x':'ৗ',
+    'c':'ৠ',
+    'v':'ৣ',
+    'b':'ৄ' ,
+    'w':'ৡ',
+    '0':'৸',
+    '1':'৴',
+    '2':'৵',
+    '3':'৶',
+    '4':'|',
+    '5':'৲',
+    '7':'৺',
+    '-':'৸'
+}
