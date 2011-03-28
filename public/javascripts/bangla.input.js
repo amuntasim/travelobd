@@ -7,10 +7,10 @@ $.fn.banglaInput = function(options) {
     var lastcarry = '';
     var parent_char = '';
     var prevChar = '';
-
     var old_len = 0;
     var current_char = '';
     var leftCar = false; //requires for bijoy e-kar i-kar etc
+    var vowelJoint = false;
 
     function hideKeyboardOption() {
 
@@ -186,8 +186,8 @@ $.fn.banglaInput = function(options) {
 
         var bangla = '';
         if (carry.length > 1)
-            bangla = parseUniijoyCarry(carry, e); // get the combined equivalent
-        var tempBangla = parseUniijoyCarry(char_e, e); // get the single equivalent
+            bangla = parseUnijoyCarry(carry, e); // get the combined equivalent
+        var tempBangla = parseUnijoyCarry(char_e, e); // get the single equivalent
 
 
         if (old_len == 0) { //first character
@@ -242,15 +242,35 @@ $.fn.banglaInput = function(options) {
             return true;
         }
 
+        lastcarry = carry;
+        carry += "" + char_e;
+        var bangla = '';
+        if (carry.length > 1)
+            bangla = parseBijoyCarry(carry, e); // get the combined equivalent
+        var tempBangla = parseBijoyCarry(char_e, e); // get the single equivalent
+
+
+        if (vowelJoint) {
+            if (unijoy3[char_e]) {
+                insertJointAtCursor(unijoy3[char_e], 1);
+                vowelJoint = false;
+                return false;
+            }
+            else {
+                vowelJoint = false;
+            }
+        }
+
+        if (char_e == 'g') {// found vowel joint
+            vowelJoint = true;
+        }
+
         if (leftCar) {
             if (unijoy_consonants.indexOf(char_e) >= 0) {
-
                 insertJointAtCursor(unijoy[char_e], 1);
-
                 insertAtCursor(unijoy[prevChar]);
                 old_len = 1;
                 leftCar = false;
-                prevChar = '';
                 return false;
             }
             else {
@@ -270,15 +290,6 @@ $.fn.banglaInput = function(options) {
             }
 
         }
-
-
-        lastcarry = carry;
-        carry += "" + char_e;
-
-        var bangla = '';
-        if (carry.length > 1)
-            bangla = parseBijoyCarry(carry, e); // get the combined equivalent
-        var tempBangla = parseBijoyCarry(char_e, e); // get the single equivalent
 
 
         if (old_len == 0) { //first character
@@ -609,7 +620,8 @@ new function($) {
 }(jQuery);
 
 $.fn.banglaInput.defaults = {
-    keyboard: 'phonetic1',
+    //keyboard: 'phonetic1',
+    keyboard: 'bijoy',
     space: true,
     shiftMode: false,
     ctrlMode: false,
