@@ -189,6 +189,20 @@ $.fn.banglaInput = function(options) {
             bangla = parseUnijoyCarry(carry, e); // get the combined equivalent
         var tempBangla = parseUnijoyCarry(char_e, e); // get the single equivalent
 
+        if (vowelJoint) {
+            if (unijoy3[char_e]) {
+                insertJointAtCursor(unijoy3[char_e], 1);
+                vowelJoint = false;
+                return false;
+            }
+            else {
+                vowelJoint = false;
+            }
+        }
+
+        if (char_e == 'g') {// found vowel joint
+            vowelJoint = true;
+        }
 
         if (old_len == 0) { //first character
             insertAtCursor(tempBangla);
@@ -219,10 +233,6 @@ $.fn.banglaInput = function(options) {
 
 
     function parseUnijoyCarry(code, e) {
-        //this function just returns a bangla equivalent for a given keystroke
-        //or a joint one
-        //just read the array - if found then return the bangla eq.
-        //otherwise return a null value
         if (!unijoy[code]) {
             if (e == 92)
                 return 'ত্‍';   // khondo to
@@ -329,6 +339,7 @@ $.fn.banglaInput = function(options) {
         if (len > 1) {
             prevChar = code.substring(0, len - 1);
         }
+
         if (code == 'X')
             return 'ৗ';
         else if (!unijoy[code]) {
@@ -481,9 +492,9 @@ $.fn.banglaInput = function(options) {
         $(this).keydown(function(ev) {
 
             switch (ev.keyCode) {
-                /*case 16:
+                case 16:
                  opts.shiftMode = true;
-                 break;*/
+                 break;
                 case 17:
                     opts.ctrlMode = true;
                     break;
@@ -495,21 +506,21 @@ $.fn.banglaInput = function(options) {
 
         });
 
-        $(this).keyup(function(ev) {
-            switch (ev.keyCode) {
-                /*case 16:
-                 opts.shiftMode = true;
-                 break;*/
-                case 17:
-                    opts.ctrlMode = false;
-                    break;
-                case 18:
-                    opts.altMode = false;
-                    break;
-            }
-
-
-        });
+//        $(this).keyup(function(ev) {
+//            switch (ev.keyCode) {
+//                /*case 16:
+//                 opts.shiftMode = true;
+//                 break;*/
+//                case 17:
+//                    opts.ctrlMode = false;
+//                    break;
+//                case 18:
+//                    opts.altMode = false;
+//                    break;
+//            }
+//
+//
+//        });
         $(this).keypress(function(evnt) {
             hideKeyboardOption();
 
@@ -621,7 +632,7 @@ new function($) {
 
 $.fn.banglaInput.defaults = {
     //keyboard: 'phonetic1',
-    keyboard: 'bijoy',
+    keyboard: 'unijoy',
     space: true,
     shiftMode: false,
     ctrlMode: false,

@@ -6,23 +6,23 @@
 
 <% form_for [commentable, comment], :remote => true, :html => {:id =>'comment_form'} do |f| %>
     <% unless current_user %>
-        <p>
-          <%= f.label :name %><br/>
+        <div class="item_form_row comment_row">
+          <%= f.label :name %>
           <%= f.text_field :name %>
-        </p>
-        <p>
-          <%= f.label :email %><br/>
+        </div>
+        <div class="item_form_row  comment_row">
+          <%= f.label :email %>
           <%= f.text_field :email %>
-        </p>
+        </div>
     <% end %>
-    <p>
-      <%= f.label :content %><br/>
+    <div class="item_form_row  comment_row">
+      <%= f.label :content %>
       <%= f.text_area :content, :rows => 7, :cols => 60 %>
-    </p>
-    <p>
-    <div class="submit_btn" style="margin-left:117px;">
+    </div>
+
+    <div class="submit_btn" style="margin-left:270px;">
       <%= f.submit :class => 'search_button' %>
       <span class="search_button_right"> </span>
     </div>
-    </p>
+
 <% end %>

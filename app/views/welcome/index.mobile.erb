@@ -1,0 +1,30 @@
+<% title "Welcome" %>
+
+<% content_for :header do %>
+  <a href="<%= root_url %>" data-icon='refresh' rel='external' class='ui-btn-left'>Refresh</a>
+  <h1>Recent Events</h1>
+<% end %>
+
+<% content_for :content do %>
+  <!-- Add Expense Form -->
+  <ul data-role="listview" data-inset='true'>
+  </ul>
+<% end %>
+
+<div class='content_area'>
+  <div class='col1'>
+    <h1>Recent Packages</h1>
+
+    <div class='list'>
+
+    </div>
+
+    <div class="pagination">
+      <%= will_paginate @paginate_items if @paginate_items%>
+    </div>
+  </div>
+
+  <div class='col2'>
+    foo bar
+  </div>
+</div>

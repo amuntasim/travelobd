@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title><%= @title || "Welcome" %> - Travelobd</title>
+
+  <link rel="stylesheet" href="/jquery.mobile-1.0a3/jquery.mobile-1.0a3.min.css"/>
+  <script src="/jquery.mobile-1.0a3/jquery-1.5.1.min.js"></script>
+  <script src="/jquery.mobile-1.0a3/jquery.mobile-1.0a3.min.js"></script>
+  <meta charset="utf-8"/>
+  <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport'/>
+</head>
+
+<body>
+<div data-role="page" data-theme='b'>
+  <div data-role="header">
+    <%= yield :header %>
+  </div>
+
+  <div data-role="content">
+    <% if !flash.empty? %>
+      <%
+         message = nil
+
+         if flash[:notice]
+           message      = flash[:notice]
+         elsif flash[:success]
+           message      = flash[:success]
+         end
+      %>
+
+      <h4 class="ui-collapsible-heading">
+        <a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-shadow ui-corner-all ui-btn-hover-e ui-btn-down-e" data-theme="e">
+            <span class="ui-btn-inner ui-corner-all">
+              <span class="ui-btn-text"><%= message %></span>
+              <span data-theme="d" class="ui-btn ui-btn-up-d ui-btn-icon-left ui-btn-corner-all ui-shadow">
+                <span class="ui-btn-inner ui-btn-corner-all ui-corner-all">
+                  <span class="ui-btn-text"></span>
+                  <span class="ui-icon ui-icon-shadow ui-icon-check"></span>
+                </span>
+              </span>
+            </span>
+        </a>
+      </h4>
+    <% end %>
+
+    <%= yield :content %>
+
+    <% if 'true' != params[:dialog] %>
+      <%= render :partial => 'layouts/navigation' %>
+    <% end %>
+  </div>
+
+  <div data-role="footer">
+    <%= yield :footer %>
+  </div>
+</div>
+</body>
+</html>

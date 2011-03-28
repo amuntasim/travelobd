@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
+  before_filter :prepare_for_mobile
+
   before_filter :load_required_instance_variables
   protect_from_forgery
 
   config.filter_parameters :password, :password_confirmation, :card_number, :card_verification
 
 
-  helper_method :current_user, :logged_in?, :admin?
+  helper_method :current_user, :logged_in?, :admin?, :mobile_device?
 
   private
   def current_user_session
@@ -105,7 +107,7 @@ class ApplicationController < ActionController::Base
 
 
   def load_required_instance_variables
-    @districts = District.includes(:translations,[:division,:translations])
+    @districts = District.includes(:translations, [:division, :translations])
     @articles = Article.includes(:slug).order(:created_at).limit(5)
     @featured_hotels = Hotel.featured.order('').limit(5)
     @featured_transports = Transport.featured.order('').limit(5)
@@ -114,6 +116,28 @@ class ApplicationController < ActionController::Base
   end
 
   def message_receiver_expects_email?(message)
-     message.owner && message.owner.message_notification?
+    message.owner && message.owner.message_notification?
+  end
+
+  private
+
+  MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm", "hiptop", "avantgo", "plucker", "xiino", "blazer", "elaine", "windows ce; ppc;|windows ce; smartphone;|windows ce; iemobile", "up.browser", "up.link", "mmp", "symbian", "smartphone", "midp", "wap", "vodafone", "o2", "pocket", "kindle", "mobile", "pda", "psp", "treo"]
+
+
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      agent = request.headers["HTTP_USER_AGENT"].downcase
+      MOBILE_BROWSERS.each do |m|
+        return true if agent.match(m)
+      end
+    end
+    return false
+  end
+
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+    request.format = :mobile if mobile_device?
   end
 end

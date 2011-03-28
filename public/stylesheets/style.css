@@ -654,7 +654,7 @@ a.del_photo {
 
 .home_left_header_content {
     padding-left: 10px;
-    padding-top: 8px;
+    padding-top: 7px;
 }
 
 .home_left_content {
@@ -782,7 +782,7 @@ a.del_photo {
     float: right;
     background: url("/images/button_bg.jpg") repeat-x;
     margin-left: 2px;
-    padding: 3px 14px;
+    padding: 1px 14px;
 }
 
 .item_form_row textarea {
@@ -1554,3 +1554,7 @@ input.login_now {
     font-weight: bold;
     color: #9f1010
 }
+
+.comment_row {width:700px;}
+
+.comment_row textarea {width:570px;}

@@ -20,8 +20,7 @@
             <h4><%= package.location %></h4>
           </div>
           <div class="fl description">
-            <%#= truncate(sanitize(package.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
-            <%= truncate(sanitize(package.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(package.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
           </div>
 
         </div>
