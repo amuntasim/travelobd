@@ -262,6 +262,11 @@ $.fn.banglaInput = function(options) {
         var tempBangla = parseBijoyCarry(char_e, e); // get the single equivalent
 
 
+        if(bijoy_constants.indexOf(char_e) >= 0 && bijoy_constants.indexOf(prevChar) >= 0){
+            leftCar = false;
+            leftCarForJoint = '';
+        }
+
         if (leftCar) {
             if (bijoy_constants.indexOf(char_e) >= 0) {
                 if (vowelJoint) {
@@ -293,6 +298,7 @@ $.fn.banglaInput = function(options) {
                     leftCar = false;
                     leftCarForJoint = prevChar;
                 }
+                carry = char_e;
                 return false;
             }
         }
@@ -306,6 +312,7 @@ $.fn.banglaInput = function(options) {
                     insertAtCursor(unijoy3[char_e])
                 }
                 vowelJoint = false;
+                carry = '';
                 return false;
             }
             else {
