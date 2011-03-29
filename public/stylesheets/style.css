@@ -551,6 +551,7 @@ input#friends_email {
     width: 203px;
     height: 24px;
     padding: 3px 5px;
+    font: 16px SolaimanLipi;
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -788,6 +789,7 @@ a.del_photo {
 .item_form_row textarea {
     width: 604px;
     height: 260px;
+    font: 16px SolaimanLipi;
     border: 1px solid #CCCCCC;
     -moz-border-radius: 10px;
     border-radius: 10px;

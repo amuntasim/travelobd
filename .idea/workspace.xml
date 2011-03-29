@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/bangla_key_maps.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/articles/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spots/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/spots/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/bangla.input.js" afterPath="$PROJECT_DIR$/public/javascripts/bangla.input.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,10 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="bangla.input.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="bangla.input.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="53" selection-start="10308" selection-end="10308" vertical-scroll-proportion="0.65707433">
+            <state line="329" column="53" selection-start="10308" selection-end="10308" vertical-scroll-proportion="-10.148149">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1098" column="36" selection-start="16186" selection-end="16186" vertical-scroll-proportion="0.19302325">
               <folding />
             </state>
           </provider>
@@ -53,7 +58,7 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/spots/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="97" selection-start="135" selection-end="135" vertical-scroll-proportion="-0.625">
+            <state line="40" column="41" selection-start="1292" selection-end="1309" vertical-scroll-proportion="-6.25">
               <folding />
             </state>
           </provider>
@@ -114,12 +119,12 @@
         <option value="$PROJECT_DIR$/app/views/comments/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.mobile.erb" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
-        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/app/controllers/packages_controller.rb" />
         <option value="$PROJECT_DIR$/public/javascripts/bangla_key_maps.js" />
         <option value="$PROJECT_DIR$/app/views/articles/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/spots/_form.html.erb" />
         <option value="$PROJECT_DIR$/public/javascripts/bangla.input.js" />
+        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
       </list>
     </option>
   </component>
@@ -558,11 +563,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="47" selection-start="1508" selection-end="1523" vertical-scroll-proportion="-17.5" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/spots_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -625,13 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/spots/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="97" selection-start="135" selection-end="135" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/bangla_key_maps.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="427" column="4" selection-start="7800" selection-end="7800" vertical-scroll-proportion="0.0">
@@ -641,7 +634,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="53" selection-start="10308" selection-end="10308" vertical-scroll-proportion="0.65707433">
+        <state line="329" column="53" selection-start="10308" selection-end="10308" vertical-scroll-proportion="-10.148149">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/spots/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="41" selection-start="1292" selection-end="1309" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1098" column="36" selection-start="16186" selection-end="16186" vertical-scroll-proportion="0.19302325">
           <folding />
         </state>
       </provider>
