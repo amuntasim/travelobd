@@ -10,8 +10,8 @@ $.fn.banglaInput = function(options) {
     var old_len = 0;
     var current_char = '';
     var leftCar = false; //requires for bijoy e-kar i-kar etc
-    var leftCarForJoint = '';
-    var vowelJoint = false;
+    var leftCarForJoint = '';   //requires for bijoy left Car with joint characters
+    var vowelJoint = false; // for g+i-kar = I
 
     function hideKeyboardOption() {
 
@@ -23,7 +23,7 @@ $.fn.banglaInput = function(options) {
 
         var e = evnt.keyCode ? evnt.keyCode : evnt.which; // get the keycode
         var char_e = String.fromCharCode(e); // get the character equivalent to this keycode
-        if (e == 8 || e == 32 || e == 46) {
+        if (e == 8 || e == 32) {
             return true;
         }
         lastcarry = carry;
@@ -32,6 +32,7 @@ $.fn.banglaInput = function(options) {
         var bangla = '';
         if (carry.length > 1)
             bangla = parsePhonetic1Carry(carry, e); // get the combined equivalent
+
         var tempBangla = parsePhonetic1Carry(char_e, e); // get the single equivalent
 
 
@@ -546,6 +547,7 @@ $.fn.banglaInput = function(options) {
             hideKeyboardOption();
 
             var e = evnt.keyCode ? evnt.keyCode : evnt.which;
+
             if (e == 8 || e == 32 || e == 13) {
                 carry = '';
                 lastcarry = '';
