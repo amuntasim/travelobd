@@ -31,7 +31,7 @@
       <file leaf-file-name="bangla.input.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="270" column="0" selection-start="7964" selection-end="7964" vertical-scroll-proportion="0.7294833">
+            <state line="274" column="28" selection-start="8260" selection-end="8260" vertical-scroll-proportion="0.30656934">
               <folding />
             </state>
           </provider>
@@ -118,8 +118,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
       <pane id="Favorites" />
+      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -172,7 +173,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -189,16 +189,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="125" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1032" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1033" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1032" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="124" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="121" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="121" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -590,7 +590,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="0" selection-start="7964" selection-end="7964" vertical-scroll-proportion="0.7294833">
+        <state line="274" column="28" selection-start="8260" selection-end="8260" vertical-scroll-proportion="0.30656934">
           <folding />
         </state>
       </provider>

@@ -272,13 +272,13 @@ $.fn.banglaInput = function(options) {
                 if (vowelJoint) {
                     var tmp_position = active_obj.val().lastIndexOf(bijoy_key_maps[leftCarForJoint], active_obj.getCursorPosition())
                     if (tmp_position >= 0) {
-                        tmp_container = []
-                        for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
-                            tmp_container.push(active_obj.val()[i]);
-                        }
+                        var tmp_container = [];
 
+                        for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
+                            tmp_container.push(active_obj.val().charAt(i));
+                        }
                         insertJointAtCursor(tmp_container.pop(), tmp_container.length + 1);
-                        for (var j = tmp_container.length - 1; j >= 0; j--) {
+                        for (var j = tmp_container.length-1; j >= 0; j--) {
                             if (tmp_container[j] != bijoy_key_maps[leftCarForJoint]) {
                                 insertAtCursor(tmp_container[j]);
                             }
