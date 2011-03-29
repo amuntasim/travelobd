@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/bangla.input.js" afterPath="$PROJECT_DIR$/public/javascripts/bangla.input.js" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,19 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="bangla.input.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="bangla.input.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="53" selection-start="10308" selection-end="10308" vertical-scroll-proportion="-10.148149">
+            <state line="282" column="21" selection-start="8688" selection-end="8688" vertical-scroll-proportion="0.74820143">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1098" column="36" selection-start="16186" selection-end="16186" vertical-scroll-proportion="0.19302325">
+            <state line="1098" column="36" selection-start="16186" selection-end="16186" vertical-scroll-proportion="-3.074074">
               <folding />
             </state>
           </provider>
@@ -123,8 +123,8 @@
         <option value="$PROJECT_DIR$/public/javascripts/bangla_key_maps.js" />
         <option value="$PROJECT_DIR$/app/views/articles/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/spots/_form.html.erb" />
-        <option value="$PROJECT_DIR$/public/javascripts/bangla.input.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/public/javascripts/bangla.input.js" />
       </list>
     </option>
   </component>
@@ -632,13 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="53" selection-start="10308" selection-end="10308" vertical-scroll-proportion="-10.148149">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/spots/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="41" selection-start="1292" selection-end="1309" vertical-scroll-proportion="-6.25">
@@ -648,7 +641,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1098" column="36" selection-start="16186" selection-end="16186" vertical-scroll-proportion="0.19302325">
+        <state line="1098" column="36" selection-start="16186" selection-end="16186" vertical-scroll-proportion="-3.074074">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bangla.input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="282" column="21" selection-start="8688" selection-end="8688" vertical-scroll-proportion="0.74820143">
           <folding />
         </state>
       </provider>
