@@ -159,6 +159,8 @@ Travelobd::Application.routes.draw do
   match 'my_clubs' => 'users#clubs'
   match 'my_articles' => 'users#articles'
   match 'send_to_friends' => 'users#send_to_friends'
+  match 'club_joining_messages' => 'users#club_joining_messages'
+  match 'club_leaving_messages' => 'users#club_leaving_messages'
 
 
   #newly added

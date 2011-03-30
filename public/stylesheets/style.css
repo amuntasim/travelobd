@@ -12,7 +12,6 @@ body {
     font-size: 12px;
     background: #eef3fa;
     color: #000;
-    line-height: 18px;
 }
 
 a {
@@ -464,7 +463,7 @@ input#friends_email {
 .item_details {
     float: left;
     width: 702px;
-
+    line-height: 18px;
     margin-bottom: 0px;
     margin-top: 10px
 }
@@ -750,6 +749,8 @@ a.del_photo {
     padding-top: 5px;
     height: 79px;
     padding-bottom: 10px;
+    line-height: 18px;
+
 }
 
 .listItemDesc .rating {
@@ -783,7 +784,7 @@ a.del_photo {
     float: right;
     background: url("/images/button_bg.jpg") repeat-x;
     margin-left: 2px;
-    padding: 1px 14px;
+    padding: 3px 14px;
 }
 
 .item_form_row textarea {
@@ -812,8 +813,8 @@ a.del_photo {
     padding: 0px 10px;
     font-size: 14px;
     float: left;
-    cursor:pointer;
-    padding-bottom:2px;
+    cursor: pointer;
+    padding-bottom: 2px;
 }
 
 .ad_btn .search_button {
@@ -897,7 +898,7 @@ input {
 
 span.removeImageField {
     margin-top: 8px;
-    margin-left:8px;
+    margin-left: 8px;
     float: left;
 
 }
@@ -1100,10 +1101,11 @@ div#package_images {
     cursor: pointer;
 }
 
-.item_form_row input[type=checkbox]{
-    float:left;
-    margin:3px;
+.item_form_row input[type=checkbox] {
+    float: left;
+    margin: 3px;
 }
+
 .spot_in_package {
     float: left;
     width: 197px;
@@ -1557,6 +1559,10 @@ input.login_now {
     color: #9f1010
 }
 
-.comment_row {width:700px;}
+.comment_row {
+    width: 700px;
+}
 
-.comment_row textarea {width:570px;}
+.comment_row textarea {
+    width: 570px;
+}

@@ -235,7 +235,11 @@ $.fn.banglaInput = function(options) {
 
 
     function parseUnijoyCarry(code, e) {
-        if (!unijoy[code]) {
+
+        if (code == 'Z' && prevChar == 'v') {
+            return '‍্য';
+        }
+        else if (!unijoy[code]) {
             if (e == 92)
                 return 'ত্‍';   // khondo to
             else if (e == 124)
@@ -267,37 +271,6 @@ $.fn.banglaInput = function(options) {
             leftCarForJoint = '';
         }
 
-        if (char_e == 'A' && prevChar.length > '' && bijoy_constants.indexOf(prevChar) >= 0) {//ref- found
-            //alert(leftCarForJoint);
-            if (leftCarForJoint.length > 0) {
-
-
-                var tmp_position = active_obj.val().lastIndexOf(bijoy_key_maps[leftCarForJoint], active_obj.getCursorPosition())
-                if (tmp_position >= 0) {
-                    var tmp_container = [];
-                    // alert('ddd');
-                    for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
-                        tmp_container.push(active_obj.val().charAt(i));
-                    }
-                    insertJointAtCursor(bijoy_key_maps[char_e], tmp_container.length);
-                   // alert(tmp_container)
-                    for (var j = tmp_container.length - 1; j >= 0; j--) {
-                        if (tmp_container[j] != bijoy_key_maps[leftCarForJoint]) {
-                            insertAtCursor(tmp_container[j]);
-                        }
-                    }
-                    insertAtCursor(bijoy_key_maps[leftCarForJoint]);
-                }
-                leftCar = false;
-                leftCarForJoint = '';
-                vowelJoint = false;
-            }
-            else {
-                insertJointAtCursor(bijoy_key_maps[char_e], 1);
-                insertAtCursor(bijoy_key_maps[prevChar]);
-            }
-            return false;
-        }
 
         if (leftCar) {
             if (bijoy_constants.indexOf(char_e) >= 0) {
@@ -309,7 +282,7 @@ $.fn.banglaInput = function(options) {
                         for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
                             tmp_container.push(active_obj.val().charAt(i));
                         }
-                        insertJointAtCursor(tmp_container.pop(), tmp_container.length + 1);
+                        insertJointAtCursor(tmp_container.pop(), tmp_container.length + 1, tmp_container.length - 2);
                         for (var j = tmp_container.length - 1; j >= 0; j--) {
                             if (tmp_container[j] != bijoy_key_maps[leftCarForJoint]) {
                                 insertAtCursor(tmp_container[j]);
@@ -324,6 +297,7 @@ $.fn.banglaInput = function(options) {
 
                 }
                 else {
+
                     insertJointAtCursor(bijoy_key_maps[char_e], 1);
                     insertAtCursor(bijoy_key_maps[prevChar]);
                     old_len = 1;
@@ -360,9 +334,37 @@ $.fn.banglaInput = function(options) {
                 leftCar = true;
 
         }
+        else if (char_e == 'A' && prevChar.length > '' && bijoy_constants.indexOf(prevChar) >= 0) {//ref- found
+            //alert(leftCarForJoint);
+            if (leftCarForJoint.length > 0) {
+                var tmp_position = active_obj.val().lastIndexOf(bijoy_key_maps[leftCarForJoint], active_obj.getCursorPosition())
+                if (tmp_position >= 0) {
+                    var tmp_container = [];
+                    // alert('ddd');
+                    for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
+                        tmp_container.push(active_obj.val().charAt(i));
+                    }
+                    insertJointAtCursor(bijoy_key_maps[char_e], tmp_container.length, tmp_container.length - 2);
 
+                    for (var j = tmp_container.length - 1; j >= 0; j--) {
+                        if (tmp_container[j] != bijoy_key_maps[leftCarForJoint]) {
+                            insertAtCursor(tmp_container[j]);
+                        }
+                    }
+                    insertAtCursor(bijoy_key_maps[leftCarForJoint]);
+                }
+                leftCar = false;
+                leftCarForJoint = '';
+                vowelJoint = false;
+            }
+            else {
+                insertJointAtCursor(bijoy_key_maps[char_e], 1);
+                insertAtCursor(bijoy_key_maps[prevChar]);
+            }
+            return false;
+        }
 
-        if ('cCd'.indexOf(char_e) >= 0) {// found left car
+        else if ('cCd'.indexOf(char_e) >= 0) {// found left car
             leftCar = true;
             leftCarForJoint = char_e;
         }
@@ -404,6 +406,10 @@ $.fn.banglaInput = function(options) {
 
         if (code == 'X')
             return 'ৗ';
+        //handle ro-e-jo-fola(for rab)
+        else if (code == 'Z' && prevChar == 'v') {
+            return '‍্য';
+        }
         else if (!bijoy_key_maps[code]) {
             if (e == 92)
                 return 'ত্‍';   // khondo to
@@ -415,7 +421,11 @@ $.fn.banglaInput = function(options) {
             return ( bijoy_key_maps[code]);
     }
 
-    function insertJointAtCursor(myValue, len) {
+    function insertJointAtCursor(myValue, len, lastLen) {
+        if (lastLen == undefined) {
+            lastLen = len - 1;
+        }
+
 
         var myField = active_obj;
         active_obj_scroll_top = active_obj.get(0).scrollTop;
@@ -445,13 +455,15 @@ $.fn.banglaInput = function(options) {
             myField.selectionEnd = startPos + myValue.length;
 
         } else {
-            var scrollTop = myField.scrollTop;
             var curPos = myField.getCursorPosition()
+            var firstPortion = myField.val().substring(0, curPos - len);
+
+            var lastPortion = myField.val().substring(curPos + lastLen, myField.val().length)
+
             myField.val(
-                    myField.val().substring(0, curPos - len)
-                            + myValue
-                            + myField.val().substring(curPos + len - 1, myField.val().length)
+                    firstPortion + myValue + lastPortion
                     );
+            myField.setCursorPosition(curPos + myValue.length - len);
 
         }
         myField.adjustScrollTop(active_obj_scroll_top);
@@ -588,7 +600,7 @@ $.fn.banglaInput = function(options) {
 
             var e = evnt.keyCode ? evnt.keyCode : evnt.which;
 
-            if (e == 8 || e == 32 || e == 13) {
+            if (e == 8 || e == 32 || e == 13 || e == 38) {
                 carry = '';
                 lastcarry = '';
                 parent_char = '';

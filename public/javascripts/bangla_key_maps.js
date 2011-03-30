@@ -13,9 +13,8 @@ var unijoy = {
     'f':'া', //a kar
     'F':'অ', //shore  o
     'f':'আ', //shore  a
-    'g':'্', //
+    "g":"্", //
     'G':'|', //dari
-    'g':'্‌', //hashant
     'h':'ব', //bo
     'H':'ভ', //vo
     'j':'ক', //ko
@@ -369,7 +368,7 @@ var phonetic1 = {
 //'S']='শ',	// talobyo sho
     'S':'ষ', // mordhonyo sho
     's':'স', // dontyo so
-
+    'rY':'র‍্য' ,
 //'h':'\u200c',
     'h':'হ',// ho
     'H':'ঃ',    // bisworgo

@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-     @active_dashboard_nav = 'dashboard'
+    @active_dashboard_nav = 'dashboard'
     @unread_messages = Message.where(['user_id = ? AND created_by <> ?', current_user.id, current_user.id]).where(:read=> false)
     @saved_items = SavedListing.where(:user_id => current_user.id)
     @hotels = current_user.hotels
@@ -136,8 +136,8 @@ class UsersController < ApplicationController
     @active_dashboard_nav = 'my_spots'
     @spots = current_user.spots.paginate(:page=> params[:page], :per_page => 10)
     @paginate_items = @spots
-    end
-  
+  end
+
   def articles
     @active_dashboard_nav = 'my_articles'
     @articles = current_user.articles.paginate(:page=> params[:page], :per_page => 10)
@@ -156,7 +156,7 @@ class UsersController < ApplicationController
   end
 
   def clubs
-     @active_dashboard_nav = 'my_clubs'
+    @active_dashboard_nav = 'my_clubs'
   end
 
   def rooms
@@ -192,6 +192,10 @@ class UsersController < ApplicationController
 
   def load_uploaded_images
     @uploaded_images = current_user.uploaded_images
+  end
+
+  def club_joining_messages
+    @messages = Membership.where(:memberable_type => 'TourClub', :memberable_id => current_user.tour_clubs.collect(&:id)).order(:approved)
   end
 
   private
