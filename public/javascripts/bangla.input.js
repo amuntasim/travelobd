@@ -61,7 +61,6 @@ $.fn.banglaInput = function(options) {
             old_len = bangla.length;
             return false;
         }
-        //alert(e);
         return true;
     }
 
@@ -113,7 +112,6 @@ $.fn.banglaInput = function(options) {
             old_len = bangla.length;
             return false;
         }
-        //alert(e);
         return true;
     }
 
@@ -124,8 +122,6 @@ $.fn.banglaInput = function(options) {
         var temp = lastcarry + current_char;
         if (len > 1) {
             prevChar = code.substring(0, len - 1);
-            //alert(current_char);
-
         }
 
 
@@ -143,7 +139,6 @@ $.fn.banglaInput = function(options) {
                 parent_char = prevChar;
 
             if (phonetic_v[parent_char] && phonetic_v[code]) {
-                //alert(parent_char);
                 space = false;
                 return ( phonetic_v[code]);
             }
@@ -154,7 +149,6 @@ $.fn.banglaInput = function(options) {
 
 
             else if (code == 'wr' || code == 'oi' || code == 'ou') {
-                //alert('hi');
                 space = false;
                 if (phonetic_c[parent_char])
                     return phonetic[code];
@@ -167,7 +161,6 @@ $.fn.banglaInput = function(options) {
                 return (phonetic_v[code]);
             }
             else {
-                //alert(parent_char);
                 space = false;
                 return ( phonetic[code]);  //found bangla equivalent
             }
@@ -297,7 +290,6 @@ $.fn.banglaInput = function(options) {
 
                 }
                 else {
-
                     insertJointAtCursor(bijoy_key_maps[char_e], 1);
                     insertAtCursor(bijoy_key_maps[prevChar]);
                     old_len = 1;
@@ -308,14 +300,37 @@ $.fn.banglaInput = function(options) {
                 return false;
             }
         }
+        //handle left-car + j-fola, r-fola
+        else if ((char_e == 'z' || char_e == 'Z') && leftCarForJoint.length > 0) {
+            var tmp_position = active_obj.val().lastIndexOf(bijoy_key_maps[leftCarForJoint], active_obj.getCursorPosition())
+
+            if (tmp_position >= 0) {
+                var tmp_container = [];
+                for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
+                    tmp_container.push(active_obj.val().charAt(i));
+                }
+                insertJointAtCursor('', tmp_container.length);
+                for (var j = tmp_container.length - 1; j >= 0; j--) {
+                    if (tmp_container[j] != bijoy_key_maps[leftCarForJoint]) {
+                        insertAtCursor(tmp_container[j]);
+                    }
+                }
+                insertAtCursor(bijoy_key_maps[char_e]);
+                insertAtCursor(bijoy_key_maps[leftCarForJoint]);
+            }
+            leftCar = false;
+            leftCarForJoint = '';
+            vowelJoint = false;
+            return false;
+        }
 
         if (vowelJoint) {
             if (bijoy_key_maps3[char_e]) {
                 if (bijoy_key_maps3[prevChar]) {
-                    insertJointAtCursor(unijoy3[char_e], 1);
+                    insertJointAtCursor(bijoy_key_maps3[char_e], 1);
                 }
                 else {
-                    insertAtCursor(unijoy3[char_e])
+                    insertAtCursor(bijoy_key_maps3[char_e])
                 }
                 vowelJoint = false;
                 leftCar = false;
@@ -332,15 +347,12 @@ $.fn.banglaInput = function(options) {
             vowelJoint = true;
             if (leftCarForJoint.length > 0)
                 leftCar = true;
-
         }
         else if (char_e == 'A' && prevChar.length > '' && bijoy_constants.indexOf(prevChar) >= 0) {//ref- found
-            //alert(leftCarForJoint);
             if (leftCarForJoint.length > 0) {
                 var tmp_position = active_obj.val().lastIndexOf(bijoy_key_maps[leftCarForJoint], active_obj.getCursorPosition())
                 if (tmp_position >= 0) {
                     var tmp_container = [];
-                    // alert('ddd');
                     for (var i = active_obj.getCursorPosition() - 1; i >= tmp_position - 1; i--) {
                         tmp_container.push(active_obj.val().charAt(i));
                     }
@@ -368,7 +380,6 @@ $.fn.banglaInput = function(options) {
             leftCar = true;
             leftCarForJoint = char_e;
         }
-
 
         if (old_len == 0) { //first character
             insertAtCursor(tempBangla);
@@ -412,7 +423,7 @@ $.fn.banglaInput = function(options) {
         }
         else if (!bijoy_key_maps[code]) {
             if (e == 92)
-                return 'ত্‍';   // khondo to
+                return "ৎ";   // khondo to
             else if (e == 124)
                 return 'ঃ';     // bishorgho
             return ''; //return a null value
@@ -599,8 +610,16 @@ $.fn.banglaInput = function(options) {
             hideKeyboardOption();
 
             var e = evnt.keyCode ? evnt.keyCode : evnt.which;
+            var char = '';
+            var specialChar = false;
+            if (evnt.which == null)
+                char = String.fromCharCode(evnt.keyCode);    // IE
+            else if (evnt.which != 0 && evnt.charCode != 0)
+                char = String.fromCharCode(evnt.which);
+            else
+                specialChar = true;
 
-            if (e == 8 || e == 32 || e == 13 || e == 38) {
+            if (specialChar) {
                 carry = '';
                 lastcarry = '';
                 parent_char = '';
