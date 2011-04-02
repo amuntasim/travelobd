@@ -810,7 +810,7 @@ a.del_photo {
     margin-left: 35px;
     border: none;
     color: #FFFFFF;
-    padding: 0px 10px 2px 15px;
+    padding: 0px 10px 3px 15px;
     font-size: 14px;
     float: left;
     cursor: pointer;
@@ -1519,7 +1519,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
     color: #ffffff;
     text-decoration: none;
     font-weight: normal;
-    padding-top: 5px;
+    padding-top: 4px;
     height: 21px;
 }
 

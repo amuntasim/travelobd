@@ -1,0 +1,10 @@
+<div class="comment">
+  <div class="eventDetail eventTitle clear">
+    <%= comment.comment_by %> Says
+    <small style="color:#101050; font-weight: normal;">
+      On <%= comment.created_at.strftime('%d %B, %Y %H:%M:%S') %></small>
+  </div>
+  <div class="eventDetail clear">
+    <%= comment.content %>
+  </div>
+</div>

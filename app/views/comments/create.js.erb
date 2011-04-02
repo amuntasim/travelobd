@@ -1,4 +1,8 @@
-<%if @comment.errors.empty?%>
+<%if @comment.errors.empty? && @comment.approved?%>
+$('#commentStatus').html('<b style="color:green">Comment successfully created. Thanks for your comment</b>');
+$('#item_comments').append('<%= escape_javascript(render @comment) %>').slideDown(1000);
+$("#comment_form").get(0).reset();
+<%elsif @comment.errors.empty? %>
 $('#commentStatus').html('<b style="color:green">Comment successfully created. Your comment will be published soon. Thanks for your comment</b>');
 $("#comment_form").get(0).reset();
 <%else%>

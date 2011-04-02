@@ -40,6 +40,11 @@ class TourClub < ActiveRecord::Base
     name
   end
 
+  class << self
+    def is_member?(club_id, user_id)
+       !Membership.where(:memberable_type => 'TourClub', :memberable_id => club_id, :user_id => user_id, :approved => true).first.blank?
+    end
+  end
 end
 
 

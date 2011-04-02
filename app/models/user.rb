@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
 
   def member_of?(item)
-    item && item.members.include?(self)
+    !item.memberships.where(:user_id => self.id, :approved => true).first.blank?
   end
 
   def requested_member_of?(item)

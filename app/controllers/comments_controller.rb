@@ -16,10 +16,9 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
     @comment.user_id = current_user.id if current_user
+
     respond_to do |format|
       if @comment.save
-        flash[:notice] = "Successfully created comment."
-
         format.html { redirect_to :id => nil }
         format.js
       else

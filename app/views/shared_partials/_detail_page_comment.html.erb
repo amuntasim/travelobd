@@ -2,21 +2,10 @@
   Comments
 
 </div>
+<div class="itemDetail" id="item_comments" style="padding-left:0">
+  <%= render item.approved_comments %>
+</div>
 <div class="itemDetail" style="padding-left:0">
-
-  <% item.approved_comments.each do |comment| %>
-      <div class="comment">
-        <div class="eventDetail eventTitle clear">
-          <%= comment.comment_by %> Says
-          <small style="color:#101050; font-weight: normal;">
-            On <%= comment.created_at.strftime('%d %B, %Y %H:%M:%S') %></small>
-        </div>
-        <div class="eventDetail clear">
-          <%= comment.content %>
-        </div>
-      </div>
-  <% end %>
-
   <div class="eventTitle">
     Your Comment
     <% if rating %>
