@@ -6,13 +6,13 @@ ActionMailer::Base.raise_delivery_errors = false
 ActionMailer::Base.default_charset = "utf-8"
 
 ActionMailer::Base.smtp_settings = {
-  #:tls => true,
-  :address => "smtp.gmail.com",
-  :port => "587",
-  :domain => "invitar.com",
-  :authentication => :plain,
-  :user_name => "lorem.ipsume@gmail.com",
-  :password => "lorem123456"
+    #:tls => true,
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "invitar.com",
+    :authentication => :plain,
+    :user_name => "lorem.ipsume@gmail.com",
+    :password => "lorem123456"
 }
 
 #language

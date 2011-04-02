@@ -115,7 +115,7 @@ class TourClubsController < ApplicationController
   end
 
   def join_leave
-     @tour_club.join_leave!(current_user)
+    @tour_club.join_leave!(current_user)
   end
 
   private

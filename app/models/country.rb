@@ -10,7 +10,7 @@
 #
 
 class Country < ActiveRecord::Base
-   translates :name
+  translates :name
 
   has_many :districts
   has_many :divisions

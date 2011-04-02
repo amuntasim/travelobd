@@ -6,6 +6,6 @@ class CreateDivisionTranslations < ActiveRecord::Migration
 
   def self.down
     drop_table :division_translations
-    add_column  :divisions, :name, :string
+    add_column :divisions, :name, :string
   end
 end

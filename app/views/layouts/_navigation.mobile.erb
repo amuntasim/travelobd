@@ -1,22 +1,22 @@
 <% if logged_in? %>
-  <ul data-role='listview' data-inset='true'>
-    <li data-role="list-divider">Navigation</li>
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Packages', packages_path %></li>
-    <li><%= link_to 'Hotels', hotels_path %></li>
-    <li>
-      <%= link_to 'My Accounts', dashboard_path, :rel => 'external' %>
-    </li>
-    <li><%= link_to 'Sign out', logout_url, :rel => 'external' %></li>
-  </ul>
+    <ul data-role='listview' data-inset='true'>
+      <li data-role="list-divider">Navigation</li>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Packages', packages_path %></li>
+      <li><%= link_to 'Hotels', hotels_path %></li>
+      <li>
+        <%= link_to 'My Accounts', dashboard_path, :rel => 'external' %>
+      </li>
+      <li><%= link_to 'Sign out', logout_url, :rel => 'external' %></li>
+    </ul>
 <% else %>
-  <ul data-role='listview' data-inset='true'>
-    <li data-role="list-divider">Navigation</li>
-    <li>
-      <%= link_to 'Sign in', login_path %>
-    </li>
-    <li>
-      <%= link_to 'Sign up', new_user_path %>
-    </li>
-  </ul>
+    <ul data-role='listview' data-inset='true'>
+      <li data-role="list-divider">Navigation</li>
+      <li>
+        <%= link_to 'Sign in', login_path %>
+      </li>
+      <li>
+        <%= link_to 'Sign up', new_user_path %>
+      </li>
+    </ul>
 <% end %>

@@ -39,7 +39,7 @@ class TransportsController < ApplicationController
     @transport.user_id = current_user.id
     respond_to do |format|
       if @transport.save
-        format.html {redirect_to(@transport, :notice => 'Transport was successfully created.')}
+        format.html { redirect_to(@transport, :notice => 'Transport was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @transport.errors, :status => :unprocessable_entity }
@@ -93,7 +93,6 @@ class TransportsController < ApplicationController
   end
 
 
-
   def search
     @transport_search = Transport.search(params[:search])
     @transports = @transport_search.paginate(:page=> params[:page], :per_page => 10)
@@ -110,11 +109,10 @@ class TransportsController < ApplicationController
   def rate
     @transport.rate(params[:stars], current_user, params[:dimension])
     respond_to do |format|
-      format.js {render :partial => '/comments/rate', :locals => {:obj => @transport}}
+      format.js { render :partial => '/comments/rate', :locals => {:obj => @transport} }
     end
 
   end
-
 
 
   private

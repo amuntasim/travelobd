@@ -10,7 +10,7 @@ class CreateElements < ActiveRecord::Migration
     [["basic_package_price", "4.95"], ["basic_package_duration", "3"], ["basic_package_photos", "0"], ["basic_package_videos", "0"], ["featured_package_price", "9.95"], ["featured_package_duration", "6"], ["featured_package_photos", "15"], ["featured_package_videos", "2"]].each do |el|
       Element.create(:name=> el[0], :value => el[1])
     end
-     add_index(:elements, :name)
+    add_index(:elements, :name)
   end
 
   def self.down

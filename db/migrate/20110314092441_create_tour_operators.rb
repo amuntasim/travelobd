@@ -4,10 +4,10 @@ class CreateTourOperators < ActiveRecord::Migration
       t.integer :category_id
       t.integer :user_id
       t.boolean :active
-      t.string  :logo_file_name
-      t.string  :logo_content_type
-      t.integer  :logo_file_size
-      t.integer  :packages_count
+      t.string :logo_file_name
+      t.string :logo_content_type
+      t.integer :logo_file_size
+      t.integer :packages_count
       t.timestamps
     end
 

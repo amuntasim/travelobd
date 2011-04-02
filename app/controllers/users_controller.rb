@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-
   end
 
   # GET /users/new
@@ -194,9 +193,6 @@ class UsersController < ApplicationController
     @uploaded_images = current_user.uploaded_images
   end
 
-  def club_joining_messages
-    @messages = Membership.where(:memberable_type => 'TourClub', :memberable_id => current_user.tour_clubs.collect(&:id)).order(:approved)
-  end
 
   private
   def load_user

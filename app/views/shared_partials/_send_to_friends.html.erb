@@ -2,12 +2,14 @@
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_to_friend_lb', :title => 'close' %>
   <% form_for :contact, :url => send_to_friends_path, :remote => true, :html=> {:id => 'send_to_friends_form'} do |f| %>
       <h2>Send to Friends</h2>
+
       <div id="stf_summary" style="margin-top: 5px;">
 
       </div>
       <p>
         Enter Your Message Here:
       </p>
+
       <p class="message">
         <%= text_area_tag :message %>
       </p>

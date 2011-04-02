@@ -16,7 +16,7 @@ class CreateProfiles < ActiveRecord::Migration
     end
 
     User.all.each do |user|
-      Profile.create(:user_id => user.id,:first_name=> user.name) unless user.profile
+      Profile.create(:user_id => user.id, :first_name=> user.name) unless user.profile
     end
   end
 

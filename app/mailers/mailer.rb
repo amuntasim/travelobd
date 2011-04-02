@@ -1,7 +1,7 @@
 class Mailer < ActionMailer::Base
 
   def password_reset_instructions(user)
-    @edit_password_reset_url  = edit_password_reset_url(user.perishable_token)
+    @edit_password_reset_url = edit_password_reset_url(user.perishable_token)
     mail(:to => "#{user.full_name} <#{user.email}>", :subject => "Password Reset Instructions", :from => "Equestrian Notifier <cst@everyequestrian.com>")
   end
 
@@ -18,10 +18,10 @@ class Mailer < ActionMailer::Base
   def reply_feedback(reply)
     feedback = reply.parent
     @reply = reply
-    mail(:to => "#{feedback.name}<#{feedback.email}>", :subject => reply.subject, :from => "#{reply.name} <#{reply.email}>") 
+    mail(:to => "#{feedback.name}<#{feedback.email}>", :subject => reply.subject, :from => "#{reply.name} <#{reply.email}>")
   end
 
-  def send_to_friend(params,user)
+  def send_to_friend(params, user)
     @message = params[:message]
     @link = "/#{params[:item_type]}s/#{params[:item_id]}"
     mail(:to => params[:email].split(','), :subject => "A link from #{ user ? user.full_name : 'your friend'} ", :from => user ? "#{user.full_name} <#{user.email}>" : "#{params[:from]}>")

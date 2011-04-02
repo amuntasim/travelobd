@@ -1,10 +1,10 @@
 <% title 'Search  Item' %>
 <%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>
-      <%= @search_label %>
-    </h2>
-  </div>
+    <div class="redhead_row">
+      <h2>
+        <%= @search_label %>
+      </h2>
+    </div>
 <% end %>
 
 <div class="firms_row">
@@ -12,34 +12,36 @@
     <%= @search_label %>
   </div>
   <% @articles.each do |article| %>
-    <div class="f_bor directory <%= extra_css_class(article) %>">
-      <div class="f_inner_bor">
-        <%=link_to image_tag(article.main_image_url(:thumb), :width => 97, :height => 67),friendly_url(article)  %>
+      <div class="f_bor directory <%= extra_css_class(article) %>">
+        <div class="f_inner_bor">
+          <%= link_to image_tag(article.main_image_url(:thumb), :width => 97, :height => 67), friendly_url(article) %>
+        </div>
+        <strong><%= article.category %></strong>
+
+        <h3>
+          <%= link_to article.title, friendly_url(article) %>
+        </h3>
+
+        <div>
+
+          <%= truncate(sanitize(article.description).gsub(/<\/?[^>]*>/, ""), :length => 150) %>
+
+        </div>
+
       </div>
-      <strong><%= article.category %></strong>
-      <h3>
-        <%= link_to article.title, friendly_url(article) %>
-      </h3>
-      <div>
-
-        <%= truncate(sanitize(article.description).gsub(/<\/?[^>]*>/, "") ,:length => 150)  %>
-
-      </div>
-
-    </div>
   <% end %>
-  <% if  @articles.respond_to?(:total_pages) && @articles.total_pages > 1%>
-    <div class="f_bor pagination">
-      <%= will_paginate  @articles %>
-    </div>
+  <% if  @articles.respond_to?(:total_pages) && @articles.total_pages > 1 %>
+      <div class="f_bor pagination">
+        <%= will_paginate @articles %>
+      </div>
   <% end %>
   <div class="firma_bottom"></div>
 </div>
 
 <style type="text/css">
 
-  .f_inner_bor {
-    height:67px;
-    width:97px;
-  }
+    .f_inner_bor {
+        height: 67px;
+        width: 97px;
+    }
 </style>

@@ -6,6 +6,6 @@ class AddMoreFieldsToPackages < ActiveRecord::Migration
   end
 
   def self.down
-    remove_columns :packages , :start_date, :end_date, :destinations
+    remove_columns :packages, :start_date, :end_date, :destinations
   end
 end

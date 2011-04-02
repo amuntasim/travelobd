@@ -36,6 +36,9 @@ class TourClub < ActiveRecord::Base
     end
   end
 
+  def title
+    name
+  end
 
 end
 

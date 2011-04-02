@@ -54,8 +54,8 @@
               <li><%= link_to 'My Listed Packages', my_packages_path, :class=> active_inactive_dashboard_navigation('my_packages') %></li>
               <li><%= link_to 'My Listed Transports', my_transports_path, :class=> active_inactive_dashboard_navigation('my_transports') %></li>
               <li><%= link_to 'My Tour Clubs', my_clubs_path, :class=> active_inactive_dashboard_navigation('my_clubs') %></li>
-              <li><%= link_to 'Tour Club Joining Request', club_joining_messages_path, :class=> active_inactive_dashboard_navigation('club_joining_messages') %></li>
-              <li><%= link_to 'Tour Club Leaving Request', club_leaving_messages_path, :class=> active_inactive_dashboard_navigation('club_leaving_messages_path') %></li>
+              <li><%= link_to 'Tour Club Joining Requests', club_joining_requests_path, :class=> active_inactive_dashboard_navigation('club_joining_requests') %></li>
+              <li><%= link_to 'Tour Club Leaving Requests', club_leaving_requests_path, :class=> active_inactive_dashboard_navigation('club_leaving_requests') %></li>
               <li><%= link_to 'My Articles', my_articles_path, :class=> active_inactive_dashboard_navigation('my_articles') %></li>
             </ul>
           </div>
@@ -153,7 +153,7 @@
     }
 
     .dashboard_content_header {
-        width: 700px;
+        width: 735px;
         margin-top: 10px;
         border-top: 1px solid #DFDFDF
     }
@@ -164,7 +164,7 @@
     }
 
     .dashboard_content_item {
-        width: 676px;
+        width: 712px;
         padding: 10px;
         border: 2px solid #DFDFDF;
         border-top: 0;
@@ -182,8 +182,10 @@
     }
 
     .dc_item {
-        width: 676px;
-        margin-bottom: 10px;
+        width: 712px;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px dotted #cccccc;
     }
 
     .dc_item_image {
@@ -208,7 +210,7 @@
 
     .dc_item_links {
         font-weight: bold;
-        width: 102px;
+        width: 138px;
     }
 
     .dc_item_links a {
@@ -223,5 +225,46 @@
 
     .add_link a {
         color: #ffffff
+    }
+
+    fieldset.moderator {
+        width: 322px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    legend {
+        padding: 0px 5px;
+    }
+
+    .user_box_item {
+        float: left;
+        border: 1px solid #ccc;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        padding: 10px;
+        width: 80px;
+        height: 60px;
+        background: #eeeeee;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 80px;
+        float: left;
+    }
+
+    .first_name_last_name {
+        float: left;
+        width: 582px;
     }
 </style>

@@ -1,5 +1,13 @@
 Travelobd::Application.routes.draw do
 
+
+  resources :club_joining_requests do
+    member do
+      post :approve
+      post :deny
+    end
+  end
+
   resources :tour_clubs do
     resources :comments
     collection do
@@ -113,6 +121,13 @@ Travelobd::Application.routes.draw do
     end
   end
 
+  resources :profiles do
+    member do
+      get :spots
+      get :articles
+    end
+  end
+
   resource :user_session
   resources :users do
     collection do
@@ -159,8 +174,7 @@ Travelobd::Application.routes.draw do
   match 'my_clubs' => 'users#clubs'
   match 'my_articles' => 'users#articles'
   match 'send_to_friends' => 'users#send_to_friends'
-  match 'club_joining_messages' => 'users#club_joining_messages'
-  match 'club_leaving_messages' => 'users#club_leaving_messages'
+  match 'club_leaving_requests' => 'club_joining_requests#leaving_requests'
 
 
   #newly added

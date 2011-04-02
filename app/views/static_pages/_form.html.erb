@@ -1,56 +1,59 @@
 <%= form_for(@static_page) do |f| %>
-  <% if @static_page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@static_page.errors.count, "error") %> prohibited this static_page from being saved:</h2>
+    <% if @static_page.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@static_page.errors.count, "error") %> prohibited this static_page from being saved:</h2>
 
-      <ul>
-        <% @static_page.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% @static_page.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= f.label :name %>
+      <br/>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
 
-  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :parmalink %>
+      <br/>
+      <%= f.text_field :parmalink %>
+    </div>
 
-  <div class="field">
-    <%= f.label :parmalink %><br />
-    <%= f.text_field :parmalink %>
-  </div>
+    <div class="field">
+      <%= f.label :content %>
+      <br/>
+      <%= f.text_area :content, :class => "mceEditor" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :class => "mceEditor" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
 
 <script type="text/javascript">
 
-  $(document).ready(function() {
-    $('select#static_page_country_id').change(function(){
-      //load comments
-      $('#static_page_static_page_id, #loading_division').toggle();
-      $.ajax({
-        url: '/districts/load_divisions?country_id='+$(this).val(),
-        type: 'get',
-        dataType: 'script',
-        success: function(results) {
-          $('#static_page_static_page_id').show();
-          $('#loading_division').hide();
-        }
-      });
+    $(document).ready(function() {
+        $('select#static_page_country_id').change(function() {
+            //load comments
+            $('#static_page_static_page_id, #loading_division').toggle();
+            $.ajax({
+                url: '/districts/load_divisions?country_id=' + $(this).val(),
+                type: 'get',
+                dataType: 'script',
+                success: function(results) {
+                    $('#static_page_static_page_id').show();
+                    $('#loading_division').hide();
+                }
+            });
+        });
+
+
     });
-
-
-  });
 
 
 </script>

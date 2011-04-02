@@ -1,14 +1,14 @@
 <% title "Welcome" %>
 
 <% content_for :header do %>
-  <a href="<%= root_url %>" data-icon='refresh' rel='external' class='ui-btn-left'>Refresh</a>
-  <h1>Recent Events</h1>
+    <a href="<%= root_url %>" data-icon='refresh' rel='external' class='ui-btn-left'>Refresh</a>
+    <h1>Recent Events</h1>
 <% end %>
 
 <% content_for :content do %>
-  <!-- Add Expense Form -->
-  <ul data-role="listview" data-inset='true'>
-  </ul>
+    <!-- Add Expense Form -->
+    <ul data-role="listview" data-inset='true'>
+    </ul>
 <% end %>
 
 <div class='content_area'>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="pagination">
-      <%= will_paginate @paginate_items if @paginate_items%>
+      <%= will_paginate @paginate_items if @paginate_items %>
     </div>
   </div>
 

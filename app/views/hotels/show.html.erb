@@ -66,60 +66,60 @@
     <fb:like href="<%= hotel_url(:id => @hotel.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
   </div>
 
-<div class="good_item_head">Rooms Tariff</div>
-<div class="itemDetail eventDetail">
-  <div class="roomTitleHeader eventTitle fl">
-    Room Type
-  </div>
-  <div class="eventTitle roomPriceHeader  fl">
-    Tariff/night
-  </div>
-  <div class="eventTitle roomTitleHeader  fl">
-    Total Rooms
-  </div>
-
-  <% @hotel.rooms.each do |room| %>
-      <div class="roomTitle fl">
-        <%= link_to room.name, room, :target => '_blank' %>
-      </div>
-      <div class="roomPrice fl">
-        <%= room.price %>
-      </div>
-      <div class="roomTitle fl">
-        <%= room.total_room %>
-      </div>
-  <% end %>
-</div>
-
-<div class="good_item_head">Hotel Features</div>
-<div class="itemDetail eventDetail">
-  <%= raw hotel_features_list(@hotel) %>
-</div>
-
-
-<% if @hotel.valid_lat_long? %>
-    <div class="good_item_head">Location Map</div>
-    <div class="itemDetail">
-      <div id="map"></div>
+  <div class="good_item_head">Rooms Tariff</div>
+  <div class="itemDetail eventDetail">
+    <div class="roomTitleHeader eventTitle fl">
+      Room Type
     </div>
-<% end %>
-<div class="good_item_head">Policies</div>
-<div class="itemDetail">
-  <% @hotel.policies.each do |policy| %>
-      <div class="eventTitle clear"><b><%= policy.title %></b></div>
-      <div class="eventDetail clear"><%= policy.detail %></div>
-  <% end %>
-</div>
+    <div class="eventTitle roomPriceHeader  fl">
+      Tariff/night
+    </div>
+    <div class="eventTitle roomTitleHeader  fl">
+      Total Rooms
+    </div>
 
-<div class="good_item_head">Contacts</div>
-<div class="itemDetail">
-  <% @hotel.contacts.each do |contact| %>
-      <div class=" clear"><b><%= contact.name %></b></div>
-      <div class="eventDetail clear">Phone: <%= contact.phone %></div>
-  <% end %>
-</div>
+    <% @hotel.rooms.each do |room| %>
+        <div class="roomTitle fl">
+          <%= link_to room.name, room, :target => '_blank' %>
+        </div>
+        <div class="roomPrice fl">
+          <%= room.price %>
+        </div>
+        <div class="roomTitle fl">
+          <%= room.total_room %>
+        </div>
+    <% end %>
+  </div>
 
-<%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @hotel, :rating => true} %>
+  <div class="good_item_head">Hotel Features</div>
+  <div class="itemDetail eventDetail">
+    <%= raw hotel_features_list(@hotel) %>
+  </div>
+
+
+  <% if @hotel.valid_lat_long? %>
+      <div class="good_item_head">Location Map</div>
+      <div class="itemDetail">
+        <div id="map"></div>
+      </div>
+  <% end %>
+  <div class="good_item_head">Policies</div>
+  <div class="itemDetail">
+    <% @hotel.policies.each do |policy| %>
+        <div class="eventTitle clear"><b><%= policy.title %></b></div>
+        <div class="eventDetail clear"><%= policy.detail %></div>
+    <% end %>
+  </div>
+
+  <div class="good_item_head">Contacts</div>
+  <div class="itemDetail">
+    <% @hotel.contacts.each do |contact| %>
+        <div class=" clear"><b><%= contact.name %></b></div>
+        <div class="eventDetail clear">Phone: <%= contact.phone %></div>
+    <% end %>
+  </div>
+
+  <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @hotel, :rating => true} %>
 </div>
 
 

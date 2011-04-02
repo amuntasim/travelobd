@@ -58,7 +58,7 @@ class PackagesController < ApplicationController
     @package.user_id = current_user.id
     respond_to do |format|
       if @package.save
-        format.html {redirect_to package_path(@package), :notice => 'Package was successfully createds.'}
+        format.html { redirect_to package_path(@package), :notice => 'Package was successfully createds.' }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @package.errors, :status => :unprocessable_entity }
@@ -152,7 +152,7 @@ class PackagesController < ApplicationController
   def rate
     @package.rate(params[:stars], current_user, params[:dimension])
     respond_to do |format|
-      format.js {render :partial => '/comments/rate', :locals => {:obj => @package}}
+      format.js { render :partial => '/comments/rate', :locals => {:obj => @package} }
     end
 
   end

@@ -18,18 +18,18 @@
 
   <div data-role="content">
     <% if !flash.empty? %>
-      <%
-         message = nil
+        <%
+           message = nil
 
-         if flash[:notice]
-           message      = flash[:notice]
-         elsif flash[:success]
-           message      = flash[:success]
-         end
-      %>
+           if flash[:notice]
+               message = flash[:notice]
+           elsif flash[:success]
+               message = flash[:success]
+           end
+        %>
 
-      <h4 class="ui-collapsible-heading">
-        <a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-shadow ui-corner-all ui-btn-hover-e ui-btn-down-e" data-theme="e">
+        <h4 class="ui-collapsible-heading">
+          <a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-shadow ui-corner-all ui-btn-hover-e ui-btn-down-e" data-theme="e">
             <span class="ui-btn-inner ui-corner-all">
               <span class="ui-btn-text"><%= message %></span>
               <span data-theme="d" class="ui-btn ui-btn-up-d ui-btn-icon-left ui-btn-corner-all ui-shadow">
@@ -39,14 +39,14 @@
                 </span>
               </span>
             </span>
-        </a>
-      </h4>
+          </a>
+        </h4>
     <% end %>
 
     <%= yield :content %>
 
     <% if 'true' != params[:dialog] %>
-      <%= render :partial => 'layouts/navigation' %>
+        <%= render :partial => 'layouts/navigation' %>
     <% end %>
   </div>
 

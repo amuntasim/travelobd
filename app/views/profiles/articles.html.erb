@@ -1,0 +1,38 @@
+<div class="pageHead">
+  Profile of <%= @profile.full_name %>
+</div>
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    <div class="fl">My Articles</div>
+    <div class="add_link">
+      <%#= link_to '+Add Article', new_article_path %>
+    </div>
+  </div>
+
+</div>
+<div class="dashboard_content_item fl">
+  <% if @articles.size > 0 %>
+      <% @articles.each do |article| %>
+          <div class=" <%= 'inactive' unless article.active %> dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag article.main_image_url(:thumb) %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+                <%= link_to article.title, article %>
+              </div>
+
+              <div class="desc">
+                <%= truncate strip_tags(article.detail), :length => 170 %>
+              </div>
+
+            </div>
+
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        No Article Posted
+      </h3>
+  <% end %>
+</div>

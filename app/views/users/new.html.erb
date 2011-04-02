@@ -1,16 +1,13 @@
 <% title 'Create New Account' %>
+<div class="pageHead">
+  <% unless session[:omniauth] %>
+      Create New Account
+  <% else %>
+      Provide the followings [requires only once]
+  <% end %>
 
-<div class="createAcc">
-  <div class="cre_top"></div>
-  <div class="cre_mid">
-    <div class="creDesc">
-         <% unless session[:omniauth] %>
-          <h1>Create New Account</h1>
-        <% else %>
-          <h1>Provide the followings [requires only once]</h1>
-        <% end %>
-      <%= render 'form' %>
-    </div>
-  </div>
-  <div class="cre_bot"></div>
+</div>
+
+<div class="item_form">
+  <%= render 'form' %>
 </div>

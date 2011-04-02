@@ -2,5 +2,5 @@
 // the admin panel here.
 
 $(function() {
-  $("#quicksearch").searchField();
+    $("#quicksearch").searchField();
 });

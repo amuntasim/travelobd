@@ -17,23 +17,23 @@
 </div>
 <div class="dashboard_content_item fl">
   <% if @messages.size > 0 %>
-  <% @messages.each do |message| %>
-      <%= link_to message_path(message) do %>
-          <div class="message <%= cycle 'evenRow', 'oddRow' %> <%= 'unread' unless message.read? %>">
-            <div class="sent_by">
-              <%= message.name %>[<%= message.email %>]
-            </div>
-            <div class="title">
-              <%= truncate(message.title, :length => 100) %>
-            </div>
+      <% @messages.each do |message| %>
+          <%= link_to message_path(message) do %>
+              <div class="message <%= cycle 'evenRow', 'oddRow' %> <%= 'unread' unless message.read? %>">
+                <div class="sent_by">
+                  <%= message.name %>[<%= message.email %>]
+                </div>
+                <div class="title">
+                  <%= truncate(message.title, :length => 100) %>
+                </div>
 
-            <div class="when">
-              <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
-            </div>
-          </div>
+                <div class="when">
+                  <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
+                </div>
+              </div>
+          <% end %>
       <% end %>
-  <% end %>
-   <% else %>
+  <% else %>
       <h3>
         No messages
       </h3>

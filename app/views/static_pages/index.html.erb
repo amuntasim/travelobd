@@ -20,26 +20,26 @@
 
   <% @static_pages.each do |static_page| %>
 
-    <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
-      <div class="fl w_200 pad_lr_5">
-        <%= static_page.name %>
-      </div>
+      <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
+        <div class="fl w_200 pad_lr_5">
+          <%= static_page.name %>
+        </div>
 
-      <div class="fl w_130 pad_lr_5">
-        <%= static_page.parmalink%>
-      </div>
-     
-      <div class="fl w_130 pad_lr_5">
-        <%#= static_page.content %>
-      </div>
+        <div class="fl w_130 pad_lr_5">
+          <%= static_page.parmalink %>
+        </div>
+
+        <div class="fl w_130 pad_lr_5">
+          <%#= static_page.content %>
+        </div>
 
 
-      <div class="fl admin_links">
-        <span><%= link_to 'Show', static_page %></span>
-        <span><%= link_to 'Edit', edit_static_page_path(static_page) %></span>
-        <span><%= link_to 'Destroy', static_page, :confirm => 'Are you sure?', :method => :delete %></span>
+        <div class="fl admin_links">
+          <span><%= link_to 'Show', static_page %></span>
+          <span><%= link_to 'Edit', edit_static_page_path(static_page) %></span>
+          <span><%= link_to 'Destroy', static_page, :confirm => 'Are you sure?', :method => :delete %></span>
+        </div>
       </div>
-    </div>
 
   <% end %>
 

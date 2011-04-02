@@ -1,26 +1,45 @@
-
 <% title 'Profile Details' %>
-<%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>Profile Details</h2>
-  </div>
-<% end %>
+<div class="pageHead">
+  Profile of <%= @profile.full_name %>
+</div>
 
-<% if current_user == @profile.user %>
-  <div class="ad_business">
-    <%= link_to raw('&lArr; Edit'), edit_user_profile_path(@profile.user)  %>
-  </div>
-<% end %>
-<div class="firms_row message_detail">
-  <div class="firms_head">
-    <%=  @profile.first_name %>'s Profile
-  </div>
-  <div class="f_bor article">
-    <div class="f_inner_bor">
+<div class="item_details">
+  <% if current_user == @profile.user %>
+      <div class="ad_business">
+        <%= link_to raw('&lArr; Edit'), edit_user_profile_path(@profile.user) %>
+      </div>
+  <% end %>
+
+  <fieldset class="moderator">
+    <legend>I am moderator of</legend>
+
+    <% @profile.user.created_clubs.each_with_index do |club, i| %>
+
+        <%= link_to club do %>
+            <div class="user_box_item <%= 'right_margin_zero' if i%3 == 2 %>">
+              <%= club.name %>
+            </div>
+        <% end %>
+    <% end %>
+  </fieldset>
+  <fieldset class="right_margin_zero moderator ">
+    <legend>I am member of</legend>
+
+    <% @profile.user.associated_tour_clubs.each_with_index do |club, i| %>
+
+        <%= link_to club do %>
+            <div class="user_box_item <%= 'right_margin_zero' if i%3 == 2 %>">
+              <%= club.name %>
+            </div>
+        <% end %>
+    <% end %>
+  </fieldset>
+  <div class="good_item_head">Profile Details</div>
+  <div class="itemDetail">
+    <div class="avatar">
       <%= image_tag @profile.avatar.url(:thumb), :width => 68, :height => 55 %>
     </div>
-
-    <div class="f_inner_right">
+    <div class="first_name_last_name">
       <div class='f_inner_right_row'>
         <b>First name:</b>
         <%= @profile.first_name %>
@@ -31,34 +50,8 @@
         <b>Last name:</b>
         <%= @profile.last_name %>
       </div>
-
-      <div class='f_inner_right_row'>
-        <b>Address:</b>
-        <%= @profile.address %>
-      </div>
-
-      <div class='f_inner_right_row'>
-        <b>District:</b>
-        <%= @profile.district %>
-      </div>
-
-      <div class='f_inner_right_row'>
-        <b>Division:</b>
-        <%= @profile.division %>
-      </div>
-
-      <div class='f_inner_right_row'>
-        <b>Zip code:</b>
-        <%= @profile.zip_code %>
-      </div>
-
-      <div class='f_inner_right_row'>
-        <b>Country:</b>
-        <%= @profile.country.name if  @profile.country%>
-      </div>
     </div>
+  </div>
 
 
-  <div class="firma_bottom"></div>
 </div>
-

@@ -7,94 +7,92 @@
 
 /*next button*/
 .bx-next {
-	position:absolute;
-	top:90%;
-	right:8px;
-	z-index:999;
-	width: 30px;
-	height: 30px;
-	text-indent: -999999px;
-	background: url('/images/right_arrow.png') no-repeat;
+    position: absolute;
+    top: 90%;
+    right: 8px;
+    z-index: 999;
+    width: 30px;
+    height: 30px;
+    text-indent: -999999px;
+    background: url('/images/right_arrow.png') no-repeat;
 }
 
 /*previous button*/
 .bx-prev {
-	position:absolute;
-	top:90%;
-	left:15px;
-	z-index:999;
-	width: 30px;
-	height: 30px;
-	text-indent: -999999px;
-	background: url('/images/left_arrow.png') no-repeat;
+    position: absolute;
+    top: 90%;
+    left: 15px;
+    z-index: 999;
+    width: 30px;
+    height: 30px;
+    text-indent: -999999px;
+    background: url('/images/left_arrow.png') no-repeat;
 }
 
 /*pager links*/
 .bx-pager a {
-	margin-right: 5px;
-	color: #ccc;
-	padding: 3px 4px 3px 4px;
-	font-size: 12px;
-	zoom:1;
-    font-weight:bold;
-	/*background: url('/images/gray_pager.png') no-repeat 0 -20px;*/
+    margin-right: 5px;
+    color: #ccc;
+    padding: 3px 4px 3px 4px;
+    font-size: 12px;
+    zoom: 1;
+    font-weight: bold; /*background: url('/images/gray_pager.png') no-repeat 0 -20px;*/
 }
 
 /*auto start button*/
 .bx-auto .start {
-	background: url('/images/gray_auto.png') no-repeat 0 2px;
-	padding-left: 13px;
+    background: url('/images/gray_auto.png') no-repeat 0 2px;
+    padding-left: 13px;
 }
 
 /*auto stop button*/
 .bx-auto .stop {
-	background: url('/images/gray_auto.png') no-repeat 0 -14px;
-	padding-left: 13px;
+    background: url('/images/gray_auto.png') no-repeat 0 -14px;
+    padding-left: 13px;
 }
 
 /*
  * End color scheme styles
  */
 
-
 /*next/prev button hover state*/
 .bx-next:hover,
 .bx-prev:hover {
-	background-position: 0 0;
+    background-position: 0 0;
 }
 
 /*pager links hover and active states*/
 .bx-pager .pager-active,
 .bx-pager a:hover {
-    color:green;
-	background-position: 0 0;
+    color: green;
+    background-position: 0 0;
 }
 
 /*pager wrapper*/
 .bx-pager {
-	text-align:center;
-	padding-top: 7px;
-	font-size:12px;
-	color:#666;
+    text-align: center;
+    padding-top: 7px;
+    font-size: 12px;
+    color: #666;
 }
 
 /*captions*/
 .bx-captions {
-	text-align:center;
-	font-size: 12px;
-	padding: 7px 0;
-	color: #666;
+    text-align: center;
+    font-size: 12px;
+    padding: 7px 0;
+    color: #666;
 }
 
 /*auto controls*/
 .bx-auto {
-	text-align: center;
-	padding-top: 15px;
+    text-align: center;
+    padding-top: 15px;
 }
 
 .bx-auto a {
-	color: #666;
-	font-size: 12px;
+    color: #666;
+    font-size: 12px;
 }
 
 

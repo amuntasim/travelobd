@@ -1,12 +1,12 @@
 module TransportsHelper
 
   def departure_schedules(transport)
-    html  = ''
+    html = ''
     transport.departure_schedules.each do |schedule|
-        html << "<div class='#{cycle('evenRow', 'oddRow')}'>"
-        html << "<div class='eventTitle'>#{schedule.route}</div>"
-        html << "<div class=' departure_times'>#{schedule.time.split(',').collect{|item| '<span class="departure_time">'+ item + '</span>'}.join(' ')}</div>"
-        html << "</div>"
+      html << "<div class='#{cycle('evenRow', 'oddRow')}'>"
+      html << "<div class='eventTitle'>#{schedule.route}</div>"
+      html << "<div class=' departure_times'>#{schedule.time.split(',').collect { |item| '<span class="departure_time">'+ item + '</span>' }.join(' ')}</div>"
+      html << "</div>"
     end
     html
   end

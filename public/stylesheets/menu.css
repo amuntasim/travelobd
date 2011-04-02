@@ -1,11 +1,10 @@
-#eq_ddm
-{	margin: 0;
-  padding: 0;
-  z-index: 30}
+#eq_ddm {
+    margin: 0;
+    padding: 0;
+    z-index: 30
+}
 
-
-#eq_ddm  ul.sub_nav
-{
+#eq_ddm  ul.sub_nav {
     position: absolute;
     visibility: hidden;
     margin: 0;
@@ -19,8 +18,7 @@
     z-index: 1130
 }
 
-#eq_ddm  ul.sub_nav li
-{
+#eq_ddm  ul.sub_nav li {
     margin: 10px;
     padding: 0px;
     white-space: nowrap;
@@ -32,7 +30,8 @@
     height: auto;
 
 }
-#eq_ddm  ul.sub_nav li a{
+
+#eq_ddm  ul.sub_nav li a {
     margin: 0;
     padding: 5px;
     padding-bottom: 0;
@@ -43,6 +42,6 @@
     color: #000000;
 }
 
-#eq_ddm ul.sub_nav a:hover{
-   
+#eq_ddm ul.sub_nav a:hover {
+
 }

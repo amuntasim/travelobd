@@ -1,6 +1,6 @@
-<h1 class="admin_header">Feedback  detail</h1>
+<h1 class="admin_header">Feedback detail</h1>
 <div class="admin_new_link">
-  <%= link_to raw('&lArr; Reply'), 'javascript:void(0)',  :class=> "reply_feedback"  %>
+  <%= link_to raw('&lArr; Reply'), 'javascript:void(0)', :class=> "reply_feedback" %>
   <%= link_to 'Back', feedbacks_path %>
 </div>
 <div class="msg_desc_info_big">
@@ -29,68 +29,82 @@
     <%= distance_of_time_in_words(@feedback.created_at, Time.now) %>
     ago
   </p>
+
   <p>
-    <%= link_to raw('&lArr; Reply'), 'javascript:void(0)',  :class=> "reply_feedback"  %>
+    <%= link_to raw('&lArr; Reply'), 'javascript:void(0)', :class=> "reply_feedback" %>
   </p>
 
   <p>
     <%= render :partial=> 'feedbacks/reply', :collection=> @feedback.children %>
   </p>
+
   <p>
 
   <div id="message_reply">
-    <%=form_for Feedback.new, :url=>feedbacks_path, :html=> {:id=> 'reply_form'} do |f| %>
-      <div class='f_inner_right_row'>
-        <label> Subject:</label>
-        <%= f.text_field :subject, :value=>"RE:#{@feedback.subject}" %>
-      </div>
-      <div class='f_inner_right_row'>
-        <label>Reply:</label>
-        <%= f.text_area :content %>
-      </div>
+    <%= form_for Feedback.new, :url=>feedbacks_path, :html=> {:id=> 'reply_form'} do |f| %>
+        <div class='f_inner_right_row'>
+          <label> Subject:</label>
+          <%= f.text_field :subject, :value=>"RE:#{@feedback.subject}" %>
+        </div>
+        <div class='f_inner_right_row'>
+          <label>Reply:</label>
+          <%= f.text_area :content %>
+        </div>
 
 
-
-      <div class="f_inner_right_row">
-        <input name="" class="subBtn" type="submit" value=""/> <%= link_to 'Hide', 'javascript:void(0)',:class=> 'hide_reply_form' %>
-        <%= f.hidden_field :name, :value => current_user.full_name  %>
-        <%= f.hidden_field :parent_id, :value => @feedback.id  %>
-        <%= f.hidden_field :email, :value => current_user.email  %>
-      </div>
+        <div class="f_inner_right_row">
+          <input name="" class="subBtn" type="submit" value=""/> <%= link_to 'Hide', 'javascript:void(0)', :class=> 'hide_reply_form' %>
+          <%= f.hidden_field :name, :value => current_user.full_name %>
+          <%= f.hidden_field :parent_id, :value => @feedback.id %>
+          <%= f.hidden_field :email, :value => current_user.email %>
+        </div>
     <% end %>
   </div>
 
-</p>
+  </p>
 </div>
 
 <style type="text/css">
-  #message_reply {
-    float: left;
+    #message_reply {
+        float: left;
 
-  }
-  input.subBtn {
-    border: none;
-    margin-left: 250px;
+    }
 
-  }
+    input.subBtn {
+        border: none;
+        margin-left: 250px;
 
-  .f_inner_right_row textarea {width: 430px; height: 210px;}
-  .f_inner_right_row #message_title {width: 430px;}
+    }
 
-  h5 {color: #000000;}
-  .hide_reply_form {float: left; margin: 32px 0px 0px 20px}
+    .f_inner_right_row textarea {
+        width: 430px;
+        height: 210px;
+    }
+
+    .f_inner_right_row #message_title {
+        width: 430px;
+    }
+
+    h5 {
+        color: #000000;
+    }
+
+    .hide_reply_form {
+        float: left;
+        margin: 32px 0px 0px 20px
+    }
 </style>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#message_reply').hide();
-    $('a.reply_feedback').click(function(){
-      $('#message_reply').show(2000);
-    
-    });
+    $(document).ready(function() {
+        $('#message_reply').hide();
+        $('a.reply_feedback').click(function() {
+            $('#message_reply').show(2000);
 
-    $('.hide_reply_form').click(function(){
-      $('#message_reply').hide();
+        });
+
+        $('.hide_reply_form').click(function() {
+            $('#message_reply').hide();
+        });
     });
-  });
 </script>

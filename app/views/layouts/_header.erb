@@ -98,19 +98,22 @@
     </li>
   </ul>
 </div>
-<% if !flash.empty? or @notice %>
+
+<% if !flash.empty? || params[:notice] || params[:alert] %>
     <div id="flash_messages">
-      <% if @notice || flash[:notice] %>
+      <% if @notice || flash[:notice] || params[:notice] %>
           <div class="flash_message notice">
             <%= @notice %>
             <%= flash[:notice] %>
+            <%= params[:notice] %>
           </div>
       <% end %>
 
-      <% if flash[:alert] || flash[:error] %>
+      <% if flash[:alert] || flash[:error] || params[:error] %>
           <div class="flash_message error">
             <%= flash[:alert] %>
             <%= flash[:error] %>
+            <%= params[:alert] %>
           </div>
       <% end %>
     </div>

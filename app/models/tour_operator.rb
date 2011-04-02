@@ -8,7 +8,7 @@ class TourOperator < ActiveRecord::Base
 
   belongs_to :user
   has_many :contacts, :as => :contactable
-  has_many :services,  :class_name => 'TitleDetailAttribute', :as => :td_attributable, :conditions => {:td_association_type => :service}
+  has_many :services, :class_name => 'TitleDetailAttribute', :as => :td_attributable, :conditions => {:td_association_type => :service}
   has_many :policies, :as => :policiable
   has_many :comments, :as => :commentable
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}

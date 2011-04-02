@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
   layout 'admin', :except => :show
-  uses_tiny_mce :only =>[:new, :edit],:options => {
-    :width => '645px',
-    :height => '350px'
+  uses_tiny_mce :only =>[:new, :edit], :options => {
+      :width => '645px',
+      :height => '350px'
   }
   # GET /static_pages
   # GET /static_pages.xml
@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @static_pages }
+      format.xml { render :xml => @static_pages }
     end
   end
 
@@ -37,7 +37,7 @@ class StaticPagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @static_page }
+      format.xml { render :xml => @static_page }
     end
   end
 
@@ -54,10 +54,10 @@ class StaticPagesController < ApplicationController
     respond_to do |format|
       if @static_page.save
         format.html { redirect_to(@static_page, :notice => 'Static page was successfully created.') }
-        format.xml  { render :xml => @static_page, :status => :created, :location => @static_page }
+        format.xml { render :xml => @static_page, :status => :created, :location => @static_page }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @static_page.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @static_page.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -70,10 +70,10 @@ class StaticPagesController < ApplicationController
     respond_to do |format|
       if @static_page.update_attributes(params[:static_page])
         format.html { redirect_to(@static_page, :notice => 'Static page was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @static_page.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @static_page.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -86,7 +86,7 @@ class StaticPagesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(static_pages_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 end

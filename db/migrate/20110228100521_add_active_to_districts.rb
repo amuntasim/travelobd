@@ -1,6 +1,6 @@
 class AddActiveToDistricts < ActiveRecord::Migration
   def self.up
-    add_column :districts, :active, :boolean , :default =>  true
+    add_column :districts, :active, :boolean, :default => true
   end
 
   def self.down

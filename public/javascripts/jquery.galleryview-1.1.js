@@ -400,20 +400,20 @@
                     }
                 });
             }
-            if(!opts.hide_nav_buttons){
-            //Add navigation buttons
-            $('<img />').addClass('nav-next').attr('src', img_path + opts.nav_theme + '/next.png').appendTo(j_gallery).css({
-                'position':'absolute',
-                'cursor':'pointer',
-                'top':(opts.filmstrip_position == 'top' ? 0 : opts.panel_height) + frame_margin_top + ((opts.frame_height - 22) / 2) + 'px',
-                'right':(gallery_width / 2) - (wrapper_width / 2) - 10 - 22 + 'px'
-            }).click(showNextItem);
-            $('<img />').addClass('nav-prev').attr('src', img_path + opts.nav_theme + '/prev.png').appendTo(j_gallery).css({
-                'position':'absolute',
-                'cursor':'pointer',
-                'top':(opts.filmstrip_position == 'top' ? 0 : opts.panel_height) + frame_margin_top + ((opts.frame_height - 22) / 2) + 'px',
-                'left':(gallery_width / 2) - (wrapper_width / 2) - 10 - 22 + 'px'
-            }).click(showPrevItem);
+            if (!opts.hide_nav_buttons) {
+                //Add navigation buttons
+                $('<img />').addClass('nav-next').attr('src', img_path + opts.nav_theme + '/next.png').appendTo(j_gallery).css({
+                    'position':'absolute',
+                    'cursor':'pointer',
+                    'top':(opts.filmstrip_position == 'top' ? 0 : opts.panel_height) + frame_margin_top + ((opts.frame_height - 22) / 2) + 'px',
+                    'right':(gallery_width / 2) - (wrapper_width / 2) - 10 - 22 + 'px'
+                }).click(showNextItem);
+                $('<img />').addClass('nav-prev').attr('src', img_path + opts.nav_theme + '/prev.png').appendTo(j_gallery).css({
+                    'position':'absolute',
+                    'cursor':'pointer',
+                    'top':(opts.filmstrip_position == 'top' ? 0 : opts.panel_height) + frame_margin_top + ((opts.frame_height - 22) / 2) + 'px',
+                    'left':(gallery_width / 2) - (wrapper_width / 2) - 10 - 22 + 'px'
+                }).click(showPrevItem);
             }
         }
 
@@ -462,7 +462,7 @@
             //Number of frames in filmstrip
             item_count = has_panels ? j_panels.length : j_frames.length;
 
-            filmstrip_left = has_panels ? opts.frame_width*(opts.frame_size-item_count)/2 : 0;
+            filmstrip_left = has_panels ? opts.frame_width * (opts.frame_size - item_count) / 2 : 0;
             //Number of frames that can display within the screen's width
             //64 = width of block for navigation button * 2
             //5 = minimum frame margin

@@ -22,8 +22,8 @@
 
 class Message < ActiveRecord::Base
   acts_as_tree
-  validates :name, :presence=> { :unless => :created_by? }
-  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }, :unless => :created_by?
+  validates :name, :presence=> {:unless => :created_by?}
+  validates :email, :format => {:with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create}, :unless => :created_by?
   validates :title, :presence=> true
   validates :content, :presence=> true
   belongs_to :owner, :class_name => 'User', :foreign_key => :created_by

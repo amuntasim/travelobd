@@ -18,23 +18,22 @@
 
   <% @feedbacks.each do |feedback| %>
 
-    <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
-      <div class="fl w_300 pad_lr_5">
-        <%= feedback.email %>
+      <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
+        <div class="fl w_300 pad_lr_5">
+          <%= feedback.email %>
+        </div>
+
+        <div class="fl w_130 pad_lr_5">
+          <%= truncate(feedback.subject, :length => 100) %>
+        </div>
+
+
+        <div class="fl admin_links">
+          <span><%= link_to 'Show', feedback %></span>
+          <span><%= link_to 'Edit', edit_feedback_path(feedback) %></span>
+          <span><%= link_to 'Destroy', feedback, :confirm => 'Are you sure?', :method => :delete %></span>
+        </div>
       </div>
-
-      <div class="fl w_130 pad_lr_5">
-        <%= truncate(feedback.subject, :length => 100) %>
-      </div>
-
-
-
-      <div class="fl admin_links">
-        <span><%= link_to 'Show', feedback %></span>
-        <span><%= link_to 'Edit', edit_feedback_path(feedback) %></span>
-        <span><%= link_to 'Destroy', feedback, :confirm => 'Are you sure?', :method => :delete %></span>
-      </div>
-    </div>
 
   <% end %>
 

@@ -6,6 +6,6 @@ class TranslatesDistrict < ActiveRecord::Migration
 
   def self.down
     drop_table :district_translations
-    add_column  :districts, :name, :string
+    add_column :districts, :name, :string
   end
 end

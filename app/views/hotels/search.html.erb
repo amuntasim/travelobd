@@ -1,47 +1,49 @@
 <% title 'Search  Item for sale' %>
 <%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>
-      <%= @search_label %>
-    </h2>
-  </div>
+    <div class="redhead_row">
+      <h2>
+        <%= @search_label %>
+      </h2>
+    </div>
 <% end %>
 <div class="ad_business">
-  <%= link_to raw('&raquo; Advance Search'), advance_search_path(params.clone.delete_if{|k,v| ['controller','action'].include?(k)}) %>
+  <%= link_to raw('&raquo; Advance Search'), advance_search_path(params.clone.delete_if { |k, v| ['controller', 'action'].include?(k) }) %>
 </div>
 <div class="firms_row">
   <div class="firms_head">
     <%= @search_label %>
   </div>
   <% @ads.each do |ad| %>
-    <div class="f_bor directory <%= extra_css_class(ad) %>">
-      <div class="f_inner_bor">
-        <%=link_to image_tag(ad.main_image_url(:thumb), :width => 97, :height => 67),friendly_url(ad)  %>
+      <div class="f_bor directory <%= extra_css_class(ad) %>">
+        <div class="f_inner_bor">
+          <%= link_to image_tag(ad.main_image_url(:thumb), :width => 97, :height => 67), friendly_url(ad) %>
+        </div>
+        <strong><%= ad.category %></strong>
+
+        <h3>
+          <%= link_to ad.title, friendly_url(ad) %>
+        </h3>
+
+        <div>
+
+          <%= truncate(sanitize(ad.description).gsub(/<\/?[^>]*>/, ""), :length => 150) %>
+
+        </div>
+
       </div>
-      <strong><%= ad.category %></strong>
-      <h3>
-        <%= link_to ad.title, friendly_url(ad) %>
-      </h3>
-      <div>
-
-        <%= truncate(sanitize(ad.description).gsub(/<\/?[^>]*>/, "") ,:length => 150)  %>
-
-      </div>
-
-    </div>
   <% end %>
-  <% if  @ads.respond_to?(:total_pages) && @ads.total_pages > 1%>
-    <div class="f_bor pagination">
-      <%= will_paginate  @ads %>
-    </div>
+  <% if  @ads.respond_to?(:total_pages) && @ads.total_pages > 1 %>
+      <div class="f_bor pagination">
+        <%= will_paginate @ads %>
+      </div>
   <% end %>
   <div class="firma_bottom"></div>
 </div>
 
 <style type="text/css">
 
-  .f_inner_bor {
-    height:67px;
-    width:97px;
-  }
+    .f_inner_bor {
+        height: 67px;
+        width: 97px;
+    }
 </style>

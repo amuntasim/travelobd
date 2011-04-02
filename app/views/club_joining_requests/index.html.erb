@@ -1,0 +1,50 @@
+<% title 'Club Joining Requests' %>
+
+
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    <div class="fl">Club Joining Requests</div>
+  </div>
+
+</div>
+<div class="dashboard_content_item fl">
+  <% if @messages.size > 0 %>
+      <% @messages.each do |message| %>
+          <div class=" <%= 'inactive' unless message.approved? %> dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag message.user.profile.avatar.url() %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+                Joining request form <%= link_to message.user.name, message.user.profile, :target => '_blank' %> for the
+                club <%= link_to message.memberable.name, message.memberable, :target => '_blank' %>
+              </div>
+
+              <div class="desc">
+
+              </div>
+
+            </div>
+            <div class="dc_item_links fl">
+              <%= link_to 'Show', club_joining_request_path(message) %>
+              <% if message.approved? %>
+                  <%= link_to 'Deny', deny_club_joining_request_path(message), :method => :post %>
+              <% else %>
+                  <%= link_to 'Approve', approve_club_joining_request_path(message), :method => :post %>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        No messages
+      </h3>
+  <% end %>
+</div>
+
+
+<style type="text/css">
+
+</style>
+
+

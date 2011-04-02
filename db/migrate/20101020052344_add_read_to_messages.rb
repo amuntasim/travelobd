@@ -5,6 +5,6 @@ class AddReadToMessages < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :messages, :read,:user_id
+    remove_column :messages, :read, :user_id
   end
 end

@@ -1,23 +1,23 @@
 class SpotsController < ApplicationController
 
-  before_filter :require_user, :only =>[:new, :edit,:create, :update, :destroy ]
-  before_filter lambda { @active_nav = 'spot'  }
+  before_filter :require_user, :only =>[:new, :edit, :create, :update, :destroy]
+  before_filter lambda { @active_nav = 'spot' }
 
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy ]
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
-  
+
   #layout :choose_layout
 
-  uses_tiny_mce :only =>[:new, :edit],:options => {
-    :width => '445px',
-    :height => '250px'
+  uses_tiny_mce :only =>[:new, :edit], :options => {
+      :width => '445px',
+      :height => '250px'
   }
-  
+
   # GET /spots
   # GET /spots.xml
   def index
     conditions = []
-    conditions.add_condition!(:category_id =>params[:category_id] ) unless params[:category_id].blank?
+    conditions.add_condition!(:category_id =>params[:category_id]) unless params[:category_id].blank?
     @spots = Spot.paginate(:page=> params[:page], :conditions => conditions)
     @search_title = Spot::CATEGORIES.invert[params[:category_id].to_i] || 'All Spots'
 
@@ -30,7 +30,7 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @spot }
+      format.xml { render :xml => @spot }
     end
   end
 
@@ -41,7 +41,7 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @spot }
+      format.xml { render :xml => @spot }
     end
   end
 
@@ -58,10 +58,10 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.save
         format.html { redirect_to(@spot, :notice => 'Spot was successfully created.') }
-        format.xml  { render :xml => @spot, :status => :created, :location => @spot }
+        format.xml { render :xml => @spot, :status => :created, :location => @spot }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @spot.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @spot.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,10 +73,10 @@ class SpotsController < ApplicationController
     respond_to do |format|
       if @spot.update_attributes(params[:spot])
         format.html { redirect_to(@spot, :notice => 'Spot was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @spot.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @spot.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -89,11 +89,11 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(spots_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 
-   def search
+  def search
     @spot_search = Spot.search(params[:search])
     #ordering = " #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = " #{ params[:order] unless params[:order].blank? }"
@@ -111,10 +111,11 @@ class SpotsController < ApplicationController
 
   def set_main_photo
     asset = SpotAsset.find(params[:asset_id])
-    SpotAsset.update_all ['main = ?', false], ['spot_id = ?',asset.spot_id]
+    SpotAsset.update_all ['main = ?', false], ['spot_id = ?', asset.spot_id]
     asset.update_attribute(:main, true)
     render :nothing => true
   end
+
   private
 
   def choose_layout
@@ -124,8 +125,9 @@ class SpotsController < ApplicationController
   def load_item
     @spot = Spot.find(params[:id])
   end
+
   def check_ownership
     ownership_require(@spot)
   end
-  
+
 end

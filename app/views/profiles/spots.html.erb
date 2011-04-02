@@ -1,0 +1,38 @@
+<div class="pageHead">
+  Profile of <%= @profile.full_name %>
+</div>
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    <div class="fl">My Spots</div>
+    <div class="add_link">
+      <%#= link_to '+Add Spot', new_spot_path %>
+    </div>
+  </div>
+
+</div>
+<div class="dashboard_content_item fl">
+  <% if @spots.size > 0 %>
+      <% @spots.each do |spot| %>
+          <div class=" <%= 'inactive' unless spot.active %> dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag spot.main_image_url(:thumb) %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+                <%= link_to spot.name, spot %>
+              </div>
+
+              <div class="desc">
+                <%= truncate strip_tags(spot.description), :length => 170 %>
+              </div>
+
+            </div>
+
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        No Spot Posted
+      </h3>
+  <% end %>
+</div>

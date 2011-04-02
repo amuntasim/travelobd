@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_filter :require_user
-  before_filter :load_profile, :only =>[:show, :edit, :update, :destroy ]
+  before_filter :load_profile, :except =>[]
 
   layout :select_layout
   # GET /profiles
@@ -10,14 +10,14 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @profiles }
+      format.xml { render :xml => @profiles }
     end
   end
 
   # GET /profiles/1
   # GET /profiles/1.xml
   def show
-    
+     @active_dashboard_nav = 'profile_home'
   end
 
   # GET /profiles/new
@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @profile }
+      format.xml { render :xml => @profile }
     end
   end
 
@@ -43,10 +43,10 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
         format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
-        format.xml  { render :xml => @profile, :status => :created, :location => @profile }
+        format.xml { render :xml => @profile, :status => :created, :location => @profile }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @profile.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -58,10 +58,10 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @profile.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,21 +73,44 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(profiles_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 
+  def spots
+    @active_dashboard_nav = 'my_spots'
+    @spots = @profile.user.spots.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @spots
+  end
+
+  def articles
+    @active_dashboard_nav = 'my_articles'
+    @articles = @profile.user.articles.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @articles
+  end
+
+
+
+  def rooms
+    @active_dashboard_nav = 'my_rooms'
+    conditions = params[:hotel_id].blank? ? {} : {:hotel_id => params[:hotel_id]}
+    @rooms = current_user.rooms.where(conditions).paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @rooms
+  end
   private
   def load_profile
-    if admin? or !current_user
-      p_id = User.find(params[:id]).profile.id
+    if current_user && params[:id].blank?
+       @profile = current_user.profile
     else
-      p_id = current_user.profile.id
+      @profile = Profile.find(params[:id])
     end
-    @profile = Profile.find(p_id)
   end
 
   def select_layout
-    'dashboard'
+    if current_user && current_user == @profile.user
+      'dashboard'
+    else
+      'profile'
+    end
   end
 end

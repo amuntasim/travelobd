@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :require_user
-  before_filter :load_message, :only =>[:show, :edit, :update, :destroy ]
+  before_filter :load_message, :only =>[:show, :edit, :update, :destroy]
   layout 'dashboard', :only => 'show'
   # GET /messages
   # GET /messages.xml
@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @messages }
+      format.xml { render :xml => @messages }
     end
   end
 
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @message }
+      format.xml { render :xml => @message }
     end
   end
 
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @message }
+      format.xml { render :xml => @message }
     end
   end
 
@@ -51,13 +51,13 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if (current_user || params[:spam_check].to_i == 7) && @message.save
         @no_error = true
-        Mailer.send_message(@message).deliver  if message_receiver_expects_email?(@message)
+        Mailer.send_message(@message).deliver if message_receiver_expects_email?(@message)
         format.html { redirect_to(@message.root, :notice => 'Message was successfully created.') }
-        format.js 
+        format.js
       else
         @no_error = false
         format.html { render :action => "new" }
-        format.js 
+        format.js
       end
     end
   end
@@ -69,10 +69,10 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.update_attributes(params[:message])
         format.html { redirect_to(@message, :notice => 'Message was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @message.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -84,9 +84,10 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(messages_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
+
   private
   def load_message
     @message = Message.find(params[:id])

@@ -10,7 +10,7 @@
     <div class="fl w_130 pad_lr_5">
       <strong>Category</strong>
     </div>
-    
+
     <div class="admin_links">
 
     </div>
@@ -18,23 +18,22 @@
 
   <% @spots.each do |spot| %>
 
-    <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
-      <div class="fl w_300 pad_lr_5">
-        <%= truncate(spot.title, :length => 100) %>
-      </div>
+      <div class="f_bor <%= cycle('oddROw', 'evenRow') %> ">
+        <div class="fl w_300 pad_lr_5">
+          <%= truncate(spot.title, :length => 100) %>
+        </div>
 
-      <div class="fl w_130 pad_lr_5">
-        <%= spot.category %>
-      </div>
-      
+        <div class="fl w_130 pad_lr_5">
+          <%= spot.category %>
+        </div>
 
 
-      <div class="fl admin_links">
-        <span><%= link_to 'Show', spot %></span>
-        <span><%= link_to 'Edit', edit_spot_path(spot) %></span>
-        <span><%= link_to 'Destroy', spot, :confirm => 'Are you sure?', :method => :delete %></span>
+        <div class="fl admin_links">
+          <span><%= link_to 'Show', spot %></span>
+          <span><%= link_to 'Edit', edit_spot_path(spot) %></span>
+          <span><%= link_to 'Destroy', spot, :confirm => 'Are you sure?', :method => :delete %></span>
+        </div>
       </div>
-    </div>
 
   <% end %>
 

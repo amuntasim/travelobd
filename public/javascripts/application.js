@@ -146,7 +146,7 @@ var TBD = {
     },
 
     DETAIL_PAGE_PHOTO_GALLERY_OPTIONS : {
-      panel_width: 680,
+        panel_width: 680,
         panel_height: 280,
         panel_padding: 10,
         panel_border: '1px solid #cccccc',
@@ -345,7 +345,6 @@ $(document).ready(function() {
     TBD.GENERAL.slideFeaturedHotels();
     TBD.GENERAL.slideFeaturedTransports();
     TBD.GENERAL.slideFeaturedAgents();
-
 
 
     var validateSendToFriend = function() {

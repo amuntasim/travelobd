@@ -3,11 +3,11 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.xml
   def index
-    @feedbacks = Feedback.paginate(:page=> params[:page], :per_page => 10, :conditions => { :parent_id => nil})
+    @feedbacks = Feedback.paginate(:page=> params[:page], :per_page => 10, :conditions => {:parent_id => nil})
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @feedbacks }
+      format.xml { render :xml => @feedbacks }
     end
   end
 
@@ -18,7 +18,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @feedback }
+      format.xml { render :xml => @feedback }
     end
   end
 
@@ -60,10 +60,10 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
         format.html { redirect_to(@feedback, :notice => 'Feedback was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @feedback.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @feedback.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -76,7 +76,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(feedbacks_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 end

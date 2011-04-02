@@ -810,11 +810,10 @@ a.del_photo {
     margin-left: 35px;
     border: none;
     color: #FFFFFF;
-    padding: 0px 10px;
+    padding: 0px 10px 2px 15px;
     font-size: 14px;
     float: left;
     cursor: pointer;
-    padding-bottom: 2px;
 }
 
 .ad_btn .search_button {
@@ -1378,176 +1377,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
     text-shadow: none;
 }
 
-/* FOR Login and create account */
-.loginRow {
-    float: left;
-    width: 250px;
-    margin-left: 25px;
-    margin-top: 30px;
-    display: inline
-}
-
-.login_top {
-    float: left;
-    width: 250px;
-    background: url(/images/login_top_bg.jpg) no-repeat bottom;
-    height: 10px
-}
-
-.login_mid {
-    float: left;
-    width: 250px;
-    background: url(/images/login_mid_bg.jpg) repeat-y;
-}
-
-.login_bot {
-    float: left;
-    width: 250px;
-    background: url(/images/login_bot_bg.jpg) no-repeat;
-    height: 10px
-}
-
-.login_desc {
-    float: left;
-    width: 230px;
-    margin-left: 10px
-}
-
-.login_desc h2 {
-    float: left;
-    width: 230px;
-    border-bottom: 1px solid #cccccc;
-    font-size: 20px;
-    font-weight: bold;
-    color: #26344c;
-    padding-bottom: 5px;
-    text-align: center;
-    margin-bottom: 15px
-}
-
-.log_input_row {
-    float: left;
-    width: 230px;
-    margin-bottom: 15px
-}
-
-.log_input_row label {
-    float: left;
-    width: 130px
-}
-
-.log_input_row label {
-    margin-bottom: 10px;
-    font-size: 15px
-}
-
-.log_input_row input {
-    width: 230px;
-    float: left;
-    border: 1px solid #cccccc;
-    height: 25px;
-    padding-top: 5px
-}
-
-.log_input_row a {
-    float: right;
-    font-size: 11px;
-    text-decoration: underline
-}
-
-input.login_now {
-    float: left;
-    width: 111px;
-    background: url(/images/login_now.jpg) no-repeat;
-    height: 32px;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-    margin-left: 55px;
-    margin-top: 10px;
-    padding-bottom: 5px;
-    outline: none;
-    margin-bottom: 10px
-}
-
-.createAcc {
-    float: left;
-    width: 400px;
-    margin-left: 40px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    display: inline
-}
-
-.cre_top {
-    float: left;
-    background: url(/images/create_acc_top.jpg) no-repeat;
-    width: 400px;
-    height: 10px
-}
-
-.cre_mid {
-    float: left;
-    background: url(/images/create_acc_mid.jpg) repeat-y;
-    width: 400px;
-}
-
-.cre_bot {
-    float: left;
-    background: url(/images/create_acc_bot.jpg) no-repeat;
-    width: 400px;
-    height: 10px
-}
-
-.creDesc {
-    float: left;
-    width: 302px;
-    margin-left: 50px;
-}
-
-.creDesc h2 {
-    float: left;
-    width: 302px;
-    border-bottom: 1px solid #cccccc;
-    font-size: 20px;
-    font-weight: bold;
-    color: #26344c;
-    padding-bottom: 5px;
-    text-align: center;
-    margin-bottom: 5px
-}
-
-.creDesc label, .creDesc input {
-    float: left;
-    width: 302px;
-    font-size: 15px
-}
-
-.creDesc label {
-    line-height: 25px
-}
-
-.creDesc input {
-    border: 1px solid #cccccc;
-    height: 30px;
-    padding-top: 10px
-}
-
-.creDesc input.creBtn {
-    float: left;
-    width: 302px;
-    background: url(/images/cre_btn.jpg) no-repeat;
-    height: 52px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    border: none;
-    cursor: pointer
-}
-
-/* END FOR Login and create account */
-
 .pad_TL0 {
     padding-top: 0;
     padding-left: 0
@@ -1566,3 +1395,140 @@ input.login_now {
 .comment_row textarea {
     width: 570px;
 }
+
+.right_margin_zero {
+    margin-right: 0 !important;
+}
+
+/**********Login*********/
+.loginBox {
+    padding: 15px;
+    border: 1px none;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    width: 700px;
+    margin-bottom: 10px;
+    float: left;
+    background: #F4F3F1;
+}
+
+.loginFields {
+    padding: 15px 20px;
+    border: 1px solid #F4F3F1;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    width: 296px;
+    margin-bottom: 10px;
+    float: left;
+    background: #FFFFFF;
+    margin-right: 20px;
+    height: 197px;
+}
+
+.log_input_row {
+    float: left;
+    margin-top: 10px;
+}
+
+.log_input_row label {
+    color: #B2B2B2
+}
+
+.log_input_row input {
+    float: left;
+    width: 270px;
+    height: 24px;
+    padding: 3px 5px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-top: 5px;
+}
+
+.loginActions {
+    float: left;
+    margin-top: 20px;
+}
+
+.loginActions .search_button {
+    margin-left: 115px;
+}
+
+.twitter_facebook {
+    padding: 20px;
+    border: 1px solid #F4F3F1;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    width: 657px;
+    float: left;
+    background: #FFFFFF;
+}
+
+.twitter_facebook .box {
+    width: 295px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #E8E7E3;
+    float: left;
+    margin-right: 20px;
+    background: #FCFCFA;
+    height: 25px;
+
+}
+
+.twitter_facebook .twitter {
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
+
+.loginRight {
+    float: left;
+    padding: 20px;
+    width: 299px;
+    height: 187px;
+    background: url("/images/login_rightside.png");
+    line-height: 18px;
+    color: #545452;
+}
+
+.loginRight a {
+    color: #545452;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.loginRightText2 {
+    margin-top: 45px;
+    margin-bottom: 4px;
+}
+
+.newAccountActions  .search_button {
+    margin-left: 67px;
+}
+
+.loginRight .loginLink  .search_button {
+    margin-left: 127px;
+}
+
+
+.loginRight  a.search_button {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: normal;
+    padding-top: 5px;
+    height: 21px;
+}
+
+.createAccount {
+    height: auto;
+}
+
+.createAccount .search_button {
+    margin-left: 75px;
+}
+
+/**********END Login*********/

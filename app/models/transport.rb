@@ -28,7 +28,7 @@ class Transport < ActiveRecord::Base
 
   CATEGORIES = {'cat1' => 1, 'cat2' => 2, 'cat3' => 3}
 
-  scope :featured , where(:featured => true).includes(:translations, :assets, :main_image, :slug)
+  scope :featured, where(:featured => true).includes(:translations, :assets, :main_image, :slug)
 
   def main_image_url(style = :medium)
     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
@@ -43,7 +43,7 @@ class Transport < ActiveRecord::Base
   end
 
   def locations_by_districts
-      branch_locations.group_by{|b| b.district}
+    branch_locations.group_by { |b| b.district }
   end
 
 end

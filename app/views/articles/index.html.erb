@@ -16,7 +16,7 @@
         <div class="fl hotel_desc_info">
           <div class="fl title">
             <%= link_to truncate(article.title, :length => 50), article %>
-            <h4><%= article.category  %></h4>
+            <h4><%= article.category %></h4>
           </div>
           <div class="fl description">
             <%= truncate(sanitize(article.detail).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
@@ -29,9 +29,9 @@
 
             </div>
             <!--<div class="fl rating">-->
-              <!--Like: 1000-->
+            <!--Like: 1000-->
             <!--<span style="float:right;">-->
-              <!--Rating: 4-->
+            <!--Rating: 4-->
             <!--</span>-->
             <!--</div>-->
           </div>

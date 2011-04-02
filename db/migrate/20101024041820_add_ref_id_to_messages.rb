@@ -6,6 +6,6 @@ class AddRefIdToMessages < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :messages, :ref_id,:parent_id
+    remove_column :messages, :ref_id, :parent_id
   end
 end

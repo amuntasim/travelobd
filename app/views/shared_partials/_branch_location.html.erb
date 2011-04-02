@@ -9,7 +9,7 @@
       </div>
 
       <div class="package_event_time clear">
-        <%= branch_location_form.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--',  :class => 'event' %>
+        <%= branch_location_form.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--', :class => 'event' %>
       </div>
       <div class="package_contact_address">
         <%= branch_location_form.text_field :location, :class => 'event' %>

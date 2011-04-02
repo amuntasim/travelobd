@@ -1,48 +1,49 @@
 <%= content_for :js_css_include do %>
-  <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
 <% end %>
 <div class="featured_row">
   <div class="wide_row borR">
     <%= form_for Ad.search, :url=> search_ads_path do |f| %>
 
-      <div class="banner search_box">
-        <div class="search_ad first_row">
+        <div class="banner search_box">
+          <div class="search_ad first_row">
 
-          <label>Location:</label>
+            <label>Location:</label>
 
-          <%= f.select :district_id_equals, @locations.all.collect{ |c| [c.name+" #{c.division.name if c.division} ", c.id]}, :prompt=> '--Any--' %>
+            <%= f.select :district_id_equals, @locations.all.collect { |c| [c.name+" #{c.division.name if c.division} ", c.id] }, :prompt=> '--Any--' %>
 
-          <!--<input type="text" name="" id="search_location"/>-->
-          <%#= f.hidden_field :district_id_equals %>
-        </div>
-
-
-        <div class="search_ad first_row">
-          <label>Breed:</label>
-          <%= f.select :breed_id_equals, Breed.all.collect{ |b| [b.name, b.id]}, :prompt=> '--Any--' %>
-        </div>
+            <!--<input type="text" name="" id="search_location"/>-->
+            <%#= f.hidden_field :district_id_equals %>
+          </div>
 
 
-        <div class="search_ad clear">
-          <label>Discipline:</label>
-          <%= f.select :disciplines_id_equals, Discipline.all.collect{ |b| [b.name, b.id]}, :prompt=> '--Any--' %>
+          <div class="search_ad first_row">
+            <label>Breed:</label>
+            <%= f.select :breed_id_equals, Breed.all.collect { |b| [b.name, b.id] }, :prompt=> '--Any--' %>
+          </div>
 
-        </div>
-        <div class="search_ad ">
-          <label>Price Range:</label>
-          <div class="ad_price">
-            <label>$</label>
-            <%= f.text_field :price_gte, :size => 8 %> <label>To</label> <%= f.text_field :price_lte, :size => 8 %>
+
+          <div class="search_ad clear">
+            <label>Discipline:</label>
+            <%= f.select :disciplines_id_equals, Discipline.all.collect { |b| [b.name, b.id] }, :prompt=> '--Any--' %>
 
           </div>
-        </div>
+          <div class="search_ad ">
+            <label>Price Range:</label>
 
-        <div class="ad_btn">
-          <input type="submit" class="search_button" name="" value=""/>
-          <%= link_to raw('&raquo; Advance Search'), advance_search_path %>
-        </div>
+            <div class="ad_price">
+              <label>$</label>
+              <%= f.text_field :price_gte, :size => 8 %> <label>To</label> <%= f.text_field :price_lte, :size => 8 %>
 
-      </div>
+            </div>
+          </div>
+
+          <div class="ad_btn">
+            <input type="submit" class="search_button" name="" value=""/>
+            <%= link_to raw('&raquo; Advance Search'), advance_search_path %>
+          </div>
+
+        </div>
     <% end %>
     <div class="featuredBox">
       <div class="featured_bg_row">
@@ -51,30 +52,30 @@
         <div class="f_right"></div>
       </div>
       <div class="featuredBox" id="featured_ads">
-        <%= image_tag 'loading.gif', :id=> 'featured_ads_loading' , :class=> 'loading' %>
+        <%= image_tag 'loading.gif', :id=> 'featured_ads_loading', :class=> 'loading' %>
       </div>
     </div>
   </div>
   <div class="narrow_row">
-    <div  id="spots">
-      <%= image_tag 'loading.gif', :id=> 'spots_loading' , :class=> 'loading' %>
+    <div id="spots">
+      <%= image_tag 'loading.gif', :id=> 'spots_loading', :class=> 'loading' %>
 
     </div>
 
     <div class="listRow mtop15" id="login_on_homepage">
       <h1><%= link_to 'Create An Account', new_user_path %></h1>
       <%= form_for(:user_session, :url => user_session_path) do |f| %>
-        <div class="acc_Row">
-          <label>Email:</label>
-          <%= f.text_field(:email) %>
-        </div>
-        <div class="acc_Row">
-          <label>Password:</label>
-          <%= f.password_field(:password) %>
-        </div>
-        <div class="logbtn_Row" align="center">
-          <input name="" type="submit" value="Login Now!" />
-        </div>
+          <div class="acc_Row">
+            <label>Email:</label>
+            <%= f.text_field(:email) %>
+          </div>
+          <div class="acc_Row">
+            <label>Password:</label>
+            <%= f.password_field(:password) %>
+          </div>
+          <div class="logbtn_Row" align="center">
+            <input name="" type="submit" value="Login Now!"/>
+          </div>
       <% end %>
     </div>
   </div>
@@ -85,7 +86,7 @@
     <h1>Articles</h1>
 
     <div id="articles">
-      <%= image_tag 'loading.gif', :id=> 'articles_loading' , :class=> 'loading' %>
+      <%= image_tag 'loading.gif', :id=> 'articles_loading', :class=> 'loading' %>
     </div>
 
   </div>
@@ -93,14 +94,16 @@
   <div class="ar_sm_row borR">
     <div class="ad_img_row">
       <h1>Ads For Sale</h1>
+
       <div id="ads_for_sale">
-        <%= image_tag 'loading.gif', :id=> 'ads_for_sale_loading' , :class=> 'loading'%>
+        <%= image_tag 'loading.gif', :id=> 'ads_for_sale_loading', :class=> 'loading' %>
       </div>
     </div>
   </div>
 
   <div class="narrow_row">
     <h1>Other Classifeds</h1>
+
     <div class="classified" id="other_classified">
       <%= image_tag 'loading.gif', :id=> 'other_classified_loading', :class=> 'loading' %>
     </div>
@@ -110,157 +113,164 @@
 
 <style type="text/css">
 
-  img#articles_loading,
-  img#ads_for_sale_loading
-  {
-    margin-top: 100px;
-    margin-left: 136px;
-  }
+    img#articles_loading,
+    img#ads_for_sale_loading {
+        margin-top: 100px;
+        margin-left: 136px;
+    }
 
-  img#other_classified_loading, img#spots_loading{
-    margin-left: 55px;
-    margin-top: 65px;
-  }
-  img.loading{
-    border: 0;
-    width: 50px;
-  }
-  img#featured_ads_loading{
-    margin-left: 300px;
-    margin-top: 80px;
+    img#other_classified_loading, img#spots_loading {
+        margin-left: 55px;
+        margin-top: 65px;
+    }
 
-  }
+    img.loading {
+        border: 0;
+        width: 50px;
+    }
 
-  #spots{
-    height: 236px;
-  }
+    img#featured_ads_loading {
+        margin-left: 300px;
+        margin-top: 80px;
 
-  div.search_box{
-    background-image: url('/images/banner.jpg');
-    width: 681px;
-    height: 198px;
-  }
+    }
 
-  input.search_button{
-    background-image:url("/images/search_sub_btn.jpg");
-    border:medium none;
-    cursor:pointer;
-    display:inline;
-    float:left;
-    height:37px;
-    margin-left:150px;
-    width:152px;
-  }
+    #spots {
+        height: 236px;
+    }
 
-  div.first_row {
-    margin-top: 63px;
-  }
-  div.search_ad{
-    margin-bottom: 15px;
-    width: 265px;
-  }
+    div.search_box {
+        background-image: url('/images/banner.jpg');
+        width: 681px;
+        height: 198px;
+    }
 
-  .search_ad label {width: 71px; color: #ffffff}
+    input.search_button {
+        background-image: url("/images/search_sub_btn.jpg");
+        border: medium none;
+        cursor: pointer;
+        display: inline;
+        float: left;
+        height: 37px;
+        margin-left: 150px;
+        width: 152px;
+    }
 
-  .search_ad select {
-    float:left;
-    width:180px;
-  }
-  .search_ad input {
-    background:url("/images/search_location_bg.jpg") no-repeat scroll 0 0 transparent;
-    width:180px;
-  }
+    div.first_row {
+        margin-top: 63px;
+    }
 
-  .search_ad .ad_price input {
-    background:url("/images/search_price_input.jpg") no-repeat scroll 0 0 transparent;
-  }
-  .ad_btn a {
-    float: left;
-    font-size: 16px;
-    margin-left: 20px;
-    padding: 10px;
-    color: #ffffff;
-    font-weight: bold;
-  }
+    div.search_ad {
+        margin-bottom: 15px;
+        width: 265px;
+    }
+
+    .search_ad label {
+        width: 71px;
+        color: #ffffff
+    }
+
+    .search_ad select {
+        float: left;
+        width: 180px;
+    }
+
+    .search_ad input {
+        background: url("/images/search_location_bg.jpg") no-repeat scroll 0 0 transparent;
+        width: 180px;
+    }
+
+    .search_ad .ad_price input {
+        background: url("/images/search_price_input.jpg") no-repeat scroll 0 0 transparent;
+    }
+
+    .ad_btn a {
+        float: left;
+        font-size: 16px;
+        margin-left: 20px;
+        padding: 10px;
+        color: #ffffff;
+        font-weight: bold;
+    }
 </style>
 
 <script type="text/javascript">
-  $.fn.loadAdsForSale = function(){
-    $.ajax({
-      url: '/welcome/ads_for_sale',
-      type: 'get',
-      dataType: 'script',
-      success: function(results) {
-       
-      }
+    $.fn.loadAdsForSale = function() {
+        $.ajax({
+            url: '/welcome/ads_for_sale',
+            type: 'get',
+            dataType: 'script',
+            success: function(results) {
+
+            }
+        });
+    };
+    $.fn.loadArticles = function() {
+        $.ajax({
+            url: '/welcome/articles',
+            type: 'get',
+            dataType: 'script',
+            success: function(results) {
+
+            }
+        });
+    };
+
+    $.fn.loadOtherClassifieds = function() {
+        $.ajax({
+            url: '/welcome/other_classifieds',
+            type: 'get',
+            dataType: 'script',
+            success: function(results) {
+                //$('#other_classified_loading').hide();
+            }
+        });
+    };
+
+    $.fn.loadFeaturedAds = function() {
+        $.ajax({
+            url: '/welcome/featured_ads',
+            type: 'get',
+            dataType: 'script',
+            success: function(results) {
+            }
+        });
+    };
+
+    $.fn.loadSpots = function() {
+        $.ajax({
+            url: '/welcome/spots',
+            type: 'get',
+            dataType: 'script',
+            success: function(results) {
+            }
+        });
+    };
+
+    $.fn.locationAutocomplete = function() {
+        $('#search_location').autocomplete({
+            source: '/ads/location_autocomplete',
+            //width: '200px',
+            select: function(event, ui) {
+                $(this).val(ui.item.value);
+                $('#search_district_id_equals').val(ui.item.id);
+                return false;
+            }
+        });
+    }
+
+
+    $(document).ready(function() {
+
+        $(this).loadAdsForSale();
+        $(this).loadOtherClassifieds();
+        $(this).loadArticles();
+        $(this).loadFeaturedAds();
+        $(this).loadSpots();
+        //$(this).locationAutocomplete();
+
+
     });
-  };
-  $.fn.loadArticles= function(){
-    $.ajax({
-      url: '/welcome/articles',
-      type: 'get',
-      dataType: 'script',
-      success: function(results) {
-
-      }
-    });
-  };
-
-  $.fn.loadOtherClassifieds = function(){
-    $.ajax({
-      url: '/welcome/other_classifieds',
-      type: 'get',
-      dataType: 'script',
-      success: function(results) {
-        //$('#other_classified_loading').hide();
-      }
-    });
-  };
-
-  $.fn.loadFeaturedAds = function(){
-    $.ajax({
-      url: '/welcome/featured_ads',
-      type: 'get',
-      dataType: 'script',
-      success: function(results) {
-      }
-    });
-  };
-
-  $.fn.loadSpots = function(){
-    $.ajax({
-      url: '/welcome/spots',
-      type: 'get',
-      dataType: 'script',
-      success: function(results) {
-      }
-    });
-  };
-
-  $.fn.locationAutocomplete = function(){
-    $('#search_location').autocomplete({
-      source: '/ads/location_autocomplete',
-      //width: '200px',
-      select: function(event, ui) {
-        $(this).val(ui.item.value);
-        $('#search_district_id_equals').val(ui.item.id);
-        return false;
-      }
-    });
-  }
- 
-
-  $(document).ready(function(){
-
-    $(this).loadAdsForSale();
-    $(this).loadOtherClassifieds();
-    $(this).loadArticles();
-    $(this).loadFeaturedAds();
-    $(this).loadSpots();
-    //$(this).locationAutocomplete();
-
-
-  });
 
 
 </script>

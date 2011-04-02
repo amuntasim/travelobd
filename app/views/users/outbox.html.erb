@@ -13,46 +13,47 @@
 
 <div class="dashboard_content_item fl">
   <% if @messages.size > 0 %>
-  <% @messages.each do |message| %>
-      <%= link_to message_path(message) do %>
-          <div class="message <%= cycle 'evenRow', 'oddRow' %>>
-            <div class="sent_by">
+      <% @messages.each do |message| %>
+          <%= link_to message_path(message) do %>
+              <div class="message <%= cycle 'evenRow', 'oddRow' %>>
+            <div class=" sent_by
+              ">
               <%= message.name %>[<%= message.email %>]
-            </div>
-            <div class="title">
-              <%= truncate(message.title, :length => 100) %>
-            </div>
-            <div class="when">
-              <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
-            </div>
-          </div>
+              </div>
+              <div class="title">
+                <%= truncate(message.title, :length => 100) %>
+              </div>
+              <div class="when">
+                <%= distance_of_time_in_words(message.created_at, Time.now) %> ago
+              </div>
+              </div>
+          <% end %>
       <% end %>
-  <% end %>
-   <% else %>
+  <% else %>
       <h3>
         No messages
       </h3>
   <% end %>
-</div>
+  </div>
 
 
-<style type="text/css">
-    .message .sent_by {
-        width: 190px;
-        float: left
-    }
+  <style type="text/css">
+      .message .sent_by {
+          width: 190px;
+          float: left
+      }
 
-    .message .title {
-        width: 316px;
-        float: left;
-        margin: 0px 5px;
-    }
+      .message .title {
+          width: 316px;
+          float: left;
+          margin: 0px 5px;
+      }
 
-    .message .when {
-        width: 150px;
-        float: left
-    }
+      .message .when {
+          width: 150px;
+          float: left
+      }
 
-</style>
+  </style>
 
 

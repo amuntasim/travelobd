@@ -1,16 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="pageHead">
+  Profile of <%= @user.name %>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+<fieldset class="moderator">
+  <legend>I am moderator of</legend>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+  <% @user.created_clubs.each_with_index do |club, i| %>
 
+      <%= link_to club do %>
+          <div class="user_box_item <%= 'right_margin_zero' if i%3 == 2 %>">
+            <%= club.name %>
+          </div>
+      <% end %>
+  <% end %>
+</fieldset>
+<fieldset class="moderator">
+  <legend>I am member of</legend>
 
+  <% @user.associated_tour_clubs.each_with_index do |club, i| %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      <%= link_to club do %>
+          <div class="user_box_item <%= 'right_margin_zero' if i%3 == 2 %>">
+            <%= club.name %>
+          </div>
+      <% end %>
+  <% end %>
+</fieldset>
+

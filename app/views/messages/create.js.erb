@@ -1,11 +1,11 @@
 <% if @no_error %>
-  $('#<%=@status_div%>').html('<span class="success"> Message Sent</span>');
-  $("#message_form").get(0).reset();
+$('#<%=@status_div%>').html('<span class="success"> Message Sent</span>');
+$("#message_form").get(0).reset();
 <% else %>
-  $('#<%=@status_div%>').html('<span class="error"> Message Sent Failed</span>');
+$('#<%=@status_div%>').html('<span class="error"> Message Sent Failed</span>');
 <% end %>
 $('#<%=@status_div%>').effect("highlight");
 
 setTimeout(function() {
-$('#<%=@status_div%>').html('').slideUp("slow");
+    $('#<%=@status_div%>').html('').slideUp("slow");
 }, 5000);

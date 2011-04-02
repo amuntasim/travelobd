@@ -1,7 +1,7 @@
 <%= content_for :over_mid_content do %>
-  <div class="redhead_row">
-    <h2>Select Package</h2>
-  </div>
+    <div class="redhead_row">
+      <h2>Select Package</h2>
+    </div>
 <% end %>
 <div class="selectPage">
   <div class="basicAd">
@@ -9,7 +9,7 @@
     <div class="basic_mid">
       <div class="basic_head">Basic Ad</div>
       <div class="basic_desc">
-                            	includes :
+        includes :
         <ul>
           <li>7 Photos</li>
           <li>Access to marketing tools</li>
@@ -17,7 +17,7 @@
         </ul>
       </div>
       <div class="b_price basic_desc">
-                            	$4.95
+        $4.95
         <span>For 3 months</span>
       </div>
       <%= link_to 'Choose Package', 'javascript:void(0)', :class =>'choose_btn', :location => new_ad_path(:f=>0) %>
@@ -32,9 +32,9 @@
         <span>MOST POPULAR</span>
       </div>
       <div class="most_desc">
-                            	includes :
+        includes :
         <ul>
-          <li>15 Photos + 2 video links </li>
+          <li>15 Photos + 2 video links</li>
           <li>Featured on our homepage</li>
           <li>Listed on our monthly newsletter</li>
           <li>Access to marketing tools</li>
@@ -43,11 +43,11 @@
         </ul>
       </div>
       <div class="b_price most_desc">
-                            	$9.95
+        $9.95
         <span>For 6 months</span>
       </div>
       <div class="f_chose_btn">
-         <%= link_to 'Choose Package', 'javascript:void(0)', :class =>'choose_btn', :location => new_ad_path(:f=>true) %>
+        <%= link_to 'Choose Package', 'javascript:void(0)', :class =>'choose_btn', :location => new_ad_path(:f=>true) %>
       </div>
 
     </div>
@@ -58,11 +58,11 @@
 <script type="text/javascript">
 
 
-  $(document).ready(function() {
-    $('a.choose_btn').click(function(){
-      location.href = $(this).attr('location');
+    $(document).ready(function() {
+        $('a.choose_btn').click(function() {
+            location.href = $(this).attr('location');
+        });
     });
-  });
 
 
 </script>

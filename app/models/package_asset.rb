@@ -14,8 +14,8 @@
 #
 
 class PackageAsset < ActiveRecord::Base
-  has_attached_file :photo, :styles => { :medium => "400x300", :thumb => "130x100>", :thumb_s => '80x70' },
-    :url  => "/assets/package_photos/:id/:style/:basename.:extension",
-    :path => ":rails_root/public/assets/package_photos/:id/:style/:basename.:extension"
+  has_attached_file :photo, :styles => {:medium => "400x300", :thumb => "130x100>", :thumb_s => '80x70'},
+                    :url => "/assets/package_photos/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/package_photos/:id/:style/:basename.:extension"
   belongs_to :ad
 end

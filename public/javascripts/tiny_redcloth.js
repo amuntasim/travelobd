@@ -157,7 +157,6 @@ $.fn.tinyRedcloth = function(options) {
             });
 
 
-
             $('ul.tiny_redcloth_buttons li').css({
                 "float": "left",
                 "listStyle": "none",

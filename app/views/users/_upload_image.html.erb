@@ -1,7 +1,7 @@
 <div class="photo" style="width:96%">
   <%= form.fields_for :uploaded_images, photo, :child_index => (photo.new_record? ? "index_to_replace_with_js" : nil) do |photo_form| %>
-    <%= photo_form.file_field :photo, :class => 'fl' %>
-    <span class="removeImageField"> Remove</span><br/>
+      <%= photo_form.file_field :photo, :class => 'fl' %>
+      <span class="removeImageField"> Remove</span><br/>
   <% end %>
 
 </div>

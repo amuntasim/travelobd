@@ -1,6 +1,6 @@
 <%= form_tag '', :method => :get do %>
-    <label>Hotel</label> <%= select_tag :hotel_id, options_from_collection_for_select(current_user.hotels, :id, :name, params[:hotel_id]), :include_blank => '--All--'   %>
-    <%= submit_tag 'Filter'  %>
+    <label>Hotel</label> <%= select_tag :hotel_id, options_from_collection_for_select(current_user.hotels, :id, :name, params[:hotel_id]), :include_blank => '--All--' %>
+    <%= submit_tag 'Filter' %>
 <% end %>
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">

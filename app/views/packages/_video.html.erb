@@ -1,9 +1,9 @@
 <div class="video">
-  <%= form.fields_for :videos, video, :child_index => (video.new_record? ? "index_to_replace_with_js" : nil)  do |video_form| -%>
+  <%= form.fields_for :videos, video, :child_index => (video.new_record? ? "index_to_replace_with_js" : nil) do |video_form| -%>
 
-    <%= video_form.text_field  :code %>
+      <%= video_form.text_field :code %>
 
-    <a class="removeVideo cross" href="javascript:void(0)" title="Remove"> <%= image_tag 'close.gif' , :width => 16%></a<br/>
+      <a class="removeVideo cross" href="javascript:void(0)" title="Remove"> <%= image_tag 'close.gif', :width => 16 %></a<br/>
   <% end -%>
 
 </div>

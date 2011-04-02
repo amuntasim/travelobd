@@ -13,21 +13,21 @@
     <th></th>
   </tr>
 
-<% @messages.each do |message| %>
-  <tr>
-    <td><%= message.name %></td>
-    <td><%= message.email %></td>
-    <td><%= message.address %></td>
-    <td><%= message.phone %></td>
-    <td><%= message.content %></td>
-    <td><%= message.created_by %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.name %></td>
+        <td><%= message.email %></td>
+        <td><%= message.address %></td>
+        <td><%= message.phone %></td>
+        <td><%= message.content %></td>
+        <td><%= message.created_by %></td>
+        <td><%= link_to 'Show', message %></td>
+        <td><%= link_to 'Edit', edit_message_path(message) %></td>
+        <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Message', new_message_path %>

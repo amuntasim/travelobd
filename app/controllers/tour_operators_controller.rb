@@ -39,7 +39,7 @@ class TourOperatorsController < ApplicationController
     @tour_operator.user_id = current_user.id
     respond_to do |format|
       if @tour_operator.save
-        format.html {redirect_to(@tour_operator, :notice => 'TourOperator was successfully created.')}
+        format.html { redirect_to(@tour_operator, :notice => 'TourOperator was successfully created.') }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @tour_operator.errors, :status => :unprocessable_entity }
@@ -93,7 +93,6 @@ class TourOperatorsController < ApplicationController
   end
 
 
-
   def search
     @tour_operator_search = TourOperator.search(params[:search])
     @tour_operators = @tour_operator_search.paginate(:page=> params[:page], :per_page => 10)
@@ -110,11 +109,10 @@ class TourOperatorsController < ApplicationController
   def rate
     @tour_operator.rate(params[:stars], current_user, params[:dimension])
     respond_to do |format|
-      format.js {render :partial => '/comments/rate', :locals => {:obj => @tour_operator}}
+      format.js { render :partial => '/comments/rate', :locals => {:obj => @tour_operator} }
     end
 
   end
-
 
 
   private

@@ -58,7 +58,7 @@ class Hotel < ActiveRecord::Base
   CATEGORIES = {'Hotel' => 1, 'Apartment' => 2, 'Cottage' => 3}
 
 
-  scope :featured , where(:featured => true).includes(:translations,:assets, :main_image, :slug)
+  scope :featured, where(:featured => true).includes(:translations, :assets, :main_image, :slug)
 
   def main_image_url(style = :medium)
     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''

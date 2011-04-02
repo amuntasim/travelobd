@@ -37,7 +37,8 @@ class User < ActiveRecord::Base
   has_many :transports
   has_many :packages
   has_many :articles
-  has_many :tour_clubs, :through => :memberships, :source_type => :memberable
+  has_many :memberships
+  has_many :associated_tour_clubs, :class_name => 'TourClub', :through => :memberships, :source => :user
   has_many :created_clubs, :class_name => 'TourClub'
 
   acts_as_authentic do |c|
@@ -73,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def requested_member_of?(item)
-    !item.memberships.where(:user_id => self.id,  :leave_request => false).first.blank?
+    !item.memberships.where(:user_id => self.id, :leave_request => false).first.blank?
   end
 
 

@@ -1,25 +1,25 @@
 class ArticlesController < ApplicationController
 
-  before_filter :require_user, :only =>[:new, :edit,:create, :update ]
-  before_filter :require_admin_user, :only =>[:destroy ]
-  before_filter lambda { @active_nav = 'articles'  }
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy ]
+  before_filter :require_user, :only =>[:new, :edit, :create, :update]
+  before_filter :require_admin_user, :only =>[:destroy]
+  before_filter lambda { @active_nav = 'articles' }
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
 
-  
+
 #  uses_tiny_mce :only =>[:new, :edit],:options => {
 #    :width => '445px',
 #    :height => '250px'
 #  }
-  
+
   # GET /articles
   # GET /articles.xml
   def index
     conditions = []
-    conditions.add_condition!(:category_id =>params[:category_id] ) unless params[:category_id].blank? 
+    conditions.add_condition!(:category_id =>params[:category_id]) unless params[:category_id].blank?
     @articles = Article.paginate(:page=> params[:page], :per_page => 10, :conditions => conditions)
     @search_title = Article::CATEGORIES.invert[params[:category_id].to_i] || 'All Articles'
-    render :action => 'index_admin', :layout => 'admin'  if admin?
+    render :action => 'index_admin', :layout => 'admin' if admin?
   end
 
   # GET /articles/1
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @article }
+      format.xml { render :xml => @article }
     end
   end
 
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @article }
+      format.xml { render :xml => @article }
     end
   end
 
@@ -57,10 +57,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
-        format.xml  { render :xml => @article, :status => :created, :location => @article }
+        format.xml { render :xml => @article, :status => :created, :location => @article }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @article.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,10 +73,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update_attributes(params[:article])
         format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @article.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -85,13 +85,13 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.xml
   def destroy
     @article = Article.find(params[:id])
-    if(admin? || @article.user_id == current_user.id)
+    if (admin? || @article.user_id == current_user.id)
       @article.destroy
     end
 
     respond_to do |format|
       format.html { redirect_to(articles_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 
@@ -103,7 +103,7 @@ class ArticlesController < ApplicationController
 
   def set_main_photo
     asset = ArticleAsset.find(params[:asset_id])
-    ArticleAsset.update_all ['main = ?', false], ['article_id = ?',asset.article_id]
+    ArticleAsset.update_all ['main = ?', false], ['article_id = ?', asset.article_id]
     asset.update_attribute(:main, true)
     render :nothing => true
   end
@@ -119,8 +119,9 @@ class ArticlesController < ApplicationController
   def load_item
     @article = Article.find(params[:id])
   end
+
   def check_ownership
     ownership_require(@article)
   end
-  
+
 end

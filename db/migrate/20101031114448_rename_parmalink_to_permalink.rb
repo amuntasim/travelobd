@@ -4,6 +4,6 @@ class RenameParmalinkToPermalink < ActiveRecord::Migration
   end
 
   def self.down
-      rename_column(:static_pages, :permalink, :parmalink)
+    rename_column(:static_pages, :permalink, :parmalink)
   end
 end

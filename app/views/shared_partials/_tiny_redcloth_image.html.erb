@@ -1,38 +1,39 @@
- <div id="tiny_redcloth_image" style="display: none">
-    <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_tiny_redcloth_image', :title => 'close' %>
-    <h3>Uploaded Images
-      <small> [click on images to select]</small>
-    </h3>
+<div id="tiny_redcloth_image" style="display: none">
+  <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_tiny_redcloth_image', :title => 'close' %>
+  <h3>Uploaded Images
+    <small> [click on images to select]</small>
+  </h3>
 
-    <div id="tiny_redcloth_image_container">
-      <%= image_tag 'loadingAnimation.gif' %>
-    </div>
+  <div id="tiny_redcloth_image_container">
+    <%= image_tag 'loadingAnimation.gif' %>
+  </div>
 
-   <div class="field">
-       <label>
-         Insert URL
-       </label>
-     <input type="text" id="inserted_url" style="width:488px"/> <button id="inserted_url_button">GO</button>
-     <br/>
-     Or Upload Images <br/>
+  <div class="field">
+    <label>
+      Insert URL
+    </label>
+    <input type="text" id="inserted_url" style="width:488px"/>
+    <button id="inserted_url_button">GO</button>
+    <br/>
+    Or Upload Images <br/>
 
-   </div>
-    <div class="tiny_redcloth_image_form_container">
-      <%= form_for(current_user, :url => upload_images_users_path, :html=> {:multipart => true, :id=> 'user_image_upload_form'}) do |f| %>
+  </div>
+  <div class="tiny_redcloth_image_form_container">
+    <%= form_for(current_user, :url => upload_images_users_path, :html=> {:multipart => true, :id=> 'user_image_upload_form'}) do |f| %>
 
-          <div id="user_uploaded_photos">
-            <%= render :partial => 'users/upload_image', :locals => {:form => f, :photo => current_user.uploaded_images.new} %>
-          </div>
-          <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImageToUpload' %>
+        <div id="user_uploaded_photos">
+          <%= render :partial => 'users/upload_image', :locals => {:form => f, :photo => current_user.uploaded_images.new} %>
+        </div>
+        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImageToUpload' %>
 
-          <div class="actions fl">
-            <button value="Upload" id='submit_user_upload'>Upload</button>
-          </div>
-          <% @user_form_builder = f %>
-      <% end %>
+        <div class="actions fl">
+          <button value="Upload" id='submit_user_upload'>Upload</button>
+        </div>
+        <% @user_form_builder = f %>
+    <% end %>
 
-      <div id="new_user_image_html" style="display:none;">
-        <%= render :partial => 'users/upload_image', :locals => {:form => @user_form_builder, :photo => current_user.uploaded_images.new} %>
-      </div>
+    <div id="new_user_image_html" style="display:none;">
+      <%= render :partial => 'users/upload_image', :locals => {:form => @user_form_builder, :photo => current_user.uploaded_images.new} %>
     </div>
   </div>
+</div>

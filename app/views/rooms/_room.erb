@@ -1,5 +1,5 @@
 <div class="room">
-  <div class="title fl"><%=link_to room.name, room %></div>
+  <div class="title fl"><%= link_to room.name, room %></div>
   <div class="roomDesc fl">
     <%= room.sort_listed_features %>
     <br>
@@ -7,7 +7,7 @@
 
   </div>
   <div class="fl links">
-    <%= link_to 'Edit', room  if user_can_edit?(room)%>
+    <%= link_to 'Edit', room if user_can_edit?(room) %>
   </div>
-  
+
 </div>
