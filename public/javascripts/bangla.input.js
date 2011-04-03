@@ -17,8 +17,7 @@ $.fn.banglaInput = function(options) {
 
     }
 
-
-    function writePhonetic1(evnt) {
+    function writePhonetic(evnt) {
         /**************** Somewherein like*****************/
 
         var e = evnt.keyCode ? evnt.keyCode : evnt.which; // get the keycode
@@ -31,9 +30,9 @@ $.fn.banglaInput = function(options) {
 
         var bangla = '';
         if (carry.length > 1)
-            bangla = parsePhonetic1Carry(carry, e); // get the combined equivalent
+            bangla = parsePhoneticCarry(carry, e); // get the combined equivalent
 
-        var tempBangla = parsePhonetic1Carry(char_e, e); // get the single equivalent
+        var tempBangla = parsePhoneticCarry(char_e, e); // get the single equivalent
 
 
         if (old_len == 0) { //first character
@@ -65,7 +64,7 @@ $.fn.banglaInput = function(options) {
     }
 
 
-    function parsePhonetic1Carry(code, e) {
+    function parsePhoneticCarry(code, e) {
 
         if (!phonetic1[code]) // no bangla equivalent for this keystroke
             return '';
@@ -76,6 +75,7 @@ $.fn.banglaInput = function(options) {
 
 
     function writePhonetic2(evnt) {
+        /////////////Shabdik like//////////////////
 
         var e = evnt.keyCode ? evnt.keyCode : evnt.which; // get the keycode
         var char_e = String.fromCharCode(e); // get the character equivalent to this keycode
@@ -86,8 +86,8 @@ $.fn.banglaInput = function(options) {
         lastcarry = carry;
         carry += "" + char_e;	 //append the current character pressed to the carry
 
-        bangla = parsePhoneticCarry(carry, e); // get the combined equivalent
-        tempBangla = parsePhoneticCarry(char_e, e); // get the single equivalent
+        bangla = parsePhonetic2Carry(carry, e); // get the combined equivalent
+        tempBangla = parsePhonetic2Carry(char_e, e); // get the single equivalent
 
         if (old_len == 0) { //first character
             insertJointAtCursor(bangla, 1);
@@ -116,7 +116,7 @@ $.fn.banglaInput = function(options) {
     }
 
 
-    function parsePhoneticCarry(code, e) {
+    function parsePhonetic2Carry(code, e) {
         var len = code.length;
         current_char = code.charAt(len - 1);
         var temp = lastcarry + current_char;
@@ -285,7 +285,7 @@ $.fn.banglaInput = function(options) {
                         insertAtCursor(bijoy_key_maps[leftCarForJoint]);
                     }
                     leftCar = false;
-                    leftCarForJoint = '';
+                    //leftCarForJoint = '';
                     vowelJoint = false;
 
                 }
@@ -319,7 +319,7 @@ $.fn.banglaInput = function(options) {
                 insertAtCursor(bijoy_key_maps[leftCarForJoint]);
             }
             leftCar = false;
-            leftCarForJoint = '';
+            //leftCarForJoint = '';
             vowelJoint = false;
             return false;
         }
@@ -334,7 +334,7 @@ $.fn.banglaInput = function(options) {
                 }
                 vowelJoint = false;
                 leftCar = false;
-                leftCarForJoint = '';
+                //leftCarForJoint = '';
                 carry = '';
                 return false;
             }
@@ -366,7 +366,7 @@ $.fn.banglaInput = function(options) {
                     insertAtCursor(bijoy_key_maps[leftCarForJoint]);
                 }
                 leftCar = false;
-                leftCarForJoint = '';
+                //leftCarForJoint = '';
                 vowelJoint = false;
             }
             else {
@@ -379,6 +379,10 @@ $.fn.banglaInput = function(options) {
         else if ('cCd'.indexOf(char_e) >= 0) {// found left car
             leftCar = true;
             leftCarForJoint = char_e;
+        }
+        else if ('fX'.indexOf(char_e) >= 0) {// found left car
+            leftCar = false;
+            leftCarForJoint = '';
         }
 
         if (old_len == 0) { //first character
@@ -531,7 +535,7 @@ $.fn.banglaInput = function(options) {
         if (active_obj.attr('option_enabled') === undefined) {
             var option_html = '<div bangla_option_for="' + active_obj.attr('id') + '" id="bangla_option_for_' + active_obj.attr('id') + '" class="bangla_input_option">';
             option_html += '<span>Keyboard</span>';
-            option_html += '<select class="bangla_option_select"  style="padding:1px"><option value="phonetic1">ফনেটিক</option><option value="unijoy">ইউনিজয়</option><option value="bijoy">বিজয়</option><option value="english">English</option></select>';
+            option_html += '<select class="bangla_option_select"  style="padding:1px"><option value="phonetic">ফনেটিক</option><option value="unijoy">ইউনিজয়</option><option value="bijoy">বিজয়</option><option value="english">English</option></select>';
             option_html += '</div>';
 
             $('div.bangla_input_option').each(function() {
@@ -665,9 +669,9 @@ $.fn.banglaInput = function(options) {
                     break;
                 }
 
-                case 'phonetic1' :
+                case 'phonetic' :
                 default:{
-                    return writePhonetic1(evnt);
+                    return writePhonetic(evnt);
                     break;
                 }
             }
@@ -726,14 +730,14 @@ new function($) {
 }(jQuery);
 
 $.fn.banglaInput.defaults = {
-    //keyboard: 'phonetic1',
+    //keyboard: 'phonetic',
     keyboard: 'bijoy',
     space: true,
     shiftMode: false,
     ctrlMode: false,
     altMode: false,
-    sac: false,
-    noEffect: false
+    sac: false,   //for further use
+    noEffect: false  //for further use
 };
 
 
