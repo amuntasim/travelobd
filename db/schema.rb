@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403074441) do
+ActiveRecord::Schema.define(:version => 20110403090936) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -649,6 +649,7 @@ ActiveRecord::Schema.define(:version => 20110403074441) do
     t.string   "role"
     t.boolean  "message_notification",   :default => true
     t.string   "preferred_input_method"
+    t.string   "preferred_locale",       :default => "bn"
   end
 
   add_index "users", ["email", "crypted_password"], :name => "index_users_on_email_and_crypted_password"

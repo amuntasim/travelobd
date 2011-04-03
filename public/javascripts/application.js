@@ -42,26 +42,6 @@ $.fn.removeSavedItem = function() {
     });
 };
 
-$.fn.toggleLoginOther = function() {
-    $('.login_and_other').click(function() {
-        if ($(this).hasClass('collapsed')) {
-            $('.top_bar').animate({
-                "marginTop": "10px"
-            }, "slow");
-            $('#login_down_arrow').hide();
-            $('#login_up_arrow').show();
-        }
-        else {
-            $('.top_bar').animate({
-                "marginTop": "-40px"
-            }, "slow");
-            $('#login_up_arrow').hide();
-            $('#login_down_arrow').show();
-        }
-        $(this).toggleClass('collapsed');
-        $(this).toggleClass('expand');
-    });
-};
 
 $.fn.enableMenu = function() {
     $('.sub_nav').mouseover(function() {
@@ -271,6 +251,39 @@ var TBD = {
                 }
             });
         }
+        ,
+
+        showLoginOther:function(that) {
+            $('.top_bar').animate({
+                "marginTop": "10px"
+            }, "slow");
+            $('#login_down_arrow').hide();
+            $('#login_up_arrow').show();
+            $(that).toggleClass('collapsed');
+            $(that).toggleClass('expand');
+        }
+        ,
+        hideLoginOther:function(that) {
+            $('.top_bar').animate({
+                "marginTop": "-40px"
+            }, "slow");
+            $('#login_up_arrow').hide();
+            $('#login_down_arrow').show();
+            $(that).toggleClass('collapsed');
+            $(that).toggleClass('expand');
+        }
+        ,
+        toggleLoginOther:function() {
+            $('.login_and_other').click(function() {
+                if ($(this).hasClass('collapsed')) {
+                    TBD.GENERAL.showLoginOther(this);
+                }
+                else {
+                    TBD.GENERAL.hideLoginOther(this);
+                }
+
+            });
+        }
     }
 }
 
@@ -326,7 +339,6 @@ $(document).ready(function() {
     //$(this).enableMenu();
     $(this).saveItemToMyListing();
     $(this).removeSavedItem();
-    $(this).toggleLoginOther();
     $(this).showHideSearchOption();
     $(this).editPhotoLabel();
     $('#search_option').change(function() {
@@ -346,7 +358,17 @@ $(document).ready(function() {
     TBD.GENERAL.slideFeaturedHotels();
     TBD.GENERAL.slideFeaturedTransports();
     TBD.GENERAL.slideFeaturedAgents();
+    TBD.GENERAL.toggleLoginOther();
+    $('div.collapsed').mouseover(function() {
+        if ($(this).hasClass('collapsed')) {
+            TBD.GENERAL.showLoginOther(this);
+        }
+    })
 
+    $('.login_and_other').trigger('click');
+
+
+    setTimeout("TBD.GENERAL.hideLoginOther($('.login_and_other'))", 5000);
 
     var validateSendToFriend = function() {
         var stf_validator = $("#send_to_friends_form").validate({

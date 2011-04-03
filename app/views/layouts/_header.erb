@@ -27,10 +27,10 @@
     </div>
 
     <% if I18n.locale.to_s == 'en' %>
-        <%#= link_to(t('see_in_bn'), {:'lan'=>'bn', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
-        <%= link_to(t('see_in_bn'), '#') %>
+        <%= link_to(t('see_in_bn'), {:'locale'=>'bn', :params =>params.delete_if { |key, value| key == "locale" }}, {:class=>'', :onclick => fix_language_switch}) %>
+        <%#= link_to(t('see_in_bn'), '#') %>
     <% else %>
-        <%= link_to(t('see_in_en'), {:'lan'=>'en', :params =>params.delete_if { |key, value| key == "lan" }}, {:class=>'', :onclick => fix_language_switch}) %>
+        <%= link_to(t('see_in_en'), {:'locale'=>'en', :params =>params.delete_if { |key, value| key == "locale" }}, {:class=>'', :onclick => fix_language_switch}) %>
     <% end %>
 
   </div>

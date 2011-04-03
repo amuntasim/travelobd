@@ -35,13 +35,11 @@ ul li {
 .wrapper {
     width: 1000px;
     margin: 0 auto;
-    background: #f5f5eb url(/images/texture_bg.jpg);
 }
 
 .wrap_body {
     float: left;
     width: 1000px;
-    background: url(/images/texture_bg.jpg);
 }
 
 .top_bar {
@@ -52,7 +50,8 @@ ul li {
     height: 50px;
     position: absolute;
     z-index: 10;
-    margin-top: -40px;
+
+
 }
 
 .top_bar_box {
@@ -1513,7 +1512,6 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
 .loginRight .loginLink  .search_button {
     margin-left: 127px;
 }
-
 
 .loginRight  a.search_button {
     color: #ffffff;

@@ -12,6 +12,10 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
+      cookies[:TBD_PREFERRED_LOCALE] =
+          {:value => current_user.preferred_locale,
+           :expires => 30.days.from_now}
+
       if admin?
         redirect_to admin_url, :notice => "Successfully logged in."
       else

@@ -45,7 +45,7 @@
         <div class="home_left_content">
           <div class="mytools">
             <ul>
-              <li><%= link_to 'Edit Profile', edit_user_profile_url(current_user), :class=> active_inactive_dashboard_navigation('edit_profile') %></li>
+              <li><%= link_to 'Profile Home', dashboard_path, :class=> active_inactive_dashboard_navigation('dashboard') %></li>
               <li><%= link_to 'Edit Profile', edit_user_profile_url(current_user), :class=> active_inactive_dashboard_navigation('edit_profile') %></li>
               <li><%= link_to 'Change Password', edit_user_path(:id=> 'xxx'), :class=> active_inactive_dashboard_navigation('change_password') %></li>
               <li><%= link_to 'My Hotels', my_hotels_path, :class=> active_inactive_dashboard_navigation('my_hotels') %></li>

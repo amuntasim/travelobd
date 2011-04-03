@@ -49,9 +49,17 @@
         <%= f.fields_for :user, current_user do |usf| %>
             <div class="clear">
               <%= usf.check_box :message_notification -%>
-
               Message notification email
 
+            </div>
+            <div class="clear">
+              <%= usf.select :preferred_input_method, User::KEYBOARDS_HASH -%>
+              Preferred input method
+
+            </div>
+            <div class="clear">
+              <%= usf.select :preferred_locale, User::LOCALES_HASH -%>
+              Preferred language
             </div>
         <% end %>
       </div>

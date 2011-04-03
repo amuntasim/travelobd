@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :prepare_for_mobile
 
-  before_filter :load_required_instance_variables
+  before_filter :load_required_instance_variables, :set_locale
   protect_from_forgery
 
   config.filter_parameters :password, :password_confirmation, :card_number, :card_verification
@@ -119,6 +119,10 @@ class ApplicationController < ActionController::Base
     message.owner && message.owner.message_notification?
   end
 
+  def default_url_options(options={})
+    {:locale => I18n.locale}
+  end
+
   private
 
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm", "hiptop", "avantgo", "plucker", "xiino", "blazer", "elaine", "windows ce; ppc;|windows ce; smartphone;|windows ce; iemobile", "up.browser", "up.link", "mmp", "symbian", "smartphone", "midp", "wap", "vodafone", "o2", "pocket", "kindle", "mobile", "pda", "psp", "treo"]
@@ -140,4 +144,16 @@ class ApplicationController < ActionController::Base
     session[:mobile_param] = params[:mobile] if params[:mobile]
     request.format = :mobile if mobile_device?
   end
+
+  def set_locale
+
+    if params[:locale].blank? && cookies['TBD_PREFERRED_LOCALE']
+      I18n.locale = cookies['TBD_PREFERRED_LOCALE']
+    elsif params[:locale] && params[:locale].to_s == 'en'
+      I18n.locale = 'en'
+    else
+      I18n.locale = 'bn'
+    end
+  end
+
 end

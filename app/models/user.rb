@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # == Schema Information
 #
 # Table name: users
@@ -46,6 +48,9 @@ class User < ActiveRecord::Base
     c.validate_login_field false
     # c.validate_password_field = false
   end
+
+  KEYBOARDS_HASH = {'ফনেটিক' => 'phonetic', 'ইউনিজয়' => 'unijoy', 'বিজয়' => 'bijoy','English' => 'english'}
+  LOCALES_HASH = {'বাংলা' => 'bn', 'English' => 'en'}
 
   def name
     profile ? profile.full_name : self.read_attribute(:name)
