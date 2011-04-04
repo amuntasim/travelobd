@@ -28,9 +28,12 @@ module Travelobd
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :bn
-    I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-    I18n.fallbacks.map :bn => :en
+    config.i18n.default_locale = :en
+
+    I18n.backend.class.send(:include, I18n::Backend::Fallbacks)
+
+    I18n.fallbacks.map('en' => 'bn')
+
 
     #
     # JavaScript files you want as :defaults (application.js is always included).
