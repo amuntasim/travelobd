@@ -151,6 +151,8 @@ class ApplicationController < ActionController::Base
       I18n.locale = cookies['TBD_PREFERRED_LOCALE']
     elsif params[:locale] && params[:locale].to_s == 'bn'
       I18n.locale = 'bn'
+    else
+      I18n.locale = 'en'
     end
   end
 

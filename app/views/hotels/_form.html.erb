@@ -6,7 +6,7 @@
 <%= form_for(@hotel, :html=> {:multipart => true, :id=> 'hotel_form'}) do |f| %>
     <% @builder = f %>
     <% if @hotel.errors.any? %>
-        <div id="error_explanation">
+        <div id="error_explanation clear">
           <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
 
           <ul>

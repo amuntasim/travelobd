@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20110403074441_add_preferred_input_method_to_users.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20110403090936_add_preferred_locale_to_user.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/hotels/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/hotels/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/packages/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/packages/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/spots/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/spots/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/bn.yml" afterPath="$PROJECT_DIR$/config/locales/bn.yml" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,78 +34,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="browser.xul" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/browser.xul">
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/packages/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="42" selection-start="2316" selection-end="2335" vertical-scroll-proportion="-17.851852">
-              <folding>
-                <marker date="1301915478000" expanded="true" signature="551:1104" placeholder="{...}" />
-                <marker date="1301915478000" expanded="true" signature="554:658" placeholder="//..." />
-                <marker date="1301915478000" expanded="true" signature="774:1099" placeholder="{...}" />
-                <marker date="1301915478000" expanded="true" signature="5188:5199" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="install.rdf" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/install.rdf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="35" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
+            <state line="8" column="40" selection-start="343" selection-end="343" vertical-scroll-proportion="193.75">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shabdikOptions.xul" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/shabdikOptions.xul">
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/spots/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="41" selection-start="2171" selection-end="2185" vertical-scroll-proportion="-12.777778">
+            <state line="8" column="40" selection-start="469" selection-end="469" vertical-scroll-proportion="-5.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shabdik.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/shabdik.js">
+      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="83" selection-start="1905" selection-end="1905" vertical-scroll-proportion="-3.8888888">
+            <state line="460" column="14" selection-start="14769" selection-end="14769" vertical-scroll-proportion="-14.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="keyboards.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/keyboards.js">
+      <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="71" selection-start="474" selection-end="474" vertical-scroll-proportion="-5.111111">
+            <state line="8" column="40" selection-start="402" selection-end="402" vertical-scroll-proportion="0.3030303">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShabdikUtils.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikUtils.js">
+      <file leaf-file-name="hotels_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/hotels_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="135" column="2" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShabdikPreferencesManager.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikPreferencesManager.js">
+      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="48" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.7357595">
+            <state line="121" column="25" selection-start="3107" selection-end="3126" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShabdikPreferenceLoaderLib.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikPreferenceLoaderLib.js">
+      <file leaf-file-name="bn.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/locales/bn.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="1889" selection-end="1889" vertical-scroll-proportion="-40.0">
+            <state line="108" column="10" selection-start="2940" selection-end="2940" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,22 +133,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/user_sessions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_header.erb" />
-        <option value="$PROJECT_DIR$/config/locales/bn.yml" />
-        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/public/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$USER_HOME$/Downloads/ShabdikLight/chrome/content/keyboards.js" />
         <option value="$USER_HOME$/Downloads/ShabdikLight/skin/shabdik.css" />
         <option value="$USER_HOME$/Downloads/ShabdikLight/chrome/content/shabdik.js" />
         <option value="$USER_HOME$/Downloads/ShabdikLight/chrome/content/shabdikOptions.xul" />
         <option value="$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/browser.xul" />
-        <option value="$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/shabdikOptions.xul" />
         <option value="$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikPreferenceLoaderLib.js" />
+        <option value="$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/shabdikOptions.xul" />
         <option value="$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikPreferencesManager.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/config/locales/bn.yml" />
+        <option value="$PROJECT_DIR$/app/controllers/hotels_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/packages/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/spots/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/hotels/_form.html.erb" />
       </list>
     </option>
   </component>
@@ -188,6 +178,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,10 +244,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="RailsProjectView" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -274,16 +278,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ShabdikLightMin" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="125" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1033" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1032" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1033" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="124" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="121" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -546,20 +550,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="24" width="1440" height="852" extended-state="4" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282967" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3305671" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2510608" sideWeight="0.7261411" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2510608" sideWeight="0.66943294" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27309236" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780084" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3305671" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997253" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -600,120 +604,94 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/ShabdikPreferenceLoaderLib.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.1392405">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.1392405" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/keyboards.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="411" column="26" selection-start="11166" selection-end="11166" vertical-scroll-proportion="8.7856045">
-          <folding>
-            <marker date="1185700734000" expanded="true" signature="15:21124" placeholder="{...}" />
-            <marker date="1185700734000" expanded="true" signature="20239:21124" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="411" column="26" selection-start="11166" selection-end="11166" vertical-scroll-proportion="8.7856045" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/ShabdikUtils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/skin/shabdik.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="31" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="24" column="31" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/dictionary/dictionary14.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="16" selection-start="50" selection-end="50" vertical-scroll-proportion="0.02232143">
-          <folding />
-        </state>
+        <state line="1" column="16" selection-start="50" selection-end="50" vertical-scroll-proportion="0.02232143" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/dictionary/dictionary12.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="76" selection-start="189" selection-end="189" vertical-scroll-proportion="0.11160714">
-          <folding />
-        </state>
+        <state line="5" column="76" selection-start="189" selection-end="189" vertical-scroll-proportion="0.11160714" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/shabdikOptions.xul">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="18" selection-start="2054" selection-end="2054" vertical-scroll-proportion="0.57589287">
-          <folding />
-        </state>
+        <state line="63" column="18" selection-start="2054" selection-end="2054" vertical-scroll-proportion="0.57589287" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLight/chrome/content/shabdik.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="458" column="44" selection-start="12316" selection-end="12316" vertical-scroll-proportion="8.306962">
-          <folding />
-        </state>
+        <state line="458" column="44" selection-start="12316" selection-end="12316" vertical-scroll-proportion="8.306962" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/install.rdf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0">
+        <state line="11" column="35" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="25" selection-start="3107" selection-end="3126" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/browser.xul">
+    <entry file="file://$PROJECT_DIR$/config/locales/bn.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="42" selection-start="2316" selection-end="2335" vertical-scroll-proportion="-17.851852">
-          <folding>
-            <marker date="1301915478000" expanded="true" signature="551:1104" placeholder="{...}" />
-            <marker date="1301915478000" expanded="true" signature="554:658" placeholder="//..." />
-            <marker date="1301915478000" expanded="true" signature="774:1099" placeholder="{...}" />
-            <marker date="1301915478000" expanded="true" signature="5188:5199" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/shabdikOptions.xul">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="41" selection-start="2171" selection-end="2185" vertical-scroll-proportion="-12.777778">
+        <state line="108" column="10" selection-start="2940" selection-end="2940" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikUtils.js">
+    <entry file="file://$PROJECT_DIR$/app/controllers/hotels_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+        <state line="135" column="2" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/shabdik.js">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="83" selection-start="1905" selection-end="1905" vertical-scroll-proportion="-3.8888888">
+        <state line="460" column="14" selection-start="14769" selection-end="14769" vertical-scroll-proportion="-14.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/keyboards.js">
+    <entry file="file://$PROJECT_DIR$/app/views/packages/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="71" selection-start="474" selection-end="474" vertical-scroll-proportion="-5.111111">
+        <state line="8" column="40" selection-start="343" selection-end="343" vertical-scroll-proportion="193.75">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikPreferenceLoaderLib.js">
+    <entry file="file://$PROJECT_DIR$/app/views/spots/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="1889" selection-end="1889" vertical-scroll-proportion="-40.0">
+        <state line="8" column="40" selection-start="469" selection-end="469" vertical-scroll-proportion="-5.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/ShabdikLightMin/chrome/content/ShabdikPreferencesManager.js">
+    <entry file="file://$PROJECT_DIR$/app/views/hotels/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="48" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.7357595">
+        <state line="8" column="40" selection-start="402" selection-end="402" vertical-scroll-proportion="0.3030303">
           <folding />
         </state>
       </provider>

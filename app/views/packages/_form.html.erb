@@ -6,7 +6,7 @@
 <%= form_for(@package, :html => {:multipart => true, :id=> 'package_form'}) do |f| %>
     <% @builder = f %>
     <% if @package.errors.any? %>
-        <div id="error_explanation">
+        <div id="error_explanation clear">
           <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
 
           <ul>

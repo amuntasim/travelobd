@@ -55,7 +55,6 @@ class HotelsController < ApplicationController
   def create
     @hotel = Hotel.new(params[:hotel])
     @hotel.user_id = current_user.id
-    set_district_division
     respond_to do |format|
       if @hotel.save
         format.html { redirect_to(@hotel, :notice => 'Hotel was successfully created.') }
@@ -71,7 +70,6 @@ class HotelsController < ApplicationController
   # PUT /hotels/1
   # PUT /hotels/1.xml
   def update
-    update_district_division
     params[:hotel][:feature_ids] ||= []
 
     respond_to do |format|
@@ -135,49 +133,7 @@ class HotelsController < ApplicationController
   end
 
   private
-  def set_district_division
-    if params[:hotel][:division_id].blank?
-      division = Division.first(:conditions =>['country_id = ? AND (name = ? OR code = ?)', @hotel.country_id, params[:division_str], params[:division_str]])
-      unless division
-        division = Division.new(:country_id => @hotel.country_id, :name => params[:division_str])
-        division.code = params[:division_str] if params[:division_str].length == 2
-        division.save
-      end
-      @hotel.division_id = division.id
-    end
 
-    if params[:hotel][:district_id].blank?
-      district = District.first(:conditions =>['country_id = ? AND name = ? ', @hotel.country_id, params[:district_str]])
-      unless district
-        district = District.new(:country_id => @hotel.country_id, :division_id=> @hotel.division_id, :name => params[:district_str])
-        district.division_id = @spot.division_id
-        district.save
-      end
-      @hotel.district_id = district.id
-    end
-  end
-
-  def update_district_division
-    unless params[:division_str].blank?
-      division = Division.first(:conditions =>['country_id = ? AND (name = ? OR code = ?)', params[:hotel][:country_id], params[:division_str], params[:division_str]])
-      unless division
-        division = Division.new(:country_id => params[:hotel][:country_id], :name => params[:division_str])
-        division.code = params[:division_str] if params[:division_str].length == 2
-        division.save
-      end
-      params[:hotel][:division_id] ||= division.id
-    end
-
-    unless params[:division_str].blank?
-      district = District.first(:conditions =>['country_id = ? AND name = ? ', params[:hotel][:country_id], params[:district_str]])
-      unless district
-        district = District.new(:country_id => @hotel.country_id, :division_id=> @hotel.division_id, :name => params[:district_str])
-        district.division_id = params[:hotel][:division_id]
-        district.save
-      end
-      params[:hotel][:district_id] ||= district.id
-    end
-  end
 
   def load_item
     @hotel = Hotel.find(params[:id])

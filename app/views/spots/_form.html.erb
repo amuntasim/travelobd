@@ -6,7 +6,7 @@
 <%= form_for(@spot, :html=> {:multipart => true, :id=> 'spot_form'}) do |f| %>
     <% @builder = f %>
     <% if @spot.errors.any? %>
-        <div id="error_explanation">
+        <div id="error_explanation clear">
           <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
 
           <ul>
