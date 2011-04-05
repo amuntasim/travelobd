@@ -1,0 +1,3 @@
+class AppFormHelper
+
+end

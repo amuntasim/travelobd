@@ -138,11 +138,25 @@ bn:
 
         # Append your own errors here or at the model/attributes scope.
 
-      # models:
-        # Overrides default messages
+    models:
+      hotel: "হোটেল"
+      package: "প্যাকেজ"
+      tour_operator: "ট্যুর অপারেটর"
+      transport: 'পরিব‌‌‌‌‌হন'
+      spot: 'দর্শনীয় স্থান'
+      article: 'ভ্রমন আর্টিক্যাল'
+      tour_club: "ট্যুর ক্লাব"
 
-      # attributes:
-        # Overrides model and default messages.
+    attribute_commons: &name_category
+      category_id: "ক্যাটাগরি"
+      name: "নাম"
+    attributes:
+      hotel:
+        <<: *name_category
+      package:
+        category_id: "ক্যাটাগরি"
+        title: "নাম"
+
 
   date:
     formats:
@@ -183,5 +197,36 @@ bn:
       two_words_connector: " এবং "
       last_word_connector: ", এবং "
 
+  helpers:
+    submit:
+      create: "{{model}} তৈরি করুন"
+      update: " {{model}} আপডেট করুন"
+    item_header:
+      new: "নতুন {{model}}"
+      existing: "নতুন {{model}}"
 
-  see_in_en: 'See in English'
+  general:
+    label:
+      address: 'ঠিকানা'
+      add_more: '+ Add More'
+      contacts: 'Contacts'
+      create_account: "নতুন এ্যাকাউন্ট"
+      dashboard: 'ড্যাসবোর্ড'
+      description: 'বর্ননা'
+      division: 'Division'
+      discount: 'Discount'
+      district: 'District'
+      discount_till: 'Discount till'
+      features: 'Features'
+      home: 'প্রথম পাতা'
+      image: 'Image'
+      login_n_other: 'লগইন ও অন্যান্য'
+      login: 'লগইন'
+      logout: 'লগআউট'
+      latitude: 'Latitude'
+      longitude: 'Longitude'
+      nearby_spots: 'Nearby Spots'
+      phone: 'Phone'
+      policies: 'Policies'
+      rating: 'Rating'
+      see_in_en: 'ইংরেজিতে দেখুন'

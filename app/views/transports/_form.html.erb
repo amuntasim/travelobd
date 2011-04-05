@@ -89,7 +89,7 @@
           </div>
 
         </div>
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
         <%#= add_object_link("+Add More", f, @transport.assets.new, "photo", "#ad_images", 'adMore addMoreImage') %>
       </div>
 
@@ -110,7 +110,7 @@
           <%= render :partial => 'shared_partials/branch_location', :locals => {:form => f, :branch_location => @transport.branch_locations.new} if @transport.new_record? || @transport.branch_locations.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreBranchLocation' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreBranchLocation' %>
       </div>
 
     </div>
@@ -129,7 +129,7 @@
           <%= render :partial => 'departure_schedule', :locals => {:form => f, :departure_schedule => @transport.departure_schedules.new} if @transport.new_record? || @transport.departure_schedules.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreDepartureSchedule' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreDepartureSchedule' %>
       </div>
 
     </div>
@@ -150,7 +150,7 @@
           <%= render :partial => 'shared_partials/policy', :locals => {:form => f, :policy => @transport.policies.new} if @transport.new_record? || @transport.policies.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMorePolicy' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMorePolicy' %>
       </div>
 
     </div>
@@ -169,7 +169,7 @@
           <%= render :partial => 'shared_partials/contact', :locals => {:form => f, :contact => @transport.contacts.new} if @transport.new_record? || @transport.contacts.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreContact' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreContact' %>
       </div>
 
     </div>

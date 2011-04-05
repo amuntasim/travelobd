@@ -103,7 +103,7 @@
           <%= render :partial => 'side_scene', :locals => {:form => f, :side_scene => @spot.side_scenes.new} if @spot.new_record? || @spot.side_scenes.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreSideScene' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreSideScene' %>
       </div>
 
     </div>
@@ -122,7 +122,7 @@
           <%= render :partial => 'cost_item', :locals => {:form => f, :cost_item => @spot.cost_items.new} if @spot.new_record? || @spot.cost_items.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreCostItem' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreCostItem' %>
       </div>
 
     </div>
@@ -145,7 +145,7 @@
           </div>
 
         </div>
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
       </div>
     </div>
 

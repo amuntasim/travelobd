@@ -1,3 +1,9 @@
+<% title localized_item_header(@hotel) %>
+<div class="pageHead">
+  <%= localized_item_header(@hotel) %>
+</div>
+
+<div class="item_form">
 <%= content_for :js_css_include do %>
     <%= javascript_include_tag 'jquery.validate', 'tiny_redcloth', 'jquery-fieldselection', 'thickbox' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
@@ -5,56 +11,60 @@
 
 <%= form_for(@hotel, :html=> {:multipart => true, :id=> 'hotel_form'}) do |f| %>
     <% @builder = f %>
-    <% if @hotel.errors.any? %>
-        <div id="error_explanation clear">
-          <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
 
-          <ul>
-            <% @hotel.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+    <%= error_messages_for(@hotel) %>
+
     <div class="form_summary" id="summary">
 
     </div>
     <div class="item_form_row">
-      <label>
-        Category<span>*</span>:
-      </label>
+      <div class="label">
+        <%= f.label :category_id %>
+        <span>*</span>
+      </div>
 
       <%= f.select :category_id, Hotel::CATEGORIES, :prompt=> 'Select Category' %>
     </div>
 
     <div class="item_form_row">
-      <label>
-        Name<span>*</span>:
-      </label>
+      <div class="label">
+        <%= f.label :name %>
+        <span>*</span>:
+      </div>
       <%= f.text_field :name %>
     </div>
     <div class="item_form_row">
-      <%= f.label :description %>
+      <div class="label">
+        <%= f.label :description, t('general.label.description') %>
+      </div>
       <%= f.text_area :description, :class => "tiny_redcloth" %>
     </div>
 
     <div class="item_form_row">
-      <%= f.label :address %>
+      <div class="label">
+        <%= f.label :address, t('general.label.address') %>
+      </div>
       <%= f.text_area :address %>
     </div>
 
     <div class="item_form_row">
-      <label> Latitude:</label>
+      <div class="label">
+        <%= f.label :latitude, t('general.label.latitude') %>
+      </div>
       <%= f.text_field :latitude %>
     </div>
 
     <div class="item_form_row">
-      <label> Longitude:</label>
+      <div class="label">
+        <%= f.label :longitude, t('general.label.longitude') %>
+      </div>
       <%= f.text_field :longitude %>
     </div>
 
     <div class="item_form_row">
-      <%= f.label :features %>
+      <div class="label">
+        <%= t('general.label.features') %>
+      </div>
       <div class="f_edit_row photo_box">
         <% @features_for_hotel.each do |feature| %>
             <div class="hotel_feature spot_in_package">
@@ -68,44 +78,44 @@
     </div>
 
     <div class="item_form_row">
-      <label>
-        Division<span>*</span>:
-      </label>
+      <div class="label">
+        <%= f.label :division_id, t('general.label.division') %>
+      </div>
       <%= f.select :division_id, Division.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
 
     </div>
     <div class="item_form_row">
-      <label>
-        District <span>*</span>:
-      </label>
+      <div class="label">
+        <%= f.label :district_id %>  <span>*</span>:
+
+      </div>
       <%= f.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
       <%= image_tag 'spin.gif', :id => 'district_loading', :class => 'loading_image' %>
     </div>
 
 
     <div class="item_form_row">
-      <label>
-        Phone<span>*</span>:
-      </label>
+      <div class="label">
+        <%= f.label :phone, t('general.label.phone') %> <span>*</span>:
+      </div>
       <%= f.text_field :phone %>
     </div>
     <div class="item_form_row">
-      <label>
-        Discount:
-      </label>
+      <div class="label">
+        <%= f.label :discount, t('general.label.discount') %>
+      </div>
       <%= f.text_field :discount %>
     </div>
     <div class="item_form_row">
-      <label>
-        Discount till:
-      </label>
+      <div class="label">
+        <%= f.label :discount_till, t('general.label.discount_till') %>
+      </div>
       <%= f.text_field :discount_till %>
     </div>
     <div class="item_form_row">
-      <label>
-        Rating:
-      </label>
-
+      <div class="label">
+        <%=  t('general.label.rating') %>
+      </div>
       <div class="hotel_star_rating">
         <div class="rating_radios">
           <%= f.radio_button :star_rating, 1, :disabled =>"disabled" %>
@@ -127,8 +137,9 @@
     </div>
 
     <div class="item_form_row">
-      <label> Nearby Spots:</label>
-
+      <div class="label">
+        <%= t('general.label.nearby_spots') %>
+      </div>
       <div class="f_edit_row photo_box" id="nearby_spots">
         <%= image_tag 'loadingAnimation.gif', :id => 'spots_loading', :style => 'display:none' %>
         <%= render :partial =>'spot', :collection => @hotel.spots, :locals => {:attached_spots => @hotel.spots} %>
@@ -136,8 +147,9 @@
     </div>
 
     <div class="item_form_row">
-      <label> Image:</label>
-
+      <div class="label">
+        <%= t('general.label.image') %>
+      </div>
       <div class="f_edit_row photo_box">
         <div class="edit_img_row">
           <% unless @hotel.new_record? %>
@@ -149,15 +161,15 @@
           </div>
 
         </div>
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
       </div>
     </div>
 
 
-
     <div class="item_form_row">
-      <label> Policies:</label>
-
+      <div class="label">
+        <%= t('general.label.policies') %>
+      </div>
       <div class="f_edit_row photo_box" style="width:705px;">
 
 
@@ -169,14 +181,15 @@
           <%= render :partial => 'shared_partials/policy', :locals => {:form => f, :policy => @hotel.policies.new} if @hotel.new_record? || @hotel.policies.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMorePolicy' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMorePolicy' %>
       </div>
 
     </div>
 
     <div class="item_form_row">
-      <label> Contacts:</label>
-
+      <div class="label">
+        <%= t('general.label.contacts') %>
+      </div>
       <div class="f_edit_row photo_box" style="width:705px;">
 
 
@@ -188,7 +201,7 @@
           <%= render :partial => 'shared_partials/contact', :locals => {:form => f, :contact => @hotel.contacts.new} if @hotel.new_record? || @hotel.contacts.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreContact' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreContact' %>
       </div>
 
     </div>
@@ -199,7 +212,7 @@
     </div>
 <% end %>
 
-
+</div>
 <div style="display:none">
   <div id="new_photo_html">
     <%= render(:partial => 'shared_partials/photo', :locals => {:form => @builder}, :object => @hotel.assets.new) %>
@@ -311,11 +324,11 @@
 
 
             rules: {
-                'hotel[category_id]': "required",
-                'hotel[name]' : "required",
-                'hotel[division_id]' : "required",
-                'hotel[district_id]' : "required",
-                'hotel[phone]' : "required"
+                /*'hotel[category_id]': "required",
+                 'hotel[name]' : "required",
+                 'hotel[division_id]' : "required",
+                 'hotel[district_id]' : "required",
+                 'hotel[phone]' : "required"*/
 
             },
             messages: {

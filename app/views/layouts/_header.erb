@@ -4,7 +4,7 @@
         <% if admin? %>
             <span><%= link_to 'Administration', admin_path %></span>
         <% else %>
-            <span><%= link_to 'Dashboard', dashboard_path %></span>
+            <span><%= link_to t('general.label.dashboard'), dashboard_path %></span>
         <% end %>
     <% else %>
         <%= t('welcome_guest') %>
@@ -12,25 +12,24 @@
   </div>
   <div class="top_bar_box">
     <% unless current_user %>
-        <span><%= link_to 'Create Account', new_user_path %></span>
-        <span><%= link_to 'Login', login_path %></span>
+        <span><%= link_to t('general.label.create_account'), new_user_path %></span>
+        <span><%= link_to t('general.label.login'), login_path %></span>
     <% else %>
-        <span><%= link_to 'Logout', logout_path %></span>
+        <span><%= link_to t('general.label.logout'), logout_path %></span>
 
     <% end %>
   </div>
   <div class="top_bar_box">
     <div class="login_and_other collapsed">
-      <%= t('login_other') %>
+      <%= t('general.label.login_n_other') %>
       <%= image_tag 'down_arrow.jpg', :id=> 'login_down_arrow' %>
       <%= image_tag 'up_arrow.jpg', :id=> 'login_up_arrow' %>
     </div>
 
     <% if I18n.locale.to_s == 'en' %>
-        <%= link_to(t('see_in_bn'), {:'locale'=>'bn', :params =>params.delete_if { |key, value| key == "locale" }}, {:class=>'', :onclick => fix_language_switch}) %>
-        <%#= link_to(t('see_in_bn'), '#') %>
+        <%= link_to(t('general.label.see_in_bn'), {:'locale'=>'bn', :params =>params.delete_if { |key, value| key == "locale" }}, {:class=>'', :onclick => fix_language_switch}) %>
     <% else %>
-        <%= link_to(t('see_in_en'), {:'locale'=>'en', :params =>params.delete_if { |key, value| key == "locale" }}, {:class=>'', :onclick => fix_language_switch}) %>
+        <%= link_to(t('general.label.see_in_en'), {:'locale'=>'en', :params =>params.delete_if { |key, value| key == "locale" }}, {:class=>'', :onclick => fix_language_switch}) %>
     <% end %>
 
   </div>
@@ -44,14 +43,14 @@
 
 <div class="menuRow">
   <ul id="eq_ddm">
-    <li>  <%= link_to 'Home', root_path, :class=> active_inactive_navigation('home') %> </li>
+    <li>  <%= link_to t('general.label.home'), root_path, :class=> active_inactive_navigation('home') %> </li>
     <li class="meddle_li"></li>
-    <li>  <%= link_to 'Packages', packages_path, :class=> active_inactive_navigation('packages') %>
+    <li>  <%= link_to t('activerecord.models.package'), packages_path, :class=> active_inactive_navigation('packages') %>
 
     </li>
     <li class="meddle_li"></li>
 
-    <li>  <%= link_to 'Hotels', hotels_path, :class=> active_inactive_navigation('hotels')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_hotels' %>
+    <li>  <%= link_to t('activerecord.models.hotel'), hotels_path, :class=> active_inactive_navigation('hotels')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_hotels' %>
       <ul id="sub_nav_hotels" class="sub_nav">
         <li> <%= link_to 'All ', hotels_path %> </li>
       </ul>
@@ -60,14 +59,14 @@
 
     <li class="meddle_li"></li>
 
-    <li>  <%= link_to 'Tour Operators', tour_operators_path, :class=> active_inactive_navigation('operators')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
+    <li>  <%= link_to t('activerecord.models.tour_operator'), tour_operators_path, :class=> active_inactive_navigation('operators')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_cls' %>
       <ul id="sub_nav_cls" class="sub_nav">
         <li> <%= link_to 'All ', tour_operators_path %> </li>
       </ul>
 
     </li>
     <li class="meddle_li"></li>
-    <li>  <%= link_to 'Transports', transports_path, :class=> active_inactive_navigation('transports')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_transports' %>
+    <li>  <%= link_to t('activerecord.models.transport'), transports_path, :class=> active_inactive_navigation('transports')+ ' have_sub_nav', :sub_nav_id => 'sub_nav_transports' %>
       <ul id="sub_nav_transports" class="sub_nav">
         <li> <%= link_to 'All ', transports_path %> </li>
       </ul>
@@ -76,7 +75,7 @@
 
 
     <li class="meddle_li"></li>
-    <li>  <%= link_to 'Spots', spots_path, :class=> active_inactive_navigation('spot') + ' have_sub_nav', :sub_nav_id => 'sub_nav_dir' %>
+    <li>  <%= link_to t('activerecord.models.spot'), spots_path, :class=> active_inactive_navigation('spot') + ' have_sub_nav', :sub_nav_id => 'sub_nav_dir' %>
       <ul id="sub_nav_dir" class="sub_nav">
         <li> <%= link_to 'All Spots ', spots_path %> </li>
 
@@ -84,7 +83,7 @@
 
     </li>
     <li class="meddle_li"></li>
-    <li>  <%= link_to 'Articles', articles_path, :class=> active_inactive_navigation('articles') + ' have_sub_nav', :sub_nav_id => 'sub_nav_art' %>
+    <li>  <%= link_to t('activerecord.models.article'), articles_path, :class=> active_inactive_navigation('articles') + ' have_sub_nav', :sub_nav_id => 'sub_nav_art' %>
       <ul id="sub_nav_art" class="sub_nav">
         <li> <%= link_to 'All Articles', articles_path %> </li>
 
@@ -93,7 +92,7 @@
     </li>
     <li class="meddle_li"></li>
     <li>
-      <%= link_to 'Tour Club', tour_clubs_path, :class=> active_inactive_navigation('tour_club') %>
+      <%= link_to t('activerecord.models.tour_club'), tour_clubs_path, :class=> active_inactive_navigation('tour_club') %>
 
     </li>
   </ul>

@@ -1,3 +1,8 @@
+<% title localized_item_header(@package) %>
+<div class="pageHead">
+  <%= localized_item_header(@package) %>
+</div>
+
 <%= content_for :js_css_include do %>
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
@@ -5,97 +10,111 @@
 
 <%= form_for(@package, :html => {:multipart => true, :id=> 'package_form'}) do |f| %>
     <% @builder = f %>
-    <% if @package.errors.any? %>
-        <div id="error_explanation clear">
-          <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
 
-          <ul>
-            <% @package.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+    <%= error_messages_for(@package) %>
 
     <div class="form_summary" id="summary">
 
     </div>
     <div class="item_form_row">
-      <label>
-        Category
-        <span>*</span>:
-      </label>
+      <div class="label">
+        <%= f.label :category_id %>
+        <span>*</span>
+      </div>
+
       <%= f.select :category_id, Package::CATEGORIES, :prompt=> 'Select Category' %>
     </div>
 
 
     <div class="item_form_row">
-      <label> Title<span>*</span>:</label>
+      <div class="label">
+        <%= f.label :title %>
+        <span>*</span>
+      </div>
       <%= f.text_field :title %>
     </div>
 
 
     <div class="item_form_row">
-      <label> Short Description<span>*</span>:</label>
+      <div class="label">
+        <%= f.label :short_description %>
+        <span>*</span>
+      </div>
       <%= f.text_field :short_description %>
     </div>
 
 
     <div class="item_form_row">
-      <label> Asking Price<span>*</span>:</label>
+      <div class="label">
+        <%= f.label :price %>
+        <span>*</span>
+      </div>
       <%= f.text_field :price, :size => 10 %>    <%= f.check_box :price_per_person %> <span class="fl">per Person</span>
     </div>
 
     <div class="item_form_row">
-      <label> Price Includes:</label>
+      <div class="label">
+        <%= f.label :price_includes %>
+
+      </div>
       <%= f.text_area :price_includes, :style => 'height:40px' %>
     </div>
 
     <div class="item_form_row">
-      <label> Price Excludes:</label>
+      <div class="label">
+        <%= f.label :price_excludes %>
+      </div>
       <%= f.text_area :price_excludes, :style => 'height:40px' %>
     </div>
 
     <div class="item_form_row">
-      <label> Company:</label>
+      <div class="label">
+        <%= f.label :company %>
+      </div>
       <%= f.text_field :company %>
     </div>
 
     <div class="item_form_row">
-      <label> Phone<span>*</span>:</label>
+      <div class="label">
+        <%= f.label :phone %>
+        <span>*</span>
+      </div>
+
       <%= f.text_field :phone %>
     </div>
 
 
     <div class="item_form_row">
-      <label>
-        Start date:
-      </label>
+      <div class="label">
+        <%= f.label :start_date %>
+      </div>
       <%= f.text_field :start_date %>
     </div>
     <div class="item_form_row">
-      <label>
-        End date:
-      </label>
+      <div class="label">
+        <%= f.label :end_date %>
+      </div>
       <%= f.text_field :end_date %>
     </div>
     <div class="item_form_row">
-      <label>
-        Discount:
-      </label>
+      <div class="label">
+        <%= f.label :discount %>
+      </div>
       <%= f.text_field :discount %>
     </div>
 
 
     <div class="item_form_row">
-      <label>
-        Discount till:
-      </label>
+      <div class="label">
+        <%= f.label :discount_till %>
+      </div>
       <%= f.text_field :discount_till %>
     </div>
 
     <div class="item_form_row">
-      <label> Destinations:</label>
+      <div class="label">
+        <%= f.label :destinations %>
+      </div>
 
       <div class="f_edit_row photo_box">
         <% for district in District.actives %>
@@ -110,7 +129,9 @@
 
     </div>
     <div class="item_form_row">
-      <label> Spots:</label>
+     <div class="label">
+        <%= f.label :spots %>
+      </div>
 
       <div class="f_edit_row photo_box">
         <% for spot in Spot.actives.includes(:district) %>
@@ -124,13 +145,17 @@
     </div>
 
     <div class="item_form_row">
-      <label> Describe Your Package :</label>
+     <div class="label">
+        <%= f.label :description, t('general.label.describe_package') %>
+      </div>
       <%= f.text_area :description, :rows => 20, :cols => 80 %>
     </div>
 
 
     <div class="item_form_row">
-      <label> Image:</label>
+      <div class="label">
+        <%= f.label :image, t('general.label.image') %>
+      </div>
 
       <div class="f_edit_row photo_box">
         <!-- <h3>Images <span style="font-size: 11px;"><%#= package_photo_number_str(@package) %></span></h3>-->
@@ -145,7 +170,7 @@
           </div>
 
         </div>
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
         <%#= add_object_link("+Add More", f, @package.assets.new, "photo", "#ad_images", 'adMore addMoreImage') %>
       </div>
       <% if @package.featured? %>
@@ -156,7 +181,7 @@
               <div id="package_videos">
                 <%= render :partial => 'video', :collection => @package.videos, :locals => {:form => f} %>
               </div>
-              <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore adMoreVideo' %>
+              <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore adMoreVideo' %>
             </div>
 
           </div>
@@ -164,7 +189,9 @@
     </div>
 
     <div class="item_form_row">
-      <label> Event Detail:</label>
+     <div class="label">
+        <%= f.label :event, t('general.label.event_detail') %>
+      </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -177,13 +204,15 @@
           <%= render :partial => 'event', :locals => {:form => f, :event => @package.events.new} if @package.new_record? || @package.events.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreEvent' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreEvent' %>
       </div>
 
     </div>
 
     <div class="item_form_row">
-      <label> Itineraries:</label>
+      <div class="label">
+        <%= f.label :itinerary, t('general.label.itineraries') %>
+      </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -196,15 +225,17 @@
           <%= render :partial => 'itinerary', :locals => {:form => f, :itinerary => @package.itineraries.new} if @package.new_record? || @package.itineraries.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreItinerary' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreItinerary' %>
       </div>
 
     </div>
 
 
     <div class="item_form_row">
-      <label> Contacts:</label>
 
+      <div class="label">
+        <%= f.label :contact, t('general.label.contacts') %>
+      </div>
       <div class="f_edit_row photo_box" style="width:705px;">
 
 
@@ -216,13 +247,15 @@
           <%= render :partial => 'contact', :locals => {:form => f, :contact => @package.contacts.new} if @package.new_record? || @package.contacts.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreContact' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreContact' %>
       </div>
 
     </div>
 
     <div class="item_form_row">
-      <label> Conditions:</label>
+     <div class="label">
+        <%= f.label :condition, t('general.label.condition') %>
+      </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -235,7 +268,7 @@
           <%= render :partial => 'condition', :locals => {:form => f, :condition => @package.conditions.new} if @package.new_record? || @package.conditions.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreCondition' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreCondition' %>
       </div>
 
     </div>

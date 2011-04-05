@@ -24,7 +24,7 @@
         <div id="user_uploaded_photos">
           <%= render :partial => 'users/upload_image', :locals => {:form => f, :photo => current_user.uploaded_images.new} %>
         </div>
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreImageToUpload' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImageToUpload' %>
 
         <div class="actions fl">
           <button value="Upload" id='submit_user_upload'>Upload</button>

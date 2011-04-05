@@ -360,7 +360,7 @@ input#friends_email {
     display: inline
 }
 
-.item_form_row label {
+.item_form_row .label {
     float: left;
     width: 110px;
     font-size: 14px;

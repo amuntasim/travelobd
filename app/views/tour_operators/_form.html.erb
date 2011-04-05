@@ -89,7 +89,7 @@
           <%= render :partial => 'service', :locals => {:form => f, :service => @tour_operator.services.new} if @tour_operator.new_record? || @tour_operator.services.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreService' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreService' %>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
           <%= render :partial => 'shared_partials/policy', :locals => {:form => f, :policy => @tour_operator.policies.new} if @tour_operator.new_record? || @tour_operator.policies.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMorePolicy' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMorePolicy' %>
       </div>
 
     </div>
@@ -130,7 +130,7 @@
           <%= render :partial => 'shared_partials/contact', :locals => {:form => f, :contact => @tour_operator.contacts.new} if @tour_operator.new_record? || @tour_operator.contacts.size == 0 %>
         </div>
 
-        <%= link_to '+Ad More', 'javascript:void(0)', :class=>'adMore addMoreContact' %>
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreContact' %>
       </div>
 
     </div>

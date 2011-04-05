@@ -65,4 +65,18 @@ module ApplicationHelper
   def user_can_edit?(obj)
     current_user && obj.user_id == current_user.id
   end
+
+  def localized_item_header(obj, defaults = {})
+    model = obj.class.model_name.human
+    translatable_str = if obj.new_record?
+                         :"helpers.item_header.new"
+                       else
+                         :"helpers.item_header.existing"
+                       end
+
+    I18n.t(translatable_str, :model => model, :default => defaults)
+  end
+
 end
+
+
