@@ -132,13 +132,21 @@ en:
       second: "Seconds"
 
   helpers:
-    select:
-      prompt: "Please select"
 
+    delete: "Delete"
+    item_header:
+      new: "New {{model}}"
+      existing: "Edit {{model}}"
+    modify: "Modify"
     submit:
       create: 'Create %{model}'
       update: 'Update %{model}'
       submit: 'Save %{model}'
+      search: "Search"
+      create_comment: "Create Comment"
+      save: "Save"
+    select:
+      prompt: "Please select"
 
   errors:
     format: "%{attribute} %{message}"
@@ -179,3 +187,61 @@ en:
 
       full_messages:
         format: "%{attribute}%{message}"
+
+    models:
+      hotel: "Hotel"
+      package: "Package"
+      tour_operator: "Tour Operator"
+      transport: 'Transport'
+      spot: 'Spot'
+      article: 'Tour Article'
+      tour_club: "Tour Club"
+
+  general:
+      label:
+        address: 'Address'
+        add_more: '+ Add More'
+        category: 'Category'
+        contacts: 'Contacts'
+        create_account: "New Account"
+        dashboard: 'Dashboard'
+        description: 'Description'
+        division: 'Division'
+        discount: 'Discount'
+        district: 'District'
+        discount_till: 'Discount till'
+        details: 'Details'
+        features: 'Features'
+        featured: 'Featured'
+        home: 'Home'
+        hot_package: 'Hot Packages'
+        hotel_rating: 'Rating'
+        image: 'Image'
+        login_n_other: 'Login & Others'
+        login: 'Login'
+        logout: 'Logout'
+        latitude: 'Latitude'
+        longitude: 'Longitude'
+        location: 'Location'
+        nearby_spots: 'Nearby Spots'
+        next: 'Next'
+        phone: 'Phone'
+        policies: 'Policies'
+        previous: 'Previous'
+        price: 'Price'
+        per_person: '/ Person'
+        rating: 'Rating'
+        read_more: "Read More"
+        rooms_tariff: 'Rooms Tariff'
+        see_in_bn: 'বাংলাতে দেখুন'
+        search: 'Search'
+        side_scenes: 'Side Scenes'
+        send_message: "Send Message"
+        star: 'Star'
+        tour_cost: "Tour Costs"
+        type: "Type"
+        tariff: "Tariff"
+        tell_your_friends: "Tell Your Friends"
+        taka: "TK"
+        total_rooms: 'Total Rooms'
+

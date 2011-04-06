@@ -5,7 +5,7 @@
 bn:
   number:
     # Used in number_with_delimiter()
-    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    # These are also the defaults for 'currency', "percentage", "precision", and "human"
     format:
       # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
       separator: "."
@@ -142,22 +142,26 @@ bn:
       hotel: "হোটেল"
       package: "প্যাকেজ"
       tour_operator: "ট্যুর অপারেটর"
-      transport: 'পরিব‌‌‌‌‌হন'
-      spot: 'দর্শনীয় স্থান'
-      article: 'ভ্রমন আর্টিক্যাল'
+      transport: "পরিব‌‌‌‌‌হন"
+      spot: "দর্শনীয় স্থান"
+      article: "ভ্রমন প্রতিবেদন"
       tour_club: "ট্যুর ক্লাব"
 
     attribute_commons: &name_category
       category_id: "ক্যাটাগরি"
       name: "নাম"
+
     attributes:
       hotel:
         <<: *name_category
       package:
         category_id: "ক্যাটাগরি"
         title: "নাম"
+        short_description: "সংক্ষিপ্ত বিবরণ"
 
-
+      spot:
+        <<: *name_category
+        short_description: "সংক্ষিপ্ত বিবরণ"
   date:
     formats:
       # Use the strftime parameters for formats.
@@ -170,7 +174,7 @@ bn:
     day_names: [রবিবার, সোমবার, মঙ্গলবার, বুধবার, বৃহস্পতিবার, শুক্রবার, শনিবার]
     abbr_day_names: [রবিবার, সোমবার, মঙ্গলবার, বুধবার, বৃহস্পতিবার, শুক্রবার, শনিবার]
 
-    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    # Don"t forget the nil at the beginning; there"s no such thing as a 0th month
     month_names: [~, জানুয়ারি, ফেব্রুয়ারি, মার্চ, এপ্রিল, মে, জুন, জুলাই, অগাস্ট, সেপ্টেমবার, অক্টোবার, নভেম্বার, ডিসেম্বার]
     abbr_month_names: [~, জানুয়ারি, ফেব্রুয়ারি, মার্চ, এপ্রিল, মে, জুন, জুলাই, অগাস্ট, সেপ্টেমবার, অক্টোবার, নভেম্বার, ডিসেম্বার]
     # Used in date_select and datime_select.
@@ -198,35 +202,76 @@ bn:
       last_word_connector: ", এবং "
 
   helpers:
+    delete: "মুছে ফেলুন"
+    item_header:
+      new: "নতুন {{model}}"
+      existing: "এডিট {{model}}"
+    modify: "পরিবর্তন করুন"
     submit:
       create: "{{model}} তৈরি করুন"
       update: " {{model}} আপডেট করুন"
-    item_header:
-      new: "নতুন {{model}}"
-      existing: "নতুন {{model}}"
+      search: "খুঁজুন"
+      create_comment: "মন্তব্য করুন"
+      save: "সংরক্ষণ করুন"
 
   general:
     label:
-      address: 'ঠিকানা'
-      add_more: '+ Add More'
-      contacts: 'Contacts'
+      address: "ঠিকানা"
+      add_more: "+ Add More"
+      contacts: "যোগাযোগ"
+      conditions: "শর্তাবলী"
+      comments: "মন্তব্য"
       create_account: "নতুন এ্যাকাউন্ট"
-      dashboard: 'ড্যাসবোর্ড'
-      description: 'বর্ননা'
-      division: 'Division'
-      discount: 'Discount'
-      district: 'District'
-      discount_till: 'Discount till'
-      features: 'Features'
-      home: 'প্রথম পাতা'
-      image: 'Image'
-      login_n_other: 'লগইন ও অন্যান্য'
-      login: 'লগইন'
-      logout: 'লগআউট'
-      latitude: 'Latitude'
-      longitude: 'Longitude'
-      nearby_spots: 'Nearby Spots'
-      phone: 'Phone'
-      policies: 'Policies'
-      rating: 'Rating'
-      see_in_en: 'ইংরেজিতে দেখুন'
+      category: "ক্যাটাগরি"
+      cancellation: "বাতিলিকরণ"
+      cost_idea: "অনুমিত খরচ"
+      dashboard: "ড্যাসবোর্ড"
+      description: "বর্ননা"
+      division: "Division"
+      discount: "Discount"
+      district: "District"
+      details: "বিস্তারিত"
+      discount_till: "Discount till"
+      edit: "সম্পাদনা"
+      featured: "বিশেষ মূল্যায়িত"
+      home: "প্রথম পাতা"
+      hot_package: "সাম্প্রতিক প্যাকেজ"
+      how_to_go: "যেভাবে যেতে হবে"
+      history: "ইতিহাস"
+      hotel_rating: 'তারকা'
+      image: "Image"
+      itinerary: "বৃত্তান্ত"
+      interesting_places: "আকর্ষনীয় স্থান"
+      keep_in_touch: "আমাদের সাথেই থাকুন"
+      login_n_other: "লগইন ও অন্যান্য"
+      login: "লগইন"
+      logout: "লগআউট"
+      latest_article: "সাম্প্রতিক প্রতিবেদন"
+      location: "অবস্থান"
+      latitude: "Latitude"
+      longitude: "Longitude"
+      nearby_spots: "Nearby Spots"
+      next: "পরবর্তী"
+      package_owner: "প্যাকেজ স্বত্ত্বাধিকারী"
+      phone: "Phone"
+      privacy_policy: "গোপনীয় নীতিমালা"
+      previous: "পূর্ববর্তী"
+      policies: "নীতিমালা"
+      price: "মূল্য"
+      price_included: "মূল্য অন্তর্গত"
+      price_excluded: "মূল্য বর্হিভূত"
+      per_person: "জনপ্রতি"
+      rating: "জনপ্রিয়তা"
+      read_more: "বিস্তারিত পড়ুন"
+      rooms_tariff: "রুমের মূল্য তালিকা"
+      see_in_en: "ইংরেজিতে দেখুন"
+      search: "অনুসন্ধান"
+      side_scenes: "পার্শ্ববর্তী দৃশ্যাবলী"
+      send_message: "বার্তা পাঠান"
+      star: 'তারকা'
+      tour_cost: "ভ্রমন খরচাদি"
+      type: "ধরণ"
+      tariff: "মূল্য তালিকা"
+      tell_your_friends: "বন্ধুদের জানান"
+      taka: "টাকা"
+      total_rooms: 'রুমের সংখ্যা'

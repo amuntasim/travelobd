@@ -40,22 +40,34 @@
 
 <div class="item_details">
 
-  <div class="eventTitle "><b>Hotel Details</b></div>
+  <div class="eventTitle "><b>
+    <%= t('general.label.details') %>
+
+  </b>
+  </div>
+
   <% if @hotel.star_rating %>
       <div class="eventDetail">
-        <label>Rating</label>:
-        <%= @hotel.star_rating %>  Star
+        <label>
+          <%= t('general.label.hotel_rating') %>
+        </label>:
+        <%= @hotel.star_rating.localize %>
+        <%= t('general.label.star') %>
       </div>
   <% end %>
 
   <div class="eventDetail">
-    <label>Address</label>:
+    <label>
+      <%= t('general.label.address') %>
+    </label>:
     <%= @hotel.address %>
   </div>
 
   <div class="eventDetail">
-    <label>Total Room</label>
-    : <%= @hotel.total_rooms %>
+    <label>
+      <%=t('general.label.total_rooms')%>
+    </label>:
+     <%= @hotel.total_rooms.localize %>
   </div>
 
 
@@ -66,7 +78,9 @@
     <fb:like href="<%= hotel_url(:id => @hotel.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
   </div>
 
-  <div class="good_item_head">Rooms Tariff</div>
+  <div class="good_item_head">
+    <%=t('general.label.rooms_tariff')%>
+  </div>
   <div class="itemDetail eventDetail">
     <div class="roomTitleHeader eventTitle fl">
       Room Type

@@ -1,12 +1,12 @@
 <div class="home_left_header fl search_header">
   <div class="home_left_header_content">
-    <%= t 'search' %>
+    <%= t('general.label.search') %>
 
   </div>
 
 </div>
 <div class="home_left_content fl">
-  <label>Type</label>
+  <label> <%= t('general.label.category') %></label>
 
   <div class="fields">
     <%= select_tag :search_option, options_for_select(['Hotels', 'Spots', 'Packages', 'Articles'], params[:search_option]) %>
@@ -14,7 +14,7 @@
   <div id="hotel_search_form" class="searchOption">
     <%= form_for @hotel_search || Hotel.search, :url=> search_hotels_path do |f| %>
         <div class="search_row">
-          <label>Location:</label>
+          <label> <%= t('general.label.location') %></label>
 
           <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
 
@@ -23,7 +23,7 @@
         <div class="ad_btn" align="center">
 
           <%= hidden_field_tag :search_option, 'Hotels' %>
-          <input type="submit" class="search_button" name="" value="Search"/>
+          <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
           <span class="search_button_right"> </span>
         </div>
     <% end %>
@@ -32,7 +32,7 @@
   <div id="spot_search_form" class="searchOption">
     <%= form_for @spot_search || Spot.search, :url=> search_spots_path do |f| %>
         <div class="search_row">
-          <label>Location:</label>
+          <label> <%= t('general.label.location') %></label>
 
           <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
 
@@ -40,7 +40,7 @@
 
         <div class="ad_btn">
           <%= hidden_field_tag :search_option, 'Spots' %>
-          <input type="submit" class="search_button" name="" value="Search"/>
+          <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
           <span class="search_button_right"> </span>
         </div>
     <% end %>
@@ -48,14 +48,14 @@
   <div id="package_search_form" class="searchOption">
     <%= form_for @package_search || Package.search, :url=> search_packages_path do |f| %>
         <div class="search_row">
-          <label>Date:</label>
+          <label> <%= t('general.label.date') %></label>
 
           <%= f.text_field :start_date_gte, :class => 'searchDate searchFieldShort' %>
           <%= f.text_field :end_date_lte, :class => 'searchDate searchFieldShort', :style => 'margin-left:1px' %>
 
         </div>
         <div class="search_row">
-          <label>Location:</label>
+          <label> <%= t('general.label.location') %></label>
 
           <%= f.text_field :translations_location_contains, :class => 'searchFieldWide' %>
 
@@ -63,7 +63,7 @@
 
         <div class="ad_btn">
           <%= hidden_field_tag :search_option, 'Packages' %>
-          <input type="submit" class="search_button" name="" value="Search"/>
+          <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
           <span class="search_button_right"> </span>
         </div>
     <% end %>
@@ -72,14 +72,14 @@
   <div id="article_search_form" class="searchOption">
     <%= form_for @article_search || Article.search, :url=> search_articles_path do |f| %>
         <div class="search_row">
-          <label>what:</label>
+          <label> <%= t('general.label.what') %></label>
 
           <%= f.text_field :tags_name_contains, :class => 'searchFieldWide' %>
 
 
           <div class="ad_btn">
             <%= hidden_field_tag :search_option, 'Articles' %>
-            <input type="submit" class="search_button" name="" value="Search"/>
+            <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
             <span class="search_button_right"> </span>
           </div>
     <% end %>
@@ -91,8 +91,9 @@
 
 <div class="home_left_header fl featured_hotel_header">
   <div class="home_left_header_content">
+    <%= t('general.label.featured') %>
+    <%= t('activerecord.models.hotel') %>
 
-    <%= t 'featured_hotel' %>
   </div>
 
 </div>
@@ -118,7 +119,9 @@
 
 <div class="home_left_header fl latest_article_header">
   <div class="home_left_header_content">
-    Latest Articles
+    <%= t('general.label.featured') %>
+    <%= t('activerecord.models.article') %>
+
   </div>
 </div>
 
@@ -128,7 +131,8 @@
 
 <div class="home_left_header fl featured_transport_header">
   <div class="home_left_header_content">
-    <%= t 'featured_transport' %>
+    <%= t('general.label.featured') %>
+    <%= t('activerecord.models.transport') %>
   </div>
 </div>
 

@@ -6,12 +6,14 @@
   <%= stylesheet_link_tag 'style', 'menu', 'bx_styles', 'jquery-ui' %>
   <%= javascript_include_tag 'jquery.min', 'jquery-ui', 'jquery.validate', 'rails', 'menu', 'application', 'jquery.bxSlider.min' %>
   <%= yield :js_css_include %>
+  <%= stylesheet_link_tag 'bangla_fix'  if I18n.locale.to_s == 'bn' %>
   <%#= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
 </head>
 
 <body>
 <div id="fb-root"></div>
+<!--
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script>
     FB.init({
@@ -21,6 +23,7 @@
         xfbml  : true  // parse XFBML
     });
 </script>
+-->
 
 
 <script type="text/javascript" defer="defer">

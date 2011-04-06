@@ -1,0 +1,32 @@
+.bangla_content {
+    font-family: Solaimanlipi;
+    font-size: 14px;
+}
+
+.menuRow ul li a {
+    font-family: Solaimanlipi;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.home_left_header_content {
+    font-family: Solaimanlipi;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.gallery_controll_images {
+    margin-top: 1px !important;
+}
+
+.gallery_controll_images img {
+    margin-bottom: 3px;
+}
+
+.package_desc .price_n_button a {
+    padding-top: 1px !important;
+}
+
+.package_desc .price {
+    line-height: 22px !important;
+}

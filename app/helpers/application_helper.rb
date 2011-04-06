@@ -77,6 +77,7 @@ module ApplicationHelper
     I18n.t(translatable_str, :model => model, :default => defaults)
   end
 
+
 end
 
 

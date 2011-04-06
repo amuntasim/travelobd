@@ -32,16 +32,18 @@
     <div class="gallery_controll_images">
       <span class="nav-prev">
         <%= image_tag('/javascripts/themes/light/prev.png') %>
-        Previous
+        <%= t('general.label.previous') %>
       </span>
       <span class="nav-next">
-        Next
+        <%= t('general.label.next') %>
         <%= image_tag('/javascripts/themes/light/next.png') %>
       </span>
     </div>
   </div>
 
-  <h2>Hot Packages</h2>
+  <h2>
+    <%= t('general.label.hot_package') %>
+  </h2>
   <% @packages.each do |package| %>
       <div class="package">
         <div class="fl package_logo">
@@ -63,9 +65,9 @@
           </div>
           <div class="fl price_n_button">
             <div class="fl price">
-              Price: <span><%= package.price %></span> Tk/Person
+              <%= t('general.label.price') %>: <span><%= package.price.localize %></span> <%= t('general.label.taka') %> <%= t('general.label.per_person') %>
             </div>
-            <%= link_to 'Details', package, :class => 'detail_link' %>
+            <%= link_to t('general.label.details'), package, :class => 'detail_link' %>
             <%#= link_to 'Book This', package, :class => 'book_link' %>
           </div>
         </div>
