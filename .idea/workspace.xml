@@ -2,7 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/configuration.rb" afterPath="$PROJECT_DIR$/config/initializers/configuration.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/article_asset.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/package_asset.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/room_asset.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/spot_asset.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/typus.rb" afterPath="$PROJECT_DIR$/config/initializers/typus.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/typus_resources.rb" afterPath="$PROJECT_DIR$/config/initializers/typus_resources.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/typus/20110309101650_application.yml" afterPath="$PROJECT_DIR$/config/typus/20110309101650_application.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/typus/20110309101650_application_roles.yml" afterPath="$PROJECT_DIR$/config/typus/20110309101650_application_roles.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/typus/README" afterPath="$PROJECT_DIR$/config/typus/README" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/admin_users_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/admin_users_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/article_assets_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/article_assets_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/articles_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/articles_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/assets_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/assets_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/branch_locations_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/branch_locations_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/comments_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/comments_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/conditions_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/conditions_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/contacts_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/contacts_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/countries_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/countries_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/departure_schedules_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/departure_schedules_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/districts_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/districts_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/divisions_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/divisions_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/elements_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/elements_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/features_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/features_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/feedbacks_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/feedbacks_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/hotel_assets_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/hotel_assets_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/hotels_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/hotels_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/messages_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/messages_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/package_assets_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/package_assets_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/package_events_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/package_events_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/package_itineraries_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/package_itineraries_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/package_videos_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/package_videos_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/packages_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/packages_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/policies_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/policies_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/profiles_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/profiles_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/rates_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/rates_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/room_assets_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/room_assets_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/rooms_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/rooms_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/saved_listings_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/saved_listings_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/spot_assets_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/spot_assets_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/spots_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/spots_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/static_pages_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/static_pages_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/tr_uploaded_images_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/tr_uploaded_images_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/transports_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/transports_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/admin/users_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/admin/users_controller_test.rb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,24 +74,6 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="48" selection-start="597" selection-end="597" vertical-scroll-proportion="-10.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="7" selection-start="4149" selection-end="4149" vertical-scroll-proportion="-11.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.2-p136/gems/typus-3.0.8/app/views/admin/resources/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
@@ -67,7 +94,7 @@
       <file leaf-file-name="typus.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/typus.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="3" selection-start="748" selection-end="748" vertical-scroll-proportion="0.0">
+            <state line="26" column="3" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,10 +109,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="configuration.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="configuration.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/configuration.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.69473684">
+            <state line="22" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20110309101650_application_roles.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/typus/20110309101650_application_roles.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20110309101650_application.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/typus/20110309101650_application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="132" column="0" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rooms_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="12" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.8660508">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="room.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/room.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="18" selection-start="371" selection-end="377" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,25 +157,7 @@
       <file leaf-file-name="typus_resources.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/initializers/typus_resources.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="2" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bangla_fix.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="20" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bn.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/locales/bn.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="24" column="2" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -154,8 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_header.erb" />
         <option value="$PROJECT_DIR$/vendor/plugins/localize_for_typus/init.rb" />
         <option value="$PROJECT_DIR$/vendor/plugins/localize_for_typus/lib/active_record/localize_for_typus.rb" />
         <option value="$PROJECT_DIR$/vendor/plugins/bangla_for_typus/init.rb" />
@@ -170,6 +213,8 @@
         <option value="$PROJECT_DIR$/config/initializers/typus.rb" />
         <option value="$PROJECT_DIR$/config/initializers/typus_resources.rb" />
         <option value="$PROJECT_DIR$/config/initializers/configuration.rb" />
+        <option value="$PROJECT_DIR$/config/typus/20110309101650_application_roles.yml" />
+        <option value="$PROJECT_DIR$/config/typus/20110309101650_application.yml" />
       </list>
     </option>
   </component>
@@ -419,6 +464,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -719,12 +782,12 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282967" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3305671" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3305671" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2510608" sideWeight="0.7275242" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2510608" sideWeight="0.66943294" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2724758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2724758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780084" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -767,34 +830,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/district.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="1" selection-start="269" selection-end="292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/division.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/typus/20110309101650_application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/typus/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="21" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/plugins/bangla_for_typus/test/localize_for_typus_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="12" selection-start="29" selection-end="35" vertical-scroll-proportion="-1.1111112">
@@ -853,14 +888,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/typus.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="3" selection-start="748" selection-end="748" vertical-scroll-proportion="0.0">
+        <state line="26" column="3" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/typus_resources.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="2" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+        <state line="24" column="2" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -874,7 +909,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/configuration.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.69473684">
+        <state line="22" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/typus/20110309101650_application_roles.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/typus/20110309101650_application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="0" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/room.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="18" selection-start="371" selection-end="377" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/rooms_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="12" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.8660508">
           <folding />
         </state>
       </provider>

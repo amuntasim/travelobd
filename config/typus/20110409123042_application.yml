@@ -1,0 +1,64 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Authentication:
+  fields:
+    default: user_id, provider, uid, user
+    form: user_id, provider, uid, user
+  order_by: 
+  relationships: user
+  filters: created_at
+  search: 
+  application: travelobd
+
+Membership:
+  fields:
+    default: user_id, memberable_id, approved, leave_request, leave_request_date, user
+    form: user_id, memberable_id, approved, leave_request, leave_request_date, user
+  order_by: 
+  relationships: user
+  filters: created_at
+  search: 
+  application: travelobd
+
+PackageVideo:
+  fields:
+    default: package_id, code
+    form: package_id, code
+  order_by: 
+  relationships: 
+  filters: created_at
+  search: 
+  application: travelobd
+
+TitleDetailAttribute:
+  fields:
+    default: td_attributable_id
+    form: td_attributable_id
+  order_by: 
+  relationships: translations
+  filters: created_at
+  search: 
+  application: travelobd
+
+TourClub:
+  fields:
+    default: user_id, active, logo_file_name, members_count, user
+    form: user_id, active, logo_file_name, members_count, user
+  order_by: 
+  relationships: approved_comments, comments, members, memberships, raters_without_dimension, rates_without_dimension, slug, slugs, translations, useful_raters, useful_rates, user
+  filters: created_at
+  search: 
+  application: travelobd
+
+TourOperator:
+  fields:
+    default: category_id, user_id, active, logo_file_name, packages_count, web, featured, user
+    form: category_id, user_id, active, logo_file_name, packages_count, web, featured, user
+  order_by: 
+  relationships: approved_comments, comments, contacts, destinations, policies, price_raters, price_rates, raters_without_dimension, rates_without_dimension, saved_listings, services, slug, slugs, spots, translations, useful_raters, useful_rates, user
+  filters: created_at
+  search: 
+  application: travelobd
+

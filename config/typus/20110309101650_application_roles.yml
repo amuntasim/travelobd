@@ -16,6 +16,5 @@ admin:
   Policy: create, read, update, delete
   Rate: create, read, update, delete
   Room: create, read, update, delete
-  RoomAsset: create, read, update, delete
   TrUploadedImage: create, read, update, delete
   Transport: create, read, update, delete

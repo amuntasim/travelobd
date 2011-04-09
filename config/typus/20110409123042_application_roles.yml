@@ -1,0 +1,11 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Authentication: create, read, update, delete
+  Membership: create, read, update, delete
+  PackageVideo: create, read, update, delete
+  TitleDetailAttribute: create, read, update, delete
+  TourClub: create, read, update, delete
+  TourOperator: create, read, update, delete

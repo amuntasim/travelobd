@@ -130,15 +130,6 @@ Room:
   search: name
   application: travelobd
 
-RoomAsset:
-  fields:
-    default: room_id, photo_file_name, main, room
-    form: room_id, photo_file_name, main, room
-  order_by: 
-  relationships: room
-  filters: 
-  search: 
-  application: travelobd
 
 TrUploadedImage:
   fields:
