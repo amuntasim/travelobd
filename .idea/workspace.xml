@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" afterPath="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" />
     </list>
     <ignored path="travelobd.iws" />
@@ -82,28 +83,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="70" selection-start="323" selection-end="326" vertical-scroll-proportion="-6.875">
+            <state line="122" column="0" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.7876712">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bangla_fix.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="bangla_fix.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="17" selection-start="206" selection-end="206" vertical-scroll-proportion="0.28421053">
+            <state line="10" column="20" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/plugins/bangla_for_typus/init.rb">
+      <file leaf-file-name="bn.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/locales/bn.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="54" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -168,8 +169,8 @@
         <option value="$PROJECT_DIR$/app/models/division.rb" />
         <option value="$PROJECT_DIR$/config/typus/application.yml" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
         <option value="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" />
+        <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
       </list>
     </option>
   </component>
@@ -741,13 +742,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/plugins/acts_as_tree/lib/active_record/acts/tree.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="17" selection-start="1752" selection-end="1752" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.2-p136/gems/globalize3-0.0.7/lib/globalize/active_record/act_macro.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="52" selection-start="885" selection-end="885" vertical-scroll-proportion="0.0">
@@ -839,16 +833,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="70" selection-start="323" selection-end="326" vertical-scroll-proportion="-6.875">
+        <state line="10" column="20" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
+    <entry file="file://$PROJECT_DIR$/config/locales/bn.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="206" selection-end="206" vertical-scroll-proportion="0.28421053">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="0" selection-start="4292" selection-end="4292" vertical-scroll-proportion="0.7876712">
           <folding />
         </state>
       </provider>
