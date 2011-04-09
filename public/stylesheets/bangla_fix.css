@@ -6,8 +6,10 @@
 .menuRow ul li a {
     font-family: Solaimanlipi;
     font-size: 15px;
-    padding-top: 3px;
-    line-height:26px;
+    padding-top: 4px;
+    padding-left:25px;
+    padding-right:25px;
+    line-height:25px;
 }
 
 .home_left_header_content {

@@ -94,7 +94,7 @@
       <file leaf-file-name="bangla_fix.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="17" selection-start="267" selection-end="267" vertical-scroll-proportion="0.44210526">
+            <state line="10" column="17" selection-start="206" selection-end="206" vertical-scroll-proportion="0.28421053">
               <folding />
             </state>
           </provider>
@@ -848,7 +848,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="267" selection-end="267" vertical-scroll-proportion="0.44210526">
+        <state line="10" column="17" selection-start="206" selection-end="206" vertical-scroll-proportion="0.28421053">
           <folding />
         </state>
       </provider>
