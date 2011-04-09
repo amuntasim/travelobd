@@ -2,11 +2,11 @@
 
   <%= form.fields_for :itineraries, itinerary, :child_index => (itinerary.new_record? ? "index_to_replace_with_js" : nil) do |itinerary_form| %>
       <div class="package_event_time">
-        Title
+        <%= t('general.label.title')%>
       </div>
 
       <div class="package_event_detail">
-        Detail
+        <%= t('general.label.details')%>
       </div>
       <div class="package_event_time">
         <%= itinerary_form.text_field :title, :class => 'event' %>
@@ -16,7 +16,7 @@
       </div>
       <div class="deleteLink">
         <% if itinerary.new_record? %>
-            <span class="removeEventField"> Remove</span>
+            <span class="removeEventField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= itinerary_form.check_box :_destroy %>
             Delete

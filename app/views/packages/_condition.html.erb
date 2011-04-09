@@ -5,7 +5,7 @@
         &nbsp;
       </div>
       <div class="package_contact_address">
-        Condition
+        <%= t('general.label.condition')%>
       </div>
 
       <div class="package_event_time clear">
@@ -18,7 +18,7 @@
 
       <div class="deleteLink">
         <% if condition.new_record? %>
-            <span class="removeConditionField"> Remove</span>
+            <span class="removeConditionField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= condition_form.check_box :_destroy %>
             Delete

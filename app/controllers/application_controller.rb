@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   config.filter_parameters :password, :password_confirmation, :card_number, :card_verification
 
 
-  helper_method :current_user, :logged_in?, :admin?, :mobile_device?
+  helper_method :current_user, :logged_in?, :admin?, :manager?, :mobile_device?
 
   private
   def current_user_session
@@ -25,7 +25,11 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    current_user && current_user.is_admin
+    current_user && current_user.is_admin?
+  end
+
+  def manager?
+    current_user && current_user.is_manager?
   end
 
   def ownership_require(item)

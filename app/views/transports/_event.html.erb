@@ -2,11 +2,11 @@
 
   <%= form.fields_for :events, event, :child_index => (event.new_record? ? "index_to_replace_with_js" : nil) do |event_form| %>
       <div class="package_event_time">
-        Time
+        <%= t('general.label.time')%>
       </div>
 
       <div class="package_event_detail">
-        Detail
+        <%= t('general.label.details')%>
       </div>
       <div class="package_event_time">
         <%= event_form.text_field :time, :class => 'event' %>
@@ -16,7 +16,7 @@
       </div>
       <div class="deleteLink">
         <% if event.new_record? %>
-            <span class="removeEventField"> Remove</span>
+            <span class="removeEventField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= event_form.check_box :_destroy %>
             Delete

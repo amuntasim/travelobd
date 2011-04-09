@@ -1093,7 +1093,7 @@ div#package_images {
     float: left;
 }
 
-.package_events .deleteLink {
+.package_events .deleteLink, .removeLink {
     width: 50px;
     float: left;
     cursor: pointer;

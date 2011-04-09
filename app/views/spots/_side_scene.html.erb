@@ -2,10 +2,10 @@
 
   <%= form.fields_for :side_scenes, side_scene, :child_index => (side_scene.new_record? ? "index_to_replace_with_js" : nil) do |side_scene_form| %>
       <div class="package_event_time">
-        Name
+        <%= t('general.label.name')%>
       </div>
       <div class="package_contact_address">
-        Detail
+        <%= t('general.label.details')%>
       </div>
 
 
@@ -21,7 +21,7 @@
 
       <div class="deleteLink">
         <% if side_scene.new_record? %>
-            <span class="removeSideSceneField"> Remove</span>
+            <span class="removeSideSceneField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= side_scene_form.check_box :_destroy %>
             Delete

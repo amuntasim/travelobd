@@ -29,7 +29,7 @@
 
     <div class="item_form_row">
       <label>
-        <span>*</span> Title:
+        <span>*</span> <%= t('general.label.title')%>:
       </label>
       <%= f.text_field :title, :class=> 'txt' %>
     </div>
@@ -37,7 +37,7 @@
 
     <div class="item_form_row">
       <label>
-        <span>*</span>Detail:
+        <span>*</span><%= t('general.label.details')%>:
       </label>
       <%= f.text_area :detail, :class => "tiny_redcloth" %>
     </div>

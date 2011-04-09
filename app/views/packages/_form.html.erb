@@ -7,7 +7,7 @@
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
 <% end %>
-
+<div class="item_form">
 <%= form_for(@package, :html => {:multipart => true, :id=> 'package_form'}) do |f| %>
     <% @builder = f %>
 
@@ -46,15 +46,18 @@
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :price %>
+        <%= f.label :price, t('general.label.price') %>
         <span>*</span>
       </div>
-      <%= f.text_field :price, :size => 10 %>    <%= f.check_box :price_per_person %> <span class="fl">per Person</span>
+      <%= f.text_field :price, :size => 10 %>    <%= f.check_box :price_per_person %>
+      <span class="fl">
+      <%= t('general.label.per_person') %>
+      </span>
     </div>
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :price_includes %>
+        <%= f.label :price_includes, t('general.label.price_included') %>
 
       </div>
       <%= f.text_area :price_includes, :style => 'height:40px' %>
@@ -62,21 +65,21 @@
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :price_excludes %>
+        <%= f.label :price_excludes, t('general.label.price_included') %>
       </div>
       <%= f.text_area :price_excludes, :style => 'height:40px' %>
     </div>
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :company %>
+        <%= f.label :company, t('general.label.company') %>
       </div>
       <%= f.text_field :company %>
     </div>
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :phone %>
+        <%= f.label :phone, t('general.label.phone') %>
         <span>*</span>
       </div>
 
@@ -86,19 +89,19 @@
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :start_date %>
+        <%= f.label :start_date, t('general.label.start_date') %>
       </div>
       <%= f.text_field :start_date %>
     </div>
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :end_date %>
+        <%= f.label :end_date, t('general.label.end_date') %>
       </div>
       <%= f.text_field :end_date %>
     </div>
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :discount %>
+        <%= f.label :discount, t('general.label.discount') %>
       </div>
       <%= f.text_field :discount %>
     </div>
@@ -106,14 +109,14 @@
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :discount_till %>
+        <%= f.label :discount_till, t('general.label.discount_till') %>
       </div>
       <%= f.text_field :discount_till %>
     </div>
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :destinations %>
+        <%= f.label :destinations, t('general.label.destinations') %>
       </div>
 
       <div class="f_edit_row photo_box">
@@ -129,8 +132,8 @@
 
     </div>
     <div class="item_form_row">
-     <div class="label">
-        <%= f.label :spots %>
+      <div class="label">
+        <%= f.label :spots, t('general.label.spots') %>
       </div>
 
       <div class="f_edit_row photo_box">
@@ -145,8 +148,8 @@
     </div>
 
     <div class="item_form_row">
-     <div class="label">
-        <%= f.label :description, t('general.label.describe_package') %>
+      <div class="label">
+        <%= f.label :description, t('general.label.description') %>
       </div>
       <%= f.text_area :description, :rows => 20, :cols => 80 %>
     </div>
@@ -189,7 +192,7 @@
     </div>
 
     <div class="item_form_row">
-     <div class="label">
+      <div class="label">
         <%= f.label :event, t('general.label.event_detail') %>
       </div>
 
@@ -211,7 +214,7 @@
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :itinerary, t('general.label.itineraries') %>
+        <%= f.label :itinerary, t('general.label.itinerary') %>
       </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
@@ -253,8 +256,8 @@
     </div>
 
     <div class="item_form_row">
-     <div class="label">
-        <%= f.label :condition, t('general.label.condition') %>
+      <div class="label">
+        <%= f.label :condition, t('general.label.conditions') %>
       </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
@@ -274,16 +277,14 @@
     </div>
 
 
-
     <div class="submit_btn">
       <%= f.submit :class => 'search_button' %>
       <span class="search_button_right"> </span>
     </div>
 
 
-
-
 <% end %>
+</div>
 <div style="display: none">
   <div id="new_video_html">
     <%= render(:partial => 'video', :locals => {:form => @builder}, :object => @package.videos.new) %>

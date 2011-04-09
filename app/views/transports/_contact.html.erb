@@ -2,10 +2,10 @@
 
   <%= form.fields_for :contacts, contact, :child_index => (contact.new_record? ? "index_to_replace_with_js" : nil) do |contact_form| %>
       <div class="package_event_time">
-        Name
+        <%= t('general.label.name')%>
       </div>
       <div class="package_contact_address">
-        Email
+        <%= t('general.label.email')%>
       </div>
 
       <div class="package_event_time clear">
@@ -16,10 +16,10 @@
       </div>
 
       <div class="package_event_time clear">
-        Phone
+        <%= t('general.label.phone')%>
       </div>
       <div class="package_contact_address fl">
-        Address
+        <%= t('general.label.address')%>
       </div>
 
 
@@ -32,7 +32,7 @@
 
       <div class="deleteLink">
         <% if contact.new_record? %>
-            <span class="removeContactField"> Remove</span>
+            <span class="removeContactField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= contact_form.check_box :_destroy %>
             Delete

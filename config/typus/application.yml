@@ -28,8 +28,10 @@ Article:
 
 District:
   fields:
-    default:  division, name
-    form:  division, name
+    default:  division, name, name_bn
+    form:  division, name, name_bn
+    options:
+      selectors:
   order_by: 
   relationships: division, translations
   filters: 
@@ -38,8 +40,8 @@ District:
 
 Division:
   fields:
-    default: name, code
-    form: name, code
+    default: name, code, name_bn
+    form: name, code, name_bn
   order_by: 
   relationships: districts, translations
   filters: 
@@ -112,10 +114,12 @@ StaticPage:
 
 User:
   fields:
-    default: name, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, role
-    form: name, email, login_count, failed_login_count, last_request_at, current_login_at, last_login_at, current_login_ip, last_login_ip, role
+    default: name, email, login_count,  last_login_at, current_login_ip, last_login_ip, role
+    form: email, password, password_confirmation, role
+    options:
+      selectors: role
   order_by: 
-  relationships: ads, profile
+  relationships:  profile
   filters: 
   search: name
   application: travelobd

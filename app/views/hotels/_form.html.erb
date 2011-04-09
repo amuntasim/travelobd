@@ -3,12 +3,12 @@
   <%= localized_item_header(@hotel) %>
 </div>
 
-<div class="item_form">
+
 <%= content_for :js_css_include do %>
     <%= javascript_include_tag 'jquery.validate', 'tiny_redcloth', 'jquery-fieldselection', 'thickbox' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
-
+ <div class="item_form">
 <%= form_for(@hotel, :html=> {:multipart => true, :id=> 'hotel_form'}) do |f| %>
     <% @builder = f %>
 

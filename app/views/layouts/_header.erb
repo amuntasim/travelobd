@@ -7,12 +7,13 @@
             <span><%= link_to t('general.label.dashboard'), dashboard_path %></span>
         <% end %>
     <% else %>
-        <%= t('welcome_guest') %>
+        <%= t('general.label.welcome_guest') %>
     <% end %>
   </div>
   <div class="top_bar_box">
     <% unless current_user %>
         <span><%= link_to t('general.label.create_account'), new_user_path %></span>
+        <span class="separator">&nbsp;&nbsp;</span>
         <span><%= link_to t('general.label.login'), login_path %></span>
     <% else %>
         <span><%= link_to t('general.label.logout'), logout_path %></span>

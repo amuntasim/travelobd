@@ -13,7 +13,7 @@
 class Article < ActiveRecord::Base
   translates :title, :detail
   has_friendly_id :title, :use_slug => true
-  has_many :assets, :as => :assetable
+  has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
 
   belongs_to :user

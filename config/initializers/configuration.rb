@@ -20,3 +20,5 @@ I18n.default_locale = 'en'
 LOCALES_DIRECTORY = "#{Rails.root}/config/locales/"
 require 'extend_class'
 
+Typus::Configuration.config[:locales] = [ [ "English", :en ],[ "Bangla", :bn ] ]
+

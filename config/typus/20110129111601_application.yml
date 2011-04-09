@@ -2,36 +2,6 @@
 #
 # Use the README file as a reference to customize settings.
 
-ArticleAsset:
-  fields:
-    default: article_id, photo_file_name, main, article
-    form: article_id, photo_file_name, main, article
-  order_by: 
-  relationships: article
-  filters: 
-  search: 
-  application: travelobd_asset
-
-PackageAsset:
-  fields:
-    default: package_id, photo_file_name, main, ad
-    form: package_id, photo_file_name, main, ad
-  order_by: 
-  relationships: ad
-  filters: 
-  search: 
-  application: travelobd_asset
-
-PackageVideo:
-  fields:
-    default: package_id, code
-    form: package_id, code
-  order_by: 
-  relationships: 
-  filters: 
-  search: 
-  application: travelobd_asset
-
 SavedListing:
   fields:
     default: user_id, savable_id, user
@@ -42,15 +12,7 @@ SavedListing:
   search: 
   application: travelobd_asset
 
-SpotAsset:
-  fields:
-    default: spot_id, photo_file_name, main, spot
-    form: spot_id, photo_file_name, main, spot
-  order_by: 
-  relationships: spot
-  filters: 
-  search: 
-  application: travelobd_asset
+
 
 Hotel:
   fields:

@@ -2,10 +2,10 @@
 
   <%= form.fields_for :cost_items, cost_item, :child_index => (cost_item.new_record? ? "index_to_replace_with_js" : nil) do |cost_item_form| %>
       <div class="package_event_time">
-        Name
+        <%= t('general.label.name')%>
       </div>
       <div class="package_contact_address">
-        Detail
+        <%= t('general.label.details')%>
       </div>
 
       <div class="package_event_time clear">
@@ -19,7 +19,7 @@
 
       <div class="deleteLink">
         <% if cost_item.new_record? %>
-            <span class="removeCostItemField"> Remove</span>
+            <span class="removeCostItemField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= cost_item_form.check_box :_destroy %>
             Delete

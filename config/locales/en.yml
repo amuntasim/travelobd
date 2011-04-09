@@ -203,14 +203,23 @@ en:
         add_more: '+ Add More'
         category: 'Category'
         contacts: 'Contacts'
+        company: 'Company'
+        conditions: "Conditions"
+        condition: "COndition"
+        comments: "Comments"
+        cancellation: "Cancellation"
+        cost_idea: "Cost Idea"
         create_account: "New Account"
         dashboard: 'Dashboard'
         description: 'Description'
+        destinations: 'Destinations'
         division: 'Division'
         discount: 'Discount'
         district: 'District'
         discount_till: 'Discount till'
         details: 'Details'
+        event_detail: "Event Details"
+        email: "Email"
         features: 'Features'
         featured: 'Featured'
         home: 'Home'
@@ -224,24 +233,31 @@ en:
         longitude: 'Longitude'
         location: 'Location'
         nearby_spots: 'Nearby Spots'
+        name: 'Name'
         next: 'Next'
         phone: 'Phone'
         policies: 'Policies'
         previous: 'Previous'
         price: 'Price'
-        per_person: '/ Person'
+        per_person: 'per person'
         rating: 'Rating'
         read_more: "Read More"
         rooms_tariff: 'Rooms Tariff'
+        remove: 'Remove'
         see_in_bn: 'বাংলাতে দেখুন'
         search: 'Search'
         side_scenes: 'Side Scenes'
         send_message: "Send Message"
+        spots: "Spots"
         star: 'Star'
+        start_date: 'Start Date'
+        end_date: 'End Date'
         tour_cost: "Tour Costs"
         type: "Type"
         tariff: "Tariff"
         tell_your_friends: "Tell Your Friends"
+        time: "Time"
+        title: "Title"
         taka: "TK"
         total_rooms: 'Total Rooms'
         welcome_guest: 'Welcome Guest!'

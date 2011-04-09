@@ -3,14 +3,12 @@
 # Use the README file as a reference to customize settings.
 
 Asset:
-  fields:
-    default: assetable_id, photo_file_name, main, label_en, label_bn
-    form: assetable_id, photo_file_name, main, label_en, label_bn
-  order_by: 
-  relationships: 
-  filters: 
-  search: 
-  application: travelobd
+ fields:
+    default: label_en, label_bn, assetable_id, assetable_type
+    form: label_en, label_bn
+ relationships: assetable
+ application: travelobd
+
 
 BranchLocation:
   fields:

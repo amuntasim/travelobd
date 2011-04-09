@@ -19,7 +19,7 @@ class Spot < ActiveRecord::Base
   translates :name, :description, :short_description, :history, :how_to_go, :where_to_stay
   has_friendly_id :name, :use_slug => true
 
-  has_many :assets, :as => :assetable
+  has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
 
   belongs_to :user

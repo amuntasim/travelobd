@@ -3,17 +3,7 @@
 # Use the README file as a reference to customize settings.
 
 admin:
-  ArticleAsset: create, read, update, delete
-  #Cart: create, read, update, delete
-  #ClassifiedAsset: create, read, update, delete
-  #Country: create, read, update, delete
-  #LineItem: create, read, update, delete
-  #Order: create, read, update, delete
-  #OrderTransaction: create, read, update, delete
-  PackageAsset: create, read, update, delete
-  #PackageVideo: create, read, update, delete
   SavedListing: create, read, update, delete
-  SpotAsset: create, read, update, delete
   Hotel: all
   Feature: all
 

@@ -9,7 +9,7 @@
   <label> <%= t('general.label.category') %></label>
 
   <div class="fields">
-    <%= select_tag :search_option, options_for_select(['Hotels', 'Spots', 'Packages', 'Articles'], params[:search_option]) %>
+    <%= select_tag :search_option, options_for_select([['Hotels', 'sss'], 'Spots', 'Packages', 'Articles'], params[:search_option]) %>
   </div>
   <div id="hotel_search_form" class="searchOption">
     <%= form_for @hotel_search || Hotel.search, :url=> search_hotels_path do |f| %>

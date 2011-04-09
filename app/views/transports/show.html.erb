@@ -25,7 +25,7 @@
           </li>
           <li id="saved_item_li">
             <% if @already_saved %>
-                <%= link_to '[ Remove ]', 'javascript:void(0)', :class => 'remove_from_save_listing', :sl_id=> @already_saved.id, :savable_id => @transport.id, :savable_type => 'Ad' %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;
+                <%= link_to '[' +  t('general.label.remove') + ']', 'javascript:void(0)', :class => 'remove_from_save_listing', :sl_id=> @already_saved.id, :savable_id => @transport.id, :savable_type => 'Ad' %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;
             <% else %>
                 <%= link_to 'Save This', 'javascript:void(0)', :class => 'save_item', :savable_type => 'Ad', :item_id=> @transport.id %>
             <% end %>
@@ -58,8 +58,8 @@
               <% branch_location_index += 1 %>
               <div class="branchLocation <%= 'clear' if branch_location_index % 3 == 0 %>">
                 <span><b><%= location.location %></b></span>
-                <span>Address: <%= location.address %></span>
-                <span>Phone: <%= location.phone %></span>
+                <span><%= t('general.label.address')%>: <%= location.address %></span>
+                <span><%= t('general.label.phone')%>: <%= location.phone %></span>
               </div>
           <% end %>
         </div>
@@ -83,7 +83,7 @@
   <div class="itemDetail">
     <% @transport.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
-        <div class="eventDetail clear">Phone: <%= contact.phone %></div>
+        <div class="eventDetail clear"><%= t('general.label.phone')%>: <%= contact.phone %></div>
     <% end %>
   </div>
 

@@ -2,7 +2,7 @@
 
   <%= form.fields_for :assets, photo, :child_index => (photo.new_record? ? "index_to_replace_with_js" : nil) do |photo_form| %>
       <%= photo_form.file_field :photo, :class => 'photo' %>
-      <span class="removeImageField"> Remove</span><br/>
+      <span class="removeImageField"> <%= t('general.label.remove')%></span><br/>
   <% end %>
 
 </div>

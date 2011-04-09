@@ -8,7 +8,7 @@
 Fill out the form below and instructions to reset your password will be emailed to you: <br/>
 
 <% form_tag password_reset_index_path do %>
-    <label>Email:</label><br/>
+    <label><%= t('general.label.email')%>:</label><br/>
     <%= text_field_tag "email" %><br />
     <br/>
     <%= submit_tag "Reset my password" %>

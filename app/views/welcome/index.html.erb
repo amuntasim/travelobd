@@ -14,18 +14,20 @@
       <% @spots.each do |spot| %>
           <div class="panel ">
             <%= image_tag(spot.main_image_url(:medium), :class=> 'panel_image', :photo_id =>spot.id, :width => 505) %>
-            <div class="panel-overlay" style="padding:5px;">
-              <h2>
-                <%= spot.name %>
-              </h2>
+            <%= link_to spot, :target => '_blank' do %>
+                <div class="panel-overlay" style="padding:5px;">
+                  <h2>
+                    <%= spot.name %>
+                  </h2>
 
-              <p>
+                  <p>
               <span>
                 <%= spot.short_description %>
               </span>
-                <%= link_to 'Learn More..', spot %>
-              </p>
-            </div>
+
+                  </p>
+                </div>
+            <% end %>
           </div>
       <% end %>
     </div>
@@ -65,7 +67,8 @@
           </div>
           <div class="fl price_n_button">
             <div class="fl price">
-              <%= t('general.label.price') %>: <span><%= package.price.localize %></span> <%= t('general.label.taka') %> <%= t('general.label.per_person') %>
+              <%= t('general.label.price') %>:
+              <span><%= package.price.localize %></span> <%= t('general.label.taka') %> <%= t('general.label.per_person') %>
             </div>
             <%= link_to t('general.label.details'), package, :class => 'detail_link' %>
             <%#= link_to 'Book This', package, :class => 'book_link' %>

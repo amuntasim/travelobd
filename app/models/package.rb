@@ -33,7 +33,7 @@ class Package < ActiveRecord::Base
   validates :short_description, :presence => true
 
   has_many :videos, :class_name => 'PackageVideo'
-  has_many :assets, :as => :assetable
+  has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
 

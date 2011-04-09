@@ -25,7 +25,7 @@
         </h3>
 
         <div class="my_links">
-          <%= link_to 'Remove', "/users/remove_saved_item?sl_id=#{item.id}", :confirm => 'Are you sure?', :method => :post %>
+          <%= link_to  t('general.label.remove'), "/users/remove_saved_item?sl_id=#{item.id}", :confirm => 'Are you sure?', :method => :post %>
         </div>
       </div>
   <% end %>

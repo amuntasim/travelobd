@@ -1,7 +1,7 @@
 class Transport < ActiveRecord::Base
   translates :name, :description, :address
 
-  has_many :assets, :as => :assetable
+  has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
   has_many :branch_locations, :as => :branchable

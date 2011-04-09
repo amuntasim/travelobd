@@ -18,7 +18,7 @@
 
       <div class="deleteLink">
         <% if departure_schedule.new_record? %>
-            <span class="removeDepartureScheduleField"> Remove</span>
+            <span class="removeDepartureScheduleField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= departure_schedule_form.check_box :_destroy %>
             Delete

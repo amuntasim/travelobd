@@ -2,7 +2,7 @@
 
   <%= form.fields_for :policies, policy, :child_index => (policy.new_record? ? "index_to_replace_with_js" : nil) do |policy_form| %>
       <div class="package_event_time">
-        Policy Title
+        Policy <%= t('general.label.title')%>
       </div>
       <div class="package_contact_address">
         Policy details
@@ -18,7 +18,7 @@
 
       <div class="deleteLink">
         <% if policy.new_record? %>
-            <span class="removePolicyField"> Remove</span>
+            <span class="removePolicyField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= policy_form.check_box :_destroy %>
             Delete

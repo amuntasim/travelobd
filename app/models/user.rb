@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :spots
   attr_accessor :password_confirmation
+  attr_protected :role
 
   has_many :uploaded_images, :class_name => 'TrUploadedImage'
   accepts_nested_attributes_for :profile
@@ -43,21 +44,26 @@ class User < ActiveRecord::Base
   has_many :associated_tour_clubs, :class_name => 'TourClub', :through => :memberships, :source => :user
   has_many :created_clubs, :class_name => 'TourClub'
 
+  ROLE = ['', 'manager', 'user']
   acts_as_authentic do |c|
     c.login_field = :email
     c.validate_login_field false
     # c.validate_password_field = false
   end
 
-  KEYBOARDS_HASH = {'ফনেটিক' => 'phonetic', 'ইউনিজয়' => 'unijoy', 'বিজয়' => 'bijoy','English' => 'english'}
+  KEYBOARDS_HASH = {'ফনেটিক' => 'phonetic', 'ইউনিজয়' => 'unijoy', 'বিজয়' => 'bijoy', 'English' => 'english'}
   LOCALES_HASH = {'বাংলা' => 'bn', 'English' => 'en'}
 
   def name
     profile ? profile.full_name : self.read_attribute(:name)
   end
 
-  def is_admin
+  def is_admin?
     role == 'admins'
+  end
+
+  def is_manager?
+    role == 'manager'
   end
 
   def full_name

@@ -5,7 +5,7 @@
         District
       </div>
       <div class="package_contact_address">
-        Location Name
+        Location <%= t('general.label.name')%>
       </div>
 
       <div class="package_event_time clear">
@@ -16,10 +16,10 @@
       </div>
 
       <div class="package_event_time clear">
-        Phone
+        <%= t('general.label.phone')%>
       </div>
       <div class="package_contact_address fl">
-        Address
+        <%= t('general.label.address')%>
       </div>
 
       <div class="package_event_time clear">
@@ -32,7 +32,7 @@
 
       <div class="deleteLink">
         <% if branch_location.new_record? %>
-            <span class="removeBranchLocationField"> Remove</span>
+            <span class="removeBranchLocationField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= branch_location_form.check_box :_destroy %>
             Delete

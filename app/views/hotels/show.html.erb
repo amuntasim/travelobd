@@ -129,7 +129,7 @@
   <div class="itemDetail">
     <% @hotel.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
-        <div class="eventDetail clear">Phone: <%= contact.phone %></div>
+        <div class="eventDetail clear"><%= t('general.label.phone')%>: <%= contact.phone %></div>
     <% end %>
   </div>
 
