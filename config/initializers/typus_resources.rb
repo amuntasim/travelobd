@@ -26,5 +26,5 @@ Typus::Resources.setup do |config|
 
   # Defines start_year.
   # config.start_year = nil
-  config.locales = [ [ "English", :en ],[ "Bangla", :bn ] ]
+
 end
