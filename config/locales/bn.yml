@@ -209,12 +209,12 @@ bn:
   helpers:
     delete: "মুছে ফেলুন"
     item_header:
-      new: "নতুন {{model}}"
-      existing: "{{model}} সম্পাদনা"
+      new: "নতুন %{model}"
+      existing: "%{model} সম্পাদনা"
     modify: "পরিবর্তন করুন"
     submit:
-      create: "{{model}} তৈরি করুন"
-      update: " {{model}} আপডেট করুন"
+      create: "%{model} তৈরি করুন"
+      update: " %{model} আপডেট করুন"
       search: "খুঁজুন"
       create_comment: "মন্তব্য করুন"
       save: "সংরক্ষণ করুন"
@@ -232,7 +232,7 @@ bn:
     label:
       address: "ঠিকানা"
       add_more: "+ আরো যুক্ত করুন"
-      add_item: "+ {{item}} যুক্ত করুন"
+      add_item: "+ %{item} যুক্ত করুন"
       already_saved: 'ইতিমধ্যে সংরক্ষিত'
       avatar: 'প্রতিকৃতি'
       branches: 'শাখাসমূহ'
@@ -303,10 +303,11 @@ bn:
       my_tools: 'নিজস্ব টুলস'
       member_of: 'আমি সদস্য'
       moderator_of: 'আমি মডারেটর'
+      messages: 'বার্তাসমূহ'
       nearby_spots: "নিকটবর্তী দর্শনীয়  স্থান"
       next: "পরবর্তী"
       name: "নাম"
-      no_item_found: '‌কোন  {{item}}  নাই'
+      no_item_found: '‌কোন  %{item}  নাই'
       notification_email: 'পর্যবেক্ষণ ই-মেইল'
       package_owner: "প্যাকেজ স্বত্ত্বাধিকারী"
       phone: "ফোন"
@@ -320,7 +321,7 @@ bn:
       profile: 'প্রোফাইল'
       preferred_keyboard: 'পছন্দের কী-বোর্ড'
       preferred_language: 'যে ভাষায় দেখতে চান'
-      profile_of_foo: '{{foo}} এর প্রোফাইল'
+      profile_of_foo: '%{foo} এর প্রোফাইল'
       rating: "জনপ্রিয়তা"
       read_more: "বিস্তারিত পড়ুন"
       rooms_tariff: "রুমের মূল্য তালিকা"
@@ -356,7 +357,7 @@ bn:
       tag: 'ট্যাগ'
       tour_club_joining_requests: 'ট্যুর ক্লাবে যোগদানের আবেদন'
       tour_club_leaving_requests: 'ট্যুর ক্লাব ত্যাগের আবেদন'
-      welcome_foo: "স্বাগতম {{foo}}"
+      welcome_foo: "স্বাগতম %{foo}"
       website: "ওয়েবসাইট"
       where_to_stay: 'কোথায় থাকবেন'
       your: 'আপনার'

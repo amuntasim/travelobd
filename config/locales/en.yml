@@ -135,8 +135,8 @@ en:
 
     delete: "Delete"
     item_header:
-      new: "New {{model}}"
-      existing: "Edit {{model}}"
+      new: "New %{model}"
+      existing: "Edit %{model}"
     modify: "Modify"
     submit:
       create: 'Create %{model}'
@@ -212,7 +212,7 @@ en:
     label:
       address: 'Address'
       add_more: '+ Add More'
-      add_item: '+ Add {{item}}'
+      add_item: '+ Add %{item}'
       already_saved: 'Already Saved'
       avatar: 'Avatar'
       branches: 'Branches'
@@ -280,10 +280,11 @@ en:
       my_tools: 'My Tools'
       member_of: "I'm member of"
       moderator_of: "I'm moderator of"
+      messages: 'Messages'
       nearby_spots: 'Nearby Spots'
       name: 'Name'
       next: 'Next'
-      no_item_found: 'No {{item}} found'
+      no_item_found: 'No %{item} found'
       notification_email: 'Notification Email'
       phone: 'Phone'
       policies: 'Policies'
@@ -293,7 +294,7 @@ en:
       profile: 'Profile'
       preferred_keyboard: 'preferred keyboard'
       preferred_language: 'preferred Language'
-      profile_of_foo: 'Profile of {{foo}}'
+      profile_of_foo: 'Profile of %{foo}'
       rating: 'Rating'
       read_more: "Read More"
       rooms_tariff: 'Rooms Tariff'
@@ -329,7 +330,7 @@ en:
       tag: 'Tag'
       tour_club_joining_requests: 'Tour CLub Joining Requests'
       tour_club_leaving_requests: 'Tour CLub Leaving Requests'
-      welcome_foo: 'Welcome {{foo}}'
+      welcome_foo: 'Welcome %{foo}'
       website: 'Website'
       where_to_stay: 'Where to stay'
       your: 'Your'
