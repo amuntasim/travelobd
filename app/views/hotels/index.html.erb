@@ -28,7 +28,7 @@
         <div class="fl price_n_button">
           <div class="fl">
             <div class="fl price">
-              <% if hotel.starting_price > 0 %>
+              <% if hotel.starting_price.to_i > 0 %>
                   <%= t('general.label.starting_price') %>
                   :
                   <span>

@@ -50,7 +50,7 @@ class Room < ActiveRecord::Base
       hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i + total_room.to_i)
     end
 
-    if hotel.starting_price == 0 || price < hotel.starting_price
+    if hotel.starting_price.to_i == 0 || price < hotel.starting_price
       hotel.update_attribute(:starting_price, price)
     end
   end
