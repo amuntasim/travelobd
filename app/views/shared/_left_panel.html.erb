@@ -9,14 +9,14 @@
   <label> <%= t('general.label.category') %></label>
 
   <div class="fields">
-    <%= select_tag :search_option, options_for_select([['Hotels', 'sss'], 'Spots', 'Packages', 'Articles'], params[:search_option]) %>
+    <%= select_tag :search_option, options_for_select([[t('activerecord.models.hotel'), 'Hotels'], [t('activerecord.models.spot'), 'Spots'], [t('activerecord.models.package'), 'Packages'], [t('activerecord.models.article'), 'Articles']], params[:search_option]) %>
   </div>
   <div id="hotel_search_form" class="searchOption">
     <%= form_for @hotel_search || Hotel.search, :url=> search_hotels_path do |f| %>
         <div class="search_row">
           <label> <%= t('general.label.location') %></label>
 
-          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
+          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> t('helpers.select.any')}, :class => 'searchFieldWide' %>
 
         </div>
 
@@ -34,7 +34,7 @@
         <div class="search_row">
           <label> <%= t('general.label.location') %></label>
 
-          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> '--Any--'}, :class => 'searchFieldWide' %>
+          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> t('helpers.select.any')}, :class => 'searchFieldWide' %>
 
         </div>
 

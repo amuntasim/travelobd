@@ -1,50 +1,63 @@
+<% title localized_item_header(@transport) %>
+<div class="pageHead">
+  <%= localized_item_header(@transport) %>
+</div>
+
+
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.validate', 'thickbox' %>
+    <%= javascript_include_tag 'jquery.validate', 'tiny_redcloth', 'jquery-fieldselection', 'thickbox' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
+<div class="item_form">
 
 <%= form_for(@transport, :html => {:multipart => true, :id=> 'transport_form'}) do |f| %>
     <% @builder = f %>
-    <% if @transport.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@transport.errors.count, "error") %> prohibited this transport from being saved:</h2>
-
-          <ul>
-            <% @transport.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+    <%= error_messages_for(@transport) %>
 
     <div class="form_summary" id="summary"></div>
 
     <div class="item_form_row">
-      <label> Category<span>*</span>:</label>
+      <div class="label">
+        <%= t('general.label.category') %>
+        <span>*</span>
+      </div>
+
       <%= f.select :category_id, Transport::CATEGORIES, :prompt=> 'Select Category' %>
     </div>
 
 
     <div class="item_form_row">
-      <label> <%= t('general.label.name')%><span>*</span>:</label>
+      <div class="label">
+        <%= t('general.label.name') %>
+        <span>*</span>
+      </div>
       <%= f.text_field :name %>
     </div>
 
 
     <div class="item_form_row">
-      <label>Description<span>*</span>:</label>
+      <div class="label">
+        <%= t('general.label.description') %>
+        <span>*</span>
+      </div>
       <%= f.text_area :description, :rows => 20, :cols => 80 %>
     </div>
 
 
     <div class="item_form_row">
-      <label>Company Website:</label>
+      <div class="label">
+        <%= t('general.label.website') %>
+
+      </div>
       <%= f.text_field :web %>
     </div>
 
 
     <div class="item_form_row">
-      <label> Destinations:</label>
+      <div class="label">
+        <%= t('general.label.destinations') %>
+
+      </div>
 
       <div class="f_edit_row photo_box">
         <% for district in District.actives %>
@@ -59,7 +72,10 @@
 
     </div>
     <div class="item_form_row">
-      <label> Spots:</label>
+      <div class="label">
+        <%= t('general.label.spots') %>
+
+      </div>
 
       <div class="f_edit_row photo_box">
         <% for spot in Spot.actives.includes(:district) %>
@@ -74,7 +90,10 @@
 
 
     <div class="item_form_row">
-      <label> Image:</label>
+      <div class="label">
+        <%= t('general.label.image') %>
+
+      </div>
 
       <div class="f_edit_row photo_box">
         <!-- <h3>Images <span style="font-size: 11px;"><%#= transport_photo_number_str(@transport) %></span></h3>-->
@@ -90,14 +109,17 @@
 
         </div>
         <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
-        <%#= add_object_link("+Add More", f, @transport.assets.new, "photo", "#ad_images", 'adMore addMoreImage') %>
       </div>
 
     </div>
 
 
     <div class="item_form_row">
-      <label class="wider"> Branch Locations:</label>
+      <div class="label wider">
+        <%= t('general.label.branches') %>
+
+      </div>
+
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -116,7 +138,10 @@
     </div>
 
     <div class="item_form_row">
-      <label class="wider"> Departure Schedules:</label>
+      <div class="label wider">
+        <%= t('general.label.schedule') %>
+
+      </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -135,9 +160,11 @@
     </div>
 
 
-
     <div class="item_form_row">
-      <label> Policies:</label>
+      <div class="label ">
+        <%= t('general.label.policies') %>
+
+      </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -156,7 +183,10 @@
     </div>
 
     <div class="item_form_row">
-      <label> Contacts:</label>
+      <div class="label ">
+        <%= t('general.label.contacts') %>
+
+      </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
 
@@ -206,7 +236,6 @@
 
   <%= render :partial => 'shared_partials/edit_asset_label' %>
 </div>
-
 
 
 <style type="text/css">

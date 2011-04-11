@@ -2,10 +2,10 @@
 
   <%= form.fields_for :branch_locations, branch_location, :child_index => (branch_location.new_record? ? "index_to_replace_with_js" : nil) do |branch_location_form| %>
       <div class="package_event_time">
-        District
+        <%= t('general.label.district') %>
       </div>
       <div class="package_contact_address">
-        Location <%= t('general.label.name')%>
+         <%= t('general.label.name')%>
       </div>
 
       <div class="package_event_time clear">
@@ -35,7 +35,9 @@
             <span class="removeBranchLocationField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= branch_location_form.check_box :_destroy %>
-            Delete
+            <span class="deleteLink deleteLinkCheckbox">
+              <%= t('helpers.delete') %>
+            </span>
         <% end %>
       </div>
   <% end %>

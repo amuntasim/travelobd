@@ -146,6 +146,7 @@ bn:
       spot: "দর্শনীয় স্থান"
       article: "ভ্রমন প্রতিবেদন"
       tour_club: "ট্যুর ক্লাব"
+      comment: "মন্তব্য"
 
     attribute_commons: &name_category
       category_id: "ক্যাটাগরি"
@@ -185,7 +186,7 @@ bn:
 
   time:
     formats:
-      default: "%A, %e de %B de %Y %H:%M:%S %z"
+      default: "%A, %e  %B  %Y %H:%M:%S"
       short: "%e de %b %H:%M"
       long: "%e de %B de %Y %H:%M"
     am: "am"
@@ -205,7 +206,7 @@ bn:
     delete: "মুছে ফেলুন"
     item_header:
       new: "নতুন {{model}}"
-      existing: "এডিট {{model}}"
+      existing: "{{model}} সম্পাদনা"
     modify: "পরিবর্তন করুন"
     submit:
       create: "{{model}} তৈরি করুন"
@@ -213,20 +214,30 @@ bn:
       search: "খুঁজুন"
       create_comment: "মন্তব্য করুন"
       save: "সংরক্ষণ করুন"
+      print: "প্রিন্ট করুন"
+      send: "প্রেরণ করুন"
+    select:
+      prompt: "সিলেক্ট করুন"
+      any: "--যেকোন একটি--"
 
   general:
     label:
       address: "ঠিকানা"
       add_more: "+ আরো যুক্ত করুন"
+      already_saved: 'ইতিমধ্যে সংরক্ষিত'
+      branches: 'শাখাসমূহ'
       contacts: "যোগাযোগ"
       conditions: "শর্তাবলী"
       condition: "শর্ত"
       comments: "মন্তব্য"
       company: 'প্রতিষ্ঠান'
+      content: 'বিষয়বস্তু'
       create_account: "নতুন এ্যাকাউন্ট"
       category: "ক্যাটাগরি"
       cancellation: "বাতিলিকরণ"
       cost_idea: "অনুমিত খরচ"
+      cost: "খরচাদি"
+      comma_separated_time: '[ কমা দিয়ে আলাদা করুন ( দুপুর ১:৩০, বিকাল ৩:০০ )'
       dashboard: "ড্যাসবোর্ড"
       description: "বর্ননা"
       destinations: 'গন্তব্যসমূহ'
@@ -235,16 +246,19 @@ bn:
       district: "জেলা"
       details: "বিস্তারিত"
       discount_till: "বিশেষ ছাড় (শেষ তারিখ)"
+      departure_time: 'ছাড়ার সময়'
       edit: "সম্পাদনা"
       event_detail: "ইভেন্ট সমূ‌হের বর্ননা"
       email: "ই-মেইল"
       featured: "বিশেষ মূল্যায়িত"
+      features: "বিশেষত্ত্ব"
       home: "প্রথম পাতা"
       hot_package: "সাম্প্রতিক প্যাকেজ"
       how_to_go: "যেভাবে যেতে হবে"
       history: "ইতিহাস"
       hotel_rating: 'তারকা'
       image: "ছবি"
+      if_list_style_required: ' [ তালিকা আকারে দেখতে চাইলে লাইন শুরুন আগে * এবং একটা স্পেস দিন ]'
       itinerary: "বৃত্তান্ত"
       interesting_places: "আকর্ষনীয় স্থান"
       keep_in_touch: "আমাদের সাথেই থাকুন"
@@ -255,6 +269,9 @@ bn:
       location: "অবস্থান"
       latitude: "Latitude"
       longitude: "Longitude"
+      longitude_map: "মানচিত্রে অবস্থান"
+      logo: 'লোগো'
+      message_to_authority: "কর্তৃপক্ষকে বার্তা পাঠান"
       nearby_spots: "নিকটবর্তী দর্শনীয়  স্থান"
       next: "পরবর্তী"
       name: "নাম"
@@ -270,7 +287,11 @@ bn:
       rating: "জনপ্রিয়তা"
       read_more: "বিস্তারিত পড়ুন"
       rooms_tariff: "রুমের মূল্য তালিকা"
+      room_type: "রুমের ধরণ"
       remove: "সরিয়ে ফেলুন"
+      route: 'রুট'
+      related: 'সম্পর্কিত'
+      room_fare: 'ভাড়া ( রাতপ্রতি )'
       see_in_en: "ইংরেজিতে দেখুন"
       search: "অনুসন্ধান"
       side_scenes: "পার্শ্ববর্তী দৃশ্যাবলী"
@@ -278,6 +299,11 @@ bn:
       spots: "দর্শনীয়  স্থান"
       star: 'তারকা'
       start_date: 'শুরুর তারিখ'
+      subject: 'বিষয়'
+      says: 'বলেছেন'
+      starting_price: 'সর্বনিম্ন ভাড়া'
+      services: 'সেবাসমূহ'
+      schedule: 'সময়সূচী'
       end_date: 'শেষের তারিখ'
       tour_cost: "ভ্রমন খরচাদি"
       type: "ধরণ"
@@ -287,4 +313,10 @@ bn:
       time: "সময়"
       taka: "টাকা"
       total_rooms: 'রুমের সংখ্যা'
+      tour_plan_day_to_day: 'প্রতিদিনের ভ্রমন সূচী'
+      total: 'সর্বমোট'
+      tag: 'ট্যাগ'
       welcome_guest: "স্বাগতম অতিথি"
+      website: "ওয়েবসাইট"
+      where_to_stay: 'কোথায় থাকবেন'
+      your: 'আপনার'

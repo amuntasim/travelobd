@@ -1,47 +1,51 @@
+<% title localized_item_header(@tour_club) %>
+<div class="pageHead">
+  <%= localized_item_header(@tour_club) %>
+</div>
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.validate', 'thickbox' %>
+    <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
+<div class="item_form">
+  <%= form_for(@tour_club, :html=> {:multipart => true, :id=> 'tour_club_form'}) do |f| %>
+      <% @builder = f %>
+      <%= error_messages_for(@tour_club) %>
 
-<%= form_for(@tour_club, :html => {:multipart => true, :id=> 'tour_club_form'}) do |f| %>
-    <% @builder = f %>
-    <% if @tour_club.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@tour_club.errors.count, "error") %> prohibited this tour club from being
-            saved:</h2>
+      <div class="form_summary" id="summary"></div>
 
-          <ul>
-            <% @tour_club.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.name') %>
+          <span>*</span>
         </div>
-    <% end %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.logo') %>
+
+        </div>
+        <%= f.file_field :logo %>
+      </div>
 
 
-    <div class="item_form_row">
-      <label> <%= t('general.label.name')%><span>*</span>:</label>
-      <%= f.text_field :name %>
-    </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.description') %>
 
-    <div class="item_form_row">
-      <label> Logo:</label>
-      <%= f.file_field :logo %>
-    </div>
+        </div>
+        <%= f.text_area :description, :rows => 20, :cols => 80 %>
+      </div>
 
+      <div class="submit_btn">
+        <%= f.submit :class => 'search_button', :style => 'width:140px' %>
+        <span class="search_button_right"> </span>
+      </div>
 
-    <div class="item_form_row">
-      <label>Description<span>*</span>:</label>
-      <%= f.text_area :description, :rows => 20, :cols => 80 %>
-    </div>
-
-    <div class="submit_btn">
-      <%= f.submit :class => 'search_button', :style => 'width:140px' %>
-      <span class="search_button_right"> </span>
-    </div>
-
-<% end %>
-
+  <% end %>
+</div>
 
 <style type="text/css">
 

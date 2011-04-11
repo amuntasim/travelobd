@@ -8,7 +8,7 @@ module PackagesHelper
   end
 
   def price_str(package)
-    package.price_per_person? ? "Per Person" : "Total"
+    package.price_per_person? ? t('general.label.per_person') :  t('general.label.total')
   end
 
   def package_spots_links(package)

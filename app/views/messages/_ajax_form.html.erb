@@ -1,11 +1,13 @@
-<h2 style=" margin-bottom: 20px; margin-top: 5px;">Contact Owner</h2>
+<h2 style=" margin-bottom: 20px; margin-top: 5px;">
+  <%= t('general.label.message_to_authority') %>
+</h2>
 
 <%= form_for Message.new, :url=>messages_path, :remote=> true, :html=> {:id=> 'message_form'} do |f| %>
     <div id="message_status" class="white_Desc">
 
     </div>
     <div class="white_Desc">
-      <label>Your <%= t('general.label.name')%>:</label>
+      <label><%= t('general.label.name')%>:</label>
       <%= f.text_field :name, :value => current_user ? current_user.name : '' %>
     </div>
     <div class="white_Desc">
@@ -13,19 +15,25 @@
       <%= f.text_field :email, :value => current_user ? current_user.email : '' %>
     </div>
     <div class="white_Desc">
-      <label>Your Location:</label>
+      <label>
+        <%= t('general.label.address') %>
+      </label>
       <%= f.text_field :address %>
     </div>
     <div class="white_Desc">
-      <label>Your <%= t('general.label.phone')%>#:</label>
+      <label> <%= t('general.label.phone')%> #</label>
       <%= f.text_field :phone %>
     </div>
     <div class="white_Desc">
-      <label>Message <%= t('general.label.title')%>:</label>
+      <label>
+        <%= t('general.label.subject')%>
+      </label>
       <%= f.text_field :title %>
     </div>
     <div class="white_Desc">
-      <label>Your Message:</label>
+      <label>
+        <%= t('general.label.content') %>
+      </label>
       <%= f.text_area :content %>
     </div>
     <% unless current_user %>
@@ -37,7 +45,7 @@
     <div class="submit_btn" style="padding-left:130px;">
       <%= hidden_field_tag :message_status_div, 'message_status' %>
       <div id="submit_to_seller">
-        <input class="search_button" name="" value="Send" type="submit">
+        <%= submit_tag t('helpers.submit.send'), :class => 'search_button' %>
         <span class="search_button_right"> </span>
       </div>
       <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_seller', :style=> 'display:none' %>

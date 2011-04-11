@@ -1,8 +1,9 @@
 <div class="comment">
   <div class="eventDetail eventTitle clear">
-    <%= comment.comment_by %> Says
-    <small style="color:#101050; font-weight: normal;">
-      On <%= comment.created_at.strftime('%d %B, %Y %H:%M:%S') %></small>
+    <%= comment.comment_by %>
+    <%= t('general.label.says') %>
+    <small style="color:#101050; font-weight: normal; float:right;">
+      <%= t('general.label.time') %> : <%= l(comment.created_at).localize %></small>
   </div>
   <div class="eventDetail clear">
     <%= comment.content %>

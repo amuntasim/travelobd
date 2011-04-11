@@ -12,24 +12,20 @@
       <div class="subLink">
         <ul>
           <li>
-            <a href="#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true" class="thickbox">Send
-              Message to Package Owner</a>
-          </li>
-
-          <li><a href="#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true" class="thickbox">Send
-            To a Friend</a>
+            <%= link_to t('general.label.message_to_authority'), "#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true", :class => 'thickbox' %>
           </li>
 
           <li>
-            <%= link_to 'Print', print_package_path(@package) %>
+            <%= link_to t('general.label.tell_your_friends'), "#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true", :class => 'thickbox' %>
+          </li>
+
+          <li>
+            <%= link_to t('helpers.submit.print'), print_package_path(@package) %>
           </li>
           <li id="saved_item_li">
-            <% if @already_saved %>
-                <%= link_to '[ <%= t('general.label.remove')%> ]', 'javascript:void(0)', :class => 'remove_from_save_listing', :sl_id=> @already_saved.id, :savable_id => @package.id, :savable_type => 'Ad' %>  <%= link_to 'Already Saved', my_saved_listings_path %>  &nbsp;
-            <% else %>
-                <%= link_to 'Save This', 'javascript:void(0)', :class => 'save_item', :savable_type => 'Ad', :item_id=> @package.id %>
-            <% end %>
+            <%= render :partial => 'shared_partials/saved_item', :locals => {:savable => @package} %>
           </li>
+
         </ul>
       </div>
     </div>
@@ -45,7 +41,9 @@
 
   <div class="itemDetail pad_TL0"><%= @package.description %></div>
   <% if @package.events.size > 0 %>
-      <div class="good_item_head">Tour Plan Day to Day</div>
+      <div class="good_item_head">
+        <%= t('general.label.tour_plan_day_to_day') %>
+      </div>
       <div class="itemDetail">
         <% @package.events.each do |event| %>
             <div class="eventTitle clear"><%= event.time %></div>
@@ -55,10 +53,15 @@
   <% end %>
 
   <% if @package.itineraries.size > 0 %>
-      <div class="good_item_head">Tour Itineraries</div>
+      <div class="good_item_head">
+        <%= t('activerecord.models.package') %>
+        <%= t('general.label.itinerary') %>
+      </div>
       <div class="itemDetail">
         <% if @package.spots.size > 0 %>
-            <div class="eventTitle">Interesting Places</div>
+            <div class="eventTitle">
+              <%= t('general.label.spots') %>
+            </div>
             <div class="eventDetail"><%= raw package_spots_links(@package) %></div>
         <% end %>
         <% @package.itineraries.each do |itinerary| %>
@@ -68,19 +71,32 @@
       </div>
   <% end %>
 
-  <div class="good_item_head">Tour Cost</div>
+  <div class="good_item_head">
+    <%= t('activerecord.models.package') %>
+    <%= t('general.label.cost') %>
+  </div>
   <div class="itemDetail">
-    <div class="eventDetail eventTitle clear"> Tour Cost :
-      <span style="color: #FF7D01; font-size:20px;"><%= @package.price %>
-        <span style="font-weight:normal; font-size:12px">BDT. <%= raw price_str(@package) %></span> </span>
+    <div class="eventDetail eventTitle clear">
+      <%= t('activerecord.models.package') %>
+      <%= t('general.label.cost') %>
+      <span style="color: #FF7D01; font-size:20px;"><%= @package.price.localize %>
+        <span style="font-weight:normal; font-size:12px">
+          <%= t('general.label.taka') %>
+          <%= raw price_str(@package) %></span> </span>
     </div>
-    <div class=" eventTitle">Price Includes</div>
+    <div class=" eventTitle">
+      <%= t('general.label.price_included') %>
+    </div>
     <div class="eventDetail "><%= @package.price_includes %></div>
-    <div class=" eventTitle">Price Excludes</div>
+    <div class=" eventTitle">
+      <%= t('general.label.price_excluded') %>
+    </div>
     <div class="eventDetail "><%= @package.price_excludes %></div>
   </div>
 
-  <div class="good_item_head">Conditions</div>
+  <div class="good_item_head">
+    <%= t('general.label.conditions') %>
+  </div>
   <div class="itemDetail condition">
     <ul>
       <% @package.conditions.each do |condition| %>
@@ -89,12 +105,14 @@
     </ul>
   </div>
 
-  <div class="good_item_head">Contact</div>
+  <div class="good_item_head">
+    <%= t('general.label.contacts') %>
+  </div>
   <div class="itemDetail">
     <div class="eventDetail eventTitle clear"><%= @package.company %></div>
     <% @package.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
-        <div class="eventDetail clear"><%= t('general.label.phone')%>: <%= contact.phone %></div>
+        <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
     <% end %>
   </div>
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @package, :rating => true} %>

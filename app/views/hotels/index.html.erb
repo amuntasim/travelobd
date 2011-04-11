@@ -1,9 +1,9 @@
 <% title @search_title %>
 
 <div class="pageHead">
-  Hotels
+  <%= t('activerecord.models.hotel') %>
   <div class="pageHeadOptions">
-    <b>Sort by: </b> <%= link_to 'Price', '#' %>
+    <!-- <b>Sort by: </b> <%= link_to 'Price', '#' %>-->
   </div>
 </div>
 
@@ -21,25 +21,24 @@
             <h4><%= hotel.location %></h4>
           </div>
           <div class="fl description">
-            <%#= truncate(sanitize(hotel.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
-            <%= truncate(sanitize(hotel.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(hotel.description).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
           </div>
 
         </div>
         <div class="fl price_n_button">
           <div class="fl">
-            <!--<div class="fl price">-->
-            <!--Starting from : <span><%= hotel.minimum_price %></span>-->
-            <!--</div>-->
-            <!--<div class="fl rating">-->
-            <!--Like: 1000-->
-            <!--<span style="float:right;">-->
-            <!--Rating: 4-->
-            <!--</span>-->
-            <!--</div>-->
+            <div class="fl price">
+              <% if hotel.starting_price > 0 %>
+                  <%= t('general.label.starting_price') %>
+                  :
+                  <span>
+                    <%= hotel.starting_price.localize %>
+                     <%= t('general.label.taka') %>
+                  </span>
+              <% end %>
+            </div>
           </div>
-          <%= link_to 'Details', hotel, :class => 'detail_link' %>
-          <%#= link_to 'Book This', hotel, :class => 'book_link' %>
+          <%= link_to t('general.label.details'), hotel, :class => 'detail_link' %>
         </div>
       </div>
 

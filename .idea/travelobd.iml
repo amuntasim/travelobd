@@ -184,6 +184,25 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] mail (v2.2.15, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/mail-2.2.15)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] polyglot (v0.3.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/polyglot-0.3.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.4, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/activemodel-3.0.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activemerchant (v1.12.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/activemerchant-1.12.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] omniauth (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/omniauth-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails3-jquery-autocomplete (v0.6.5, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/rails3-jquery-autocomplete-0.6.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] friendly_id (v3.2.1.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/friendly_id-3.2.1.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] mysql2 (v0.2.7, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/mysql2-0.2.7)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] typus (v3.0.10, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/typus-3.0.10)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] paperclip (v2.3.11, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/paperclip-2.3.11)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] globalize3 (v0.0.11, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/globalize3-0.0.11)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] yajl-ruby (v0.8.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/yajl-ruby-0.8.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-openid (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-openid-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-core (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-core-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-enterprise (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-enterprise-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-oauth (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-oauth-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] babosa (v0.3.3, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/babosa-0.3.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] bcrypt-ruby (v2.1.4, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/bcrypt-ruby-2.1.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] faraday (v0.6.0, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/faraday-0.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-basic (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-basic-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-more (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-more-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oauth2 (v0.2.0, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oauth2-0.2.0)" level="application" />
   </component>
 </module>
 

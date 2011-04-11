@@ -19,6 +19,8 @@ class TourOperator < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true
 
+  validates :name, :presence =>  true
+  validates :address, :presence =>  true
 
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :policies, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true

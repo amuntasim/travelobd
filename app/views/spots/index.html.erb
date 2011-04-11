@@ -1,9 +1,9 @@
 <% title @search_title %>
 
 <div class="pageHead">
-  Spots
+  <%= t('activerecord.models.spot') %>
   <div class="pageHeadOptions">
-    <b>Sort by: </b> <%= link_to '...', '#' %>
+
   </div>
 </div>
 
@@ -17,10 +17,12 @@
         <div class="fl hotel_desc_info">
           <div class="fl title">
             <%= link_to truncate(spot.title, :length => 50), spot %>
-            <h4>&nbsp;</h4>
+            <h4>
+              <%= spot.location %>
+            </h4>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(spot.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(spot.description).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
           </div>
 
         </div>
@@ -29,14 +31,9 @@
             <div class="fl price">
 
             </div>
-            <!--<div class="fl rating">-->
-            <!--Like: 1000-->
-            <!--<span style="float:right;">-->
-            <!--Rating: 4-->
-            <!--</span>-->
-            <!--</div>-->
+
           </div>
-          <%= link_to 'Details', spot, :class => 'detail_link' %>
+         <%= link_to t('general.label.details'), spot, :class => 'detail_link' %>
         </div>
       </div>
 

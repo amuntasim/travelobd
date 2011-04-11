@@ -1,9 +1,9 @@
 <% title @search_title || 'Tour Operator list' %>
 
 <div class="pageHead">
-  Tour Operators
+  <%= t('activerecord.models.tour_operator') %>
   <div class="pageHeadOptions">
-    <b>Sort by: </b> <%= link_to 'Price', '#' %>
+   <!-- <b>Sort by: </b> <%= link_to 'Price', '#' %>-->
   </div>
 </div>
 
@@ -17,10 +17,10 @@
         <div class="fl hotel_desc_info">
           <div class="fl title">
             <%= link_to truncate(tour_operator.name, :length => 50), tour_operator %>
-            <h4><%= tour_operator.address %></h4>
+            <h4><%= truncate(tour_operator.address, :length => 70) %></h4>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(tour_operator.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(tour_operator.description*7).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
           </div>
 
         </div>
@@ -29,15 +29,9 @@
             <div class="fl price">
 
             </div>
-            <!--<div class="fl rating">-->
-            <!--Like: 1000-->
-            <!--<span style="float:right;">-->
-            <!--Rating: 4-->
-            <!--</span>-->
-            <!--</div>-->
+
           </div>
-          <%= link_to 'Details', tour_operator, :class => 'detail_link' %>
-          <%#= link_to 'Book This', tour_operator, :class => 'book_link' %>
+         <%= link_to t('general.label.details'), tour_operator, :class => 'detail_link' %>
         </div>
       </div>
 

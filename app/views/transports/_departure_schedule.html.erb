@@ -2,10 +2,11 @@
 
   <%= form.fields_for :departure_schedules, departure_schedule, :child_index => (departure_schedule.new_record? ? "index_to_replace_with_js" : nil) do |departure_schedule_form| %>
       <div class="package_event_time">
-        Route
+        <%= t('general.label.route') %>
       </div>
       <div class="package_contact_address">
-        Departure Times [Comma separated (1:00pm, 3:30PM etc.)]
+        <%= t('general.label.departure_time') %>
+        <%= t('general.label.comma_separated_time') %>
       </div>
 
       <div class="package_event_time clear">
@@ -18,10 +19,12 @@
 
       <div class="deleteLink">
         <% if departure_schedule.new_record? %>
-            <span class="removeDepartureScheduleField"> <%= t('general.label.remove')%></span>
+            <span class="removeDepartureScheduleField"> <%= t('general.label.remove') %></span>
         <% else %>
             <%= departure_schedule_form.check_box :_destroy %>
-            Delete
+            <span class="deleteLink deleteLinkCheckbox">
+              <%= t('helpers.delete') %>
+            </span>
         <% end %>
       </div>
   <% end %>

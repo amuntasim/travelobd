@@ -51,7 +51,6 @@ ul li {
     position: absolute;
     z-index: 10;
 
-
 }
 
 .top_bar_box {
@@ -727,6 +726,11 @@ a.del_photo {
     height: 44px;
 }
 
+.no_location .title {
+    width: 100%;
+    height: 24px;
+}
+
 .listItemDesc .title h4 {
     margin-bottom: 7px;
     color: #A7A7A7;
@@ -750,6 +754,10 @@ a.del_photo {
     padding-bottom: 10px;
     line-height: 18px;
 
+}
+
+.no_location .description {
+    height: 99px;
 }
 
 .listItemDesc .rating {
@@ -869,7 +877,14 @@ div.ui-datepicker-div {
 }
 
 select {
-    padding: 3px;
+    padding-top: 3px;
+    padding-left: 2px;
+    padding-right: 3px;
+}
+
+select option {
+    padding: 0px 4px;
+
 }
 
 input {

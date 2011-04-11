@@ -1,108 +1,112 @@
+<% title localized_item_header(@room) %>
+<div class="pageHead">
+  <%= localized_item_header(@room) %>
+</div>
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.validate' %>
-    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+    <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
+<div class="item_form">
+  <%= form_for(@room, :html=> {:multipart => true, :id=> 'room_form'}) do |f| %>
+      <% @builder = f %>
+      <%= error_messages_for(@room) %>
 
-<%= form_for(@room, :html=> {:multipart => true, :id=> 'room_form'}) do |f| %>
-    <% @builder = f %>
-    <% if @room.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <div class="form_summary" id="summary"></div>
 
-          <ul>
-            <% @room.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('activerecord.models.hotel') %>
+          <span>*</span>
         </div>
-    <% end %>
-    <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
 
-    </div>
-    <div class="item_form_row">
-      <label>
-        <span>*</span> Hotel:
-      </label>
+        <%= f.select :hotel_id, @my_hotels.collect { |h| [h.name, h.id] }, :prompt=> 'Select Hotel' %>
+      </div>
 
-      <%= f.select :hotel_id, @my_hotels.collect { |h| [h.name, h.id] }, :prompt=> 'Select Hotel' %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        <span>*</span> <%= t('general.label.name')%>:
-      </label>
-      <%= f.text_field :name %>  [ Deluxe, Classic, Presidential suit etc. ]
-    </div>
-    <div class="item_form_row">
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.name') %>
+          <span>*</span>
+        </div>
+        <%= f.text_field :name %>  [ Deluxe, Classic, Presidential suit etc. ]
+      </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.description') %>
+        </div>
+        <%= f.text_area :description %>
+      </div>
 
 
-    <div class="item_form_row">
-      <%= f.label :features %>
-      <div class="f_edit_row photo_box">
-        <% @features_for_room.each do |feature| %>
-            <div class="room_feature">
-              <%= check_box_tag "room[feature_ids][]", feature.id, room_feature_present?(feature) -%>
-              <span>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.features') %>
+
+        </div>
+        <div class="f_edit_row photo_box">
+          <% @features_for_room.each do |feature| %>
+              <div class="room_feature">
+                <%= check_box_tag "room[feature_ids][]", feature.id, room_feature_present?(feature) -%>
+                <span>
               <%= feature.name -%>
               </span>
-            </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        Price (Per Night):
-      </label>
-      <%= f.text_field :price %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        Total room:
-      </label>
-      <%= f.text_field :total_room, :size => 6 %>
-    </div>
-
-    <div class="item_form_row">
-      <label> Image:</label>
-
-      <div class="photo_box">
-        <!-- <h3>Images <span style="font-size: 11px;"><%#= ad_photo_number_str(@room) %></span></h3>-->
-        <div class="edit_img_row">
-
-          <% unless @room.new_record? %>
-              <%= render :partial => 'existing_photo', :collection => @room.assets %>
+              </div>
           <% end %>
+        </div>
+      </div>
 
-          <div id="room_photos">
-            <%= render :partial => 'photo', :locals => {:form => f, :photo => @room.assets.new} if @room.new_record? %>
-          </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.room_fare') %>
+        </div>
+        <%= f.text_field :price %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.total_rooms') %>
 
         </div>
-        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        <%= f.text_field :total_room, :size => 6 %>
       </div>
-    </div>
-    <div class="submit_btn">
-      <%= f.submit :class => 'search_button' %>
-      <%= hidden_field_tag 'add_more', '' %>
-      <span class="search_button_right"> </span>
-      <% if @room.new_record? %>
-          <%= submit_tag 'Create and Add Another', :id=> 'create_and_add_another', :class => 'search_button', :style => 'width:175px' %>
-          <span class="search_button_right"> </span>
-          <style type="text/css">
-              div.item_form .submit_btn {
-                  margin-left: 175px;
-              }
-          </style>
-      <% end %>
-    </div>
 
-<% end %>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.image') %>
+          <span>*</span>
+        </div>
+        <div class="photo_box">
+          <!-- <h3>Images <span style="font-size: 11px;"><%#= ad_photo_number_str(@room) %></span></h3>-->
+          <div class="edit_img_row">
 
+            <% unless @room.new_record? %>
+                <%= render :partial => 'existing_photo', :collection => @room.assets %>
+            <% end %>
+
+            <div id="room_photos">
+              <%= render :partial => 'photo', :locals => {:form => f, :photo => @room.assets.new} if @room.new_record? %>
+            </div>
+
+          </div>
+          <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        </div>
+      </div>
+      <div class="submit_btn">
+        <%= f.submit :class => 'search_button' %>
+        <%= hidden_field_tag 'add_more', '' %>
+        <span class="search_button_right"> </span>
+        <% if @room.new_record? %>
+            <%= submit_tag 'Create and Add Another', :id=> 'create_and_add_another', :class => 'search_button', :style => 'width:175px' %>
+            <span class="search_button_right"> </span>
+            <style type="text/css">
+                div.item_form .submit_btn {
+                    margin-left: 175px;
+                }
+            </style>
+        <% end %>
+      </div>
+
+  <% end %>
+</div>
 <div style="display: none">
 
   <div id="new_photo_html">

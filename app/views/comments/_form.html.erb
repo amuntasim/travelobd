@@ -7,21 +7,27 @@
 <% form_for [commentable, comment], :remote => true, :html => {:id =>'comment_form'} do |f| %>
     <% unless current_user %>
         <div class="item_form_row comment_row">
-          <%= f.label :name %>
+          <div class="label">
+            <%= f.label :name, t('general.label.name') %>
+          </div>
           <%= f.text_field :name %>
         </div>
         <div class="item_form_row  comment_row">
-          <%= f.label :email %>
+          <div class="label">
+            <%= f.label :email, t('general.label.email') %>
+          </div>
           <%= f.text_field :email %>
         </div>
     <% end %>
     <div class="item_form_row  comment_row">
-      <%= f.label :content %>
+      <div class="label">
+        <%= f.label :content, t('general.label.content') %>
+      </div>
       <%= f.text_area :content, :rows => 7, :cols => 60 %>
     </div>
 
     <div class="submit_btn" style="margin-left:270px;">
-      <%= f.submit :class => 'search_button', :id=> 'submit_comment' %>
+      <%= f.submit t('helpers.submit.create_comment'), :class => 'search_button', :id=> 'submit_comment' %>
       <span class="search_button_right"> </span>
     </div>
 

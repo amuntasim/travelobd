@@ -145,8 +145,11 @@ en:
       search: "Search"
       create_comment: "Create Comment"
       save: "Save"
+      print: "Print"
+      send: "Send"
     select:
       prompt: "Please select"
+      any: "--Any--"
 
   errors:
     format: "%{attribute} %{message}"
@@ -198,67 +201,94 @@ en:
       tour_club: "Tour Club"
 
   general:
-      label:
-        address: 'Address'
-        add_more: '+ Add More'
-        category: 'Category'
-        contacts: 'Contacts'
-        company: 'Company'
-        conditions: "Conditions"
-        condition: "COndition"
-        comments: "Comments"
-        cancellation: "Cancellation"
-        cost_idea: "Cost Idea"
-        create_account: "New Account"
-        dashboard: 'Dashboard'
-        description: 'Description'
-        destinations: 'Destinations'
-        division: 'Division'
-        discount: 'Discount'
-        district: 'District'
-        discount_till: 'Discount till'
-        details: 'Details'
-        event_detail: "Event Details"
-        email: "Email"
-        features: 'Features'
-        featured: 'Featured'
-        home: 'Home'
-        hot_package: 'Hot Packages'
-        hotel_rating: 'Rating'
-        image: 'Image'
-        login_n_other: 'Login & Others'
-        login: 'Login'
-        logout: 'Logout'
-        latitude: 'Latitude'
-        longitude: 'Longitude'
-        location: 'Location'
-        nearby_spots: 'Nearby Spots'
-        name: 'Name'
-        next: 'Next'
-        phone: 'Phone'
-        policies: 'Policies'
-        previous: 'Previous'
-        price: 'Price'
-        per_person: 'per person'
-        rating: 'Rating'
-        read_more: "Read More"
-        rooms_tariff: 'Rooms Tariff'
-        remove: 'Remove'
-        see_in_bn: 'বাংলাতে দেখুন'
-        search: 'Search'
-        side_scenes: 'Side Scenes'
-        send_message: "Send Message"
-        spots: "Spots"
-        star: 'Star'
-        start_date: 'Start Date'
-        end_date: 'End Date'
-        tour_cost: "Tour Costs"
-        type: "Type"
-        tariff: "Tariff"
-        tell_your_friends: "Tell Your Friends"
-        time: "Time"
-        title: "Title"
-        taka: "TK"
-        total_rooms: 'Total Rooms'
-        welcome_guest: 'Welcome Guest!'
+    label:
+      address: 'Address'
+      add_more: '+ Add More'
+      already_saved: 'Already Saved'
+      branches: 'Branches'
+      category: 'Category'
+      contacts: 'Contacts'
+      company: 'Company'
+      conditions: "Conditions"
+      condition: "COndition"
+      comments: "Comments"
+      content: 'Content'
+      cancellation: "Cancellation"
+      cost_idea: "Cost Idea"
+      cost: "Cost"
+      create_account: "New Account"
+      comma_separated_time: '[Comma separated (1:00pm, 3:30PM etc.)]'
+      dashboard: 'Dashboard'
+      description: 'Description'
+      destinations: 'Destinations'
+      division: 'Division'
+      discount: 'Discount'
+      district: 'District'
+      discount_till: 'Discount till'
+      details: 'Details'
+      departure_time: 'Departure Time'
+      event_detail: "Event Details"
+      email: "Email"
+      features: 'Features'
+      featured: 'Featured'
+      home: 'Home'
+      hot_package: 'Hot Packages'
+      how_to_go: 'How to go'
+      history: 'History'
+      hotel_rating: 'Rating'
+      image: 'Image'
+      if_list_style_required: ' [start line with *[space] if you want to see it as bullet list ( * foo ) ]'
+      login_n_other: 'Login & Others'
+      login: 'Login'
+      logout: 'Logout'
+      latitude: 'Latitude'
+      longitude: 'Longitude'
+      location: 'Location'
+      location_map: 'Location Map'
+      logo: 'Logo'
+      message_to_authority: "Send message to authority"
+      nearby_spots: 'Nearby Spots'
+      name: 'Name'
+      next: 'Next'
+      phone: 'Phone'
+      policies: 'Policies'
+      previous: 'Previous'
+      price: 'Price'
+      per_person: 'per person'
+      rating: 'Rating'
+      read_more: "Read More"
+      rooms_tariff: 'Rooms Tariff'
+      room_type: 'Room Type'
+      remove: 'Remove'
+      route: 'Route'
+      related: 'Related'
+      room_fare: 'Room Fare ( per night )'
+      see_in_bn: 'বাংলাতে দেখুন'
+      search: 'Search'
+      side_scenes: 'Side Scenes'
+      send_message: "Send Message"
+      spots: "Spots"
+      star: 'Star'
+      start_date: 'Start Date'
+      subject: 'Subject'
+      says: 'says'
+      starting_price: 'Starting Price'
+      services: 'Services'
+      schedule: 'Schedule'
+      end_date: 'End Date'
+      tour_cost: "Tour Costs"
+      type: "Type"
+      tariff: "Tariff"
+      tell_your_friends: "Tell Your Friends"
+      time: "Time"
+      title: "Title"
+      taka: "TK"
+      total_rooms: 'Total Rooms'
+      tour_plan_day_to_day: 'Tour Plan Day to Day'
+      total: 'Total'
+      tag: 'Tag'
+      welcome_guest: 'Welcome Guest!'
+      website: 'Website'
+      where_to_stay: 'Where to stay'
+      your: 'Your'
 

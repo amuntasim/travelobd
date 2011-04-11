@@ -8,7 +8,7 @@
 /*next button*/
 .bx-next {
     position: absolute;
-    top: 90%;
+    top: 73%;
     right: 8px;
     z-index: 999;
     width: 30px;
@@ -20,7 +20,7 @@
 /*previous button*/
 .bx-prev {
     position: absolute;
-    top: 90%;
+    top: 73%;
     left: 15px;
     z-index: 999;
     width: 30px;

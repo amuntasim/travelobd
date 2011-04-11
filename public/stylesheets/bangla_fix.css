@@ -7,16 +7,16 @@
     font-family: Solaimanlipi;
     font-size: 15px;
     padding-top: 4px;
-    padding-left:27px;
-    padding-right:27px;
-    line-height:25px;
+    padding-left: 27px;
+    padding-right: 27px;
+    line-height: 25px;
 }
 
 .home_left_header_content {
     font-family: Solaimanlipi;
     font-size: 15px;
     padding-top: 3px;
-    line-height:26px;
+    line-height: 26px;
 }
 
 .gallery_controll_images {
@@ -27,10 +27,18 @@
     margin-bottom: 3px;
 }
 
-.package_desc .price_n_button a {
+.package_desc .price_n_button a, .listItemDesc .price_n_button a  {
     padding-top: 1px !important;
 }
 
-.package_desc .price {
+.package_desc .price, .listItemDesc .price  {
     line-height: 22px !important;
+}
+
+.good_item_head {
+    font-size: 15px;
+}
+
+.listItemDesc .description {
+    line-height:20px;
 }

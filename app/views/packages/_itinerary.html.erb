@@ -16,10 +16,12 @@
       </div>
       <div class="deleteLink">
         <% if itinerary.new_record? %>
-            <span class="removeEventField"> <%= t('general.label.remove')%></span>
+            <span class="removeItineraryField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= itinerary_form.check_box :_destroy %>
-            Delete
+            <span class="deleteLink deleteLinkCheckbox">
+              <%= t('helpers.delete') %>
+            </span>
         <% end %>
       </div>
   <% end %>

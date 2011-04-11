@@ -13,17 +13,16 @@
       <div class="subLink">
         <ul>
           <li>
-            <a href="#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true" class="thickbox">Send
-              Message to Hotel Owner</a>
-          </li>
-          <li><a href="#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true" class="thickbox">Send
-            To a Friend</a>
+            <%= link_to t('general.label.message_to_authority'), "#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true", :class => 'thickbox' %>
           </li>
 
           <li>
-            <%= link_to 'Print This', print_hotel_path(@hotel) %>
+            <%= link_to t('general.label.tell_your_friends'), "#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true", :class => 'thickbox' %>
           </li>
 
+          <li>
+            <%= link_to t('helpers.submit.print'), print_hotel_path(@hotel) %>
+          </li>
           <li id="saved_item_li">
             <%= render :partial => 'shared_partials/saved_item', :locals => {:savable => @hotel} %>
           </li>
@@ -83,13 +82,13 @@
   </div>
   <div class="itemDetail eventDetail">
     <div class="roomTitleHeader eventTitle fl">
-      Room Type
+      <%= t('general.label.room_type') %>
     </div>
     <div class="eventTitle roomPriceHeader  fl">
-      Tariff/night
+         <%= t('general.label.rooms_tariff') %>
     </div>
     <div class="eventTitle roomTitleHeader  fl">
-      Total Rooms
+       <%= t('general.label.total_rooms') %>
     </div>
 
     <% @hotel.rooms.each do |room| %>
@@ -97,27 +96,33 @@
           <%= link_to room.name, room, :target => '_blank' %>
         </div>
         <div class="roomPrice fl">
-          <%= room.price %>
+          <%= room.price.localize %>
         </div>
         <div class="roomTitle fl">
-          <%= room.total_room %>
+          <%= room.total_room.localize %>
         </div>
     <% end %>
   </div>
 
-  <div class="good_item_head">Hotel Features</div>
+  <div class="good_item_head">
+    <%= t('general.label.features') %>
+  </div>
   <div class="itemDetail eventDetail">
     <%= raw hotel_features_list(@hotel) %>
   </div>
 
 
   <% if @hotel.valid_lat_long? %>
-      <div class="good_item_head">Location Map</div>
+      <div class="good_item_head">
+        <%= t('general.label.location_map') %>
+      </div>
       <div class="itemDetail">
         <div id="map"></div>
       </div>
   <% end %>
-  <div class="good_item_head">Policies</div>
+  <div class="good_item_head">
+      <%= t('general.label.policies') %>
+  </div>
   <div class="itemDetail">
     <% @hotel.policies.each do |policy| %>
         <div class="eventTitle clear"><b><%= policy.title %></b></div>
@@ -125,7 +130,9 @@
     <% end %>
   </div>
 
-  <div class="good_item_head">Contacts</div>
+  <div class="good_item_head">
+     <%= t('general.label.contacts') %>
+  </div>
   <div class="itemDetail">
     <% @hotel.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>

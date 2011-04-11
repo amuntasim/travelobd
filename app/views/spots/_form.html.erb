@@ -1,161 +1,179 @@
+<% title localized_item_header(@spot) %>
+<div class="pageHead">
+  <%= localized_item_header(@spot) %>
+</div>
 <%= content_for :js_css_include do %>
     <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
+<div class="item_form">
+  <%= form_for(@spot, :html=> {:multipart => true, :id=> 'spot_form'}) do |f| %>
+      <% @builder = f %>
+      <%= error_messages_for(@spot) %>
 
-<%= form_for(@spot, :html=> {:multipart => true, :id=> 'spot_form'}) do |f| %>
-    <% @builder = f %>
-    <% if @spot.errors.any? %>
-        <div id="error_explanation clear">
-          <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
+      <div class="form_summary" id="summary"></div>
 
-          <ul>
-            <% @spot.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.category') %>
+          <span>*</span>
+        </div>
+
+        <%= f.select :category_id, Spot::CATEGORIES, :prompt=> 'Select Category' %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.name') %>
+          <span>*</span>
+        </div>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('activerecord.attributes.short_description') %>
+          <span>*</span>
+        </div>
+        <%= f.text_field :short_description %>
+      </div>
+
+      <div class="item_form_row" id="history_wrapper">
+        <div class="label">
+          <%= t('general.label.history') %>
+        </div>
+        <%= f.text_area :history, :class => "tiny_redcloth" %>
+      </div>
+
+      <div class="item_form_row" id="description_wrapper">
+        <div class="label">
+          <%= t('general.label.details') %>
+        </div>
+        <%= f.text_area :description, :class => "tiny_redcloth" %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.how_to_go') %>
+        </div>
+        <%= f.text_area :how_to_go %>
+      </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.where_to_stay') %>
+        </div>
+        <%= f.text_area :where_to_stay %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.division') %>
+          <span>*</span>
+        </div>
+        <%= f.select :division_id, Division.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.district') %>
+          <span>*</span>
+        </div>
+        <%= f.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
+        <%= image_tag 'spin.gif', :id => 'district_loading', :class => 'loading_image' %>
+      </div>
+
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.latitude') %>
+
+        </div>
+        <%= f.text_field :latitude %>
+      </div>
+
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.longitude') %>
+
+        </div>
+        <%= f.text_field :longitude %>
+      </div>
+
+
+      <div class="item_form_row">
+        <div class="label wider">
+          <%= t('general.label.side_scenes') %>
+
+        </div>
+
+        <div class="f_edit_row photo_box" style="width:705px;">
+
+
+          <div id="spot_side_scenes" class="package_events">
+
+            <% unless @spot.new_record? %>
+                <%= render :partial => 'side_scene', :collection => @spot.side_scenes, :locals => {:form => f} %>
             <% end %>
-          </ul>
-        </div>
-    <% end %>
-    <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
-
-    </div>
-    <div class="item_form_row">
-      <label>
-        Category<span>*</span> :
-      </label>
-
-      <%= f.select :category_id, Spot::CATEGORIES, :prompt=> 'Select Category' %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        <%= t('general.label.name')%><span>*</span>:
-      </label>
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        Short Description<span>*</span>:
-      </label>
-      <%= f.text_field :short_description %>
-    </div>
-
-    <div class="item_form_row" id="history_wrapper">
-      <%= f.label :history %>
-      <%= f.text_area :history, :class => "tiny_redcloth" %>
-    </div>
-
-    <div class="item_form_row" id="description_wrapper">
-      <%= f.label :detail %>
-      <%= f.text_area :description, :class => "tiny_redcloth" %>
-    </div>
-
-    <div class="item_form_row">
-      <%= f.label :how_to_go %>
-      <%= f.text_area :how_to_go %>
-    </div>
-    <div class="item_form_row">
-      <%= f.label :where_to_stay %>
-      <%= f.text_area :where_to_stay %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        <span>*</span> Division:
-      </label>
-      <%= f.select :division_id, Division.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        <span>*</span>
-        District
-      </label>
-      <%= f.select :district_id, District.all.collect { |d| [d.name, d.id] }, :include_blank => '--Select--' %>
-      <%= image_tag 'spin.gif', :id => 'district_loading', :class => 'loading_image' %>
-    </div>
-
-
-    <div class="item_form_row">
-      <label> Latitude:</label>
-      <%= f.text_field :latitude %>
-    </div>
-
-    <div class="item_form_row">
-      <label> Longitude:</label>
-      <%= f.text_field :longitude %>
-    </div>
-
-
-
-    <div class="item_form_row">
-      <label class="wider"> Side Scenes:</label>
-
-      <div class="f_edit_row photo_box" style="width:705px;">
-
-
-        <div id="spot_side_scenes" class="package_events">
-
-          <% unless @spot.new_record? %>
-              <%= render :partial => 'side_scene', :collection => @spot.side_scenes, :locals => {:form => f} %>
-          <% end %>
-          <%= render :partial => 'side_scene', :locals => {:form => f, :side_scene => @spot.side_scenes.new} if @spot.new_record? || @spot.side_scenes.size == 0 %>
-        </div>
-
-        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreSideScene' %>
-      </div>
-
-    </div>
-
-    <div class="item_form_row">
-      <label class="wider"> Cost Ideas:</label>
-
-      <div class="f_edit_row photo_box" style="width:705px;">
-
-
-        <div id="spot_cost_items" class="package_events">
-
-          <% unless @spot.new_record? %>
-              <%= render :partial => 'cost_item', :collection => @spot.cost_items, :locals => {:form => f} %>
-          <% end %>
-          <%= render :partial => 'cost_item', :locals => {:form => f, :cost_item => @spot.cost_items.new} if @spot.new_record? || @spot.cost_items.size == 0 %>
-        </div>
-
-        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreCostItem' %>
-      </div>
-
-    </div>
-
-
-
-    <div class="item_form_row">
-      <label> Image:</label>
-
-      <div class="photo_box">
-        <!-- <h3>Images <span style="font-size: 11px;"><%#= ad_photo_number_str(@spot) %></span></h3>-->
-        <div class="edit_img_row">
-
-          <% unless @spot.new_record? %>
-              <%= render :partial => 'shared_partials/existing_photo', :collection => @spot.assets %>
-          <% end %>
-
-          <div id="spot_photos">
-            <%= render :partial => 'shared_partials/photo', :locals => {:form => f, :photo => @spot.assets.new} if @spot.new_record? %>
+            <%= render :partial => 'side_scene', :locals => {:form => f, :side_scene => @spot.side_scenes.new} if @spot.new_record? || @spot.side_scenes.size == 0 %>
           </div>
 
+          <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreSideScene' %>
         </div>
-        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+
       </div>
-    </div>
+
+      <div class="item_form_row">
+        <div class="label wider">
+          <%= t('general.label.cost_idea') %>
+
+        </div>
+        <div class="f_edit_row photo_box" style="width:705px;">
 
 
-    <div class="submit_btn">
-      <%= f.submit :class => 'search_button' %>
-      <span class="search_button_right"> </span>
-    </div>
-<% end %>
+          <div id="spot_cost_items" class="package_events">
 
+            <% unless @spot.new_record? %>
+                <%= render :partial => 'cost_item', :collection => @spot.cost_items, :locals => {:form => f} %>
+            <% end %>
+            <%= render :partial => 'cost_item', :locals => {:form => f, :cost_item => @spot.cost_items.new} if @spot.new_record? || @spot.cost_items.size == 0 %>
+          </div>
+
+          <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreCostItem' %>
+        </div>
+
+      </div>
+
+
+      <div class="item_form_row">
+        <div class="label wider">
+          <%= t('general.label.image') %>
+
+        </div>
+
+        <div class="photo_box">
+          <!-- <h3>Images <span style="font-size: 11px;"><%#= ad_photo_number_str(@spot) %></span></h3>-->
+          <div class="edit_img_row">
+
+            <% unless @spot.new_record? %>
+                <%= render :partial => 'shared_partials/existing_photo', :collection => @spot.assets %>
+            <% end %>
+
+            <div id="spot_photos">
+              <%= render :partial => 'shared_partials/photo', :locals => {:form => f, :photo => @spot.assets.new} if @spot.new_record? %>
+            </div>
+
+          </div>
+          <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreImage' %>
+        </div>
+      </div>
+
+
+      <div class="submit_btn">
+        <%= f.submit :class => 'search_button' %>
+        <span class="search_button_right"> </span>
+      </div>
+  <% end %>
+</div>
 <div style="display: none">
 
   <div id="new_photo_html">

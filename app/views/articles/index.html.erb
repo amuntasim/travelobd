@@ -1,6 +1,6 @@
 <% title @search_title %>
 <div class="pageHead">
-  Articles
+  <%= t('activerecord.models.article') %>
   <div class="pageHeadOptions">
 
   </div>
@@ -28,14 +28,9 @@
             <div class="fl price">
 
             </div>
-            <!--<div class="fl rating">-->
-            <!--Like: 1000-->
-            <!--<span style="float:right;">-->
-            <!--Rating: 4-->
-            <!--</span>-->
-            <!--</div>-->
+
           </div>
-          <%= link_to 'Details', article, :class => 'detail_link' %>
+          <%= link_to t('general.label.details'), article, :class => 'detail_link' %>
         </div>
       </div>
 

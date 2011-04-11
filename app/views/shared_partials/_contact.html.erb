@@ -35,7 +35,9 @@
             <span class="removeContactField"> <%= t('general.label.remove')%></span>
         <% else %>
             <%= contact_form.check_box :_destroy %>
-            Delete
+            <span class="deleteLink deleteLinkCheckbox">
+              <%= t('helpers.delete') %>
+            </span>
         <% end %>
       </div>
   <% end %>

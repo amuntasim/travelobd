@@ -20,13 +20,17 @@
 
 
   <% if   @spot.history && @spot.history.length > 10 %>
-      <div class="good_item_head">History</div>
+      <div class="good_item_head">
+        <%= t('general.label.history') %>
+      </div>
       <div class="itemDetail">
         <%= @spot.history %>
       </div>
   <% end %>
 
-  <div class="good_item_head">Side Scenes</div>
+  <div class="good_item_head">
+    <%= t('general.label.side_scenes') %>
+  </div>
   <div class="itemDetail">
     <% @spot.side_scenes.each do |side_scene| %>
         <div class="eventTitle clear"><b><%= side_scene.title %></b></div>
@@ -35,12 +39,17 @@
   </div>
 
 
-  <div class="good_item_head">How to go</div>
+  <div class="good_item_head">
+    <%= t('general.label.how_to_go') %>
+  </div>
   <div class="itemDetail">
     <%= @spot.how_to_go %>
   </div>
   <div class="itemDetail">
-    <div class="eventTitle clear"><b>Associated Transports</b></div>
+    <div class="eventTitle clear"><b>
+      <%= t('general.label.related') %>
+      <%= t('activerecord.models.transport') %>
+    </b></div>
     <div class="eventDetail clear"><%= raw spot_transports_links(@spot) %></div>
   </div>
 
@@ -50,20 +59,27 @@
   </div>
 
   <% if   @spot.where_to_stay && @spot.where_to_stay.length > 10 %>
-      <div class="good_item_head">Where to stay</div>
+      <div class="good_item_head">
+        <%= t('general.label.where_to_stay') %>
+      </div>
       <div class="itemDetail">
         <%= @spot.where_to_stay %>
       </div>
   <% end %>
 
-  <div class="good_item_head">Cost Ideas</div>
+  <div class="good_item_head">
+    <%= t('general.label.cost_idea') %>
+  </div>
   <div class="itemDetail">
     <% @spot.cost_items.each do |cost_item| %>
         <div class="eventTitle clear"><b><%= cost_item.title %></b></div>
         <div class="eventDetail clear"><%= cost_item.detail %></div>
     <% end %>
   </div>
-  <div class="good_item_head">Related packages</div>
+  <div class="good_item_head">
+    <%= t('general.label.related') %>
+    <%= t('activerecord.models.spot') %>
+  </div>
   <div class="itemDetail eventDetail">
     <%= raw spot_packages_links(@spot) %>
   </div>

@@ -1,16 +1,18 @@
 <div class="good_item_head">
-  Comments
-
+  <%= t('activerecord.models.comment') %>
 </div>
 <div class="itemDetail" id="item_comments" style="padding-left:0">
   <%= render item.approved_comments %>
 </div>
 <div class="itemDetail" style="padding-left:0">
   <div class="eventTitle">
-    Your Comment
+
+     <%= t('general.label.your') %>
+     <%= t('activerecord.models.comment') %>
     <% if rating %>
         <div style="float:right">
-          Rating <%= ratings_for item %>
+          <%= t('general.label.rating') %>
+           <%= ratings_for item %>
         </div>
     <% end %>
   </div>

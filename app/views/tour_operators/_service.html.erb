@@ -2,10 +2,11 @@
 
   <%= form.fields_for :services, service, :child_index => (service.new_record? ? "index_to_replace_with_js" : nil) do |service_form| %>
       <div class="package_event_time">
-        <%= t('general.label.name')%>
+        <%= t('general.label.name') %>
       </div>
       <div class="package_contact_address">
-        <%= t('general.label.details')%> [start line with *[space] if you want to see it as bullet list ( * foo ) ]
+        <%= t('general.label.details') %>
+        <%= t('general.label.if_list_style_required') %>
       </div>
 
 
@@ -20,10 +21,12 @@
 
       <div class="deleteLink">
         <% if service.new_record? %>
-            <span class="removeCostItemField"> <%= t('general.label.remove')%></span>
+            <span class="removeCostItemField"> <%= t('general.label.remove') %></span>
         <% else %>
             <%= service_form.check_box :_destroy %>
-            Delete
+            <span class="deleteLink deleteLinkCheckbox">
+            <%= t('helpers.delete') %>
+            </span>
         <% end %>
       </div>
   <% end %>

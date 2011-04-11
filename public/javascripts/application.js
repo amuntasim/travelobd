@@ -283,6 +283,17 @@ var TBD = {
                 }
 
             });
+        },
+        activateDeleteLinkCheckbox: function() {
+            $('.deleteLinkCheckbox').click(function() {
+                $(this).siblings('input[type=checkbox]').filter(function() {
+                    if ($(this).attr('checked'))
+                        $(this).removeAttr("checked")
+                    else
+                        $(this).attr("checked", 'checked')
+                });
+
+            });
         }
     }
 }
@@ -359,6 +370,8 @@ $(document).ready(function() {
     TBD.GENERAL.slideFeaturedTransports();
     TBD.GENERAL.slideFeaturedAgents();
     TBD.GENERAL.toggleLoginOther();
+    TBD.GENERAL.activateDeleteLinkCheckbox();
+
     $('div.collapsed').mouseover(function() {
         if ($(this).hasClass('collapsed')) {
             TBD.GENERAL.showLoginOther(this);
@@ -460,6 +473,7 @@ $(document).ready(function() {
             });
 
     validateSendToFriend();
+
 
 })
 

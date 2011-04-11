@@ -72,9 +72,7 @@ class Hotel < ActiveRecord::Base
     name
   end
 
-  def minimum_price
 
-  end
 
   def location
     address = []

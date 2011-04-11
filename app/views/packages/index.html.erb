@@ -1,9 +1,9 @@
 <% title @search_title %>
 
 <div class="pageHead">
-  Packages
+  <%= t('activerecord.models.package') %>
   <div class="pageHeadOptions">
-    <b>Sort by: </b> <%= link_to 'Price', '#' %>
+    <!--<b>Sort by: </b> <%= link_to 'Price', '#' %>-->
   </div>
 </div>
 
@@ -13,11 +13,10 @@
         <%= image_tag package.main_image_url(:thumb) %>
       </div>
 
-      <div class="fl listItemDesc">
+      <div class="fl listItemDesc no_location">
         <div class="fl hotel_desc_info">
-          <div class="fl title">
+          <div class="fl title ">
             <%= link_to truncate(package.title, :length => 50), package %>
-            <h4><%= package.location %></h4>
           </div>
           <div class="fl description">
             <%= truncate(sanitize(package.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
@@ -27,7 +26,9 @@
         <div class="fl price_n_button">
           <div class="fl">
             <div class="fl price">
-              Per Person : <span><%= package.price %></span>
+              <span><%= package.price.localize %></span>
+              <%= t('general.label.taka') %>
+              <%= raw price_str(package) %>
             </div>
             <!--<div class="fl rating">-->
             <!--Like: 1000-->
@@ -37,8 +38,7 @@
             <!--</div>-->
           </div>
 
-          <%= link_to 'Details', package, :class => 'detail_link' %>
-          <%#= link_to 'Book This', package, :class => 'book_link' %>
+          <%= link_to t('general.label.details'), package, :class => 'detail_link' %>
         </div>
       </div>
 

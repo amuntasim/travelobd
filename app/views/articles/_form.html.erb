@@ -1,62 +1,58 @@
+<% title localized_item_header(@article) %>
+<div class="pageHead">
+  <%= localized_item_header(@article) %>
+</div>
 <%= content_for :js_css_include do %>
     <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
+<div class="item_form">
+  <%= form_for(@article, :html=> {:multipart => true, :id=> 'article_form'}) do |f| %>
+      <% @builder = f %>
+      <%= error_messages_for(@article) %>
 
+      <div class="form_summary" id="summary"></div>
 
-<%= form_for(@article, :html => {:multipart => true, :id=> 'article_frm'}) do |f| %>
-    <% @builder = f %>
-    <% if @article.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-          <ul>
-            <% @article.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.category') %>
+          <span>*</span>
         </div>
-    <% end %>
-    <div style="font-size: 16px; font-weight: bold; color: #9f1010" id="summary">
+        <%= f.select :category_id, Article::CATEGORIES, :prompt=> 'Select Category' %>
+      </div>
 
-    </div>
-    <div class="item_form_row">
-      <label>
-        <span>*</span> Category:
-      </label>
-      <%= f.select :category_id, Article::CATEGORIES, :prompt=> 'Select Category' %>
-    </div>
-
-    <div class="item_form_row">
-      <label>
-        <span>*</span> <%= t('general.label.title')%>:
-      </label>
-      <%= f.text_field :title, :class=> 'txt' %>
-    </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.title') %>
+          <span>*</span>
+        </div>
+        <%= f.text_field :title, :class=> 'txt' %>
+      </div>
 
 
-    <div class="item_form_row">
-      <label>
-        <span>*</span><%= t('general.label.details')%>:
-      </label>
-      <%= f.text_area :detail, :class => "tiny_redcloth" %>
-    </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.details') %>
+          <span>*</span>
+        </div>
+        <%= f.text_area :detail, :class => "tiny_redcloth" %>
+      </div>
 
-    <div class="item_form_row">
-      <label>
-        <span></span> Tag:
-      </label>
-      <%= f.text_field :tag_list, :class=> 'txt' %>
-    </div>
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.tag') %>
+        </div>
+        <%= f.text_field :tag_list, :class=> 'txt' %>
+      </div>
 
 
-    <div class="submit_btn">
-      <%= f.submit :class => 'search_button' %>
-      <span class="search_button_right"> </span>
-    </div>
+      <div class="submit_btn">
+        <%= f.submit :class => 'search_button' %>
+        <span class="search_button_right"> </span>
+      </div>
 
-<% end %>
-
+  <% end %>
+</div>
 <%= render :partial => 'shared_partials/tiny_redcloth_image' %>
 
 
