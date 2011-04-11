@@ -1,8 +1,10 @@
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    <div class="fl">My Hotels</div>
+    <div class="fl">
+      <%= t('general.label.my_hotels') %>
+    </div>
     <div class="add_link">
-      <%= link_to '+Add Hotel', new_hotel_path %>
+      <%= link_to t('general.label.add_item', :item => t('activerecord.models.hotel')), new_hotel_path %>
     </div>
   </div>
 
@@ -25,16 +27,16 @@
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Show', hotel %>
-              <%= link_to 'Edit', edit_hotel_path(hotel) %>
-              <%= link_to 'Delete', '#' %>
-              <%= link_to 'Add Room', new_room_path(:hotel_id => hotel) %>
+              <%= link_to t('general.label.details'), hotel %>
+              <%= link_to t('general.label.edit'), edit_hotel_path(hotel) %>
+              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('general.label.add_item', :item => t('activerecord.models.room')), new_room_path(:hotel_id => hotel) %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No Hotel Posted
+        <%= t('general.label.no_item_found', :item => t('activerecord.models.hotel') ) %>
       </h3>
   <% end %>
 </div>

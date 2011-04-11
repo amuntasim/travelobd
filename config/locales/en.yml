@@ -147,6 +147,9 @@ en:
       save: "Save"
       print: "Print"
       send: "Send"
+      approve: 'Approve'
+      deny: 'Deny'
+
     select:
       prompt: "Please select"
       any: "--Any--"
@@ -199,12 +202,19 @@ en:
       spot: 'Spot'
       article: 'Tour Article'
       tour_club: "Tour Club"
+      room: 'Room'
+      comment: 'Comment'
+      profile: 'Profile'
+      user: 'User'
+      message: 'Message'
 
   general:
     label:
       address: 'Address'
       add_more: '+ Add More'
+      add_item: '+ Add {{item}}'
       already_saved: 'Already Saved'
+      avatar: 'Avatar'
       branches: 'Branches'
       category: 'Category'
       contacts: 'Contacts'
@@ -218,6 +228,7 @@ en:
       cost: "Cost"
       create_account: "New Account"
       comma_separated_time: '[Comma separated (1:00pm, 3:30PM etc.)]'
+      change_password: 'Change Password'
       dashboard: 'Dashboard'
       description: 'Description'
       destinations: 'Destinations'
@@ -227,10 +238,15 @@ en:
       discount_till: 'Discount till'
       details: 'Details'
       departure_time: 'Departure Time'
+      edit: 'Edit'
       event_detail: "Event Details"
       email: "Email"
+      edit_profile: 'Edit Profile'
       features: 'Features'
       featured: 'Featured'
+      first_name: 'First Name'
+      forgot_password: 'Forgot Password?'
+      guest: 'Guest'
       home: 'Home'
       hot_package: 'Hot Packages'
       how_to_go: 'How to go'
@@ -238,6 +254,11 @@ en:
       hotel_rating: 'Rating'
       image: 'Image'
       if_list_style_required: ' [start line with *[space] if you want to see it as bullet list ( * foo ) ]'
+      if_you_forgot_password: 'If you forgot your password please click here to recover your password'
+      if_you_have_an_account: 'If you already have an account click the link below to login'
+      itinerary: "Itinerary"
+      interesting_places: "Interesting Places"
+      invalid_form_fields: 'field(s) are invalid, * marked fields are required '
       login_n_other: 'Login & Others'
       login: 'Login'
       logout: 'Logout'
@@ -246,15 +267,33 @@ en:
       location: 'Location'
       location_map: 'Location Map'
       logo: 'Logo'
+      last_name: 'Last Name'
       message_to_authority: "Send message to authority"
+      my_articles: 'My Articles'
+      my_hotels: 'My Hotels'
+      my_hotel_rooms: 'My Hotel Rooms'
+      my_listed_spots: 'My Listed Spots'
+      my_listed_packages: 'My Listed Packages'
+      my_listed_transports: 'My Listed Transports'
+      my_saved_item: 'My Saved Items'
+      my_tour_clubs: 'My Tour Clubs'
+      my_tools: 'My Tools'
+      member_of: "I'm member of"
+      moderator_of: "I'm moderator of"
       nearby_spots: 'Nearby Spots'
       name: 'Name'
       next: 'Next'
+      no_item_found: 'No {{item}} found'
+      notification_email: 'Notification Email'
       phone: 'Phone'
       policies: 'Policies'
       previous: 'Previous'
       price: 'Price'
       per_person: 'per person'
+      profile: 'Profile'
+      preferred_keyboard: 'preferred keyboard'
+      preferred_language: 'preferred Language'
+      profile_of_foo: 'Profile of {{foo}}'
       rating: 'Rating'
       read_more: "Read More"
       rooms_tariff: 'Rooms Tariff'
@@ -275,6 +314,7 @@ en:
       starting_price: 'Starting Price'
       services: 'Services'
       schedule: 'Schedule'
+      settings: 'Settings'
       end_date: 'End Date'
       tour_cost: "Tour Costs"
       type: "Type"
@@ -287,7 +327,9 @@ en:
       tour_plan_day_to_day: 'Tour Plan Day to Day'
       total: 'Total'
       tag: 'Tag'
-      welcome_guest: 'Welcome Guest!'
+      tour_club_joining_requests: 'Tour CLub Joining Requests'
+      tour_club_leaving_requests: 'Tour CLub Leaving Requests'
+      welcome_foo: 'Welcome {{foo}}'
       website: 'Website'
       where_to_stay: 'Where to stay'
       your: 'Your'

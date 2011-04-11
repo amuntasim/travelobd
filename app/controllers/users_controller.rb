@@ -122,6 +122,7 @@ class UsersController < ApplicationController
   end
 
   def saved_listings
+     @active_dashboard_nav = 'my_saved_items'
     @items = SavedListing.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
   end
 

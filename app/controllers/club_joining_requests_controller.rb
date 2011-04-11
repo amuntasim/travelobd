@@ -6,6 +6,7 @@ class ClubJoiningRequestsController < ApplicationController
   layout 'dashboard'
 
   def index
+    @active_dashboard_nav = 'club_joining_requests'
     @messages = Membership.where(:memberable_type => 'TourClub', :memberable_id => current_user.created_clubs.collect(&:id), :leave_request => false).order(:approved)
   end
 
@@ -33,6 +34,7 @@ class ClubJoiningRequestsController < ApplicationController
   end
 
   def leaving_requests
+    @active_dashboard_nav = 'club_leaving_requests'
     @messages = Membership.where(:memberable_type => 'TourClub', :memberable_id => current_user.created_clubs.collect(&:id), :leave_request => true).order(:approved)
   end
 

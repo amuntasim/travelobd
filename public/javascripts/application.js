@@ -294,6 +294,39 @@ var TBD = {
                 });
 
             });
+        },
+
+        translateNumber:function(number, locale) {
+
+            if (locale == 'bn') {
+                number_arr = [];
+                number = number + '';
+                for (var i = 0; i < number.length; i++) {
+                    if (this.banglaNumberMap[number[i]] != 'undefined') {
+                        number_arr.push(this.banglaNumberMap[number[i]]);
+                    }
+                    else
+                    number_arr.push(number[i])
+                }
+                return number_arr.join();
+            }
+            else
+                return number;
+
+
+        },
+
+        banglaNumberMap: {
+            '0':'০',
+            '1':'১',
+            '2':'২',
+            '3':'৩',
+            '4':'৪',
+            '5':'৫',
+            '6':'৬',
+            '7':'৭',
+            '8':'৮',
+            '9':'৯'
         }
     }
 }

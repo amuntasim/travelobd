@@ -1,40 +1,40 @@
-<% title 'My Saved Listing' %>
-<%= content_for :over_mid_content do %>
-    <div class="redhead_row">
-      <h2>
-        My Saved Listing
-      </h2>
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    <div class="fl">
+      <%= t('general.label.my_saved_item') %>
     </div>
-<% end %>
-<div class="ad_business">
-  &nbsp;
-</div>
-<div class="firms_row">
-  <div class="firms_head">
-    My Saved Listing
+    <div class="add_link">
+
+    </div>
   </div>
-  <% @items.each do |item| %>
-      <div class="f_bor spot">
-        <div class="f_inner_bor">
-          <%= image_tag item.savable.main_image_url(:thumb), :width => 68, :height => 55 %>
-        </div>
-        <strong><%= item.savable_type %></strong>
 
-        <h3>
-          <%= link_to item.savable.title, "/#{item.savable_type.downcase}s/#{item.savable_id}" %>
-        </h3>
-
-        <div class="my_links">
-          <%= link_to  t('general.label.remove'), "/users/remove_saved_item?sl_id=#{item.id}", :confirm => 'Are you sure?', :method => :post %>
-        </div>
-      </div>
-  <% end %>
-  <% if @items.total_pages > 1 %>
-      <div class="f_bor pagination">
-        <%= will_paginate @items %>
-      </div>
-  <% end %>
-  <div class="firma_bottom"></div>
 </div>
+<div class="dashboard_content_item fl">
+  <% if @items.size > 0 %>
+     <% @items.each do |item| %>
+          <div class="dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag item.savable.main_image_url(:thumb), :width => 68, :height => 55 %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+              <strong><%= item.savable_type %></strong>
+              </div>
 
+              <div class="desc">
+                <%= link_to item.savable.title, "/#{item.savable_type.downcase}s/#{item.savable_id}" %>
+              </div>
+
+            </div>
+            <div class="dc_item_links fl">
+              <%= link_to  t('general.label.remove'), "/users/remove_saved_item?sl_id=#{item.id}", :confirm => 'Are you sure?', :method => :post %>
+            </div>
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        <%#= t('general.label.no_item_found', :item => t('activerecord.models.article')) %>
+      </h3>
+  <% end %>
+</div>
 

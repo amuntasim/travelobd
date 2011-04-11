@@ -1,8 +1,10 @@
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    <div class="fl">My Packages</div>
+    <div class="fl">
+      <%= t('general.label.my_listed_packages') %>
+    </div>
     <div class="add_link">
-      <%= link_to '+Add Package', new_package_path %>
+      <%= link_to t('general.label.add_item', :item => t('activerecord.models.package')), new_package_path %>
     </div>
   </div>
 
@@ -25,15 +27,15 @@
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Show', package %>
-              <%= link_to 'Edit', edit_package_path(package) %>
-              <%= link_to 'Delete', '#' %>
+              <%= link_to t('general.label.details'), package %>
+              <%= link_to t('general.label.edit'), edit_package_path(package) %>
+              <%= link_to t('helpers.delete'), '#' %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No Package Posted
+        <%= t('general.label.no_item_found', :item => t('activerecord.models.package')) %>
       </h3>
   <% end %>
 </div>

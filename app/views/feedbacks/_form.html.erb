@@ -65,7 +65,7 @@
         });
         var validator = $("#feedback_frm").validate({
             invalidHandler: function() {
-                $("#summary").html('<div class="item_form_row">' + validator.numberOfInvalids() + " field(s) are invalid, * marked fields are required </div>");
+                $("#summary").html('<div class="item_form_row">' + TBD.GENERAL.translateNumber(validator.numberOfInvalids(), '<%=I18n.locale%>') + " <%= t('general.label.invalid_form_fields')%></div>");
             },
             errorPlacement: function(error, element) {
                 error.remove();

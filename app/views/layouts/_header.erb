@@ -7,7 +7,7 @@
             <span><%= link_to t('general.label.dashboard'), dashboard_path %></span>
         <% end %>
     <% else %>
-        <%= t('general.label.welcome_guest') %>
+        <%= t('general.label.welcome_foo', :foo => t('general.label.guest')) %>
     <% end %>
   </div>
   <div class="top_bar_box">

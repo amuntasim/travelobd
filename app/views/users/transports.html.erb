@@ -1,8 +1,10 @@
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    <div class="fl">My Transports</div>
+    <div class="fl">
+      <%= t('general.label.my_listed_transports') %>
+    </div>
     <div class="add_link">
-      <%= link_to '+Add Transport', new_transport_path %>
+      <%= link_to t('general.label.add_item', :item => t('activerecord.models.transport')), new_transport_path %>
     </div>
   </div>
 
@@ -25,15 +27,15 @@
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Show', transport %>
-              <%= link_to 'Edit', edit_transport_path(transport) %>
-              <%= link_to 'Delete', '#' %>
+              <%= link_to t('general.label.details'), transport %>
+              <%= link_to t('general.label.edit'), edit_transport_path(transport) %>
+              <%= link_to t('helpers.delete'), '#' %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No Transport Posted
+        <%= t('general.label.no_item_found', :item => t('activerecord.models.transport')) %>
       </h3>
   <% end %>
 </div>

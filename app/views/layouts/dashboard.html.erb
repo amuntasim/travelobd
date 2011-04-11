@@ -38,25 +38,26 @@
       <div class="home_left fl">
         <div class="home_left_header fl search_header">
           <div class="home_left_header_content">
-            My Tools
+            <%= t('general.label.my_tools') %>
           </div>
 
         </div>
         <div class="home_left_content">
           <div class="mytools">
             <ul>
-              <li><%= link_to 'Profile Home', dashboard_path, :class=> active_inactive_dashboard_navigation('dashboard') %></li>
-              <li><%= link_to 'Edit Profile', edit_user_profile_url(current_user), :class=> active_inactive_dashboard_navigation('edit_profile') %></li>
-              <li><%= link_to 'Change Password', edit_user_path(:id=> 'xxx'), :class=> active_inactive_dashboard_navigation('change_password') %></li>
-              <li><%= link_to 'My Hotels', my_hotels_path, :class=> active_inactive_dashboard_navigation('my_hotels') %></li>
-              <li><%= link_to 'My Hotel Rooms', my_rooms_path, :class=> active_inactive_dashboard_navigation('my_rooms') %></li>
-              <li><%= link_to 'My Listed Spots', my_spots_path, :class=> active_inactive_dashboard_navigation('my_spots') %></li>
-              <li><%= link_to 'My Listed Packages', my_packages_path, :class=> active_inactive_dashboard_navigation('my_packages') %></li>
-              <li><%= link_to 'My Listed Transports', my_transports_path, :class=> active_inactive_dashboard_navigation('my_transports') %></li>
-              <li><%= link_to 'My Tour Clubs', my_clubs_path, :class=> active_inactive_dashboard_navigation('my_clubs') %></li>
-              <li><%= link_to 'Tour Club Joining Requests', club_joining_requests_path, :class=> active_inactive_dashboard_navigation('club_joining_requests') %></li>
-              <li><%= link_to 'Tour Club Leaving Requests', club_leaving_requests_path, :class=> active_inactive_dashboard_navigation('club_leaving_requests') %></li>
-              <li><%= link_to 'My Articles', my_articles_path, :class=> active_inactive_dashboard_navigation('my_articles') %></li>
+              <li><%= link_to t('general.label.profile'), dashboard_path, :class=> active_inactive_dashboard_navigation('dashboard') %></li>
+              <li><%= link_to t('general.label.edit_profile'), edit_user_profile_url(current_user), :class=> active_inactive_dashboard_navigation('edit_profile') %></li>
+              <li><%= link_to t('general.label.change_password'), edit_user_path(:id=> 'xxx'), :class=> active_inactive_dashboard_navigation('change_password') %></li>
+              <li><%= link_to t('general.label.my_hotels'), my_hotels_path, :class=> active_inactive_dashboard_navigation('my_hotels') %></li>
+              <li><%= link_to t('general.label.my_hotel_rooms'), my_rooms_path, :class=> active_inactive_dashboard_navigation('my_rooms') %></li>
+              <li><%= link_to t('general.label.my_listed_spots'), my_spots_path, :class=> active_inactive_dashboard_navigation('my_spots') %></li>
+              <li><%= link_to t('general.label.my_listed_packages'), my_packages_path, :class=> active_inactive_dashboard_navigation('my_packages') %></li>
+              <li><%= link_to t('general.label.my_listed_transports'), my_transports_path, :class=> active_inactive_dashboard_navigation('my_transports') %></li>
+              <li><%= link_to t('general.label.my_tour_clubs'), my_clubs_path, :class=> active_inactive_dashboard_navigation('my_clubs') %></li>
+              <li><%= link_to t('general.label.tour_club_joining_requests'), club_joining_requests_path, :class=> active_inactive_dashboard_navigation('club_joining_requests') %></li>
+              <li><%= link_to t('general.label.tour_club_leaving_requests'), club_leaving_requests_path, :class=> active_inactive_dashboard_navigation('club_leaving_requests') %></li>
+              <li><%= link_to t('general.label.my_articles'), my_articles_path, :class=> active_inactive_dashboard_navigation('my_articles') %></li>
+              <li><%= link_to t('general.label.my_saved_item'), my_saved_listings_path, :class=> active_inactive_dashboard_navigation('my_saved_items') %></li>
             </ul>
           </div>
 
@@ -133,7 +134,8 @@
 
     .home_left_header_content, .dashboard_content_header_content {
         padding-left: 10px;
-        padding-top: 8px;
+        padding-top: 3px;
+        line-height:26px;
     }
 
     .home_left_content {

@@ -147,6 +147,10 @@ bn:
       article: "ভ্রমন প্রতিবেদন"
       tour_club: "ট্যুর ক্লাব"
       comment: "মন্তব্য"
+      room: "রুম"
+      profile: "প্রোফাইল"
+      user: "ইউজার"
+      message: "বার্তা"
 
     attribute_commons: &name_category
       category_id: "ক্যাটাগরি"
@@ -216,6 +220,10 @@ bn:
       save: "সংরক্ষণ করুন"
       print: "প্রিন্ট করুন"
       send: "প্রেরণ করুন"
+      deny: 'প্রত্যাখ্যান করুন'
+      approve: 'অনুমোদন করুন'
+
+
     select:
       prompt: "সিলেক্ট করুন"
       any: "--যেকোন একটি--"
@@ -224,7 +232,9 @@ bn:
     label:
       address: "ঠিকানা"
       add_more: "+ আরো যুক্ত করুন"
+      add_item: "+ {{item}} যুক্ত করুন"
       already_saved: 'ইতিমধ্যে সংরক্ষিত'
+      avatar: 'প্রতিকৃতি'
       branches: 'শাখাসমূহ'
       contacts: "যোগাযোগ"
       conditions: "শর্তাবলী"
@@ -238,6 +248,7 @@ bn:
       cost_idea: "অনুমিত খরচ"
       cost: "খরচাদি"
       comma_separated_time: '[ কমা দিয়ে আলাদা করুন ( দুপুর ১:৩০, বিকাল ৩:০০ )'
+      change_password: 'পাসওয়ার্ড পরিবর্তন'
       dashboard: "ড্যাসবোর্ড"
       description: "বর্ননা"
       destinations: 'গন্তব্যসমূহ'
@@ -250,8 +261,12 @@ bn:
       edit: "সম্পাদনা"
       event_detail: "ইভেন্ট সমূ‌হের বর্ননা"
       email: "ই-মেইল"
+      edit_profile: 'প্রোফাইল সম্পাদনা'
       featured: "বিশেষ মূল্যায়িত"
       features: "বিশেষত্ত্ব"
+      first_name: 'নাম ( প্রথমাংশ )'
+      forgot_password: 'পাসওয়ার্ড ভুলে গেছেন?'
+      guest: ' অতিথি'
       home: "প্রথম পাতা"
       hot_package: "সাম্প্রতিক প্যাকেজ"
       how_to_go: "যেভাবে যেতে হবে"
@@ -259,8 +274,11 @@ bn:
       hotel_rating: 'তারকা'
       image: "ছবি"
       if_list_style_required: ' [ তালিকা আকারে দেখতে চাইলে লাইন শুরুন আগে * এবং একটা স্পেস দিন ]'
+      if_you_forgot_password: 'পাসওয়ার্ড ভুলে গেলে এখানে ক্লিক করুন'
+      if_you_have_an_account: 'আপনার ইতিমধ্যে এ্যাকাউন্ট থাকলে নিচে ক্লিক করে লগইন করুন'
       itinerary: "বৃত্তান্ত"
       interesting_places: "আকর্ষনীয় স্থান"
+      invalid_form_fields: 'টি ফিল্ডে কিছু সমস্যা আছে, * চিহ্নিত ফিল্ডগুলো অবশ্য পুরনীয়'
       keep_in_touch: "আমাদের সাথেই থাকুন"
       login_n_other: "লগইন ও অন্যান্য"
       login: "লগইন"
@@ -271,10 +289,25 @@ bn:
       longitude: "Longitude"
       longitude_map: "মানচিত্রে অবস্থান"
       logo: 'লোগো'
+      last_name: 'নাম ( শেষাংশ )'
       message_to_authority: "কর্তৃপক্ষকে বার্তা পাঠান"
+      messages: "বার্তাসমূহ"
+      my_articles: 'নিজস্ব প্রতিবেদন সমুহ'
+      my_hotels: 'নিজস্ব হোটেল সমুহ'
+      my_hotel_rooms: 'নিজস্ব হোটেল রুম সমুহ'
+      my_listed_spots: 'নিজস্ব দর্শনীয় স্থান তালিকা'
+      my_listed_packages: 'নিজস্ব প্যাকেজ তালিকা'
+      my_listed_transports: 'নিজস্ব পরিবহন তালিকা'
+      my_saved_item: 'আমার সংরক্ষিত তালিকা '
+      my_tour_clubs: 'নিজস্ব ট্যুর ক্লাব'
+      my_tools: 'নিজস্ব টুলস'
+      member_of: 'আমি সদস্য'
+      moderator_of: 'আমি মডারেটর'
       nearby_spots: "নিকটবর্তী দর্শনীয়  স্থান"
       next: "পরবর্তী"
       name: "নাম"
+      no_item_found: '‌কোন  {{item}}  নাই'
+      notification_email: 'পর্যবেক্ষণ ই-মেইল'
       package_owner: "প্যাকেজ স্বত্ত্বাধিকারী"
       phone: "ফোন"
       privacy_policy: "গোপনীয় নীতিমালা"
@@ -284,6 +317,10 @@ bn:
       price_included: "মূল্য অন্তর্গত"
       price_excluded: "মূল্য বর্হিভূত"
       per_person: "জনপ্রতি"
+      profile: 'প্রোফাইল'
+      preferred_keyboard: 'পছন্দের কী-বোর্ড'
+      preferred_language: 'যে ভাষায় দেখতে চান'
+      profile_of_foo: '{{foo}} এর প্রোফাইল'
       rating: "জনপ্রিয়তা"
       read_more: "বিস্তারিত পড়ুন"
       rooms_tariff: "রুমের মূল্য তালিকা"
@@ -304,6 +341,7 @@ bn:
       starting_price: 'সর্বনিম্ন ভাড়া'
       services: 'সেবাসমূহ'
       schedule: 'সময়সূচী'
+      settings: 'সেটিংস'
       end_date: 'শেষের তারিখ'
       tour_cost: "ভ্রমন খরচাদি"
       type: "ধরণ"
@@ -316,7 +354,9 @@ bn:
       tour_plan_day_to_day: 'প্রতিদিনের ভ্রমন সূচী'
       total: 'সর্বমোট'
       tag: 'ট্যাগ'
-      welcome_guest: "স্বাগতম অতিথি"
+      tour_club_joining_requests: 'ট্যুর ক্লাবে যোগদানের আবেদন'
+      tour_club_leaving_requests: 'ট্যুর ক্লাব ত্যাগের আবেদন'
+      welcome_foo: "স্বাগতম {{foo}}"
       website: "ওয়েবসাইট"
       where_to_stay: 'কোথায় থাকবেন'
       your: 'আপনার'

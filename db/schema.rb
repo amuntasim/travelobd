@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403090936) do
+ActiveRecord::Schema.define(:version => 20110411093709) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -408,11 +408,21 @@ ActiveRecord::Schema.define(:version => 20110403090936) do
     t.text    "detail"
   end
 
-  create_table "profiles", :force => true do |t|
-    t.integer  "user_id"
+  create_table "profile_translations", :force => true do |t|
+    t.integer  "profile_id"
+    t.string   "locale"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
+    t.text     "about"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profile_translations", ["profile_id", "locale"], :name => "index_profile_translations_on_profile_id_and_locale"
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
     t.string   "district"
     t.string   "division"
     t.string   "zip_code"

@@ -3,7 +3,9 @@
 
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    <div class="fl">Club Leaving Requests</div>
+    <div class="fl">
+      <%= t('general.label.tour_club_leaving_requests') %>
+    </div>
   </div>
 
 </div>
@@ -26,13 +28,13 @@
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Approve', club_joining_request_path(message), :method => :delete %>
+              <%= link_to t('helpers.submit.approve'), club_joining_request_path(message), :method => :delete %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No messages
+        <%= t('general.label.no_item_found', :item => t('activerecord.models.message')) %>
       </h3>
   <% end %>
 </div>

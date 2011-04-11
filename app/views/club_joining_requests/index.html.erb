@@ -3,7 +3,9 @@
 
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    <div class="fl">Club Joining Requests</div>
+    <div class="fl">
+      <%= t('general.label.tour_club_joining_requests') %>
+    </div>
   </div>
 
 </div>
@@ -26,18 +28,18 @@
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Show', club_joining_request_path(message) %>
+              <%= link_to t('general.label.details'), club_joining_request_path(message) %>
               <% if message.approved? %>
-                  <%= link_to 'Deny', deny_club_joining_request_path(message), :method => :post %>
+                  <%= link_to t('helpers.submit.deny'), deny_club_joining_request_path(message), :method => :post %>
               <% else %>
-                  <%= link_to 'Approve', approve_club_joining_request_path(message), :method => :post %>
+                  <%= link_to t('helpers.submit.approve'), approve_club_joining_request_path(message), :method => :post %>
               <% end %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No messages
+       <%= t('general.label.no_item_found', :item => t('activerecord.models.message')) %>
       </h3>
   <% end %>
 </div>

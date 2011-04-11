@@ -1,8 +1,10 @@
 <div class="dashboard_content_header fl search_header">
   <div class="dashboard_content_header_content">
-    <div class="fl">My Articles</div>
+    <div class="fl">
+      <%= t('general.label.my_articles') %>
+    </div>
     <div class="add_link">
-      <%= link_to '+Add Article', new_article_path %>
+      <%= link_to t('general.label.add_item', :item => t('activerecord.models.article')), new_article_path %>
     </div>
   </div>
 
@@ -25,15 +27,15 @@
 
             </div>
             <div class="dc_item_links fl">
-              <%= link_to 'Show', article %>
-              <%= link_to 'Edit', edit_article_path(article) %>
-              <%= link_to 'Delete', '#' %>
+              <%= link_to t('general.label.details'), article %>
+              <%= link_to t('general.label.edit'), edit_article_path(article) %>
+              <%= link_to t('helpers.delete'), '#' %>
             </div>
           </div>
       <% end %>
   <% else %>
       <h3>
-        No Article Posted
+        <%= t('general.label.no_item_found', :item => t('activerecord.models.article')) %>
       </h3>
   <% end %>
 </div>

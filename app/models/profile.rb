@@ -19,6 +19,7 @@
 #
 
 class Profile < ActiveRecord::Base
+  translates :first_name, :last_name, :address, :about
   belongs_to :user
   belongs_to :country
   has_attached_file :avatar, :styles => {:thumb => "80x70>"},

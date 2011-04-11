@@ -1,17 +1,19 @@
-<% title 'Profile Details' %>
+<% title t('general.label.details') +' '+ t('activerecord.models.profile') %>
 <div class="pageHead">
-  Profile of <%= @profile.full_name %>
+  <%= t('general.label.profile_of_foo', :foo => @profile.full_name) %>
 </div>
 
 <div class="item_details">
   <% if current_user == @profile.user %>
       <div class="ad_business">
-        <%= link_to raw('&lArr; Edit'), edit_user_profile_path(@profile.user) %>
+        <%= link_to raw('&lArr; ' + t('general.label.edit')), edit_user_profile_path(@profile.user) %>
       </div>
   <% end %>
 
   <fieldset class="moderator">
-    <legend>I am moderator of</legend>
+    <legend>
+      <%= t('general.label.moderator_of') %>
+    </legend>
 
     <% @profile.user.created_clubs.each_with_index do |club, i| %>
 
@@ -23,7 +25,9 @@
     <% end %>
   </fieldset>
   <fieldset class="right_margin_zero moderator ">
-    <legend>I am member of</legend>
+    <legend>
+      <%= t('general.label.member_of') %>
+    </legend>
 
     <% @profile.user.associated_tour_clubs.each_with_index do |club, i| %>
 
@@ -34,20 +38,27 @@
         <% end %>
     <% end %>
   </fieldset>
-  <div class="good_item_head">Profile Details</div>
+  <div class="good_item_head">
+    <%= t('activerecord.models.profile') %>
+    <%= t('general.label.details') %>
+  </div>
   <div class="itemDetail">
     <div class="avatar">
       <%= image_tag @profile.avatar.url(:thumb), :width => 68, :height => 55 %>
     </div>
     <div class="first_name_last_name">
       <div class='f_inner_right_row'>
-        <b>First name:</b>
+        <b>
+          <%= t('general.label.first_name') %>:
+        </b>
         <%= @profile.first_name %>
       </div>
 
 
       <div class='f_inner_right_row'>
-        <b>Last name:</b>
+        <b>
+          <%= t('general.label.last_name') %>:
+        </b>
         <%= @profile.last_name %>
       </div>
     </div>
