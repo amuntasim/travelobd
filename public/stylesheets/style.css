@@ -50,7 +50,9 @@ ul li {
     height: 50px;
     position: absolute;
     z-index: 10;
-
+    -moz-border-radius: 0 0 0 5px;
+    border-radius: 0 0 0 5px;
+    -webkit-border-radius: 0 0 0 5px;
 }
 
 .top_bar_box {
@@ -64,6 +66,9 @@ ul li {
     color: #ffffff;
     padding-top: 13px;
     text-align: center;
+    -moz-border-radius:  5px;
+    border-radius:  5px;
+    -webkit-border-radius:  5px;
 }
 
 .top_bar_box a {
@@ -79,7 +84,9 @@ ul li {
     width: 118px;
     top: 40px;
     left: 740px;
-
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 .login_and_other img {
@@ -1097,6 +1104,7 @@ div#package_images {
     width: 420px !important;
     height: 80px !important;
 }
+
 .package_events textarea.eventDetail {
     width: 420px !important;
     height: 80px !important;

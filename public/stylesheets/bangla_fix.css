@@ -50,3 +50,12 @@
 .newAccountActions .search_button {
     margin-left: 104px;
 }
+
+.top_bar_box{
+  padding-top:10px;
+    padding-bottom:3px;
+}
+.top_bar_box a ,.top_bar_box{
+    font-family:Solaimanlipi;
+    font-size:13px;
+}
