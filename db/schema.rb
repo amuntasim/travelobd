@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411093709) do
+ActiveRecord::Schema.define(:version => 20110412084646) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -344,7 +344,6 @@ ActiveRecord::Schema.define(:version => 20110411093709) do
     t.string   "location"
     t.string   "price_includes"
     t.string   "price_excludes"
-    t.string   "company"
   end
 
   create_table "package_videos", :force => true do |t|
@@ -377,6 +376,7 @@ ActiveRecord::Schema.define(:version => 20110411093709) do
     t.boolean  "price_per_person",                                :default => true
     t.string   "email"
     t.decimal  "rating_average",    :precision => 6, :scale => 2, :default => 0.0
+    t.integer  "tour_operator_id"
   end
 
   add_index "packages", ["category_id", "user_id"], :name => "index_ads_on_category_id_and_user_id"

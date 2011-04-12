@@ -19,7 +19,7 @@
           <span>*</span>
         </div>
 
-        <%= f.select :hotel_id, @my_hotels.collect { |h| [h.name, h.id] }, :prompt=> 'Select Hotel' %>
+        <%= f.select :hotel_id, @my_hotels.collect { |h| [h.name, h.id] }, :prompt=> t('helpers.select.prompt')%>
       </div>
 
       <div class="item_form_row">

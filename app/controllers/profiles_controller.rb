@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
+        format.html { redirect_to(@profile, :notice => t('general.label.item_created', :item => t('activerecord.models.profile'))) }
         format.xml { render :xml => @profile, :status => :created, :location => @profile }
       else
         format.html { render :action => "new" }
@@ -57,7 +57,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+        format.html { redirect_to(@profile, :notice => t('general.label.item_update', :item => t('activerecord.models.profile'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

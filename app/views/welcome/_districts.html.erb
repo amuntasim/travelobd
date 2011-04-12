@@ -1,1 +1,1 @@
-<%= select :customer, :town_id, towns.collect { |t| [t.name, t.id] }, {:prompt=> '--Select--'}, :class => 'location_combo' %>
+<%= select :customer, :town_id, towns.collect { |t| [t.name, t.id] }, {:prompt=> t('helpers.select.prompt')}, :class => 'location_combo' %>

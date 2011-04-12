@@ -173,6 +173,7 @@ Travelobd::Application.routes.draw do
   match 'my_transports' => 'users#transports'
   match 'my_clubs' => 'users#clubs'
   match 'my_articles' => 'users#articles'
+  match 'my_tour_operators' => "users#tour_operators"
   match 'send_to_friends' => 'users#send_to_friends'
   match 'club_leaving_requests' => 'club_joining_requests#leaving_requests'
 

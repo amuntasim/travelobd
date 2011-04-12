@@ -57,7 +57,7 @@ class HotelsController < ApplicationController
     @hotel.user_id = current_user.id
     respond_to do |format|
       if @hotel.save
-        format.html { redirect_to(@hotel, :notice => 'Hotel was successfully created.') }
+        format.html { redirect_to(@hotel, :notice => t('general.label.item_created', :item => t('activerecord.models.hotel'))) }
         format.xml { render :xml => @hotel, :status => :created, :location => @hotel }
       else
         @features_for_hotel = Feature.for_hotel
@@ -74,7 +74,7 @@ class HotelsController < ApplicationController
 
     respond_to do |format|
       if @hotel.update_attributes(params[:hotel])
-        format.html { redirect_to(@hotel, :notice => 'Hotel was successfully updated.') }
+        format.html { redirect_to(@hotel, :notice => t('general.label.item_update', :item => t('activerecord.models.hotel'))) }
         format.xml { head :ok }
       else
         @features_for_hotel = Feature.for_hotel

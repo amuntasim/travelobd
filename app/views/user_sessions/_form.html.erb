@@ -1,42 +1,33 @@
 <%= form_for(@user_session, :url => user_session_path) do |f| %>
-    <% if @user_session.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-          <ul>
-            <% @user_session.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+   <%= error_messages_for(@user_session) %>
     <div class="loginBox">
       <div class="loginFields">
         <div class="log_input_row">
-          <%= f.label :email %> <br/>
+           <%= t('general.label.email') %>
+          <br/>
           <%= f.text_field :email %>
         </div>
         <div class="log_input_row">
-          <%= f.label :password %> <br/>
+          <%= t('general.label.password') %> <br/>
           <%= f.password_field :password %>
         </div>
         <div class="actions loginActions">
-          <%= f.submit 'Login', :class => 'search_button' %>
+          <%= f.submit t('general.label.login'), :class => 'search_button' %>
           <span class="search_button_right"> </span>
         </div>
       </div>
       <div class="loginRight">
-        <%= link_to 'Forgot Password?', new_password_reset_url %>
+         <%= link_to t('general.label.forgot_password'), new_password_reset_url %>
         <div class="loginRightText clear">
-          If you forgot your password please click here to recover your password
+          <%= t('general.label.if_you_forgot_password') %>
         </div>
 
         <div class="loginRightText2 clear">
-          If you are not registered yet please click below to create new account
+          <%= t('general.label.if_you_dont_have_an_account') %>
         </div>
 
         <div class="actions newAccountActions">
-          <%= link_to 'Create New Account', new_user_path, :class => 'search_button'  %>
+          <%= link_to t('general.label.create_account'), new_user_path, :class => 'search_button'  %>
           <span class="search_button_right"> </span>
         </div>
       </div>

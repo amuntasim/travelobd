@@ -1093,6 +1093,10 @@ div#package_images {
     float: left;
 }
 
+.item_form_row textarea.address {
+    width: 420px !important;
+    height: 80px !important;
+}
 .package_events textarea.eventDetail {
     width: 420px !important;
     height: 80px !important;
@@ -1521,7 +1525,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
 }
 
 .newAccountActions  .search_button {
-    margin-left: 67px;
+    margin-left: 97px;
 }
 
 .loginRight .loginLink  .search_button {

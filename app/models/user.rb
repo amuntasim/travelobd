@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   has_many :packages
   has_many :articles
   has_many :memberships
+  has_many :tour_operators
   has_many :associated_tour_clubs, :class_name => 'TourClub', :through => :memberships, :source => :user
   has_many :created_clubs, :class_name => 'TourClub'
 

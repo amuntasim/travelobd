@@ -26,19 +26,8 @@ class PackagesController < ApplicationController
   # GET /ads/new
   # GET /ads/new.xml
   def new
-    #    if params[:f].blank?
-    #      @package_current_step = 2
-    #      render :action => :plan
-    #      return
-    #    end
-    @package_current_step = 3
     @package = Package.new
-    @package.featured = true if params[:f] == 'true'
-
-    @package.assets.build
-    @package.videos.build
-    @pedigrees = []
-    @max_pedigree_position = 0
+    @package.tour_operator_id = params[:tour_operator_id] unless params[:tour_operator_id].blank?
     @package_settings = {} #Element.package_settings
     respond_to do |format|
       format.html # new.html.erb
@@ -58,7 +47,7 @@ class PackagesController < ApplicationController
     @package.user_id = current_user.id
     respond_to do |format|
       if @package.save
-        format.html { redirect_to package_path(@package), :notice => 'Package was successfully createds.' }
+        format.html { redirect_to package_path(@package), :notice => t('general.label.item_created', :item => t('activerecord.models.package')) }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @package.errors, :status => :unprocessable_entity }
@@ -73,7 +62,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.update_attributes(params[:package])
-        format.html { redirect_to(package_path(@package), :notice => 'Package was successfully updated.') }
+        format.html { redirect_to(package_path(@package), :notice => t('general.label.item_update', :item => t('activerecord.models.package'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -135,7 +124,7 @@ class PackagesController < ApplicationController
     #ordering = "featured DESC, #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = "featured DESC #{','+ params[:order] unless params[:order].blank? } "
     @packages = @package_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
-    @search_label = params[:label] || 'Hotels : Search Results '
+    @search_label = params[:label] || t('activerecord.models.package') +' : ' + t('general.label.search_result')
     @paginate_items = @packages
     render :index
   end

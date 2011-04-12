@@ -5,15 +5,15 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   <title></title>
-  <%= stylesheet_link_tag 'style', 'style_override', :media=> 'print' %>
-  <%= stylesheet_link_tag 'style', 'style_override' %>
+  <%= stylesheet_link_tag 'style', :media=> 'print' %>
+  <%#= stylesheet_link_tag 'style', 'style_override' %>
 
 </head>
 <body onunload="window.print()">
 <div class="wrapper">
   <div class="wrap_body">
 
-    <div class="midContent">
+    <div class="midContent"style="margin-left:20px; width: 750px">
       <%= yield %>
     </div>
   </div>

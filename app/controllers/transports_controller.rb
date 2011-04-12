@@ -39,7 +39,7 @@ class TransportsController < ApplicationController
     @transport.user_id = current_user.id
     respond_to do |format|
       if @transport.save
-        format.html { redirect_to(@transport, :notice => 'Transport was successfully created.') }
+        format.html { redirect_to(@transport, :notice => t('general.label.item_created', :item => t('activerecord.models.transport'))) }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @transport.errors, :status => :unprocessable_entity }
@@ -53,7 +53,7 @@ class TransportsController < ApplicationController
     params[:transport][:destination_ids] ||= []
     respond_to do |format|
       if @transport.update_attributes(params[:transport])
-        format.html { redirect_to(@transport, :notice => 'Transport was successfully updated.') }
+        format.html { redirect_to(@transport, :notice => t('general.label.item_update', :item => t('activerecord.models.transport'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

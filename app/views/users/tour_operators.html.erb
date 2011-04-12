@@ -1,0 +1,42 @@
+<div class="dashboard_content_header fl search_header">
+  <div class="dashboard_content_header_content">
+    <div class="fl">
+      <%= t('general.label.my_tour_operators') %>
+    </div>
+    <div class="add_link">
+      <%= link_to t('general.label.add_item', :item => t('activerecord.models.tour_operator')), new_tour_operator_path %>
+    </div>
+  </div>
+
+</div>
+<div class="dashboard_content_item fl">
+  <% if @tour_operators.size > 0 %>
+      <% @tour_operators.each do |tour_operator| %>
+          <div class=" <%= 'inactive' unless tour_operator.active %> dc_item fl ">
+            <div class="dc_item_image fl">
+              <%= image_tag tour_operator.logo.url() %>
+            </div>
+            <div class="dc_item_text fl">
+              <div class="title">
+                <%= link_to tour_operator.name, tour_operator %>
+              </div>
+
+              <div class="desc">
+                <%= truncate strip_tags(tour_operator.description), :length => 170 %>
+              </div>
+
+            </div>
+            <div class="dc_item_links fl">
+              <%= link_to t('general.label.details'), tour_operator %>
+              <%= link_to t('general.label.edit'), edit_tour_operator_path(tour_operator) %>
+              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('general.label.add_item', :item => t('activerecord.models.package')), new_package_path(:tour_operator_id => tour_operator) %>
+            </div>
+          </div>
+      <% end %>
+  <% else %>
+      <h3>
+        <%= t('general.label.no_item_found', :item => t('activerecord.models.tour_operator')) %>
+      </h3>
+  <% end %>
+</div>

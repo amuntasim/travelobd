@@ -48,7 +48,7 @@ class RoomsController < ApplicationController
           unless params[:add_more].blank?
             redirect_to new_room_path(:hotel_id => @room.hotel), :notice => 'Room was successfully created. You can add more..'
           else
-            redirect_to @room.hotel, :notice => 'Room was successfully created.'
+            redirect_to @room.hotel, :notice => t('general.label.item_created', :item => t('activerecord.models.room'))
           end
         }
         format.xml { render :xml => @room, :status => :created, :location => @room }
@@ -68,7 +68,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.update_attributes(params[:room])
-        format.html { redirect_to(@room, :notice => 'Room was successfully updated.') }
+        format.html { redirect_to(@room, :notice => t('general.label.item_update', :item => t('activerecord.models.room'))) }
         format.xml { head :ok }
       else
         @features_for_room = Feature.for_room

@@ -1,7 +1,7 @@
 <div class="comment">
   <div class="eventDetail eventTitle clear">
     <%= comment.comment_by %>
-    <%= t('general.label.says') %>
+    <span style="color:#CCCCCC"><%= t('general.label.says') %>    </span>
     <small style="color:#101050; font-weight: normal; float:right;">
       <%= t('general.label.time') %> : <%= l(comment.created_at).localize %></small>
   </div>

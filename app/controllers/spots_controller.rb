@@ -57,7 +57,7 @@ class SpotsController < ApplicationController
     @spot.user_id = current_user.id
     respond_to do |format|
       if @spot.save
-        format.html { redirect_to(@spot, :notice => 'Spot was successfully created.') }
+        format.html { redirect_to(@spot, :notice => t('general.label.item_created', :item => t('activerecord.models.spot'))) }
         format.xml { render :xml => @spot, :status => :created, :location => @spot }
       else
         format.html { render :action => "new" }
@@ -72,7 +72,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     respond_to do |format|
       if @spot.update_attributes(params[:spot])
-        format.html { redirect_to(@spot, :notice => 'Spot was successfully updated.') }
+        format.html { redirect_to(@spot, :notice => t('general.label.item_update', :item => t('activerecord.models.spot'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

@@ -25,17 +25,19 @@
 #
 
 class Package < ActiveRecord::Base
-  translates :title, :description, :short_description, :location, :price_includes, :price_excludes, :company
+  translates :title, :description, :short_description, :location, :price_includes, :price_excludes
 
   validates :category_id, :presence => true
   validates :title, :presence => true
   validates :price, :presence => true
   validates :short_description, :presence => true
+  validates :tour_operator_id, :presence => true
 
   has_many :videos, :class_name => 'PackageVideo'
   has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
+  belongs_to :tour_operator
 
   has_many :events, :class_name => 'PackageEvent'
   has_many :itineraries, :class_name => 'PackageItinerary'

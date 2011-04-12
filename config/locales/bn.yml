@@ -255,6 +255,7 @@ bn:
       change_password: 'পাসওয়ার্ড পরিবর্তন'
       comment_created_thanks: 'আপনার মন্তব্য সফলভাবে সম্পন্ন ‌ হয়েছে, ধন্যবাদ'
       comment_created_publish_soon_thanks: 'আপনার মন্তব্য সফলভাবে সম্পন্ন ‌ হয়েছে। আপনার মন্তব্য শিগ্রই প্রকাশিত হবে, ধন্যবাদ'
+      confirm_password: 'পাসওয়ার্ড নিশ্চিতকরন'
       dashboard: "ড্যাসবোর্ড"
       description: "বর্ননা"
       destinations: 'গন্তব্যসমূহ'
@@ -283,9 +284,13 @@ bn:
       if_list_style_required: ' [ তালিকা আকারে দেখতে চাইলে লাইন শুরুন আগে * এবং একটা স্পেস দিন ]'
       if_you_forgot_password: 'পাসওয়ার্ড ভুলে গেলে এখানে ক্লিক করুন'
       if_you_have_an_account: 'আপনার ইতিমধ্যে এ্যাকাউন্ট থাকলে নিচে ক্লিক করে লগইন করুন'
+      if_you_dont_have_an_account: 'আপনার কোন এ্যাকাউন্ট না থাকলে নিচে ক্লিক করে নতুন এ্যাকাউন্ট তৈরি করুন'
       itinerary: "বৃত্তান্ত"
       interesting_places: "আকর্ষনীয় স্থান"
       invalid_form_fields: 'টি ফিল্ডে কিছু সমস্যা আছে, * চিহ্নিত ফিল্ডগুলো অবশ্য পুরনীয়'
+      item_created: '%{item}  সফলভাবে সংরক্ষিত ‌ হয়েছে'
+      item_update: '%{item}   সফলভাবে ‌হালনাগাদ ‌করা  হয়েছে'
+      item_deleted: '%{item}  সফলভাবে মোছা ‌ হয়েছে'
       keep_in_touch: "আমাদের সাথেই থাকুন"
       login_n_other: "লগইন ও অন্যান্য"
       login: "লগইন"
@@ -308,6 +313,7 @@ bn:
       my_saved_item: 'আমার সংরক্ষিত তালিকা '
       my_tour_clubs: 'নিজস্ব ট্যুর ক্লাব'
       my_tools: 'নিজস্ব টুলস'
+      my_tour_operators: 'নিজস্ব ট্যুর অপারেটর তালিকা'
       member_of: 'আমি সদস্য'
       moderator_of: 'আমি মডারেটর'
       messages: 'বার্তাসমূহ'
@@ -329,6 +335,8 @@ bn:
       preferred_keyboard: 'পছন্দের কী-বোর্ড'
       preferred_language: 'যে ভাষায় দেখতে চান'
       profile_of_foo: '%{foo} এর প্রোফাইল'
+      provide_the_followings: 'নিচের ফিল্ডগুলো পুরন করুন [ কেবলমাত্র প্রথমবার প্রযোয্য ]'
+      password: 'পাসওয়ার্ড'
       rating: "জনপ্রিয়তা"
       read_more: "বিস্তারিত পড়ুন"
       rooms_tariff: "রুমের মূল্য তালিকা"
@@ -351,6 +359,7 @@ bn:
       schedule: 'সময়সূচী'
       settings: 'সেটিংস'
       save_failed_try_again: 'কিছু সমস্যার কারনে সংরক্ষন করা সম্ভব ‌হয়নি, অনুগ্রহ করে আবার চেষ্টা করুন'
+      search_result: 'অনুসন্ধানকৃত ফলাফল'
       tour_cost: "ভ্রমন খরচাদি"
       type: "ধরণ"
       tariff: "মূল্য তালিকা"

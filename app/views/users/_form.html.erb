@@ -1,47 +1,37 @@
 <%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+     <%= error_messages_for(@user) %>
 
     <div class="loginBox">
       <div class="loginFields createAccount">
         <% if @user.new_record? %>
             <%= f.fields_for :profile, @user.profile do |pf| %>
                 <div class="log_input_row">
-                  <%= pf.label :name %>
+                  <%= t('general.label.name') %>
                   <br/>
                   <%= pf.text_field :first_name %>
                 </div>
             <% end %>
 
             <div class="log_input_row">
-              <%= f.label :email %>
+                <%= t('general.label.email') %>
               <br/>
               <%= f.text_field :email %>
             </div>
         <% end %>
         <% unless session[:omniauth] %>
             <div class="log_input_row">
-              <%= f.label :password %>
+               <%= t('general.label.password') %>
               <br/>
               <%= f.password_field :password %>
             </div>
             <div class="log_input_row">
-              <%= f.label :password_confirmation %>
+                <%= t('general.label.confirm_password') %>
               <br/>
               <%= f.password_field :password_confirmation %>
             </div>
         <% end %>
         <div class="actions loginActions">
-          <%= f.submit  :class => 'search_button' %>
+          <%= f.submit t('general.label.create_account'),  :class => 'search_button' %>
           <span class="search_button_right"> </span>
         </div>
       </div>

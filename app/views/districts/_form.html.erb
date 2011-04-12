@@ -16,7 +16,7 @@
       <%= f.label :division_id %>
       <br/>
     <span id="division_ajax">
-      <%= f.select :division_id, @divisions.collect { |c| [c.name, c.id] }, :prompt=> 'Select Division' %>
+      <%= f.select :division_id, @divisions.collect { |c| [c.name, c.id] }, :prompt=> t('helpers.select.prompt')%>
     </span>
       <%= image_tag('loading.gif', :id=> 'loading_division', :style => 'display: none') %>
     </div>

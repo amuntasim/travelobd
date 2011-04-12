@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(dashboard_url, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(dashboard_url, :notice => t('general.label.item_created', :item => t('activerecord.models.user'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit", :layout=> 'dashboard' }
@@ -116,13 +116,13 @@ class UsersController < ApplicationController
     redirect_to root_path, :notice=> 'invalid access' unless  sl.user_id == current_user.id
     @success = sl.destroy
     respond_to do |format|
-      format.html { redirect_to(my_saved_listings_path, :notice => 'Saved item successfully deleted.') }
+      format.html { redirect_to(my_saved_listings_path, :notice => t('general.label.item_deleted', :item => t('general.label.saved_item'))) }
       format.js
     end
   end
 
   def saved_listings
-     @active_dashboard_nav = 'my_saved_items'
+    @active_dashboard_nav = 'my_saved_items'
     @items = SavedListing.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
   end
 
@@ -153,6 +153,12 @@ class UsersController < ApplicationController
     @active_dashboard_nav = 'my_packages'
     @packages = current_user.packages.paginate(:page=> params[:page], :per_page => 10)
     @paginate_items = @packages
+  end
+
+  def tour_operators
+    @active_dashboard_nav = 'my_tour_operators'
+    @tour_operators = current_user.tour_operators.paginate(:page=> params[:page], :per_page => 10)
+    @paginate_items = @tour_operators
   end
 
   def clubs

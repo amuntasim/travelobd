@@ -52,7 +52,7 @@ class MessagesController < ApplicationController
       if (current_user || params[:spam_check].to_i == 7) && @message.save
         @no_error = true
         Mailer.send_message(@message).deliver if message_receiver_expects_email?(@message)
-        format.html { redirect_to(@message.root, :notice => 'Message was successfully created.') }
+        format.html { redirect_to(@message.root, :notice => t('general.label.item_created', :item => t('activerecord.models.message'))) }
         format.js
       else
         @no_error = false
@@ -68,7 +68,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to(@message, :notice => 'Message was successfully updated.') }
+        format.html { redirect_to(@message, :notice => t('general.label.item_update', :item => t('activerecord.models.message'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

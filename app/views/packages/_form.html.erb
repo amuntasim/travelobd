@@ -22,7 +22,21 @@
         <span>*</span>
       </div>
 
-      <%= f.select :category_id, Package::CATEGORIES, :prompt=> 'Select Category' %>
+      <%= f.select :category_id, Package::CATEGORIES, :prompt=> t('helpers.select.prompt') %>
+    </div>
+
+
+    <div class="item_form_row">
+      <div class="label">
+        <%= t('activerecord.models.tour_operator')%>
+        <span>*</span>
+      </div>
+
+      <%= f.select :tour_operator_id, TourOperator.mine(current_user).collect { |c| [c.name, c.id] }, :prompt=> t('helpers.select.prompt') %>
+      <% if TourOperator.mine(current_user).size == 0 %>
+          <%= t('general.label.no_item_found', :item => t('activerecord.models.tour_operator')) %>
+          <%= link_to t('general.label.add_item', :item => t('activerecord.models.tour_operator')), new_tour_operator_path(:return_to_package =>1 ) %>
+      <% end %>
     </div>
 
 
@@ -70,12 +84,6 @@
       <%= f.text_area :price_excludes, :style => 'height:40px' %>
     </div>
 
-    <div class="item_form_row">
-      <div class="label">
-        <%= f.label :company, t('general.label.company') %>
-      </div>
-      <%= f.text_field :company %>
-    </div>
 
     <div class="item_form_row">
       <div class="label">
@@ -363,6 +371,7 @@
 
             rules: {
                 'package[category_id]': "required",
+                'package[tour_operator_id]': "required",
                 'package[title]' : "required",
                 'package[price]': "required",
                 'package[short_description]': "required"

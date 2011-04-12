@@ -36,7 +36,7 @@
           <%= t('general.label.address') %>
           <span>*</span>
         </div>
-        <%= f.text_area :address %>
+        <%= f.text_area :address, :class => 'address' %>
       </div>
 
       <div class="item_form_row">
@@ -164,6 +164,7 @@
 
 
       <div class="submit_btn">
+        <%= hidden_field_tag :return_to_package, @return_to_package  if @return_to_package%>
         <%= f.submit :class => 'search_button' %>
         <span class="search_button_right"> </span>
       </div>

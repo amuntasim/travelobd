@@ -6,6 +6,7 @@ class TourOperator < ActiveRecord::Base
                     :url => "/assets/tour_operators_logo/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/tour_operators_logo/:id/:style/:basename.:extension"
 
+  has_many :packages
   belongs_to :user
   has_many :contacts, :as => :contactable
   has_many :services, :class_name => 'TitleDetailAttribute', :as => :td_attributable, :conditions => {:td_association_type => :service}
@@ -34,6 +35,12 @@ class TourOperator < ActiveRecord::Base
 
   def category
     category_id ? CATEGORIES.invert[category_id] : nil
+  end
+
+  class << self
+    def mine(user)
+       where(:user_id => user.id)
+    end
   end
 end
 

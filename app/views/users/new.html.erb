@@ -1,9 +1,9 @@
-<% title 'Create New Account' %>
+<% title t('general.label.create_account') %>
 <div class="pageHead">
   <% unless session[:omniauth] %>
-      Create New Account
+      <%= t('general.label.create_account') %>
   <% else %>
-      Provide the followings [requires only once]
+      <%= t('provide_the_followings') %>
   <% end %>
 
 </div>

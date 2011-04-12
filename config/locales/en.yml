@@ -231,6 +231,7 @@ en:
       change_password: 'Change Password'
       comment_created_thanks: 'Comment successfully created. Thanks for your comment'
       comment_created_publish_soon_thanks: 'Comment successfully created. Your comment will be published soon. Thanks for your comment'
+      confirm_password: 'Confirm Password'
       dashboard: 'Dashboard'
       description: 'Description'
       destinations: 'Destinations'
@@ -259,9 +260,15 @@ en:
       if_list_style_required: ' [start line with *[space] if you want to see it as bullet list ( * foo ) ]'
       if_you_forgot_password: 'If you forgot your password please click here to recover your password'
       if_you_have_an_account: 'If you already have an account click the link below to login'
+      if_you_dont_have_an_account: 'If you are not registered yet please click below to create new account '
       itinerary: "Itinerary"
       interesting_places: "Interesting Places"
       invalid_form_fields: 'field(s) are invalid, * marked fields are required '
+      item_created: '%{item}  was successfully created.'
+      item_update: '%{item}  was successfully updated.'
+      item_deleted: '%{item}  was successfully deleted.'
+      keep_in_touch: "Keep in touch"
+      login_n_other: 'Login & Others'
       login_n_other: 'Login & Others'
       login: 'Login'
       logout: 'Logout'
@@ -281,6 +288,7 @@ en:
       my_saved_item: 'My Saved Items'
       my_tour_clubs: 'My Tour Clubs'
       my_tools: 'My Tools'
+      my_tour_operators: 'My Tour Operators'
       member_of: "I'm member of"
       moderator_of: "I'm moderator of"
       messages: 'Messages'
@@ -298,6 +306,8 @@ en:
       preferred_keyboard: 'preferred keyboard'
       preferred_language: 'preferred Language'
       profile_of_foo: 'Profile of %{foo}'
+      provide_the_followings: 'Provide the followings [requires only once]'
+      password: 'Password'
       rating: 'Rating'
       read_more: "Read More"
       rooms_tariff: 'Rooms Tariff'
@@ -320,6 +330,7 @@ en:
       schedule: 'Schedule'
       settings: 'Settings'
       save_failed_try_again: 'Save failed!, Please try again '
+      search_result: 'Search Results'
       tour_cost: "Tour Costs"
       type: "Type"
       tariff: "Tariff"

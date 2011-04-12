@@ -39,7 +39,7 @@ class TourClubsController < ApplicationController
     @tour_club.user_id = current_user.id
     respond_to do |format|
       if @tour_club.save
-        format.html { redirect_to(@tour_club, :notice => 'TourClub was successfully created.') }
+        format.html { redirect_to(@tour_club, :notice => t('general.label.item_created', :item => t('activerecord.models.tour_club'))) }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @tour_club.errors, :status => :unprocessable_entity }
@@ -53,7 +53,7 @@ class TourClubsController < ApplicationController
     params[:tour_club][:destination_ids] ||= []
     respond_to do |format|
       if @tour_club.update_attributes(params[:tour_club])
-        format.html { redirect_to(@tour_club, :notice => 'TourClub was successfully updated.') }
+        format.html { redirect_to(@tour_club, :notice => t('general.label.item_update', :item => t('activerecord.models.tour_club'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

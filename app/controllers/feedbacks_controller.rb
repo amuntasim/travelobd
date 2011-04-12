@@ -59,7 +59,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
-        format.html { redirect_to(@feedback, :notice => 'Feedback was successfully updated.') }
+        format.html { redirect_to(@feedback, :notice => t('general.label.item_created', :item => t('activerecord.models.feedback'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

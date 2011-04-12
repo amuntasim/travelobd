@@ -26,6 +26,7 @@ class TourOperatorsController < ApplicationController
   # GET /ads/new.xml
   def new
     @tour_operator = TourOperator.new
+    @return_to_package = params[:return_to_package]
   end
 
   # GET /ads/1/edit
@@ -39,7 +40,11 @@ class TourOperatorsController < ApplicationController
     @tour_operator.user_id = current_user.id
     respond_to do |format|
       if @tour_operator.save
-        format.html { redirect_to(@tour_operator, :notice => 'TourOperator was successfully created.') }
+        unless params[:return_to_package].blank?
+          format.html { redirect_to(new_package_path(:tour_operator_id => @tour_operator), :notice => t('general.label.item_created', :item => t('activerecord.models.tour_operator'))) }
+        else
+          format.html { redirect_to(@tour_operator, :notice => t('general.label.item_created', :item => t('activerecord.models.tour_operator'))) }
+        end
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @tour_operator.errors, :status => :unprocessable_entity }
@@ -53,7 +58,7 @@ class TourOperatorsController < ApplicationController
     params[:tour_operator][:destination_ids] ||= []
     respond_to do |format|
       if @tour_operator.update_attributes(params[:tour_operator])
-        format.html { redirect_to(@tour_operator, :notice => 'TourOperator was successfully updated.') }
+        format.html { redirect_to(@tour_operator, :notice => t('general.label.item_update', :item => t('activerecord.models.tour_operator'))) }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
