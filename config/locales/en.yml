@@ -229,6 +229,8 @@ en:
       create_account: "New Account"
       comma_separated_time: '[Comma separated (1:00pm, 3:30PM etc.)]'
       change_password: 'Change Password'
+      comment_created_thanks: 'Comment successfully created. Thanks for your comment'
+      comment_created_publish_soon_thanks: 'Comment successfully created. Your comment will be published soon. Thanks for your comment'
       dashboard: 'Dashboard'
       description: 'Description'
       destinations: 'Destinations'
@@ -242,6 +244,7 @@ en:
       event_detail: "Event Details"
       email: "Email"
       edit_profile: 'Edit Profile'
+      end_date: 'End Date'
       features: 'Features'
       featured: 'Featured'
       first_name: 'First Name'
@@ -316,7 +319,7 @@ en:
       services: 'Services'
       schedule: 'Schedule'
       settings: 'Settings'
-      end_date: 'End Date'
+      save_failed_try_again: 'Save failed!, Please try again '
       tour_cost: "Tour Costs"
       type: "Type"
       tariff: "Tariff"

@@ -167,6 +167,10 @@ bn:
       spot:
         <<: *name_category
         short_description: "সংক্ষিপ্ত বিবরণ"
+      comment:
+        name: "নাম"
+        email: "ই-মেইল"
+        content: 'বিষয়বস্তু'
   date:
     formats:
       # Use the strftime parameters for formats.
@@ -249,6 +253,8 @@ bn:
       cost: "খরচাদি"
       comma_separated_time: '[ কমা দিয়ে আলাদা করুন ( দুপুর ১:৩০, বিকাল ৩:০০ )'
       change_password: 'পাসওয়ার্ড পরিবর্তন'
+      comment_created_thanks: 'আপনার মন্তব্য সফলভাবে সম্পন্ন ‌ হয়েছে, ধন্যবাদ'
+      comment_created_publish_soon_thanks: 'আপনার মন্তব্য সফলভাবে সম্পন্ন ‌ হয়েছে। আপনার মন্তব্য শিগ্রই প্রকাশিত হবে, ধন্যবাদ'
       dashboard: "ড্যাসবোর্ড"
       description: "বর্ননা"
       destinations: 'গন্তব্যসমূহ'
@@ -262,6 +268,7 @@ bn:
       event_detail: "ইভেন্ট সমূ‌হের বর্ননা"
       email: "ই-মেইল"
       edit_profile: 'প্রোফাইল সম্পাদনা'
+      end_date: 'শেষের তারিখ'
       featured: "বিশেষ মূল্যায়িত"
       features: "বিশেষত্ত্ব"
       first_name: 'নাম ( প্রথমাংশ )'
@@ -343,7 +350,7 @@ bn:
       services: 'সেবাসমূহ'
       schedule: 'সময়সূচী'
       settings: 'সেটিংস'
-      end_date: 'শেষের তারিখ'
+      save_failed_try_again: 'কিছু সমস্যার কারনে সংরক্ষন করা সম্ভব ‌হয়নি, অনুগ্রহ করে আবার চেষ্টা করুন'
       tour_cost: "ভ্রমন খরচাদি"
       type: "ধরণ"
       tariff: "মূল্য তালিকা"

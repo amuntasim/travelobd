@@ -8,35 +8,17 @@ class String
   def localize
     if I18n.locale.to_s == 'bn'
       number_str = self.to_s
-      return_str = ''
-      if self.encoding.name == 'UTF-8'
-        number_str = number_str.force_encoding('ASCII-8BIT')
-        replace_bangla_number(number_str).collect do |s|
-           return_str += s.force_encoding('UTF-8')
-        end
-        return  return_str
-      else
-        return replace_bangla_number(number_str).join('')
+
+      (0..number_str.length-1).each do |i|
+        number_str[i]=BANGLA_NUMBER_MAP[number_str[i]] if BANGLA_NUMBER_MAP[number_str[i]]
       end
+      return number_str
     else
-      return self
+      self
     end
   end
 
   private
-  def replace_bangla_number(str)
-
-    op_str = []
-    str.each_byte do |number|
-      op_str << if  BANGLA_NUMBER_MAP[number.chr]
-                  BANGLA_NUMBER_MAP[number.chr]
-                else
-                  number.chr
-                end
-    end
-    op_str
-  end
-
   BANGLA_NUMBER_MAP = {
       '0' => '০',
       '1' => '১',

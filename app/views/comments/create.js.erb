@@ -1,12 +1,12 @@
 <%if @comment.errors.empty? && @comment.approved?%>
-$('#commentStatus').html('<b style="color:green">Comment successfully created. Thanks for your comment</b>');
+$('#commentStatus').html('<b style="color:green"><%= t('general.label.comment_created_thanks')%></b>');
 $('#item_comments').append('<%= escape_javascript(render @comment) %>').slideDown(1000);
 $("#comment_form").get(0).reset();
 <%elsif @comment.errors.empty? %>
-$('#commentStatus').html('<b style="color:green">Comment successfully created. Your comment will be published soon. Thanks for your comment</b>');
+$('#commentStatus').html('<b style="color:green"><%= t('general.label.comment_created_publish_soon_thanks')%></b>');
 $("#comment_form").get(0).reset();
 <%else%>
-$('#commentStatus').html("<b style=\"color:red\">Comment save failed. Please try again <br/> <%= @comment.errors.full_messages.join(', ')%>. </b>");
+$('#commentStatus').html("<b style=\"color:red\"><%= t('general.label.save_failed_try_again')%> <br/> <%= @comment.errors.full_messages.join(', ')%>. </b>");
 <%end%>
 
 $('#commentStatus').effect("highlight");
