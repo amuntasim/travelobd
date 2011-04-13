@@ -306,7 +306,7 @@ var TBD = {
                         number_arr.push(this.banglaNumberMap[number[i]]);
                     }
                     else
-                    number_arr.push(number[i])
+                        number_arr.push(number[i])
                 }
                 return number_arr.join();
             }
@@ -377,8 +377,10 @@ $(document).ready(function() {
 
 
     setTimeout(function() {
-        $('#flash_messages').fadeOut();
+        if (typeof(keep_flash_messages) !== 'undefined')
+            $('#flash_messages').fadeOut();
     }, 5000);
+
 
     //$(this).enableMenu();
     $(this).saveItemToMyListing();

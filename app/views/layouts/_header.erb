@@ -109,12 +109,17 @@
           </div>
       <% end %>
 
-      <% if flash[:alert] || flash[:error] || params[:error] || @lower_browser_version_message%>
+      <% if flash[:alert] || flash[:error] || params[:error] || @lower_browser_version_message %>
           <div class="flash_message error">
             <%= flash[:alert] %>
             <%= flash[:error] %>
             <%= params[:alert] %>
-            <%= raw @lower_browser_version_message %>
+            <% if @lower_browser_version_message %>
+                <%= raw @lower_browser_version_message %>
+                <script type="text/javascript">
+                  var keep_flash_messages = true;
+                </script>
+            <% end %>
           </div>
       <% end %>
     </div>
