@@ -300,6 +300,7 @@ bn:
       longitude_map: "মানচিত্রে অবস্থান"
       logo: 'লোগো'
       last_name: 'নাম ( শেষাংশ )'
+      lower_version_ie_detected: "আপনি কোন সত্যিকারের ব্রাওজার ব্যবহার করছেন না, আপনি ইন্টারনেট এক্সপ্লোরার ব্যবহার করছেন। অনুগ্রহ করে <a href='http://www.mozilla.com/en-US/products/download.html', target='_blank'>Firefox</a> এর মতো সত্যিকারের ব্রাওজার ব্যবহার করুন "
       message_to_authority: "কর্তৃপক্ষকে বার্তা পাঠান"
       messages: "বার্তাসমূহ"
       my_articles: 'নিজস্ব প্রতিবেদন সমুহ'

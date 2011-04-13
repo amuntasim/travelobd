@@ -22,7 +22,7 @@
 
                   <p>
               <span>
-                <%= spot.short_description %>
+                <%= truncate(sanitize(spot.description).gsub(/<\/?[^>]*>/, ""), :length => 200) %>
               </span>
 
                   </p>

@@ -99,7 +99,7 @@
   </ul>
 </div>
 
-<% if !flash.empty? || params[:notice] || params[:alert] %>
+<% if !flash.empty? || params[:notice] || params[:alert] || @lower_browser_version_message %>
     <div id="flash_messages">
       <% if @notice || flash[:notice] || params[:notice] %>
           <div class="flash_message notice">
@@ -109,11 +109,12 @@
           </div>
       <% end %>
 
-      <% if flash[:alert] || flash[:error] || params[:error] %>
+      <% if flash[:alert] || flash[:error] || params[:error] || @lower_browser_version_message%>
           <div class="flash_message error">
             <%= flash[:alert] %>
             <%= flash[:error] %>
             <%= params[:alert] %>
+            <%= raw @lower_browser_version_message %>
           </div>
       <% end %>
     </div>

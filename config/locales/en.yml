@@ -279,6 +279,7 @@ en:
       location_map: 'Location Map'
       logo: 'Logo'
       last_name: 'Last Name'
+      lower_version_ie_detected: "You are not using a real browser but IE, Please use any real browser like <a href='http://www.mozilla.com/en-US/products/download.html', target='_blank'>Firefox</a> "
       message_to_authority: "Send message to authority"
       my_articles: 'My Articles'
       my_hotels: 'My Hotels'

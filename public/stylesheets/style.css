@@ -831,10 +831,11 @@ a.del_photo {
     margin-left: 35px;
     border: none;
     color: #FFFFFF;
-    padding: 0px 10px 3px 15px;
+    padding: 2px 10px 3px 15px;
     font-size: 14px;
     float: left;
     cursor: pointer;
+    line-height:22px;
 }
 
 .ad_btn .search_button {

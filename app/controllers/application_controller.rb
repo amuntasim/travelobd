@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :prepare_for_mobile
 
-  before_filter :load_required_instance_variables, :set_locale
+  before_filter :load_required_instance_variables, :set_locale, :check_browser
   protect_from_forgery
 
   config.filter_parameters :password, :password_confirmation, :card_number, :card_verification
@@ -157,6 +157,12 @@ class ApplicationController < ActionController::Base
       I18n.locale = 'bn'
     else
       I18n.locale = 'en'
+    end
+  end
+
+  def check_browser
+    if request.user_agent =~ /msie\s+(\d)\.\d+/i && $1.to_i <=6
+      @lower_browser_version_message = t('general.label.lower_version_ie_detected')
     end
   end
 
