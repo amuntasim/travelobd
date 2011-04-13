@@ -7,7 +7,28 @@
     <%= stylesheet_link_tag 'thickbox' %>
 
 <% end %>
+<%= content_for :over_mid_content do %>
+    <div class="redhead_row">
+      <div class="subLink">
+        <ul>
+          <li>
+            <%= link_to t('general.label.message_to_authority'), "#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true", :class => 'thickbox' %>
+          </li>
 
+          <li>
+            <%= link_to t('general.label.tell_your_friends'), "#TB_inline?dd=4&width=400&height=300&inlineId=send_to_friend_lb&modal=true", :class => 'thickbox' %>
+          </li>
+
+          <li>
+            <%= link_to t('helpers.submit.print'), print_spot_path(@spot) %>
+          </li>
+          <li id="saved_item_li">
+            <%= render :partial => 'shared_partials/saved_item', :locals => {:savable => @spot} %>
+          </li>
+        </ul>
+      </div>
+    </div>
+<% end %>
 <div class="pageHead">
   <%= @spot.name %>
 </div>
@@ -86,6 +107,13 @@
 
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @spot, :rating => true} %>
 </div>
+<div id="send_message_to_owner_lb" style="display: none">
+  <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>
+  <%= render :partial => 'messages/ajax_form', :locals => {:message_target => @spot} %>
+
+</div>
+
+<%= render :partial => 'shared_partials/send_to_friends', :locals => {:item => 'spot', :item_id => @spot.id} %>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#detail_page_photo_gallery').galleryView(TBD.DETAIL_PAGE_PHOTO_GALLERY_OPTIONS);

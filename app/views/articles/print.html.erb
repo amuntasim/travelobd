@@ -1,9 +1,10 @@
 <div class="pageHead">
-  <%= @tour_club.name %>
+  <%= @article.title %>
 </div>
 
 <div class="item_details">
+
   <div class="itemDetail pad_TL0">
-    <%= @tour_club.description %>
+    <%= raw textilize @article.detail %>
   </div>
 </div>

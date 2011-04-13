@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_filter :require_user, :only =>[:new, :edit, :create, :update]
   before_filter :require_admin_user, :only =>[:destroy]
   before_filter lambda { @active_nav = 'articles' }
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy]
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
 
 
@@ -113,6 +113,10 @@ class ArticlesController < ApplicationController
     ordering = "created_at DESC"
     @articles = search_obj.order(ordering).paginate(:page=> params[:page], :per_page => 10)
     @search_label = params[:label] || 'Articles : Search Results '
+  end
+
+  def print
+    render :layout => 'print'
   end
 
   private

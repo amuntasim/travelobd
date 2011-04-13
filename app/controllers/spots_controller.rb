@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
   before_filter :require_user, :only =>[:new, :edit, :create, :update, :destroy]
   before_filter lambda { @active_nav = 'spot' }
 
-  before_filter :load_item, :only =>[:show, :edit, :update, :destroy]
+  before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print]
   before_filter :check_ownership, :only => [:edit, :update, :destroy]
 
   #layout :choose_layout
@@ -114,6 +114,10 @@ class SpotsController < ApplicationController
     SpotAsset.update_all ['main = ?', false], ['spot_id = ?', asset.spot_id]
     asset.update_attribute(:main, true)
     render :nothing => true
+  end
+
+  def print
+    render :layout => 'print'
   end
 
   private

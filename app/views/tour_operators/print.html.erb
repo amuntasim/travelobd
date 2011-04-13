@@ -1,324 +1,42 @@
-<style type="text/css" media="print">
-
-    .good_slide_bor {
-        height: 320px;
-        margin-bottom: 100px;
-    }
-
-    .good_slide_bor img {
-        margin: 0
-    }
-
-    div.panel {
-        margin-left: 100px !important;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-    }
-
-    div.strip_wrapper {
-        top: 345px !important;
-        width: 530px !important;
-        left: 75px !important;
-
-    }
-
-    .good_moving_bor {
-        margin-top: 335px;
-        border: 1px solid #cccccc;
-
-    }
-
-    img.nav-prev {
-        left: 10px !important;
-        top: 356px !important;
-    }
-
-    img.nav-next {
-        left: 621px !important;
-        top: 356px !important;
-    }
-
-    .pedigree_column input {
-        width: 208px;
-        margin-bottom: 5px;
-        background: url("/images/email_input_bg.jpg") no-repeat;
-
-    }
-
-    .pedigree_column {
-        width: 220px;
-        margin-right: 5px;
-        float: left;
-        margin-left: 5px;
-    }
-
-    .first_column input {
-        margin-bottom: 62px;
-        margin-top: 48px;
-    }
-
-    .second_column input {
-        margin-bottom: 27px;
-        margin-top: 14px;
-    }
-
-    .third_column {
-        margin-right: 0
-    }
-
-    .pedigrees {
-        padding-top: 10px;
-        float: left;
-    }
-
-    .pedigrees input {
-        height: 24px;
-        padding-top: 5px;
-        border: none;
-        text-align: center;
-
-    }
-
-    .hide_column {
-        display: none
-    }
-
-    .ash_desc_row .value {
-        width: 158px;
-        float: left;
-    }
-
-    #message_status {
-        float: left;
-        padding: 0px 5px;
-        margin: 0px 5px 5px 0px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    #message_status span.success {
-        color: green
-    }
-
-</style>
-
-<div class="adWideArea">
-  <div class="good_ad_head"><%= @package.title %></div>
+<div class="pageHead">
+  <%= @tour_operator.name %>
+</div>
 
 
-  <div class="ad_details">
-    <!--curv start -->
-    <div class="bl">
-      <div class="br">
-        <!--<div class="tl">
-            <div class="tr"> -->
-        <div class="good_ad_head">Ad Details:</div>
+<div class=" item_details ">
 
-        <div class="adDesc_row"><%= @package.description %></div>
-        <!--</div>
-    </div> -->
-      </div>
-    </div>
-    <!--curv end -->
+  <div class="itemDetail pad_TL0"><%= @tour_operator.description %></div>
+
+
+  <div class="good_item_head">
+    <%= t('general.label.services') %>
+  </div>
+  <div class="itemDetail">
+    <% @tour_operator.services.each do |service| %>
+        <div class="eventTitle clear"><b><%= service.title %></b></div>
+        <div class="eventDetail clear"><%= raw textilize service.detail %></div>
+    <% end %>
   </div>
 
-  <div class="ad_details">
-    <!--curv start -->
-    <div class="bl">
-      <div class="br">
-        <!--<div class="tl">
-            <div class="tr"> -->
-        <div class="good_ad_head">Pedigree:</div>
-        <div class="pedigrees">
-          <div id="main_pedigree_first" class="pedigree_column first_column <%= ' second_column ' if @max_pedigree_position < 6 %><%= ' third_column ' if @max_pedigree_position < 2 %><%= 'hide_column' if @max_pedigree_position == 0 %>">
-            <% (0..1).each do |position| %>
-                <%= render :partial => 'pedigree', :object=> @package.all_pedigrees[position], :locals => {:position => position} %>
-            <% end %>
-          </div>
-          <div id="main_pedigree_second" class="pedigree_column  second_column <%= ' third_column ' if @max_pedigree_position < 6 %><%= ' hide_column ' if @max_pedigree_position < 2 %>">
-            <% (2..5).each do |position| %>
-                <%= render :partial => 'pedigree', :object=> @package.all_pedigrees[position], :locals => {:position => position} %>
-            <% end %>
-          </div>
-          <div id="main_pedigree_third" class="pedigree_column  third_column <%= ' hide_column ' if @max_pedigree_position < 6 %>">
-            <% (6..13).each do |position| %>
-                <%= render :partial => 'pedigree', :object=> @package.all_pedigrees[position], :locals => {:position => position} %>
-            <% end %>
-          </div>
-        </div>
-        <!--</div>
-    </div> -->
-      </div>
-    </div>
-    <!--curv end -->
+  <div class="good_item_head">
+     <%= t('general.label.policies') %>
+  </div>
+  <div class="itemDetail">
+    <% @tour_operator.policies.each do |policy| %>
+        <div class="eventTitle clear"><b><%= policy.title %></b></div>
+        <div class="eventDetail clear"><%= policy.detail %></div>
+    <% end %>
+  </div>
+
+  <div class="good_item_head">
+    <%= t('general.label.contacts') %>
+  </div>
+  <div class="itemDetail">
+    <% @tour_operator.contacts.each do |contact| %>
+        <div class=" clear"><b><%= contact.name %></b></div>
+        <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
+    <% end %>
   </div>
 
 
 </div>
-<div class="adNarrowArea">
-  <div class="ash_narrow_box">
-    <div class="ash_n_top"></div>
-    <div class="ash_n_mid">
-      <div class="ash_desc_row">
-        <label>Ad <%= t('general.label.name')%>:</label>
-
-        <div class="value">
-          <%= @package.ad_name %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>Price:</label>
-
-        <div class="value">
-          <%= number_to_currency @package.price %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>Location:</label>
-
-        <div class="value">
-          <%= @package.location %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>Sex:</label>
-
-        <div class="value">
-          <%= @package.gender %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>Height:</label>
-
-        <div class="value">
-          <%= @package.height %>
-        </div>
-      </div>
-
-      <div class="ash_desc_row">Color:</div>
-      <div class="ash_desc_row">Marking:</div>
-      <div class="ash_desc_row">Foal Date:</div>
-      <div class="ash_desc_row">Weight:</div>
-      <div class="ash_desc_row">Registration:</div>
-      <div class="ash_desc_row">
-        <label>Discipline:</label>
-
-        <div class="value">
-          <%= raw @package.disciplines_str %>
-        </div>
-      </div>
-      <div class="ash_desc_row">Attributies:</div>
-      <div class="ash_desc_row">
-        Temperament:
-        <span>( 1= Bombproof, 10=Hot)</span>
-      </div>
-
-    </div>
-    <div class="ash_n_bot"></div>
-  </div>
-
-</div>
-
-<style type="text/css">
-
-    .good_slide_bor {
-        height: 320px;
-        margin-bottom: 100px;
-    }
-
-    .good_slide_bor img {
-        margin: 0
-    }
-
-    div.panel {
-        margin-left: 100px !important;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-    }
-
-    div.strip_wrapper {
-        top: 345px !important;
-        width: 530px !important;
-        left: 75px !important;
-
-    }
-
-    .good_moving_bor {
-        margin-top: 335px;
-        border: 1px solid #cccccc;
-
-    }
-
-    img.nav-prev {
-        left: 10px !important;
-        top: 356px !important;
-    }
-
-    img.nav-next {
-        left: 621px !important;
-        top: 356px !important;
-    }
-
-    .pedigree_column input {
-        width: 208px;
-        margin-bottom: 5px;
-        background: url("/images/email_input_bg.jpg") no-repeat;
-
-    }
-
-    .pedigree_column {
-        width: 220px;
-        margin-right: 5px;
-        float: left;
-        margin-left: 5px;
-    }
-
-    .first_column input {
-        margin-bottom: 62px;
-        margin-top: 48px;
-    }
-
-    .second_column input {
-        margin-bottom: 27px;
-        margin-top: 14px;
-    }
-
-    .third_column {
-        margin-right: 0
-    }
-
-    .pedigrees {
-        padding-top: 10px;
-        float: left;
-    }
-
-    .pedigrees input {
-        height: 24px;
-        padding-top: 5px;
-        border: none;
-        text-align: center;
-
-    }
-
-    .hide_column {
-        display: none
-    }
-
-    .ash_desc_row .value {
-        width: 158px;
-        float: left;
-    }
-
-    #message_status {
-        float: left;
-        padding: 0px 5px;
-        margin: 0px 5px 5px 0px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    #message_status span.success {
-        color: green
-    }
-
-</style>

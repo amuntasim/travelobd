@@ -1,264 +1,107 @@
-<style type="text/css" media="print">
+<div class="pageHead">
+  <%= @hotel.name %>
+</div>
 
-    .good_slide_bor {
-        height: 320px;
-        margin-bottom: 100px;
-    }
+<%= render :partial => 'shared_partials/detail_page_photo_gallery', :locals => {:items => @hotel.assets} %>
 
-    .good_slide_bor img {
-        margin: 0
-    }
+<div class="item_details">
 
-    div.panel {
-        margin-left: 100px !important;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-    }
+  <div class="eventTitle "><b>
+    <%= t('general.label.details') %>
 
-    div.strip_wrapper {
-        top: 345px !important;
-        width: 530px !important;
-        left: 75px !important;
+  </b>
+  </div>
 
-    }
-
-    .good_moving_bor {
-        margin-top: 335px;
-        border: 1px solid #cccccc;
-
-    }
-
-    img.nav-prev {
-        left: 10px !important;
-        top: 356px !important;
-    }
-
-    img.nav-next {
-        left: 621px !important;
-        top: 356px !important;
-    }
-
-    .pedigree_column input {
-        width: 208px;
-        margin-bottom: 5px;
-        background: url("/images/email_input_bg.jpg") no-repeat;
-
-    }
-
-    .pedigree_column {
-        width: 220px;
-        margin-right: 5px;
-        float: left;
-        margin-left: 5px;
-    }
-
-    .first_column input {
-        margin-bottom: 62px;
-        margin-top: 48px;
-    }
-
-    .second_column input {
-        margin-bottom: 27px;
-        margin-top: 14px;
-    }
-
-    .third_column {
-        margin-right: 0
-    }
-
-    .pedigrees {
-        padding-top: 10px;
-        float: left;
-    }
-
-    .pedigrees input {
-        height: 24px;
-        padding-top: 5px;
-        border: none;
-        text-align: center;
-
-    }
-
-    .hide_column {
-        display: none
-    }
-
-    .ash_desc_row .value {
-        width: 158px;
-        float: left;
-    }
-
-    #message_status {
-        float: left;
-        padding: 0px 5px;
-        margin: 0px 5px 5px 0px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    #message_status span.success {
-        color: green
-    }
-
-</style>
-
-<div class="itemWideArea">
-  <div class="good_item_head"><%= @hotel.name %></div>
-
-
-  <div class="item_details">
-    <!--curv start -->
-    <div class="bl">
-      <div class="br">
-        <!--<div class="tl">
-            <div class="tr"> -->
-        <div class="good_item_head">Horse Details:</div>
-
-        <div class="itemDesc_row"><%= @hotel.description %></div>
-        <!--</div>
-    </div> -->
+  <% if @hotel.star_rating %>
+      <div class="eventDetail">
+        <label>
+          <%= t('general.label.hotel_rating') %>
+        </label>:
+        <%= @hotel.star_rating.localize %>
+        <%= t('general.label.star') %>
       </div>
-    </div>
-    <!--curv end -->
+  <% end %>
+
+  <div class="eventDetail">
+    <label>
+      <%= t('general.label.address') %>
+    </label>:
+    <%= @hotel.address %>
+  </div>
+
+  <div class="eventDetail">
+    <label>
+      <%=t('general.label.total_rooms')%>
+    </label>:
+     <%= @hotel.total_rooms.localize %>
   </div>
 
 
-</div>
-<div class="itemNarrowArea">
-  <div class="ash_narrow_box">
-    <div class="ash_n_top"></div>
-    <div class="ash_n_mid">
-      <div class="ash_desc_row">
-        <label>Division:</label>
+  <div class="eventDetail">
+    <%= raw textilize @hotel.description %>
+  </div>
 
-        <div class="value">
-          <%= @hotel.division.name %>
-        </div>
-      </div>
-      <div class="ash_desc_row">
-        <label>District:</label>
-
-        <div class="value">
-          <%= @hotel.district.name %>
-        </div>
-      </div>
-
-
-      <div class="ash_desc_row">
-        <label><%= t('general.label.phone')%>:</label>
-
-        <div class="value">
-          <%= @hotel.phone %>
-        </div>
-      </div>
-
-
+  <div class="good_item_head">
+    <%=t('general.label.rooms_tariff')%>
+  </div>
+  <div class="itemDetail eventDetail">
+    <div class="roomTitleHeader eventTitle fl">
+      <%= t('general.label.room_type') %>
     </div>
-    <div class="ash_n_bot"></div>
+    <div class="eventTitle roomPriceHeader  fl">
+         <%= t('general.label.rooms_tariff') %>
+    </div>
+    <div class="eventTitle roomTitleHeader  fl">
+       <%= t('general.label.total_rooms') %>
+    </div>
+
+    <% @hotel.rooms.each do |room| %>
+        <div class="roomTitle fl">
+          <%= link_to room.name, room, :target => '_blank' %>
+        </div>
+        <div class="roomPrice fl">
+          <%= room.price.localize %>
+        </div>
+        <div class="roomTitle fl">
+          <%= room.total_room.localize %>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="good_item_head">
+    <%= t('general.label.features') %>
+  </div>
+  <div class="itemDetail eventDetail">
+    <%= raw hotel_features_list(@hotel) %>
+  </div>
+
+
+  <% if @hotel.valid_lat_long? %>
+      <div class="good_item_head">
+        <%= t('general.label.location_map') %>
+      </div>
+      <div class="itemDetail">
+        <div id="map"></div>
+      </div>
+  <% end %>
+  <div class="good_item_head">
+      <%= t('general.label.policies') %>
+  </div>
+  <div class="itemDetail">
+    <% @hotel.policies.each do |policy| %>
+        <div class="eventTitle clear"><b><%= policy.title %></b></div>
+        <div class="eventDetail clear"><%= policy.detail %></div>
+    <% end %>
+  </div>
+
+  <div class="good_item_head">
+     <%= t('general.label.contacts') %>
+  </div>
+  <div class="itemDetail">
+    <% @hotel.contacts.each do |contact| %>
+        <div class=" clear"><b><%= contact.name %></b></div>
+        <div class="eventDetail clear"><%= t('general.label.phone')%>: <%= contact.phone %></div>
+    <% end %>
   </div>
 
 </div>
-
-<style type="text/css">
-
-    .good_slide_bor {
-        height: 320px;
-        margin-bottom: 100px;
-    }
-
-    .good_slide_bor img {
-        margin: 0
-    }
-
-    div.panel {
-        margin-left: 100px !important;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-    }
-
-    div.strip_wrapper {
-        top: 345px !important;
-        width: 530px !important;
-        left: 75px !important;
-
-    }
-
-    .good_moving_bor {
-        margin-top: 335px;
-        border: 1px solid #cccccc;
-
-    }
-
-    img.nav-prev {
-        left: 10px !important;
-        top: 356px !important;
-    }
-
-    img.nav-next {
-        left: 621px !important;
-        top: 356px !important;
-    }
-
-    .pedigree_column input {
-        width: 208px;
-        margin-bottom: 5px;
-        background: url("/images/email_input_bg.jpg") no-repeat;
-
-    }
-
-    .pedigree_column {
-        width: 220px;
-        margin-right: 5px;
-        float: left;
-        margin-left: 5px;
-    }
-
-    .first_column input {
-        margin-bottom: 62px;
-        margin-top: 48px;
-    }
-
-    .second_column input {
-        margin-bottom: 27px;
-        margin-top: 14px;
-    }
-
-    .third_column {
-        margin-right: 0
-    }
-
-    .pedigrees {
-        padding-top: 10px;
-        float: left;
-    }
-
-    .pedigrees input {
-        height: 24px;
-        padding-top: 5px;
-        border: none;
-        text-align: center;
-
-    }
-
-    .hide_column {
-        display: none
-    }
-
-    .ash_desc_row .value {
-        width: 158px;
-        float: left;
-    }
-
-    #message_status {
-        float: left;
-        padding: 0px 5px;
-        margin: 0px 5px 5px 0px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    #message_status span.success {
-        color: green
-    }
-
-</style>
