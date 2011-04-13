@@ -20,7 +20,10 @@
 }
 
 .gallery_controll_images {
-    margin-top: 1px !important;
+    margin-top: 5px !important;
+    line-height:16px;
+    font-family: Solaimanlipi;
+    font-size: 13px;
 }
 
 .gallery_controll_images img {
@@ -28,7 +31,8 @@
 }
 
 .package_desc .price_n_button a, .listItemDesc .price_n_button a  {
-    padding-top: 1px !important;
+    padding-top: 3px !important;
+    line-height:17px;
 }
 
 .package_desc .price, .listItemDesc .price  {

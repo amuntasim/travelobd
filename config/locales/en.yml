@@ -274,6 +274,7 @@ en:
       logout: 'Logout'
       latitude: 'Latitude'
       longitude: 'Longitude'
+      latest_article: 'Latest Article'
       location: 'Location'
       location_map: 'Location Map'
       logo: 'Logo'
