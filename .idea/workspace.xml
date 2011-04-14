@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/hotels/index.html.erb" afterPath="$PROJECT_DIR$/app/views/hotels/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_header.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_header.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/transports/show.html.erb" afterPath="$PROJECT_DIR$/app/views/transports/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/application.js" afterPath="$PROJECT_DIR$/public/javascripts/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" afterPath="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/bx_styles.css" afterPath="$PROJECT_DIR$/public/stylesheets/bx_styles.css" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,19 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="26" selection-start="3729" selection-end="3729" vertical-scroll-proportion="-11.458333">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="301" column="39" selection-start="9838" selection-end="9838" vertical-scroll-proportion="0.27162367">
+            <state line="301" column="39" selection-start="9838" selection-end="9838" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,7 +104,16 @@
       <file leaf-file-name="bangla_fix.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="7" selection-start="1399" selection-end="1399" vertical-scroll-proportion="0.0">
+            <state line="78" column="14" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bx_styles.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/bx_styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="11" selection-start="475" selection-end="475" vertical-scroll-proportion="0.49107143">
               <folding />
             </state>
           </provider>
@@ -166,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
         <option value="$PROJECT_DIR$/config/locales/en.yml" />
         <option value="$PROJECT_DIR$/config/locales/bn.yml" />
         <option value="$PROJECT_DIR$/app/views/hotels/index.html.erb" />
@@ -175,13 +163,14 @@
         <option value="$PROJECT_DIR$/app/views/transports/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/shared/_left_panel.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" />
         <option value="$PROJECT_DIR$/public/javascripts/jquery.bxSlider.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" />
         <option value="$PROJECT_DIR$/public/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/public/stylesheets/bangla_fix.css" />
+        <option value="$PROJECT_DIR$/public/stylesheets/bx_styles.css" />
       </list>
     </option>
   </component>
@@ -589,13 +578,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="-13.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="453" column="14" selection-start="6726" selection-end="6726" vertical-scroll-proportion="-20.0">
@@ -627,13 +609,6 @@
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.2-p136/gems/will_paginate-3.0.pre2/lib/will_paginate/view_helpers/link_renderer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="97" column="10" selection-start="3189" selection-end="3189" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="7" selection-start="1399" selection-end="1399" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -696,7 +671,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="301" column="39" selection-start="9838" selection-end="9838" vertical-scroll-proportion="0.27162367">
+        <state line="301" column="39" selection-start="9838" selection-end="9838" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bangla_fix.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="14" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bx_styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="11" selection-start="475" selection-end="475" vertical-scroll-proportion="0.49107143">
           <folding />
         </state>
       </provider>
