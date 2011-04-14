@@ -97,6 +97,7 @@ $.fn.editPhotoLabel = function() {
     });
 };
 
+var currentLocale = 'en';
 var TBD = {
     LEFT_SLIDER_OPTIONS: {
         mode: 'fade',
@@ -296,6 +297,12 @@ var TBD = {
             });
         },
 
+        translateBxPager:function(){
+            $('.bx-pager a').each(function(){
+               $(this).html(TBD.GENERAL.translateNumber($(this).html(), currentLocale))
+            });
+        },
+
         translateNumber:function(number, locale) {
 
             if (locale == 'bn') {
@@ -406,6 +413,7 @@ $(document).ready(function() {
     TBD.GENERAL.slideFeaturedAgents();
     TBD.GENERAL.toggleLoginOther();
     TBD.GENERAL.activateDeleteLinkCheckbox();
+    TBD.GENERAL.translateBxPager();
 
     $('div.collapsed').mouseover(function() {
         if ($(this).hasClass('collapsed')) {

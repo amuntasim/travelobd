@@ -1,3 +1,8 @@
+body {
+    font-family: "solaimanLipi", bangla, arial;
+    font-size: 14px;
+}
+
 .bangla_content {
     font-family: Solaimanlipi;
     font-size: 14px;
@@ -21,7 +26,7 @@
 
 .gallery_controll_images {
     margin-top: 5px !important;
-    line-height:16px;
+    line-height: 16px;
     font-family: Solaimanlipi;
     font-size: 13px;
 }
@@ -30,12 +35,12 @@
     margin-bottom: 3px;
 }
 
-.package_desc .price_n_button a, .listItemDesc .price_n_button a  {
+.package_desc .price_n_button a, .listItemDesc .price_n_button a {
     padding-top: 3px !important;
-    line-height:17px;
+    line-height: 17px;
 }
 
-.package_desc .price, .listItemDesc .price  {
+.package_desc .price, .listItemDesc .price {
     line-height: 22px !important;
 }
 
@@ -44,22 +49,39 @@
 }
 
 .listItemDesc .description {
-    line-height:20px;
+    line-height: 20px;
 }
 
-.loginRightText2  {
-    margin-top:75px;
+.loginRightText2 {
+    margin-top: 75px;
 }
 
 .newAccountActions .search_button {
     margin-left: 104px;
 }
 
-.top_bar_box{
-  padding-top:10px;
-    padding-bottom:3px;
+.top_bar_box {
+    padding-top: 10px;
+    padding-bottom: 3px;
 }
-.top_bar_box a ,.top_bar_box{
-    font-family:Solaimanlipi;
-    font-size:13px;
+
+.top_bar_box a, .top_bar_box {
+    font-family: Solaimanlipi;
+    font-size: 13px;
 }
+
+.good_item_head {
+    font-size: 15px;
+    height: 25px;
+    padding: 4px 0 0 10px;
+}
+
+.search_button,  {
+    padding-top: 0px;
+}
+
+.pagination em, .pagination a {
+    padding-top: 0px;
+    fon
+}
+

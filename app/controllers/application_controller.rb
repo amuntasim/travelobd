@@ -167,3 +167,46 @@ class ApplicationController < ActionController::Base
   end
 
 end
+
+
+class CustomPaginationRenderer < WillPaginate::ViewHelpers::LinkRenderer
+
+  def to_html
+    html = pagination.map do |item|
+      item.is_a?(Fixnum) ?
+          page_number(item) :
+          send(item)
+    end.join(@options[:separator])
+
+    @options[:container] ? html_container(html) : html
+  end
+
+  protected
+
+  def page_number(page)
+    unless page == current_page
+      link(page.localize, page, :rel => rel_value(page))
+    else
+      tag(:em, page.localize)
+    end
+  end
+
+
+  def previous_page
+    previous_or_next_page(@collection.previous_page, @options[:previous_label], 'previous_page')
+  end
+
+  def next_page
+    previous_or_next_page(@collection.next_page, @options[:next_label], 'next_page')
+  end
+
+  def previous_or_next_page(page, text, classname)
+    if page
+      link(text, page, :class => classname)
+    else
+      tag(:span, text, :class => classname + ' disabled')
+    end
+  end
+
+
+end

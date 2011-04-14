@@ -101,7 +101,7 @@
   <% if @featured_hotels.size > 0 %>
       <ul id="left_side_featured_hotels" class="box-slide">
         <% @featured_hotels.each do |hotel| %>
-            <li style="height:140px">
+            <li style="height:150px">
               <%= link_to hotel, :target => '_blank' do %>
                   <%= image_tag hotel.main_image_url(:medium), :width => '180px', :height => '100px' %>
                   <div class="title">
@@ -139,7 +139,7 @@
   <% if @featured_transports.size > 0 %>
       <ul id="left_side_featured_transports" class="box-slide">
         <% @featured_transports.each do |transport| %>
-             <li style="height:140px">
+             <li style="height:150px">
               <%= link_to transport, :target => '_blank' do %>
                   <%= image_tag transport.main_image_url(:medium), :width => '175px', :height => '100px'%>
                   <div class="title">

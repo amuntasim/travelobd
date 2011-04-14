@@ -21,7 +21,7 @@
             <h4><%= hotel.location %></h4>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(hotel.description).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
+            <%= truncate(sanitize(hotel.description).gsub(/<\/?[^>]*>/, ""), :length => 250) %>
           </div>
 
         </div>

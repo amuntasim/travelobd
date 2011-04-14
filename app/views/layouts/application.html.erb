@@ -8,6 +8,9 @@
   <%= javascript_include_tag 'jquery.min', 'jquery-ui', 'jquery.validate', 'rails', 'menu', 'application', 'jquery.bxSlider.min' %>
   <%= yield :js_css_include %>
   <%= stylesheet_link_tag 'bangla_fix'  if I18n.locale.to_s == 'bn' %>
+   <script type="text/javascript">
+      var currentLocale = '<%= I18n.locale.to_s%>';
+  </script>
   <%= csrf_meta_tag %>
   <%= ajaxful_rating_style %>
 </head>
@@ -41,7 +44,7 @@
         <%= yield %>
         <% if @paginate_items %>
             <div class="pagination">
-              <%= will_paginate @paginate_items, :class => 'pagination_body', :prev_label => image_tag('left_arrow.png'), :next_label => image_tag('right_arrow.png') %>
+              <%= will_paginate @paginate_items, :renderer => CustomPaginationRenderer, :class => 'pagination_body', :prev_label => image_tag('left_arrow.png'), :next_label => image_tag('right_arrow.png') %>
             </div>
         <% end %>
       </div>

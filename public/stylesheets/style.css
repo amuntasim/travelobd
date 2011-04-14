@@ -11,7 +11,7 @@ body {
     font-family: Tahoma, Arial, Helvetica, sans-serif;
     font-size: 12px;
     background: #eef3fa;
-    color: #000;
+    color: #2d2d2d;
 }
 
 a {
@@ -451,10 +451,10 @@ input#friends_email {
     float: left;
     width: 692px;
     background: url(/images/sub_title_bg.jpg) repeat-x;
-    height: 23px;
+    height: 25px;
     font-size: 13px;
     color: #717173;
-    padding: 6px 0 0 10px;
+    padding: 3px 0 1px 10px;
     font-weight: bold
 }
 
@@ -475,9 +475,9 @@ input#friends_email {
 .item_details {
     float: left;
     width: 702px;
-    line-height: 18px;
     margin-bottom: 0px;
-    margin-top: 10px
+    margin-top: 10px;
+    line-height: 25px;
 }
 
 .white_Desc {
@@ -835,7 +835,7 @@ a.del_photo {
     font-size: 14px;
     float: left;
     cursor: pointer;
-    line-height:22px;
+    line-height: 22px;
 }
 
 .ad_btn .search_button {
