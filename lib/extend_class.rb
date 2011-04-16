@@ -8,10 +8,15 @@ class String
   def bangla
     if I18n.locale.to_s == 'bn'
       number_str = self.to_s
+      return_str = ''
       (0..number_str.length-1).each do |i|
-        number_str[i]=BANGLA_NUMBER_MAP[number_str[i].chr] if BANGLA_NUMBER_MAP[number_str[i].chr]
+        if BANGLA_NUMBER_MAP[number_str[i].chr]
+          return_str += BANGLA_NUMBER_MAP[number_str[i].chr]
+        else
+          return_str += BANGLA_NUMBER_MAP[number_str[i].chr]
+        end
       end
-      return number_str
+      return return_str
     else
       self
     end
