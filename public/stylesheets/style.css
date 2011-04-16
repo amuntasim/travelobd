@@ -362,7 +362,7 @@ input#friends_email {
     float: left;
     width: 990px;
     height: 46px;
-    background: #d8dce1 url(/images/sub_title_bg.jpg) repeat-x;
+    background: #e1e6ec;
     padding: 10px 0 0 10px
 }
 
@@ -426,7 +426,7 @@ input#friends_email {
 .subLink ul {
     float: right;
     width: 960px;
-    margin: 20px 0px 0 0;
+    margin: 6px 10px;
     display: inline
 }
 
@@ -445,6 +445,7 @@ input#friends_email {
 
 .subLink ul li a:hover {
     text-decoration: none;
+    color:#0083ab;
 }
 
 .good_item_head {

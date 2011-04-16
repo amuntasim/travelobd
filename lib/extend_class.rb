@@ -5,7 +5,7 @@ class String
     self.to_i < 10 ? "0#{self}" : self
   end
 
-  def localize
+  def bangla
     if I18n.locale.to_s == 'bn'
       number_str = self.to_s
 
@@ -34,9 +34,9 @@ class String
 end
 
 class Float
-  def localize
+  def bangla
     if I18n.locale.to_s == 'bn'
-      return self.to_s.localize
+      return self.to_s.bangla
     else
       return self
     end
@@ -47,9 +47,9 @@ class Fixnum
     self < 10 ? "0#{self}" : self
   end
 
-  def localize
+  def bangla
     if I18n.locale.to_s == 'bn'
-      return self.to_s.localize
+      return self.to_s.bangla
     else
       return self
     end

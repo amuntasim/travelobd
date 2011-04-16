@@ -17,7 +17,7 @@
         <label>
           <%= t('general.label.hotel_rating') %>
         </label>:
-        <%= @hotel.star_rating.localize %>
+        <%= @hotel.star_rating.bangla %>
         <%= t('general.label.star') %>
       </div>
   <% end %>
@@ -33,7 +33,7 @@
     <label>
       <%=t('general.label.total_rooms')%>
     </label>:
-     <%= @hotel.total_rooms.localize %>
+     <%= @hotel.total_rooms.bangla %>
   </div>
 
 
@@ -60,10 +60,10 @@
           <%= link_to room.name, room, :target => '_blank' %>
         </div>
         <div class="roomPrice fl">
-          <%= room.price.localize %>
+          <%= room.price.bangla %>
         </div>
         <div class="roomTitle fl">
-          <%= room.total_room.localize %>
+          <%= room.total_room.bangla %>
         </div>
     <% end %>
   </div>

@@ -19,14 +19,14 @@
             <%= link_to truncate(package.title, :length => 50), package %>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(package.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(package.description).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
           </div>
 
         </div>
         <div class="fl price_n_button">
           <div class="fl">
             <div class="fl price">
-              <span><%= package.price.localize %></span>
+              <span><%= package.price.bangla %></span>
               <%= t('general.label.taka') %>
               <%= raw price_str(package) %>
             </div>
