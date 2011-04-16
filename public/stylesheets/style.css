@@ -534,6 +534,12 @@ input#friends_email {
     width: 180px
 }
 
+.mytools ul li {
+    border-bottom: 1px solid #CCCCCC;
+    height: 32px;
+    padding-top: 5px;
+
+}
 .mytools ul {
     margin-top: 10px;
     margin-bottom: 30px;
@@ -544,7 +550,6 @@ input#friends_email {
     color: #000033;
     text-decoration: none;
     font-size: 12px;
-    font-weight: bold;
     line-height: 25px
 }
 
