@@ -20,7 +20,7 @@
             <h4><%= truncate(tour_operator.address, :length => 70) %></h4>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(tour_operator.description*7).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
+            <%= truncate(sanitize(tour_operator.description).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
           </div>
 
         </div>

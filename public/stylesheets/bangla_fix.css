@@ -38,7 +38,7 @@ body {
 }
 
 .package_desc .price_n_button a, .listItemDesc .price_n_button a {
-    padding-top: 3px !important;
+    padding-top: 2px !important;
     line-height: 17px;
 }
 

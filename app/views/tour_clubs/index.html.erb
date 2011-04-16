@@ -20,7 +20,7 @@
 
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(tour_club.description*7).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(tour_club.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
           </div>
 
         </div>
