@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/transport.rb" afterPath="$PROJECT_DIR$/app/models/transport.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/transports/index.html.erb" afterPath="$PROJECT_DIR$/app/views/transports/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/transports_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/transports_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/transports/show.html.erb" afterPath="$PROJECT_DIR$/app/views/transports/show.html.erb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/transports/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="122" selection-start="750" selection-end="750" vertical-scroll-proportion="0.5169713">
+            <state line="21" column="122" selection-start="750" selection-end="750" vertical-scroll-proportion="-8.25">
               <folding />
             </state>
           </provider>
@@ -68,7 +68,16 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/transports/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="18.75">
+            <state line="70" column="20" selection-start="2523" selection-end="2523" vertical-scroll-proportion="-2.5294118">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transports_helper.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/helpers/transports_helper.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="64" selection-start="253" selection-end="253" vertical-scroll-proportion="0.2284264">
               <folding />
             </state>
           </provider>
@@ -78,15 +87,6 @@
         <entry file="file://$PROJECT_DIR$/app/models/transport.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="20" column="22" selection-start="936" selection-end="936" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="61" selection-start="1940" selection-end="1940" vertical-scroll-proportion="-9.375">
               <folding />
             </state>
           </provider>
@@ -104,7 +104,7 @@
       <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="552" column="0" selection-start="8084" selection-end="8084" vertical-scroll-proportion="-18.88889">
+            <state line="477" column="20" selection-start="7051" selection-end="7067" vertical-scroll-proportion="-5.5555553">
               <folding />
             </state>
           </provider>
@@ -155,8 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/public/javascripts/jquery.bxSlider.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/welcome.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
@@ -171,6 +169,8 @@
         <option value="$PROJECT_DIR$/app/views/tour_operators/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/transport.rb" />
         <option value="$PROJECT_DIR$/app/views/transports/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/transports/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/helpers/transports_helper.rb" />
       </list>
     </option>
   </component>
@@ -578,11 +578,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/welcome.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="1" selection-start="593" selection-end="689" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -624,13 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="552" column="0" selection-start="8084" selection-end="8084" vertical-scroll-proportion="-18.88889">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/message.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="10" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
@@ -659,13 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/transports/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="18.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/transport.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="22" selection-start="936" selection-end="936" vertical-scroll-proportion="0.0">
@@ -675,7 +656,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/transports/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="122" selection-start="750" selection-end="750" vertical-scroll-proportion="0.5169713">
+        <state line="21" column="122" selection-start="750" selection-end="750" vertical-scroll-proportion="-8.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/transports/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="20" selection-start="2523" selection-end="2523" vertical-scroll-proportion="-2.5294118">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="477" column="20" selection-start="7051" selection-end="7067" vertical-scroll-proportion="-5.5555553">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/transports_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="64" selection-start="253" selection-end="253" vertical-scroll-proportion="0.2284264">
           <folding />
         </state>
       </provider>
