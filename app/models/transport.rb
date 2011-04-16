@@ -15,7 +15,8 @@ class Transport < ActiveRecord::Base
   has_many :departure_schedules
 
   has_friendly_id :name, :use_slug => true
-
+  validates :name, :presence => true
+  validates :description, :presence => true
 
   accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true

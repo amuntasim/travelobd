@@ -19,7 +19,7 @@
             <%= link_to truncate(transport.name, :length => 50), transport %>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(transport.description).gsub(/<\/?[^>]*>/, ""), :length => 350) %>
+            <%= truncate(sanitize(transport.description).gsub(/<\/?[^>]*>/, ""), :length => 350)  if transport.description%>
           </div>
 
         </div>
