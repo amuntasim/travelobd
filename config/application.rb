@@ -32,7 +32,7 @@ module Travelobd
 
     I18n.backend.class.send(:include, I18n::Backend::Fallbacks)
 
-    I18n.fallbacks.map('en' => 'bn')
+    I18n.fallbacks.map('bn' => 'en')
 
 
     #

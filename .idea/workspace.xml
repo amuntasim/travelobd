@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/packages/index.html.erb" afterPath="$PROJECT_DIR$/app/views/packages/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/application.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="35" selection-start="1513" selection-end="1513" vertical-scroll-proportion="0.0">
+            <state line="34" column="33" selection-start="1614" selection-end="1614" vertical-scroll-proportion="0.7002457">
               <folding />
             </state>
           </provider>
@@ -92,10 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="86" selection-start="1965" selection-end="1965" vertical-scroll-proportion="0.66579634">
+            <state line="44" column="107" selection-start="1390" selection-end="1390" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
@@ -168,9 +167,9 @@
         <option value="$PROJECT_DIR$/app/views/packages/print.html.erb" />
         <option value="$PROJECT_DIR$/app/views/packages/show.html.erb" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
-        <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/views/packages/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
+        <option value="$PROJECT_DIR$/config/application.rb" />
       </list>
     </option>
   </component>
@@ -708,20 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/configuration.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="35" selection-start="1513" selection-end="1513" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/packages/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="46" selection-start="973" selection-end="973" vertical-scroll-proportion="-7.7916665">
@@ -731,7 +716,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="86" selection-start="1965" selection-end="1965" vertical-scroll-proportion="0.66579634">
+        <state line="44" column="107" selection-start="1390" selection-end="1390" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/configuration.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/application.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="33" selection-start="1614" selection-end="1614" vertical-scroll-proportion="0.7002457">
           <folding />
         </state>
       </provider>
