@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/extend_class.rb" afterPath="$PROJECT_DIR$/lib/extend_class.rb" />
     </list>
     <ignored path="travelobd.iws" />
@@ -32,7 +31,7 @@
       <file leaf-file-name="extend_class.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/extend_class.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="44" selection-start="341" selection-end="341" vertical-scroll-proportion="0.44226044">
+            <state line="10" column="36" selection-start="199" selection-end="199" vertical-scroll-proportion="0.36855036">
               <folding />
             </state>
           </provider>
@@ -731,7 +730,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/extend_class.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="341" selection-end="341" vertical-scroll-proportion="0.44226044">
+        <state line="10" column="36" selection-start="199" selection-end="199" vertical-scroll-proportion="0.36855036">
           <folding />
         </state>
       </provider>
