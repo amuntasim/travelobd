@@ -9,9 +9,7 @@ class String
     if I18n.locale.to_s == 'bn'
       number_str = self.to_s
       (0..number_str.length-1).each do |i|
-        raise  "#{number_str[i]} - #{BANGLA_NUMBER_MAP[number_str[i]]}"
-
-        number_str[i]=BANGLA_NUMBER_MAP[number_str[i]] if BANGLA_NUMBER_MAP[number_str[i]]
+        number_str[i]=BANGLA_NUMBER_MAP[number_str[i].chr] if BANGLA_NUMBER_MAP[number_str[i].chr]
       end
       return number_str
     else
