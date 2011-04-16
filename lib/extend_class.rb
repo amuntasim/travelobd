@@ -11,7 +11,7 @@ class String
 
       (0..number_str.length-1).each do |i|
         number_str[i]=BANGLA_NUMBER_MAP[number_str[i]] if BANGLA_NUMBER_MAP[number_str[i]]
-        puts BANGLA_NUMBER_MAP[number_str[i]]
+        raise BANGLA_NUMBER_MAP[number_str[i]].inspect
       end
       return number_str
     else
