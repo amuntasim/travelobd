@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/extend_class.rb" afterPath="$PROJECT_DIR$/lib/extend_class.rb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="extend_class.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="extend_class.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/extend_class.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="3" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+            <state line="13" column="45" selection-start="343" selection-end="343" vertical-scroll-proportion="0.4791155">
               <folding />
             </state>
           </provider>
@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/application.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="33" selection-start="1614" selection-end="1614" vertical-scroll-proportion="0.11547912">
+            <state line="49" column="42" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -160,7 +160,6 @@
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/app/views/transports/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/hotels/index.html.erb" />
-        <option value="$PROJECT_DIR$/lib/extend_class.rb" />
         <option value="$PROJECT_DIR$/app/views/comments/_comment.html.erb" />
         <option value="$PROJECT_DIR$/app/views/hotels/print.html.erb" />
         <option value="$PROJECT_DIR$/app/views/hotels/show.html.erb" />
@@ -170,6 +169,7 @@
         <option value="$PROJECT_DIR$/app/views/packages/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/lib/extend_class.rb" />
       </list>
     </option>
   </component>
@@ -700,13 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/extend_class.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="3" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/packages/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="46" selection-start="973" selection-end="973" vertical-scroll-proportion="-7.7916665">
@@ -730,7 +723,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="33" selection-start="1614" selection-end="1614" vertical-scroll-proportion="0.11547912">
+        <state line="49" column="42" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/extend_class.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="45" selection-start="343" selection-end="343" vertical-scroll-proportion="0.4791155">
           <folding />
         </state>
       </provider>

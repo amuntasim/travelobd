@@ -11,6 +11,7 @@ class String
 
       (0..number_str.length-1).each do |i|
         number_str[i]=BANGLA_NUMBER_MAP[number_str[i]] if BANGLA_NUMBER_MAP[number_str[i]]
+        puts BANGLA_NUMBER_MAP[number_str[i]]
       end
       return number_str
     else
