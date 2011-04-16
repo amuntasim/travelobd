@@ -13,7 +13,7 @@ class String
         if BANGLA_NUMBER_MAP[number_str[i].chr]
           return_str += BANGLA_NUMBER_MAP[number_str[i].chr]
         else
-          return_str += BANGLA_NUMBER_MAP[number_str[i].chr]
+          return_str += number_str[i].chr
         end
       end
       return return_str
