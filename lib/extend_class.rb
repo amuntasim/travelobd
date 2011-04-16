@@ -6,7 +6,6 @@ class String
   end
 
   def bangla
-       raise 'ccc'
     if I18n.locale.to_s == 'bn'
       number_str = self.to_s
         raise 'ddd'
