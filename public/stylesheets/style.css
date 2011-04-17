@@ -1571,3 +1571,7 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
 }
 
 /**********END Login*********/
+
+.panel-overlay h2, .panel-overlay p span {
+    line-height: 25px;
+}
