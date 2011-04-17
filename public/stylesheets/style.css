@@ -419,7 +419,7 @@ input#friends_email {
 .subLink {
     float: right;
     width: 960px;
-    margin: 0 10px 0 0;
+    margin: 4px 10px 0 0;
     display: inline
 }
 
