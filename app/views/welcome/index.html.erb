@@ -55,7 +55,7 @@
         <div class="fl package_desc">
           <div class="fl package_desc_info">
             <div class="fl title">
-              <%= link_to truncate(package.title, :length => 60), package %>
+              <%= link_to truncate(package.title, :length => 40), package %>
             </div>
             <div class="fl description">
               <%= truncate(package.description, :length => 180) if package.description%>
