@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
     </list>
     <ignored path="travelobd.iws" />
@@ -49,7 +50,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="62" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.40358743">
+            <state line="60" column="61" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.20179372">
               <folding />
             </state>
           </provider>
@@ -645,7 +646,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="62" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.40358743">
+        <state line="60" column="61" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.20179372">
           <folding />
         </state>
       </provider>
