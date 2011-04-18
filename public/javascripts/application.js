@@ -98,6 +98,7 @@ $.fn.editPhotoLabel = function() {
 };
 
 var currentLocale = 'en';
+var keep_flash_messages  = false
 var TBD = {
     LEFT_SLIDER_OPTIONS: {
         mode: 'fade',
@@ -384,7 +385,7 @@ $(document).ready(function() {
 
 
     setTimeout(function() {
-        if (typeof(keep_flash_messages) !== 'undefined')
+        if (!keep_flash_messages)
             $('#flash_messages').fadeOut();
     }, 5000);
 
