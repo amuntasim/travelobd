@@ -4,14 +4,14 @@
 
 AdminUser:
   fields:
-    default: first_name, last_name, role, email, language
+    default: first_name, last_name, role, email
     list: email, role, status
-    form: first_name, last_name, role, email, password, password_confirmation, language
+    form: first_name, last_name, role, email, password, password_confirmation
     options:
-      selectors: role, language
+      selectors: role
       booleans:
         status: Active, Inactive
   filters: status, role
   search: first_name, last_name, email, role
-  application: Admin Panel
+  application: Admin Users
   description: Users Administration
