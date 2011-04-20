@@ -11,7 +11,6 @@ gem 'authlogic'
 gem 'paperclip'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'tiny_mce', '0.1.3'
-gem 'activemerchant'
 gem 'rails3-jquery-autocomplete'
 gem 'meta_search'
 gem "friendly_id", "~> 3.1"

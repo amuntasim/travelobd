@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="" />
     <list default="true" id="09228c00-1f8e-4b16-9f71-ade8cfa6a006" name="New changelist" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Gemfile.lock_bacd" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
     </list>
     <ignored path="travelobd.iws" />
@@ -79,7 +78,7 @@
       <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.36842105">
+            <state line="13" column="0" selection-start="261" selection-end="261" vertical-scroll-proportion="0.4868421">
               <folding />
             </state>
           </provider>
@@ -714,7 +713,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.36842105">
+        <state line="13" column="0" selection-start="261" selection-end="261" vertical-scroll-proportion="0.4868421">
           <folding />
         </state>
       </provider>
