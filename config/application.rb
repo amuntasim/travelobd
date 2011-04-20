@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require "i18n/backend/fallbacks"
+I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -28,11 +30,9 @@ module Travelobd
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :en
+    I18n.default_locale = :en
 
-    I18n.backend.class.send(:include, I18n::Backend::Fallbacks)
-
-    I18n.fallbacks.map('bn' => 'en')
+    I18n.fallbacks[:en] = [:bn, :en]
 
 
     #
