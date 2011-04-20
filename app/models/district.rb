@@ -12,7 +12,6 @@
 class District < ActiveRecord::Base
   translates :name
   bangla_for_typus :name
-  #belongs_to :country
   belongs_to :division
   validates :division_id, :presence => true
   validates :name, :presence => true

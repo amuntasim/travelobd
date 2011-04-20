@@ -1,6 +1,3 @@
-require "i18n/backend/fallbacks"
-I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-
 Travelobd::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
@@ -45,15 +42,9 @@ Travelobd::Application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
-  config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  I18n.default_locale = :en
-
-  I18n.fallbacks[:en] = [:bn, :en]
-  I18n.fallbacks[:bn] = [:en, :bn]
 end
 #for travelobd.heroku.com
 GMAP_API_KEY = 'ABQIAAAAv-CgURh0ryzzvdQmlxW74RT_9_5jAsPMaBYXvDK3bNxuXGBSlxQ3c1tPLdcLVABM6WCu7OgkOSQ6Kg'

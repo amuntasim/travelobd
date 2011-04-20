@@ -15,9 +15,11 @@ ActionMailer::Base.smtp_settings = {
     :user_name => "lorem.ipsume@gmail.com",
     :password => "lorem123456"
 }
+require "i18n/backend/fallbacks"
+I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
+
 
 #language
-I18n.default_locale = 'en'
 LOCALES_DIRECTORY = "#{Rails.root}/config/locales/"
 require 'extend_class'
 
