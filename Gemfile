@@ -22,6 +22,7 @@ gem 'RedCloth'
 gem 'omniauth'
 
 
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
