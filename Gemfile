@@ -21,8 +21,6 @@ gem 'ajaxful_rating', '~> 3.0.0.beta2'
 gem 'RedCloth'
 gem 'omniauth'
 
-
-
 # Use unicorn as the web server
 # gem 'unicorn'
 

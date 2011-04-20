@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="" />
     <list default="true" id="09228c00-1f8e-4b16-9f71-ade8cfa6a006" name="New changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,19 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="63" selection-start="236" selection-end="236" vertical-scroll-proportion="-6.111111">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gemfile.lock" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gemfile.lock">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="254" selection-end="254" vertical-scroll-proportion="0.43421054">
+            <state line="22" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.36842105">
               <folding />
             </state>
           </provider>
@@ -151,8 +144,8 @@
         <option value="$PROJECT_DIR$/vendor/plugins/bangla_for_typus/lib/active_record/bangla_for_typus.rb" />
         <option value="$PROJECT_DIR$/app/views/shared_partials/_detail_page_comment.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/Gemfile.lock" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -191,28 +184,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="travelobd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="travelobd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="[gem] ajaxful_rating (v3.0.0.beta3, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/ajaxful_rating-3.0.0.beta3)" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -743,14 +714,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="63" selection-start="236" selection-end="236" vertical-scroll-proportion="-6.111111">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="254" selection-end="254" vertical-scroll-proportion="0.43421054">
+        <state line="22" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.36842105">
           <folding />
         </state>
       </provider>
