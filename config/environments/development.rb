@@ -22,6 +22,7 @@ Travelobd::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
 end
 
 GMAP_API_KEY = 'ABQIAAAAv-CgURh0ryzzvdQmlxW74RT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSZdUVpKY-o_SbY0CEUAMZuQ-9U7A'
