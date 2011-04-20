@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   config.filter_parameters :password, :password_confirmation, :card_number, :card_verification
 
 
-  helper_method :current_user, :logged_in?, :admin?, :manager?, :mobile_device?
+  helper_method :current_user, :logged_in?, :admin?, :manager?, :mobile_device?, :singular_class_name
+
 
   private
   def current_user_session
