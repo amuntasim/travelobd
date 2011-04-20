@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list id="15882b58-2d3e-48eb-83cf-96b89896b2b1" name="Default" comment="" />
     <list default="true" id="09228c00-1f8e-4b16-9f71-ade8cfa6a006" name="New changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/configuration.rb" afterPath="$PROJECT_DIR$/config/initializers/configuration.rb" />
     </list>
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,7 +59,7 @@
       <file leaf-file-name="application.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/application.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="35" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.7002457">
+            <state line="34" column="33" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.7002457">
               <folding />
             </state>
           </provider>
@@ -711,7 +708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="35" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.7002457">
+        <state line="34" column="33" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.7002457">
           <folding />
         </state>
       </provider>

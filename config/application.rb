@@ -33,6 +33,7 @@ module Travelobd
     I18n.default_locale = :en
 
     I18n.fallbacks[:en] = [:bn, :en]
+    I18n.fallbacks[:bn] = [:en, :bn]
 
 
     #
