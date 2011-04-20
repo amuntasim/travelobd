@@ -16,10 +16,6 @@ GEM
       rack-mount (~> 0.6.12)
       rack-test (~> 0.5.4)
       tzinfo (~> 0.3.23)
-    activemerchant (1.13.0)
-      activesupport (>= 2.3.8)
-      braintree (>= 2.0.0)
-      builder (>= 2.0.0)
     activemodel (3.0.1)
       activesupport (= 3.0.1)
       builder (~> 2.1.2)
@@ -42,8 +38,6 @@ GEM
       activesupport
     babosa (0.3.3)
     bcrypt-ruby (2.1.4)
-    braintree (2.9.1)
-      builder
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -169,7 +163,6 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  activemerchant
   ajaxful_rating (~> 3.0.0.beta2)
   annotate
   authlogic
