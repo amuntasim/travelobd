@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412084646) do
+ActiveRecord::Schema.define(:version => 20110421192400) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.boolean  "approved",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
 
   create_table "condition_translations", :force => true do |t|
@@ -151,12 +152,6 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
 
   create_table "departure_schedules", :force => true do |t|
     t.integer  "transport_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "disciplines", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -262,8 +257,6 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.datetime "updated_at"
     t.integer  "category_id",    :default => 1
     t.integer  "star_rating"
-    t.string   "discount"
-    t.date     "discount_till"
     t.string   "latitude"
     t.string   "longitude"
     t.integer  "total_rooms",    :default => 0
@@ -346,27 +339,15 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.string   "price_excludes"
   end
 
-  create_table "package_videos", :force => true do |t|
-    t.integer  "package_id"
-    t.string   "code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "package_videos", ["package_id"], :name => "index_ad_videos_on_ad_id"
-
   create_table "packages", :force => true do |t|
+    t.string   "title"
     t.integer  "category_id"
     t.integer  "user_id"
-    t.string   "ad_name"
     t.string   "short_description"
     t.float    "price"
-    t.integer  "district_id"
-    t.integer  "division_id"
-    t.string   "phone"
-    t.boolean  "active",                                          :default => false
+    t.text     "description"
+    t.boolean  "active",                                          :default => true
     t.boolean  "featured",                                        :default => false
-    t.date     "expire_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "discount"
@@ -379,10 +360,9 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.integer  "tour_operator_id"
   end
 
-  add_index "packages", ["category_id", "user_id"], :name => "index_ads_on_category_id_and_user_id"
-  add_index "packages", ["district_id", "division_id", "active"], :name => "index_ads_on_district_id_and_division_id_and_active"
-  add_index "packages", ["featured"], :name => "index_ads_on_featured"
-  add_index "packages", ["user_id"], :name => "index_ads_on_user_id"
+  add_index "packages", ["category_id", "user_id"], :name => "index_packages_on_category_id_and_user_id"
+  add_index "packages", ["featured"], :name => "index_packages_on_featured"
+  add_index "packages", ["user_id"], :name => "index_packages_on_user_id"
 
   create_table "packages_destinations", :id => false, :force => true do |t|
     t.integer "package_id"
@@ -393,6 +373,8 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.integer "package_id"
     t.integer "spot_id"
   end
+
+  add_index "packages_spots", ["package_id", "spot_id"], :name => "index_packages_spots_on_package_id_and_spot_id"
 
   create_table "policies", :force => true do |t|
     t.integer  "policiable_id"
@@ -523,7 +505,7 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.integer "spot_id"
   end
 
-  add_index "spots_transports", ["transport_id", "spot_id"], :name => "index_transports_spots_on_transport_id_and_spot_id"
+  add_index "spots_transports", ["transport_id", "spot_id"], :name => "index_spots_transports_on_transport_id_and_spot_id"
 
   create_table "static_pages", :force => true do |t|
     t.string   "name"
@@ -567,6 +549,7 @@ ActiveRecord::Schema.define(:version => 20110412084646) do
     t.string  "locale"
     t.string  "name"
     t.text    "description"
+    t.string  "slogan"
   end
 
   create_table "tour_clubs", :force => true do |t|

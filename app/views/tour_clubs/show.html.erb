@@ -1,7 +1,7 @@
 <% title @tour_club.name %>
 <%= content_for :js_css_include do %>
 
-    <%= javascript_include_tag  'thickbox' %>
+    <%= javascript_include_tag 'thickbox' %>
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
 
@@ -33,6 +33,20 @@
 </div>
 
 <div class="item_details">
+  <div class="eventDetail clear">
+    <div class="fl slogan">
+      <%= @tour_club.slogan  %>
+    </div>
+    <div class="fl created_by">
+      <label>
+        <%= t 'general.label.created_by' %>
+      </label>
+      &nbsp;
+      <%= link_to @tour_club.user.full_name, @tour_club.user.profile, :target => '_blank' %>
+    </div>
+
+  </div>
+
   <div class="itemDetail pad_TL0">
     <%= @tour_club.description %>
   </div>
@@ -47,7 +61,17 @@
 
     <%= image_tag 'loadingAnimation.gif', :style => 'display:none' %>
   </div>
-  <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @tour_club, :rating => true} %>
+  <div class="good_item_head" style="background:none; padding: 0; color:#494C51">
+    <%= t('general.label.gossip_here') %>
+  </div>
+  <div class="commentForm">
+    <%= render :partial => 'comment_form' %>
+  </div>
+  <div class="itemDetail" id="item_comments" style="padding-left:0; padding-top:0">
+    <%= render :partial => 'comment', :collection => @tour_club.approved_comments %>
+
+  </div>
+
 </div>
 
 <div id="send_message_to_owner_lb" style="display: none">
@@ -56,7 +80,65 @@
 
 </div>
 
+
 <%= render :partial => 'shared_partials/send_to_friends', :locals => {:item => 'tour_club', :item_id => @tour_club.id} %>
+<style type="text/css">
+    .links .search_button {
+        height: 23px;
+        margin-left: 0px;
+    }
+
+    .item_form_row textarea {
+        -moz-border-radius: 5px;
+        border: 1px solid #CCCCCC;
+        height: 50px;
+        padding: 2px 5px;
+        width: 590px;
+        float: left;
+    }
+
+    div.submit_btn {
+        margin-top: 3px;
+    }
+
+    .comment, .comment h3 {
+        color: #494C51;
+    }
+
+    div.submit_btn .search_button {
+        margin-left: 10px;
+    }
+
+    .comment .avatar {
+        float: left;
+        width: 80px;
+        height: 60px;
+    }
+
+    .comment .commentContent {
+        float: left;
+        width: 596px
+    }
+
+    .comment .commentContent .time {
+        float: left;
+        width: 596px;
+        color: #999999;
+    }
+
+    .avatar img {
+        margin-top: 5px;
+    }
+        .slogan {
+            width:500px;
+            margin-right:10px;
+        }
+
+        .created_by {
+            width:192px;
+            text-align:right;
+        }
+</style>
 <script type="text/javascript">
     joinOrLeave = function() {
         $('#join_leave_container .links a').click(function() {

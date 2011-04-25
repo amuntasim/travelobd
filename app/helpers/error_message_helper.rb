@@ -29,11 +29,15 @@ module ErrorMessageHelper
       end
       options[:object_name] ||= params.first
 
-      I18n.with_options :locale => options[:locale], :scope => [:activerecord, :errors, :template] do |locale|
+      I18n.with_options :locale => options[:locale],  :scope => [:activerecord, :errors, :template] do |locale|
         header_message = if options.include?(:header_message)
                            options[:header_message]
                          else
-                           locale.t :header, :count => locale.t(count), :model => options[:object_name].to_s.gsub('_', ' ')
+                           if count == 1
+                             I18n.t('activerecord.errors.template.header.one', :count => count.bangla, :model => options[:object_name].to_s.gsub('_', ' '))
+                           else
+                             I18n.t('activerecord.errors.template.header.other', :count => count.bangla, :model => options[:object_name].to_s.gsub('_', ' '))
+                           end
                          end
 
         message = options.include?(:message) ? options[:message] : locale.t(:body)

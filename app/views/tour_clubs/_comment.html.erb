@@ -1,0 +1,16 @@
+<div class="comment <%= 'reply' if defined? reply  %>">
+  <div class="avatar">
+    <%= image_tag comment.user.profile.avatar.url(:thumb), :width => 68, :height => 55 if comment.user %>
+  </div>
+  <div class="commentContent">
+    <h3>
+      <%= comment.comment_by %>
+    </h3>
+    <%= comment.content %>
+    <div class="clear time">
+      <%= l(comment.created_at).bangla %>
+    </div>
+  </div>
+</div>
+
+<%= render :partial=> 'comment', :collection=> comment.children, :locals => {:reply => true} %>

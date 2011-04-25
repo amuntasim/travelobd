@@ -31,7 +31,6 @@ module ActiveRecord
 
             translation = self.translations.find_or_initialize_by_locale('bn')
             translation[name] = value
-O
             translation.save!
           end
           bn_stash.clear

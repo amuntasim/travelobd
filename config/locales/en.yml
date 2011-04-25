@@ -149,6 +149,7 @@ en:
       send: "Send"
       approve: 'Approve'
       deny: 'Deny'
+      share: 'Share'
 
     select:
       prompt: "Please select"
@@ -232,6 +233,7 @@ en:
       comment_created_thanks: 'Comment successfully created. Thanks for your comment'
       comment_created_publish_soon_thanks: 'Comment successfully created. Your comment will be published soon. Thanks for your comment'
       confirm_password: 'Confirm Password'
+      created_by: 'Created by'
       dashboard: 'Dashboard'
       description: 'Description'
       destinations: 'Destinations'
@@ -251,6 +253,7 @@ en:
       first_name: 'First Name'
       forgot_password: 'Forgot Password?'
       guest: 'Guest'
+      gossip_here: 'Gossip here'
       home: 'Home'
       hot_package: 'Hot Packages'
       how_to_go: 'How to go'
@@ -333,6 +336,7 @@ en:
       settings: 'Settings'
       save_failed_try_again: 'Save failed!, Please try again '
       search_result: 'Search Results'
+      slogan: 'Slogan'
       tour_cost: "Tour Costs"
       type: "Type"
       tariff: "Tariff"

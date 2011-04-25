@@ -1,6 +1,11 @@
+<% container = params[:container] || 'item_comments'%>
 <%if @comment.errors.empty? && @comment.approved?%>
 $('#commentStatus').html('<b style="color:green"><%= t('general.label.comment_created_thanks')%></b>');
-$('#item_comments').append('<%= escape_javascript(render @comment) %>').slideDown(1000);
+<% if @comment.commentable.class.name =~ /TourClub/%>
+$('#<%=container%>').append('<%= escape_javascript(render :partial => 'tour_clubs/comment', :object =>  @comment) %>').slideDown(1000);
+<% else%>
+$('#<%=container%>').append('<%= escape_javascript(render @comment) %>').slideDown(1000);
+<%end%>
 $("#comment_form").get(0).reset();
 <%elsif @comment.errors.empty? %>
 $('#commentStatus').html('<b style="color:green"><%= t('general.label.comment_created_publish_soon_thanks')%></b>');

@@ -1,0 +1,18 @@
+<div style="width:100%">
+  <div id="commentStatus">
+
+  </div>
+</div>
+
+<% form_for [@tour_club, @tour_club.comments.new], :remote => true, :html => {:id =>'comment_form'} do |f| %>
+
+    <div class="item_form_row  comment_row">
+      <%= f.text_area :content, :rows => 2, :cols => 60 %>
+      <div class="submit_btn" >
+       <%= f.hidden_field :devorppa, :value => 1 %>
+      <%= f.submit t('helpers.submit.share'), :class => 'search_button', :id=> 'submit_comment' %>
+      <span class="search_button_right"> </span>
+    </div>
+    </div>
+
+<% end %>

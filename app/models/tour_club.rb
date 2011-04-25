@@ -1,6 +1,8 @@
 class TourClub < ActiveRecord::Base
-  translates :name, :description
+  translates :name, :description, :slogan
 
+  validates :name, :presence => true
+  validates :description, :presence => true
   has_attached_file :logo, :styles => {:medium => "400x300", :thumb => "80x70>"},
                     :url => "/assets/tour_clubs_logo/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/tour_clubs_logo/:id/:style/:basename.:extension"
