@@ -306,6 +306,8 @@ en:
       policies: 'Policies'
       previous: 'Previous'
       price: 'Price'
+      price_included: "Price Included"
+      price_excluded: "Price Excluded"
       per_person: 'per person'
       profile: 'Profile'
       preferred_keyboard: 'preferred keyboard'
