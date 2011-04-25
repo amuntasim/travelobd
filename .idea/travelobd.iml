@@ -197,6 +197,16 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] oa-basic (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-basic-0.2.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] oa-more (v0.2.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-more-0.2.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] oauth2 (v0.2.0, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oauth2-0.2.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] omniauth (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/omniauth-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails3-jquery-autocomplete (v0.6.6, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/rails3-jquery-autocomplete-0.6.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-basic (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-basic-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-oauth (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-oauth-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oauth2 (v0.3.0, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oauth2-0.3.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] faraday (v0.6.1, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/faraday-0.6.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-core (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-core-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-enterprise (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-enterprise-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-more (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-more-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] oa-openid (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-openid-0.2.2)" level="application" />
   </component>
 </module>
 
