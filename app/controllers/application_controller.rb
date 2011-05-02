@@ -185,9 +185,9 @@ class CustomPaginationRenderer < WillPaginate::ViewHelpers::LinkRenderer
 
   def page_number(page)
     unless page == current_page
-      link(page.localize, page, :rel => rel_value(page))
+      link(page.bangla, page, :rel => rel_value(page))
     else
-      tag(:em, page.localize)
+      tag(:em, page.bangla)
     end
   end
 
