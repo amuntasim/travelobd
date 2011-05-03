@@ -94,9 +94,7 @@ class SpotsController < ApplicationController
   end
 
   def search
-    params[:search][:district_id_in] = params[:search][:district_id_in].split(',')  unless params[:search][:district_id_in].nil?
     @spot_search = Spot.search(params[:search])
-    params[:search][:district_id_in] = params[:search][:district_id_in].join(',')  unless params[:search][:district_id_in].nil?
     #ordering = " #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = " #{ params[:order] unless params[:order].blank? }"
     @spots = @spot_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
