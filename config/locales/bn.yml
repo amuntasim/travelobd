@@ -264,6 +264,7 @@ bn:
       details: "বিস্তারিত"
       discount_till: "বিশেষ ছাড় (শেষ তারিখ)"
       departure_time: 'ছাড়ার সময়'
+      date: 'তারিখ'
       edit: "সম্পাদনা"
       event_detail: "ইভেন্ট সমূ‌হের বর্ননা"
       email: "ই-মেইল"
