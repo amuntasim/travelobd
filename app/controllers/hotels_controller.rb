@@ -110,7 +110,9 @@ class HotelsController < ApplicationController
   end
 
   def search
+    params[:search][:district_id_in] = params[:search][:district_id_in].split(',')  unless params[:search][:district_id_in].nil?
     @hotel_search = Hotel.search(params[:search])
+     params[:search][:district_id_in] = params[:search][:district_id_in].join(',')  unless params[:search][:district_id_in].nil?
     #ordering = "featured DESC, #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = "featured DESC #{','+ params[:order] unless params[:order].blank? }"
     @hotels = @hotel_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)

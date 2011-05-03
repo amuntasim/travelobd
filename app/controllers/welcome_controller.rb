@@ -1,7 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-
-
     @active_nav = 'home'
     @search = Package.search(params[:search])
     @packages = Package.includes(:translations, :assets, :main_image, :slug).limit(10)

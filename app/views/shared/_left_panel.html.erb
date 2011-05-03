@@ -16,7 +16,7 @@
         <div class="search_row">
           <label> <%= t('general.label.location') %></label>
 
-          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> t('helpers.select.any')}, :class => 'searchFieldWide' %>
+          <%= f.select :district_id_in, @locations, {:selected =>  params[:search][:district_id_in], :prompt=> t('helpers.select.any')}, :class => 'searchFieldWide' %>
 
         </div>
 
@@ -34,7 +34,7 @@
         <div class="search_row">
           <label> <%= t('general.label.location') %></label>
 
-          <%= f.select :district_id_equals, @districts.collect { |d| [d.name+" -- #{d.division.name if d.division} ", d.id] }, {:prompt=> t('helpers.select.any')}, :class => 'searchFieldWide' %>
+          <%= f.select :district_id_in, @locations, {:prompt=> t('helpers.select.any')}, :class => 'searchFieldWide' %>
 
         </div>
 
