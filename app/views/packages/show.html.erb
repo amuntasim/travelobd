@@ -110,7 +110,7 @@
   </div>
   <div class="itemDetail">
     <div class="eventDetail eventTitle clear"><%= @package.tour_operator.name  if @package.tour_operator%></div>
-    <% @package.contacts.each do |contact| %>
+    <% @package.tour_operator.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
         <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
     <% end %>
