@@ -21,7 +21,7 @@ module ActiveRecord
         end
 
         define_method(:"#{name}_bn") do |*args|
-          self.translations.find_by_locale(:bn).name rescue read_attribute(name) rescue ''
+          self.translations.find_by_locale(:bn).read_attribute(name) rescue read_attribute(name) rescue ''
         end
       end
 

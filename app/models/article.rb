@@ -19,7 +19,9 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :saved_listings, :as => :savable, :dependent => :destroy
 
-  CATEGORIES = {'Category 1' => 1, 'Category 2' => 2, 'Category 3' => 3, 'Category 4' => 4}
+
+  has_many :polymorphic_categories, :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories, :dependent => :destroy
 
   accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
 
@@ -34,6 +36,6 @@ class Article < ActiveRecord::Base
   end
 
   def category
-    category_id ? CATEGORIES.invert[category_id] : nil
+    categories.collect(&:title).join(',')
   end
 end

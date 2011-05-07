@@ -18,8 +18,16 @@
           <%= t('general.label.category') %>
           <span>*</span>
         </div>
+        <div class="f_edit_row photo_box">
+          <% for category in Category.spot_categories %>
+              <div class="spot_in_package district_in_transport">
+                <%= check_box_tag "spot[category_ids][]", category.id, @spot.categories.include?(category), :id => dom_id(category) %>
 
-        <%= f.select :category_id, Spot::CATEGORIES, :prompt=> t('helpers.select.prompt') %>
+                <label for="<%= dom_id(category) %>"><%= category.title %></label>
+              </div>
+          <% end %>
+        </div>
+
       </div>
 
       <div class="item_form_row">
@@ -32,7 +40,7 @@
 
       <div class="item_form_row">
         <div class="label">
-          <%= t('activerecord.attributes.short_description') %>
+          <%= t('general.label.short_description') %>
           <span>*</span>
         </div>
         <%= f.text_field :short_description %>

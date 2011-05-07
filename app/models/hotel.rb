@@ -27,7 +27,9 @@ class Hotel < ActiveRecord::Base
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
 
-  validates :category_id, :presence => true
+  has_many :polymorphic_categories , :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories , :dependent => :destroy
+
   validates :name, :presence => true
   validates :district_id, :presence => true
 
@@ -55,8 +57,6 @@ class Hotel < ActiveRecord::Base
 
   has_and_belongs_to_many :features, :delete_sql => 'DELETE FROM features_hotels WHERE  hotel_id = #{id} AND feature_id = #{record.id}'
 
-  CATEGORIES = {'Hotel' => 1, 'Apartment' => 2, 'Cottage' => 3}
-
 
   scope :featured, where(:featured => true).includes(:translations, :assets, :main_image, :slug)
 
@@ -65,7 +65,7 @@ class Hotel < ActiveRecord::Base
   end
 
   def category
-    category_id ? CATEGORIES.invert[category_id] : nil
+     categories.collect(&:title).join(',')
   end
 
   def title

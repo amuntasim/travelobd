@@ -37,7 +37,7 @@ class SpotsController < ApplicationController
   # GET /spots/new
   # GET /spots/new.xml
   def new
-    @spot = Spot.new(:category_id =>params[:category_id])
+    @spot = Spot.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -69,6 +69,7 @@ class SpotsController < ApplicationController
   # PUT /spots/1
   # PUT /spots/1.xml
   def update
+    params[:spot][:category_ids] ||= []
     @spot = Spot.find(params[:id])
     respond_to do |format|
       if @spot.update_attributes(params[:spot])

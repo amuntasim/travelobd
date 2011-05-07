@@ -339,6 +339,7 @@ en:
       save_failed_try_again: 'Save failed!, Please try again '
       search_result: 'Search Results'
       slogan: 'Slogan'
+      short_description: "Short description"
       tour_cost: "Tour Costs"
       type: "Type"
       tariff: "Tariff"

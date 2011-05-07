@@ -7,6 +7,10 @@ class TourOperator < ActiveRecord::Base
                     :path => ":rails_root/public/assets/tour_operators_logo/:id/:style/:basename.:extension"
 
   has_many :packages
+
+  has_many :polymorphic_categories , :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories , :dependent => :destroy
+
   belongs_to :user
   has_many :contacts, :as => :contactable
   has_many :services, :class_name => 'TitleDetailAttribute', :as => :td_attributable, :conditions => {:td_association_type => :service}
@@ -34,7 +38,7 @@ class TourOperator < ActiveRecord::Base
   scope :featured #, where(:featured => true)
 
   def category
-    category_id ? CATEGORIES.invert[category_id] : nil
+    categories.collect(&:title).join(',')
   end
 
   class << self

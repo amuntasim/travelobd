@@ -26,11 +26,13 @@ class Spot < ActiveRecord::Base
 
   scope :actives, where(:active => true).includes(:translations, :assets, :main_image, :slug)
 
-  validates :category_id, :presence => true
   validates :name, :presence => true
   validates :description, :presence => true
   validates :district_id, :presence => true
   validates :division_id, :presence => true
+
+  has_many :polymorphic_categories , :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories , :dependent => :destroy
 
   belongs_to :user
   belongs_to :district
@@ -49,6 +51,7 @@ class Spot < ActiveRecord::Base
   #before_save :save_textilize_description
 
   CATEGORIES = {'Hill' => 1, 'Sea' => 2, 'Wild' => 3, 'Nature' => 4}
+  #accepts_nested_attributes_for :base_categories, :reject_if => :all_blank
   accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :side_scenes, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :cost_items, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
@@ -59,7 +62,7 @@ class Spot < ActiveRecord::Base
   end
 
   def category
-    category_id ? CATEGORIES.invert[category_id] : nil
+    categories.collect(&:title).join(',')
   end
 
 
@@ -90,4 +93,6 @@ class Spot < ActiveRecord::Base
   def valid_lat_long?
     !latitude.nil? && latitude.length >= 2 && !longitude.nil? && longitude.length >= 2
   end
+
+
 end

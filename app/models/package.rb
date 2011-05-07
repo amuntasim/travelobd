@@ -27,7 +27,7 @@
 class Package < ActiveRecord::Base
   translates :title, :description, :short_description, :location, :price_includes, :price_excludes
 
-  validates :category_id, :presence => true
+
   validates :title, :presence => true
   validates :price, :presence => true
   validates :short_description, :presence => true
@@ -39,9 +39,11 @@ class Package < ActiveRecord::Base
   belongs_to :user
   belongs_to :tour_operator
 
+  has_many :polymorphic_categories , :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories , :dependent => :destroy
+
   has_many :events, :class_name => 'PackageEvent'
   has_many :itineraries, :class_name => 'PackageItinerary'
-  has_many :contacts, :as => :contactable
   has_many :conditions, :as => :conditionable
   has_many :comments, :as => :commentable
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
@@ -57,21 +59,19 @@ class Package < ActiveRecord::Base
   accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :events, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :itineraries, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :conditions, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
 
 
   ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]
 
 
-  CATEGORIES = {'cat1' => 1, 'cat2' => 2, 'cat3' => 3}
 
   def main_image_url(style = :medium)
     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
   end
 
   def category
-    category_id ? CATEGORIES.invert[category_id] : nil
+    categories.collect(&:title).join(',')
   end
 
 end

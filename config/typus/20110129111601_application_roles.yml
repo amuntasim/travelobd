@@ -6,4 +6,5 @@ admin:
   SavedListing: create, read, update, delete
   Hotel: all
   Feature: all
+  Category: all
 

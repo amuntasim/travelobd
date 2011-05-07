@@ -18,7 +18,15 @@
           <%= t('general.label.category') %>
           <span>*</span>
         </div>
-        <%= f.select :category_id, Article::CATEGORIES, :prompt=> t('helpers.select.prompt')%>
+        <div class="f_edit_row photo_box">
+          <% for category in Category.article_categories %>
+              <div class="spot_in_package district_in_transport">
+                <%= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category), :id => dom_id(category) %>
+
+                <label for="<%= dom_id(category) %>"><%= category.title %></label>
+              </div>
+          <% end %>
+        </div>
       </div>
 
       <div class="item_form_row">

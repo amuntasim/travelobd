@@ -22,7 +22,15 @@
         <span>*</span>
       </div>
 
-      <%= f.select :category_id, Package::CATEGORIES, :prompt=> t('helpers.select.prompt') %>
+     <div class="f_edit_row photo_box">
+          <% for category in Category.package_categories %>
+              <div class="spot_in_package district_in_transport">
+                <%= check_box_tag "package[category_ids][]", category.id, @package.categories.include?(category), :id => dom_id(category) %>
+
+                <label for="<%= dom_id(category) %>"><%= category.title %></label>
+              </div>
+          <% end %>
+        </div>
     </div>
 
 
@@ -244,27 +252,6 @@
 
 
     <div class="item_form_row">
-
-      <div class="label">
-        <%= f.label :contact, t('general.label.contacts') %>
-      </div>
-      <div class="f_edit_row photo_box" style="width:705px;">
-
-
-        <div id="package_contacts" class="package_events">
-
-          <% unless @package.new_record? %>
-              <%= render :partial => 'contact', :collection => @package.contacts, :locals => {:form => f} %>
-          <% end %>
-          <%= render :partial => 'contact', :locals => {:form => f, :contact => @package.contacts.new} if @package.new_record? || @package.contacts.size == 0 %>
-        </div>
-
-        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreContact' %>
-      </div>
-
-    </div>
-
-    <div class="item_form_row">
       <div class="label">
         <%= f.label :condition, t('general.label.conditions') %>
       </div>
@@ -336,7 +323,6 @@
 
 
     $(document).ready(function() {
-        TBD.DHTML.addMoreItem('a.addMoreContact', '#new_contact_html', '#package_contacts', 'span.removeContactField', 'contact');
         TBD.DHTML.addMoreItem('a.addMoreCondition', '#new_condition_html', '#package_conditions', 'span.removeConditionField', 'condition');
         TBD.DHTML.addMoreItem('a.addMoreDestination', '#new_destination_html', '#package_destinations', 'span.removeDestinationField', 'destination');
         TBD.DHTML.addMoreItem('a.addMoreEvent', '#new_event_html', '#package_events', 'span.removeEventField', 'event');

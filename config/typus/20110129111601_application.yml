@@ -34,3 +34,13 @@ Feature:
   search:
   application: travelobd
 
+Category:
+  fields:
+    default: title, title_bn, parent
+    form: title, title_bn, parent
+    options:
+      selectors: parent
+  order_by:
+  relationships:
+  search:
+  application: travelobd

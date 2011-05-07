@@ -1,6 +1,9 @@
 class Transport < ActiveRecord::Base
   translates :name, :description, :address
 
+  has_many :polymorphic_categories, :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories, :dependent => :destroy
+
   has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
   belongs_to :user
@@ -36,7 +39,7 @@ class Transport < ActiveRecord::Base
   end
 
   def category
-    category_id ? CATEGORIES.invert[category_id] : nil
+   categories.collect(&:title).join(',')
   end
 
   def locations

@@ -445,7 +445,7 @@ input#friends_email {
 
 .subLink ul li a:hover {
     text-decoration: none;
-    color:#0083ab;
+    color: #0083ab;
 }
 
 .good_item_head {
@@ -540,6 +540,7 @@ input#friends_email {
     padding-top: 5px;
 
 }
+
 .mytools ul {
     margin-top: 10px;
     margin-bottom: 30px;
@@ -1082,6 +1083,10 @@ div.photo {
 .photo {
     float: left;
     width: 100%;
+}
+
+input.photo {
+    width: auto;
 }
 
 .f_edit_row input.photo {

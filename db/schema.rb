@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421192400) do
+ActiveRecord::Schema.define(:version => 20110506095726) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -82,6 +82,20 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categories", :force => true do |t|
+    t.string   "parent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "category_translations", :force => true do |t|
+    t.integer "category_id"
+    t.string  "locale"
+    t.string  "title"
+  end
+
+  add_index "category_translations", ["category_id", "locale"], :name => "index_category_translations_on_category_id_and_locale"
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -255,7 +269,6 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id",    :default => 1
     t.integer  "star_rating"
     t.string   "latitude"
     t.string   "longitude"
@@ -341,7 +354,6 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
 
   create_table "packages", :force => true do |t|
     t.string   "title"
-    t.integer  "category_id"
     t.integer  "user_id"
     t.string   "short_description"
     t.float    "price"
@@ -360,8 +372,8 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
     t.integer  "tour_operator_id"
   end
 
-  add_index "packages", ["category_id", "user_id"], :name => "index_packages_on_category_id_and_user_id"
   add_index "packages", ["featured"], :name => "index_packages_on_featured"
+  add_index "packages", ["user_id"], :name => "index_packages_on_category_id_and_user_id"
   add_index "packages", ["user_id"], :name => "index_packages_on_user_id"
 
   create_table "packages_destinations", :id => false, :force => true do |t|
@@ -388,6 +400,14 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
     t.string  "locale"
     t.text    "title"
     t.text    "detail"
+  end
+
+  create_table "polymorphic_categories", :force => true do |t|
+    t.integer  "categorizable_id"
+    t.string   "categorizable_type"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "profile_translations", :force => true do |t|
@@ -476,7 +496,6 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
   end
 
   create_table "spots", :force => true do |t|
-    t.integer  "category_id"
     t.integer  "district_id"
     t.integer  "division_id"
     t.integer  "country_id"
@@ -490,8 +509,8 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
     t.string   "longitude"
   end
 
-  add_index "spots", ["category_id", "user_id"], :name => "index_spots_on_category_id_and_user_id"
   add_index "spots", ["division_id", "district_id", "active"], :name => "index_spots_on_division_id_and_district_id_and_active"
+  add_index "spots", ["user_id"], :name => "index_spots_on_category_id_and_user_id"
   add_index "spots", ["user_id"], :name => "index_spots_on_user_id"
   add_index "spots", ["zip_code", "active"], :name => "index_spots_on_zip_code_and_active"
 
@@ -572,7 +591,6 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
   end
 
   create_table "tour_operators", :force => true do |t|
-    t.integer  "category_id"
     t.integer  "user_id"
     t.boolean  "active"
     t.string   "logo_file_name"
@@ -608,11 +626,10 @@ ActiveRecord::Schema.define(:version => 20110421192400) do
   create_table "transports", :force => true do |t|
     t.integer  "user_id"
     t.string   "web"
-    t.boolean  "active",      :default => true
+    t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
-    t.boolean  "featured",    :default => false
+    t.boolean  "featured",   :default => false
   end
 
   create_table "transports_destinations", :id => false, :force => true do |t|
