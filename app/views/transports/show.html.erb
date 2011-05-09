@@ -48,7 +48,7 @@
 
     <% @transport.locations_by_districts.each do |district, locations| %>
         <div class="eventTitle">
-          <%= district.name %>
+          <%= district.name  if district%>
         </div>
         <div class="branchLocations">
           <% branch_location_index = -1 %>
