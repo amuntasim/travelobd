@@ -18,7 +18,7 @@ class HotelsController < ApplicationController
     conditions = []
     conditions.add_condition!(:category_id =>params[:category_id]) unless params[:category_id].blank?
     @hotels = Hotel.paginate(:page=> params[:page], :conditions => conditions)
-    @search_title = Hotel::CATEGORIES.invert[params[:category_id].to_i] || 'All Hotels'
+    @search_title = 'Hotels'
     @paginate_items = @hotels
   end
 
