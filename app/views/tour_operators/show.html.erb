@@ -69,8 +69,21 @@
         <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
     <% end %>
   </div>
+  <div class="good_item_head">
+    <%= t('general.label.packages') %>
+  </div>
+<div class="itemDetail">
 
-  <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @tour_operator, :rating => true} %>
+  <ol>
+    <% @tour_operator.packages.each do |package| %>
+
+       <li><%=link_to package.title, package %></li>
+
+    <% end %>
+  </ol>
+  </div>
+
+  <%#= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @tour_operator, :rating => true} %>
 
 
 </div>

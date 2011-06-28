@@ -146,7 +146,6 @@ Travelobd::Application.routes.draw do
 
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
-  match 'place_an_ad' => 'ads#new'
 
   #match 'checkout' => 'carts#show'
   root :to => "welcome#index"

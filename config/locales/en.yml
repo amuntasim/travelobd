@@ -216,6 +216,7 @@ en:
       add_item: '+ Add %{item}'
       already_saved: 'Already Saved'
       avatar: 'Avatar'
+      active: 'Active'
       branches: 'Branches'
       category: 'Category'
       contacts: 'Contacts'
@@ -315,6 +316,7 @@ en:
       profile_of_foo: 'Profile of %{foo}'
       provide_the_followings: 'Provide the followings [requires only once]'
       password: 'Password'
+      packages: 'Packages'
       rating: 'Rating'
       read_more: "Read More"
       rooms_tariff: 'Rooms Tariff'

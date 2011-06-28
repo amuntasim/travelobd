@@ -97,17 +97,7 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
-  def current_cart
-    if session[:cart_id]
-      @current_cart ||= Cart.find(session[:cart_id])
-      session[:cart_id] = nil if @current_cart.purchased_at
-    end
-    if session[:cart_id].nil?
-      @current_cart = Cart.create!
-      session[:cart_id] = @current_cart.id
-    end
-    @current_cart
-  end
+
 
 
   def load_required_instance_variables

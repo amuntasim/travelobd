@@ -29,7 +29,7 @@
             <div class="dc_item_links fl">
               <%= link_to t('general.label.details'), spot %>
               <%= link_to t('general.label.edit'), edit_spot_path(spot) %>
-              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('helpers.delete'), spot, :confirm => 'You are going to delete a spot. Are you sure?', :method => :delete %>
             </div>
           </div>
       <% end %>

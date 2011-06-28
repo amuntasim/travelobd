@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110506095726) do
+ActiveRecord::Schema.define(:version => 20110628103437) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -274,6 +274,8 @@ ActiveRecord::Schema.define(:version => 20110506095726) do
     t.string   "longitude"
     t.integer  "total_rooms",    :default => 0
     t.float    "starting_price", :default => 0.0
+    t.string   "discount"
+    t.date     "discount_till"
   end
 
   create_table "hotels_spots", :id => false, :force => true do |t|

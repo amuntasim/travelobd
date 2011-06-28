@@ -93,14 +93,6 @@
     </div>
 
 
-    <div class="item_form_row">
-      <div class="label">
-        <%= f.label :phone, t('general.label.phone') %>
-        <span>*</span>
-      </div>
-
-      <%= f.text_field :phone %>
-    </div>
 
 
     <div class="item_form_row">
@@ -282,9 +274,6 @@
 <% end %>
 </div>
 <div style="display: none">
-  <div id="new_video_html">
-    <%= render(:partial => 'video', :locals => {:form => @builder}, :object => @package.videos.new) %>
-  </div>
 
 
   <div id="new_photo_html">

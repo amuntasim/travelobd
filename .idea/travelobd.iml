@@ -207,6 +207,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] oa-enterprise (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-enterprise-0.2.2)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] oa-more (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-more-0.2.2)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] oa-openid (v0.2.2, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/oa-openid-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails3-jquery-autocomplete (v0.7.3, /home/muntasim/.rvm/gems/ruby-1.9.2-p136/gems/rails3-jquery-autocomplete-0.7.3)" level="application" />
   </component>
 </module>
 

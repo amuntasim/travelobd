@@ -175,7 +175,12 @@
         </div>
       </div>
 
-
+      <div class="item_form_row">
+        <div class="label">
+          <%= t('general.label.active') %>
+        </div>
+        <%= f.check_box :active %>
+      </div>
       <div class="submit_btn">
         <%= f.submit :class => 'search_button' %>
         <span class="search_button_right"> </span>
