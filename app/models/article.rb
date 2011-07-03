@@ -12,6 +12,8 @@
 
 class Article < ActiveRecord::Base
   translates :title, :detail
+  default_scope order('articles.created_at DESC')
+
   has_friendly_id :title, :use_slug => true
   has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}

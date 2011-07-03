@@ -1,5 +1,6 @@
 class Transport < ActiveRecord::Base
   translates :name, :description, :address
+  default_scope order('transports.created_at DESC')
 
   has_many :polymorphic_categories, :as => :categorizable, :dependent => :destroy
   has_many :categories, :through => :polymorphic_categories, :dependent => :destroy

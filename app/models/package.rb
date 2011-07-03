@@ -26,6 +26,7 @@
 
 class Package < ActiveRecord::Base
   translates :title, :description, :short_description, :location, :price_includes, :price_excludes
+  default_scope order('packages.created_at DESC')
 
 
   validates :title, :presence => true

@@ -22,6 +22,7 @@
 
 class Hotel < ActiveRecord::Base
   translates :name, :description, :address
+  default_scope order('hotels.created_at DESC')
 
   has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}

@@ -1,5 +1,6 @@
 class TourClub < ActiveRecord::Base
   translates :name, :description, :slogan
+  default_scope order('tour_clubs.created_at DESC')
 
   validates :name, :presence => true
   validates :description, :presence => true

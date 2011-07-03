@@ -18,6 +18,7 @@
 class Spot < ActiveRecord::Base
   translates :name, :description, :short_description, :history, :how_to_go, :where_to_stay
   has_friendly_id :name, :use_slug => true
+  default_scope order('spots.created_at DESC')
 
   has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
@@ -31,8 +32,8 @@ class Spot < ActiveRecord::Base
   validates :district_id, :presence => true
   validates :division_id, :presence => true
 
-  has_many :polymorphic_categories , :as => :categorizable, :dependent => :destroy
-  has_many :categories, :through => :polymorphic_categories , :dependent => :destroy
+  has_many :polymorphic_categories, :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories, :dependent => :destroy
 
   belongs_to :user
   belongs_to :district

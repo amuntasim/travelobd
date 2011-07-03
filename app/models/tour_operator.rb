@@ -1,5 +1,6 @@
 class TourOperator < ActiveRecord::Base
   translates :name, :description, :address
+  default_scope order('tour_operators.created_at DESC')
 
 
   has_attached_file :logo, :styles => {:medium => "400x300", :thumb => "80x70>"},
