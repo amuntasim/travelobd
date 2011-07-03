@@ -2,7 +2,7 @@
 
 <%= content_for :js_css_include do %>
 
-    <%= javascript_include_tag  'thickbox' %>
+    <%= javascript_include_tag 'thickbox' %>
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
 
@@ -11,6 +11,11 @@
     <div class="redhead_row">
       <div class="subLink">
         <ul>
+          <% if can_edit?(@article) %>
+              <li>
+                <%= link_to t('general.label.edit'), edit_article_path(@article) %>
+              </li>
+          <% end %>
           <li>
             <%= link_to t('general.label.message_to_authority'), "#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true", :class => 'thickbox' %>
           </li>
@@ -47,7 +52,7 @@
 
 </div>
 
-  <div id="send_message_to_owner_lb" style="display: none">
+<div id="send_message_to_owner_lb" style="display: none">
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>
   <%= render :partial => 'messages/ajax_form', :locals => {:message_target => @article} %>
 

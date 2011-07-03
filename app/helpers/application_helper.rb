@@ -77,6 +77,9 @@ module ApplicationHelper
     I18n.t(translatable_str, :model => model, :default => defaults)
   end
 
+  def can_edit?(item)
+    current_user && (item.user_id == current_user.id || admin?)
+  end
 
 end
 

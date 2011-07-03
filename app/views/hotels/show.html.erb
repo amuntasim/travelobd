@@ -12,6 +12,11 @@
     <div class="redhead_row">
       <div class="subLink">
         <ul>
+          <% if can_edit?(@hotel) %>
+              <li>
+                <%= link_to t('general.label.edit'), edit_hotel_path(@hotel) %>
+              </li>
+          <% end %>
           <li>
             <%= link_to t('general.label.message_to_authority'), "#TB_inline?dd=4&width=400&height=400&inlineId=send_message_to_owner_lb&modal=true", :class => 'thickbox' %>
           </li>
@@ -64,9 +69,9 @@
 
   <div class="eventDetail">
     <label>
-      <%=t('general.label.total_rooms')%>
+      <%= t('general.label.total_rooms') %>
     </label>:
-     <%= @hotel.total_rooms.bangla %>
+    <%= @hotel.total_rooms.bangla %>
   </div>
 
 
@@ -78,17 +83,17 @@
   </div>
 
   <div class="good_item_head">
-    <%=t('general.label.rooms_tariff')%>
+    <%= t('general.label.rooms_tariff') %>
   </div>
   <div class="itemDetail eventDetail">
     <div class="roomTitleHeader eventTitle fl">
       <%= t('general.label.room_type') %>
     </div>
     <div class="eventTitle roomPriceHeader  fl">
-         <%= t('general.label.rooms_tariff') %>
+      <%= t('general.label.rooms_tariff') %>
     </div>
     <div class="eventTitle roomTitleHeader  fl">
-       <%= t('general.label.total_rooms') %>
+      <%= t('general.label.total_rooms') %>
     </div>
 
     <% @hotel.rooms.each do |room| %>
@@ -121,7 +126,7 @@
       </div>
   <% end %>
   <div class="good_item_head">
-      <%= t('general.label.policies') %>
+    <%= t('general.label.policies') %>
   </div>
   <div class="itemDetail">
     <% @hotel.policies.each do |policy| %>
@@ -131,12 +136,12 @@
   </div>
 
   <div class="good_item_head">
-     <%= t('general.label.contacts') %>
+    <%= t('general.label.contacts') %>
   </div>
   <div class="itemDetail">
     <% @hotel.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
-        <div class="eventDetail clear"><%= t('general.label.phone')%>: <%= contact.phone %></div>
+        <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
     <% end %>
   </div>
 

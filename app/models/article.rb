@@ -15,6 +15,7 @@ class Article < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
   has_many :assets, :as => :assetable, :dependent => :destroy
   has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
+  validates :title, :presence => true
 
   belongs_to :user
   has_many :saved_listings, :as => :savable, :dependent => :destroy

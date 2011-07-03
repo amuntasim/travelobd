@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
     conditions = []
     conditions.add_condition!(:category_id =>params[:category_id]) unless params[:category_id].blank?
     @articles = Article.paginate(:page=> params[:page], :per_page => 10, :conditions => conditions)
-    @search_title = Article::CATEGORIES.invert[params[:category_id].to_i] || 'All Articles'
+    #@search_title = Article::CATEGORIES.invert[params[:category_id].to_i] || 'All Articles'
+    @search_title = 'All Articles'
     render :action => 'index_admin', :layout => 'admin' if admin?
   end
 
