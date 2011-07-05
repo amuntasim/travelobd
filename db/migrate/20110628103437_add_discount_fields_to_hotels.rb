@@ -1,7 +1,7 @@
 class AddDiscountFieldsToHotels < ActiveRecord::Migration
   def self.up
-     add_column :hotels, :discount, :string
-    add_column :hotels, :discount_till, :date
+     #add_column :hotels, :discount, :string
+     #add_column :hotels, :discount_till, :date
   end
 
   def self.down
