@@ -57,7 +57,7 @@
         <div class="label">
           <%= t('general.label.details') %>
         </div>
-        <%= f.text_area :description, :class => "tiny_redcloth" %>
+        <%= f.text_area :description, :class => "tiny_redcloth bangla_input" %>
       </div>
 
       <div class="item_form_row">
@@ -254,8 +254,7 @@
         TBD.ASSETS.deleteAsset('spots');
         TBD.ASSETS.makeMainPhoto('spots');
         divisionChanged();
-        $('textarea.tiny_redcloth').tinyRedcloth();
-        $('textarea.tiny_redcloth').banglaInput({keyboard:'bijoy'});
+
 
     });
 

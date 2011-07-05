@@ -20,8 +20,8 @@ class Spot < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
   default_scope order('spots.created_at DESC')
 
-  has_many :assets, :as => :assetable, :dependent => :destroy
-  has_one :main_image, :class_name => 'Asset', :as => :assetable, :conditions => {:main => true}
+  has_many :assets, :class_name => 'SpotAsset', :dependent => :destroy
+  has_one :main_image, :class_name => 'SpotAsset', :conditions => {:main => true}
 
   belongs_to :user
 

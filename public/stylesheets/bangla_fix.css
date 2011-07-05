@@ -99,5 +99,13 @@ body {
 }
 
 .mytools ul li a {
-    font-size:14px;
+    font-size: 14px;
+}
+
+.existing_image {
+    font-size: 12px
+}
+
+a.del_photo {
+    line-height: 14px
 }

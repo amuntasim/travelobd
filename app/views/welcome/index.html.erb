@@ -13,7 +13,7 @@
 
       <% @spots.each do |spot| %>
           <div class="panel ">
-            <%= image_tag(spot.main_image_url(:medium), :class=> 'panel_image', :photo_id =>spot.id, :width => 505) %>
+            <%= image_tag(spot.main_image_url(:home_pg), :class=> 'panel_image', :photo_id =>spot.id, :width => 505) %>
             <%= link_to spot, :target => '_blank' do %>
                 <div class="panel-overlay" style="padding:5px;">
                   <h2>

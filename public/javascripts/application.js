@@ -90,7 +90,7 @@ $.fn.editPhotoLabel = function() {
 //            type: 'post',
 //            dataType: 'script',
 //            success: function(results) {
-//                alert('main phot set!');
+//                alert('main photo reset!');
 //            }
 //        });
 
@@ -98,7 +98,7 @@ $.fn.editPhotoLabel = function() {
 };
 
 var currentLocale = 'en';
-var keep_flash_messages  = false
+var keep_flash_messages = false
 var TBD = {
     LEFT_SLIDER_OPTIONS: {
         mode: 'fade',
@@ -192,15 +192,15 @@ var TBD = {
     ASSETS : {
         makeMainPhoto : function(resource) {
             $('input.mainCh').click(function() {
-                $('input.mainCh').attr('checked', false);
-                $(this).attr('checked', true);
+//                $('input.mainCh').attr('checked', false);
+//                $(this).attr('checked', true);
 
                 $.ajax({
                     url: '/' + resource + '/set_main_photo?asset_id=' + $(this).attr('asset_id'),
                     type: 'post',
                     dataType: 'script',
                     success: function(results) {
-                        alert('main phot set!');
+                        alert('main photo reset!');
                     }
                 });
 
@@ -298,9 +298,9 @@ var TBD = {
             });
         },
 
-        translateBxPager:function(){
-            $('.bx-pager a').each(function(){
-               $(this).html(TBD.GENERAL.translateNumber($(this).html(), currentLocale))
+        translateBxPager:function() {
+            $('.bx-pager a').each(function() {
+                $(this).html(TBD.GENERAL.translateNumber($(this).html(), currentLocale))
             });
         },
 

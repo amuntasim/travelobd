@@ -29,7 +29,7 @@
             <div class="dc_item_links fl">
               <%= link_to t('general.label.details'), tour_operator %>
               <%= link_to t('general.label.edit'), edit_tour_operator_path(tour_operator) %>
-              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('helpers.delete'), tour_operator, :confirm => 'You are going to delete a tour operator. Are you sure?', :method => :delete %>
               <%= link_to t('general.label.add_item', :item => t('activerecord.models.package')), new_package_path(:tour_operator_id => tour_operator) %>
             </div>
           </div>

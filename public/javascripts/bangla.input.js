@@ -741,3 +741,6 @@ $.fn.banglaInput.defaults = {
 };
 
 
+$(document).ready(function(){
+    $('textarea.bangla_input, texfield.bangla_input').banglaInput({keyboard:'unijoy'});
+})

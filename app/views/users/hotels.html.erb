@@ -29,7 +29,7 @@
             <div class="dc_item_links fl">
               <%= link_to t('general.label.details'), hotel %>
               <%= link_to t('general.label.edit'), edit_hotel_path(hotel) %>
-              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('helpers.delete'), hotel, :confirm => 'You are going to delete a hotel. Are you sure?', :method => :delete %>
               <%= link_to t('general.label.add_item', :item => t('activerecord.models.room')), new_room_path(:hotel_id => hotel) %>
             </div>
           </div>

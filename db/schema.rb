@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628103437) do
+ActiveRecord::Schema.define(:version => 20110705091640) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -482,6 +482,18 @@ ActiveRecord::Schema.define(:version => 20110628103437) do
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "spot_assets", :force => true do |t|
+    t.integer  "spot_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.string   "label_en"
+    t.string   "label_bn"
+    t.boolean  "main",               :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spot_translations", :force => true do |t|
     t.integer  "spot_id"

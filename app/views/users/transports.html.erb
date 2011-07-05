@@ -29,7 +29,7 @@
             <div class="dc_item_links fl">
               <%= link_to t('general.label.details'), transport %>
               <%= link_to t('general.label.edit'), edit_transport_path(transport) %>
-              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('helpers.delete'), transport, :confirm => 'You are going to delete a transport. Are you sure?', :method => :delete %>
             </div>
           </div>
       <% end %>

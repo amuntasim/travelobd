@@ -4,9 +4,10 @@
 </div>
 
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.validate' %>
-    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete' %>
+    <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
+    <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
+
 <div class="item_form">
 <%= form_for(@package, :html => {:multipart => true, :id=> 'package_form'}) do |f| %>
     <% @builder = f %>
@@ -89,7 +90,7 @@
       <div class="label">
         <%= f.label :price_excludes, t('general.label.price_included') %>
       </div>
-      <%= f.text_area :price_excludes, :style => 'height:40px' %>
+      <%= f.text_area :price_excludes, :style => 'height:40px', :class => 'tiny_redcloth bangla_input' %>
     </div>
 
 
@@ -159,7 +160,7 @@
       <div class="label">
         <%= f.label :description, t('general.label.description') %>
       </div>
-      <%= f.text_area :description, :rows => 20, :cols => 80 %>
+      <%= f.text_area :description, :rows => 20, :cols => 80, :class => 'tiny_redcloth bangla_input' %>
     </div>
 
 

@@ -9,7 +9,7 @@
             <ul class="filmstrip">
               <% items.each do |asset| %>
                   <li class="slide_img">
-                    <%= image_tag(asset.photo.url(:thumb), :class=> 'panel_image', :photo_id =>asset.id, :width => 60, :height => 51) %>
+                    <%= image_tag(asset.photo.url(:thumb_s), :class=> 'panel_image', :photo_id =>asset.id, :width => 60, :height => 51) %>
                   </li>
               <% end %>
             </ul>

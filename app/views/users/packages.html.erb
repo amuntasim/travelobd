@@ -29,7 +29,7 @@
             <div class="dc_item_links fl">
               <%= link_to t('general.label.details'), package %>
               <%= link_to t('general.label.edit'), edit_package_path(package) %>
-              <%= link_to t('helpers.delete'), '#' %>
+              <%= link_to t('helpers.delete'), package, :confirm => 'You are going to delete a package. Are you sure?', :method => :delete %>
             </div>
           </div>
       <% end %>

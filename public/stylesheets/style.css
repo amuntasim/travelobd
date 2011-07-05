@@ -718,7 +718,7 @@ a.del_photo {
 .listItem {
     background: url("/images/listing_item_bg.png") no-repeat;
     width: 707px;
-    height: 182px;
+    height: 162px;
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -777,7 +777,7 @@ a.del_photo {
 }
 
 .no_location .description {
-    height: 99px;
+    height: 94px;
 }
 
 .listItemDesc .rating {

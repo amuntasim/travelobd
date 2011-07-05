@@ -321,3 +321,6 @@ $.fn.tinyRedcloth.defaults = {
 
 };
 
+$(document).ready(function(){
+     $('textarea.tiny_redcloth').tinyRedcloth();
+})
