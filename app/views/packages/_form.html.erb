@@ -83,14 +83,20 @@
         <%= f.label :price_includes, t('general.label.price_included') %>
 
       </div>
-      <%= f.text_area :price_includes, :style => 'height:40px' %>
+      <%= f.text_area :price_includes, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
+      <div class="instruction">
+        <%= t('general.label.if_list_style_required') %>
+      </div>
     </div>
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :price_excludes, t('general.label.price_included') %>
+        <%= f.label :price_excludes, t('general.label.price_excluded') %>
       </div>
-      <%= f.text_area :price_excludes, :style => 'height:40px', :class => 'tiny_redcloth bangla_input' %>
+      <%= f.text_area :price_excludes, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
+      <div class="instruction">
+        <%= t('general.label.if_list_style_required') %>
+      </div>
     </div>
 
 

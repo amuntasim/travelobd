@@ -9,6 +9,7 @@ admin:
   Condition: create, read, update, delete
   Contact: create, read, update, delete
   Country: create, read, update, delete
+  City: create, read, update, delete
   DepartureSchedule: create, read, update, delete
   HotelAsset: create, read, update, delete
   PackageEvent: create, read, update, delete

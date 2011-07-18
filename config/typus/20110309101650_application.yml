@@ -52,12 +52,22 @@ Contact:
 
 Country:
   fields:
-    default: name, code
-    form: name, code
+    default: name, name_bn
+    form: name, name_bn
   order_by: 
-  relationships: districts
+  relationships: translations
   filters: 
   search: name
+  application: travelobd
+
+City:
+  fields:
+    default: name, name_bn, country
+    form: name, country
+  order_by:
+  relationships: country, translations
+  filters:
+  search: name, country
   application: travelobd
 
 DepartureSchedule:

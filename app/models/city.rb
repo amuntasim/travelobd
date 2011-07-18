@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: countries
+# Table name: cities
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(255)
@@ -9,13 +9,10 @@
 #  updated_at :datetime
 #
 
-class Country < ActiveRecord::Base
+class City < ActiveRecord::Base
   translates :name
   bangla_for_typus :name
 
-  has_many :cities
-  has_many :districts
-  has_many :divisions
-
+  belongs_to :country
   validates :name, :presence => true
 end
