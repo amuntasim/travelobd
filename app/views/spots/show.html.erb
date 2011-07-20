@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag 'thickbox' %>
     <meta property="og:title" content="<%=@spot.title%>"/>
     <meta property="og:type" content="spot"/>
-    <meta property="og:url" content="<%= spot_url(:id => @spot.id, :host => request.host, :port => request.port)%>"/>
+    <meta property="og:url" content="<%= spot_url(:id => @spot.id, :host => request.host)%>"/>
     <meta property="og:image" content="<%="http://#{request.host}#{@spot.main_image_url(:thumb)}" %>"/>
     <meta property="og:site_name" content="Travelobd"/>
 <% end %>
@@ -118,7 +118,7 @@
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @spot, :rating => true} %>
 </div>
 <div class="eventDetail">
-    <fb:like href="<%= spot_url(:id => @spot.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+    <fb:like href="<%= spot_url(:id => @spot.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
   </div>
 <div id="send_message_to_owner_lb" style="display: none">
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>

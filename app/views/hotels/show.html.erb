@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag 'thickbox' %>
     <meta property="og:title" content="<%=@hotel.title%>"/>
     <meta property="og:type" content="hotel"/>
-    <meta property="og:url" content="<%= hotel_url(:id => @hotel.id, :host => request.host, :port => request.port)%>"/>
+    <meta property="og:url" content="<%= hotel_url(:id => @hotel.id, :host => request.host)%>"/>
     <meta property="og:image" content="<%="http://#{request.host}#{@hotel.main_image_url(:thumb)}" %>"/>
     <meta property="og:site_name" content="Travelobd"/>
 <% end %>
@@ -83,7 +83,7 @@
     <%= raw textilize @hotel.description %>
   </div>
   <div class="eventDetail">
-    <fb:like href="<%= hotel_url(:id => @hotel.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+    <fb:like href="<%= hotel_url(:id => @hotel.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
   </div>
 
   <div class="good_item_head">

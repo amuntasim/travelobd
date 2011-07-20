@@ -7,7 +7,7 @@
 
     <meta property="og:title" content="<%=@package.title%>"/>
     <meta property="og:type" content="package"/>
-    <meta property="og:url" content="<%= package_url(:id => @package.id, :host => request.host, :port => request.port)%>"/>
+    <meta property="og:url" content="<%= package_url(:id => @package.id, :host => request.host)%>"/>
     <meta property="og:image" content="<%="http://#{request.host}#{@package.main_image_url(:thumb)}" %>"/>
     <meta property="og:site_name" content="Travelobd"/>
 
@@ -130,7 +130,7 @@
 </div>
 
  <div class="eventDetail">
-    <fb:like href="<%= package_url(:id => @package.id, :host => request.host, :port => request.port) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+    <fb:like href="<%= package_url(:id => @package.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
   </div>
 <div id="send_message_to_owner_lb" style="display: none">
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>
