@@ -192,8 +192,8 @@ var TBD = {
     ASSETS : {
         makeMainPhoto : function(resource) {
             $('input.mainCh').click(function() {
-//                $('input.mainCh').attr('checked', false);
-//                $(this).attr('checked', true);
+                $('input.mainCh').attr('checked', false);
+                $(this).attr('checked', true);
 
                 $.ajax({
                     url: '/' + resource + '/set_main_photo?asset_id=' + $(this).attr('asset_id'),
@@ -201,6 +201,9 @@ var TBD = {
                     dataType: 'script',
                     success: function(results) {
                         alert('main photo reset!');
+                    },
+                    failure: function(results) {
+                        $(this).attr('checked', false);
                     }
                 });
 

@@ -8,7 +8,7 @@
     <meta property="og:title" content="<%=@hotel.title%>"/>
     <meta property="og:type" content="hotel"/>
     <meta property="og:url" content="<%= hotel_url(:id => @hotel.id, :host => request.host, :port => request.port)%>"/>
-    <meta property="og:image" content="<%= image_tag @hotel.main_image_url(:thumb) %>"/>
+    <meta property="og:image" content="<%="http://#{request.host}#{@hotel.main_image_url(:thumb)}" %>"/>
     <meta property="og:site_name" content="Travelobd"/>
 <% end %>
 

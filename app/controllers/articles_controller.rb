@@ -97,17 +97,18 @@ class ArticlesController < ApplicationController
   end
 
   def delete_asset
-    asset = ArticleAsset.find(params[:asset_id])
-    asset.destroy
-    render :nothing => true
-  end
+      asset = Asset.find(params[:asset_id])
+      asset.destroy
+      render :nothing => true
+    end
 
-  def set_main_photo
-    asset = ArticleAsset.find(params[:asset_id])
-    ArticleAsset.update_all ['main = ?', false], ['article_id = ?', asset.article_id]
-    asset.update_attribute(:main, true)
-    render :nothing => true
-  end
+    def set_main_photo
+      asset = Asset.find(params[:asset_id])
+      Asset.update_all ['main = ?', false], ['assetable_type = ? AND assetable_id = ?', 'Article', asset.assetable_id]
+      asset.update_attribute(:main, true)
+      render :nothing => true
+    end
+
 
   def search
     search_obj = Article.search(params[:search])

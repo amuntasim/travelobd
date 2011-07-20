@@ -74,17 +74,18 @@ class TourClubsController < ApplicationController
   end
 
   def delete_asset
-    asset = Asset.find(params[:asset_id])
-    asset.destroy
-    render :nothing => true
-  end
+      asset = Asset.find(params[:asset_id])
+      asset.destroy
+      render :nothing => true
+    end
 
-  def set_main_photo
-    asset = Asset.find(params[:asset_id])
-    Asset.update_all ['main = ?', false], ['assetable_id = ?', asset.assetable_id]
-    asset.update_attribute(:main, true)
-    render :nothing => true
-  end
+    def set_main_photo
+      asset = Asset.find(params[:asset_id])
+      Asset.update_all ['main = ?', false], ['assetable_type = ? AND assetable_id = ?', 'TourClub', asset.assetable_id]
+      asset.update_attribute(:main, true)
+      render :nothing => true
+    end
+
 
 
   def location_autocomplete

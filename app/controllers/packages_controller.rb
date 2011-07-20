@@ -95,14 +95,7 @@ class PackagesController < ApplicationController
     render :nothing => true
   end
 
-  def prepare_padigrees
-    params[:package][:pedigree_ids] ||=[]
-    return if params[:pedigree_attrs].blank?
-    params[:pedigree_attrs].each do |pa|
-      params[:package][:pedigree_ids] << Pedigree.find_or_create_by_name(pa[:name]).id
-    end
-    #raise   params[:package][:pedigree_ids].inspect
-  end
+
 
   def location_autocomplete
     districts = District.includes(:division).where(['districts.name like ?  OR divisions.name like ?', "%#{params[:term]}%", "%#{params[:term]}%"]).limit(15)
