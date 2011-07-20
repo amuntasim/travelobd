@@ -59,7 +59,7 @@
         <label>
           <%= t('general.label.hotel_rating') %>
         </label>:
-        <%= @hotel.star_rating.bangla %>
+        <%= @hotel.star_rating.bangla if @hotel.star_rating%>
         <%= t('general.label.star') %>
       </div>
   <% end %>
@@ -75,7 +75,7 @@
     <label>
       <%= t('general.label.total_rooms') %>
     </label>:
-    <%= @hotel.total_rooms.bangla %>
+    <%= @hotel.total_rooms.bangla if @hotel.total_rooms %>
   </div>
 
 
@@ -105,10 +105,10 @@
           <%= link_to room.name, room, :target => '_blank' %>
         </div>
         <div class="roomPrice fl">
-          <%= room.price.bangla %>
+          <%= room.price.bangla if  room.price.%>
         </div>
         <div class="roomTitle fl">
-          <%= room.total_room.bangla %>
+          <%= room.total_room.bangla if room.total_room %>
         </div>
     <% end %>
   </div>
