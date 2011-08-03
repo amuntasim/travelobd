@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110705091640) do
+ActiveRecord::Schema.define(:version => 20110803073836) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -97,6 +97,21 @@ ActiveRecord::Schema.define(:version => 20110705091640) do
 
   add_index "category_translations", ["category_id", "locale"], :name => "index_category_translations_on_category_id_and_locale"
 
+  create_table "cities", :force => true do |t|
+    t.integer  "country_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "city_translations", :force => true do |t|
+    t.integer  "city_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -142,9 +157,9 @@ ActiveRecord::Schema.define(:version => 20110705091640) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     :default => true
   end
 
   create_table "country_translations", :force => true do |t|
@@ -352,6 +367,7 @@ ActiveRecord::Schema.define(:version => 20110705091640) do
     t.string   "location"
     t.string   "price_includes"
     t.string   "price_excludes"
+    t.string   "price_details"
   end
 
   create_table "packages", :force => true do |t|
@@ -372,6 +388,7 @@ ActiveRecord::Schema.define(:version => 20110705091640) do
     t.string   "email"
     t.decimal  "rating_average",    :precision => 6, :scale => 2, :default => 0.0
     t.integer  "tour_operator_id"
+    t.string   "currency"
   end
 
   add_index "packages", ["featured"], :name => "index_packages_on_featured"

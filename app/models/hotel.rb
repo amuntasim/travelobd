@@ -76,10 +76,11 @@ class Hotel < ActiveRecord::Base
 
 
   def location
-    address = []
-    address << district.name if district
-    address << division.name if division
-    address.compact.join(',')
+    tmp_address = []
+    tmp_address << address
+    tmp_address << district.name if district
+    tmp_address << division.name if division
+    tmp_address.compact.join(', ')
   end
 
   def valid_lat_long?

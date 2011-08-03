@@ -4,4 +4,4 @@ log/*.log
 tmp/**/*
 Gemfile.lock
 public/assets/*
-.idea/*
+.idea

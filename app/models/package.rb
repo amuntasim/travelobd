@@ -25,9 +25,9 @@
 #
 
 class Package < ActiveRecord::Base
-  translates :title, :description, :short_description, :location, :price_includes, :price_excludes
+  translates :title, :description, :short_description, :location, :price_includes, :price_excludes, :price_details
   default_scope order('packages.created_at DESC')
-
+   CURRENCIES = ['BDT', 'USD']
 
   validates :title, :presence => true
   validates :price, :presence => true

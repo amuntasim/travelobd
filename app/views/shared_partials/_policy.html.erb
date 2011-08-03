@@ -16,9 +16,9 @@
       </div>
 
 
-      <div class="deleteLink">
+      <div class="deleteLink ">
         <% if policy.new_record? %>
-            <span class="removePolicyField"> <%= t('general.label.remove')%></span>
+            <span class="removePolicyField cross">X <%#= t('general.label.remove')%></span>
         <% else %>
             <%= policy_form.check_box :_destroy %>
             <span class="deleteLink deleteLinkCheckbox">

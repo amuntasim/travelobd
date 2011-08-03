@@ -9,14 +9,14 @@
         <%= t('general.label.details') %>
       </div>
       <div class="package_event_time">
-        <%= event_form.text_field :time, :class => 'event' %>
+        <%= event_form.text_field :time, :class => 'event bangla_input' %>
       </div>
       <div class="package_event_detail">
-        <%= event_form.text_area :detail, :class => 'eventDetail' %>
+        <%= event_form.text_area :detail, :class => 'eventDetail bangla_input' %>
       </div>
       <div class="deleteLink">
         <% if event.new_record? %>
-            <span class="removeEventField"> <%= t('general.label.remove') %></span>
+            <span class="removeEventField cross"> X<%#= t('general.label.remove') %></span>
         <% else %>
             <%= event_form.check_box :_destroy %>
             <span class="deleteLink deleteLinkCheckbox">

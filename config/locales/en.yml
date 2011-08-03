@@ -317,6 +317,7 @@ en:
       provide_the_followings: 'Provide the followings [requires only once]'
       password: 'Password'
       packages: 'Packages'
+      price_details: Price Details
       rating: 'Rating'
       read_more: "Read More"
       rooms_tariff: 'Rooms Tariff'

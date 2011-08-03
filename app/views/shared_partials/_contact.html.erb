@@ -32,7 +32,7 @@
 
       <div class="deleteLink">
         <% if contact.new_record? %>
-            <span class="removeContactField"> <%= t('general.label.remove')%></span>
+            <span class="removeContactField cross"> X<%#= t('general.label.remove')%></span>
         <% else %>
             <%= contact_form.check_box :_destroy %>
             <span class="deleteLink deleteLinkCheckbox">

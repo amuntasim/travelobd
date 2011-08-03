@@ -9,14 +9,14 @@
         <%= t('general.label.details')%>
       </div>
       <div class="package_event_time">
-        <%= itinerary_form.text_field :title, :class => 'event' %>
+        <%= itinerary_form.text_field :title, :class => 'event bangla_input' %>
       </div>
       <div class="package_event_detail">
-        <%= itinerary_form.text_area :detail, :class => 'eventDetail' %>
+        <%= itinerary_form.text_area :detail, :class => 'eventDetail bangla_input' %>
       </div>
       <div class="deleteLink">
         <% if itinerary.new_record? %>
-            <span class="removeItineraryField"> <%= t('general.label.remove')%></span>
+            <span class="removeItineraryField cross">X <%#= t('general.label.remove')%></span>
         <% else %>
             <%= itinerary_form.check_box :_destroy %>
             <span class="deleteLink deleteLinkCheckbox">

@@ -341,6 +341,7 @@ bn:
       profile_of_foo: '%{foo} এর প্রোফাইল'
       provide_the_followings: 'নিচের ফিল্ডগুলো পুরন করুন [ কেবলমাত্র প্রথমবার প্রযোয্য ]'
       password: 'পাসওয়ার্ড'
+      price_details: বিস্তারিত মূল্য
       rating: "জনপ্রিয়তা"
       read_more: "বিস্তারিত পড়ুন"
       rooms_tariff: "রুমের মূল্য তালিকা"

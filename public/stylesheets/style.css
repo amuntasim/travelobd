@@ -815,7 +815,7 @@ a.del_photo {
 }
 
 .item_form_row textarea {
-    width: 598px;
+    width: 604px;
     height: 260px;
     font: 16px SolaimanLipi;
     border: 1px solid #CCCCCC;
@@ -823,9 +823,6 @@ a.del_photo {
     border-radius: 10px;
     -webkit-border-radius: 10px;
     padding: 5px;
-    float: left;
-    margin-right: 10px;
-
 }
 
 .home_left #search_option {
@@ -1581,14 +1578,4 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
 
 .panel-overlay h2, .panel-overlay p span {
     line-height: 25px;
-}
-
-.instruction {
-    margin-left: 10px;
-    color: #999999;
-    font-style: italic;;
-}
-
-.item_form_row textarea.tiny_redcloth {
-    padding-top: 15px;
 }

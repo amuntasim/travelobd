@@ -157,7 +157,7 @@ var TBD = {
             });
         },
 
-        addMorePhoto : function(container, allowed_images) {
+        addMorePhoto : function(container, allowed_images, callbacks) {
             $('a.addMoreImage').click(function() {
                 if (allowed_images && ($('#' + container + 'span.removeImageField').length + $('a.del_photo').length) > allowed_images) {
                     alert('Maximum allowed ' + allowed_images);
@@ -168,6 +168,9 @@ var TBD = {
                     var html = $($('#new_photo_html').html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
                     html.appendTo($('#' + container)).slideDown('slow');
                 }
+                if (callbacks)
+                    eval(callbacks);
+
                 TBD.DHTML.removeDHTMLItem('span.removeImageField', 'photo');
             });
         },
@@ -459,8 +462,8 @@ $(document).ready(function() {
             var errors = validator.numberOfInvalids();
             if (errors) {
                 var message = errors == 1
-                        ? 'You missed 1 field. It has been highlighted below'
-                        : 'You missed ' + errors + ' fields.  They have been highlighted below';
+                    ? 'You missed 1 field. It has been highlighted below'
+                    : 'You missed ' + errors + ' fields.  They have been highlighted below';
                 $("div#message_status").html("<span class='error'>" + message + "</span>");
                 $("div#message_status span.error").show();
             } else {
@@ -487,37 +490,37 @@ $(document).ready(function() {
         }
     });
     $("#message_form").bind("ajaxSend",
-            function() {
-                $('#submit_to_seller').hide();
-                $('#sending_to_seller').show();
-            }).bind("ajaxComplete",
-            function() {
-                $('#sending_to_seller').hide();
-                $('#submit_to_seller').show();
-            }).bind("ajax:success", function() {
-        $("#message_form").get(0).reset();
-    });
+        function() {
+            $('#submit_to_seller').hide();
+            $('#sending_to_seller').show();
+        }).bind("ajaxComplete",
+        function() {
+            $('#sending_to_seller').hide();
+            $('#submit_to_seller').show();
+        }).bind("ajax:success", function() {
+            $("#message_form").get(0).reset();
+        });
 
     $("#send_to_friends_form").bind("ajaxSend",
-            function() {
-                $('#submit_to_friend').hide();
-                $('#sending_to_friend').show();
-            }).bind("ajaxComplete",
-            function() {
-                $('#sending_to_friend').hide();
-                $('#submit_to_friend').show();
-            }).bind("ajax:success", function() {
-        $("#send_to_friends_form").get(0).reset();
-    });
+        function() {
+            $('#submit_to_friend').hide();
+            $('#sending_to_friend').show();
+        }).bind("ajaxComplete",
+        function() {
+            $('#sending_to_friend').hide();
+            $('#submit_to_friend').show();
+        }).bind("ajax:success", function() {
+            $("#send_to_friends_form").get(0).reset();
+        });
 
     $('#comment_form').bind(
-            "ajaxSend",
-            function() {
-                $('#submit_comment').attr('disabled', 'disabled');
-            }).bind("ajaxComplete",
-            function() {
-                $('#submit_comment').removeAttr('disabled');
-            });
+        "ajaxSend",
+        function() {
+            $('#submit_comment').attr('disabled', 'disabled');
+        }).bind("ajaxComplete",
+        function() {
+            $('#submit_comment').removeAttr('disabled');
+        });
 
     validateSendToFriend();
 

@@ -20,7 +20,6 @@
     <div class="item_form_row">
       <div class="label">
         <%= f.label :category_id %>
-        <span>*</span>
       </div>
 
       <div class="f_edit_row photo_box">
@@ -37,7 +36,7 @@
     <div class="item_form_row">
       <div class="label">
         <%= f.label :name %>
-        <span>*</span>:
+        <span>*</span>
       </div>
       <%= f.text_field :name %>
     </div>
@@ -158,7 +157,7 @@
       <div class="label">
         <%= t('general.label.image') %>
       </div>
-      <div class="f_edit_row photo_box">
+      <div class=" photo_box">
         <div class="edit_img_row">
           <% unless @hotel.new_record? %>
               <%= render :partial => 'shared_partials/existing_photo', :collection => @hotel.assets %>

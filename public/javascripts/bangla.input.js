@@ -463,8 +463,8 @@ $.fn.banglaInput = function(options) {
             var scrollTop = myField.scrollTop;
             startPos = (startPos == -1 ? myField.val().length : startPos );
             myField.val(myField.val().substring(0, startPos)
-                    + myValue
-                    + myField.val().substring(endPos, myField.val().length));
+                + myValue
+                + myField.val().substring(endPos, myField.val().length));
 
             myField.selectionStart = startPos + myValue.length;
             myField.selectionEnd = startPos + myValue.length;
@@ -476,8 +476,8 @@ $.fn.banglaInput = function(options) {
             var lastPortion = myField.val().substring(curPos + lastLen, myField.val().length)
 
             myField.val(
-                    firstPortion + myValue + lastPortion
-                    );
+                firstPortion + myValue + lastPortion
+            );
             myField.setCursorPosition(curPos + myValue.length - len);
 
         }
@@ -504,8 +504,8 @@ $.fn.banglaInput = function(options) {
             //var scrollTop = myField.scrollTop;
             startPos = (startPos == -1 ? myField.val().length : startPos );
             myField.val(myField.val().substring(0, startPos)
-                    + myValue
-                    + myField.val().substring(endPos, myField.val().length));
+                + myValue
+                + myField.val().substring(endPos, myField.val().length));
             myField.setCursorPosition(endPos + myValue.length);
             myField.selectionStart = startPos + myValue.length;
             myField.selectionEnd = startPos + myValue.length;
@@ -515,10 +515,10 @@ $.fn.banglaInput = function(options) {
         } else {
             var curPos = myField.getCursorPosition();
             myField.val(
-                    myField.val().substring(0, curPos)
-                            + myValue
-                            + myField.val().substring(curPos, myField.val().length)
-                    );
+                myField.val().substring(0, curPos)
+                    + myValue
+                    + myField.val().substring(curPos, myField.val().length)
+            );
             myField.setCursorPosition(curPos + myValue.length);
 
         }
@@ -534,7 +534,7 @@ $.fn.banglaInput = function(options) {
 
         if (active_obj.attr('option_enabled') === undefined) {
             var option_html = '<div bangla_option_for="' + active_obj.attr('id') + '" id="bangla_option_for_' + active_obj.attr('id') + '" class="bangla_input_option">';
-            option_html += '<span>Keyboard</span>';
+            //option_html += '<span>Keyboard</span>';
             option_html += '<select class="bangla_option_select"  style="padding:1px"><option value="phonetic">ফনেটিক</option><option value="unijoy">ইউনিজয়</option><option value="bijoy">বিজয়</option><option value="english">English</option></select>';
             option_html += '</div>';
 
@@ -546,11 +546,12 @@ $.fn.banglaInput = function(options) {
             });
 
             active_obj.parent().append(option_html);
-            $('div#bangla_option_for_' + active_obj.attr('id')).css({
-                "position": "absolute",
-                "left": (active_obj.offset().left + active_obj.width() - 120) + "px",
-                "top":active_obj.offset().top - 30 + "px"
-            });
+
+//            $('div#bangla_option_for_' + active_obj.attr('id')).css({
+//                "position": "absolute",
+//                "left": (active_obj.offset().left + active_obj.width() - 69) + "px",
+//                "top":active_obj.offset().top - 35 + "px"
+//            });
 
             $('select.bangla_option_select').val(active_obj.attr('active_keyboard'));
 
@@ -564,9 +565,14 @@ $.fn.banglaInput = function(options) {
         $('.bangla_input_option').hide();
 
         $(this).focus(function() {
+
             active_obj = $(this);
             $('.bangla_input_option').hide();
-            $('div#bangla_option_for_' + active_obj.attr('id')).show();
+            $('div#bangla_option_for_' + active_obj.attr('id')).css({
+                "position": "absolute",
+                "left": (active_obj.offset().left + active_obj.width() - 69) + "px",
+                "top":active_obj.offset().top - 35 + "px"
+            }).show();
 
         });
 
@@ -640,37 +646,44 @@ $.fn.banglaInput = function(options) {
             }
             //active_obj.onkeydown= docOnKeydown;
             switch ($(this).attr('active_keyboard')) {
-                case 'unijoy' :{
+                case 'unijoy' :
+                {
                     return writeUnijoy(evnt);
                     break;
                 }
 
-                case 'phonetic2' :{
+                case 'phonetic2' :
+                {
                     writePhonetic2(evnt);
                     break;
                 }
 
-                case 'avro' :{
+                case 'avro' :
+                {
                     return write_avro(evnt);
                     break;
                 }
 
-                case 'monir' :{
+                case 'monir' :
+                {
                     return write_monir(evnt);
                     break;
                 }
 
-                case 'english' :{
+                case 'english' :
+                {
                     break;
                 }
 
-                case 'bijoy' :{
+                case 'bijoy' :
+                {
                     return writeBijoy(evnt);
                     break;
                 }
 
                 case 'phonetic' :
-                default:{
+                default:
+                {
                     return writePhonetic(evnt);
                     break;
                 }
@@ -680,7 +693,7 @@ $.fn.banglaInput = function(options) {
     });
 
 }
-        ;
+    ;
 
 
 new function($) {
@@ -740,7 +753,11 @@ $.fn.banglaInput.defaults = {
     noEffect: false  //for further use
 };
 
+var triggerBanglaInput = function(){
+    if ($(document.body).hasClass('bn'))
+        $('textarea.bangla_input, input.bangla_input').banglaInput({keyboard:'unijoy'});
+}
 
-$(document).ready(function(){
-    $('textarea.bangla_input, texfield.bangla_input').banglaInput({keyboard:'unijoy'});
+$(document).ready(function() {
+   triggerBanglaInput();
 })

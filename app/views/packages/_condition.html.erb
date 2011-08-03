@@ -12,13 +12,13 @@
         &nbsp;
       </div>
       <div class="package_contact_address">
-        <%= condition_form.text_area :detail, :class => 'event' %>
+        <%= condition_form.text_area :detail, :class => 'event bangla_input' %>
       </div>
 
 
       <div class="deleteLink">
         <% if condition.new_record? %>
-            <span class="removeConditionField"> <%= t('general.label.remove')%></span>
+            <span class="removeConditionField cross">X <%#= t('general.label.remove')%></span>
         <% else %>
             <%= condition_form.check_box :_destroy %>
             Delete
