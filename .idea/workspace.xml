@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09228c00-1f8e-4b16-9f71-ade8cfa6a006" name="New changelist" comment="edit link added">
+    <list default="true" id="09228c00-1f8e-4b16-9f71-ade8cfa6a006" name="New changelist" comment="order cy changed">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/travelobd_development.sql.gz" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/travelobd.iml" afterPath="$PROJECT_DIR$/.idea/travelobd.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/article.rb" afterPath="$PROJECT_DIR$/app/models/article.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/hotel.rb" afterPath="$PROJECT_DIR$/app/models/hotel.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/package.rb" afterPath="$PROJECT_DIR$/app/models/package.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/spot.rb" afterPath="$PROJECT_DIR$/app/models/spot.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/tour_club.rb" afterPath="$PROJECT_DIR$/app/models/tour_club.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/tour_operator.rb" afterPath="$PROJECT_DIR$/app/models/tour_operator.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/transport.rb" afterPath="$PROJECT_DIR$/app/models/transport.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
     </list>
+    <list id="d9cdd1e4-87d3-43a5-9abe-16b4a80f1c21" name="New changelist2" comment="New changelist2" />
     <ignored path="travelobd.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +19,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
-  <component name="CoverageDataManager" choice="3" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
     <option name="REVERSE_PATCH" value="false" />
@@ -36,91 +33,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="hotel.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/hotel.rb">
+      <file leaf-file-name="articles_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="2" selection-start="680" selection-end="680" vertical-scroll-proportion="0.53571427">
+            <state line="106" column="96" selection-start="3205" selection-end="3205" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="welcome_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
+      <file leaf-file-name="comments_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/comments_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="city.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/city.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="52" selection-start="2607" selection-end="2607" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_left_panel.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="31.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="article.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/article.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="27" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/package.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="32" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="transport.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/transport.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="34" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tour_club.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/tour_club.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="34" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tour_operator.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/tour_operator.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="61" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spot.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/spot.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="29" selection-start="587" selection-end="587" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -162,22 +96,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/articles/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/admin/cities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/country.rb" />
+        <option value="$PROJECT_DIR$/app/models/city.rb" />
+        <option value="$PROJECT_DIR$/config/typus/20110309101650_application.yml" />
+        <option value="$PROJECT_DIR$/app/controllers/packages_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/hotels_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/spots_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/tour_operators_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/transports_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/tour_clubs_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/articles_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/packages/show.html.erb" />
+        <option value="$PROJECT_DIR$/public/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/hotels/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/packages/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/spots/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/tour_clubs/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/tour_operators/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/transports/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/spot.rb" />
-        <option value="$PROJECT_DIR$/app/models/tour_club.rb" />
-        <option value="$PROJECT_DIR$/app/models/transport.rb" />
-        <option value="$PROJECT_DIR$/app/models/package.rb" />
-        <option value="$PROJECT_DIR$/app/models/tour_operator.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/models/article.rb" />
-        <option value="$PROJECT_DIR$/app/models/hotel.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
       </list>
     </option>
   </component>
@@ -207,8 +141,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
       <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -217,44 +151,115 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="travelobd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="106" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="121" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="108" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="editing.templates" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="108" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/titanium_apps/KitchenSink/Resources" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="125" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1032" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1033" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1032" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="124" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="121" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="121" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="editing.templates" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/controllers/admin" />
+      <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/views/tour_clubs" />
       <recent name="$PROJECT_DIR$/db/migrate" />
       <recent name="$PROJECT_DIR$/app/views/users" />
-      <recent name="$PROJECT_DIR$/config/typus/locales" />
     </key>
   </component>
   <component name="RunManager" selected="Rake.db:migrate">
@@ -491,6 +496,8 @@
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
     <option name="LAST_MERGED_REVISION" />
     <option name="MERGE_DRY_RUN" value="false" />
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
@@ -508,9 +515,11 @@
     <task active="true" id="Default" summary="Default task">
       <option name="associatedChangelistId" value="09228c00-1f8e-4b16-9f71-ade8cfa6a006" />
       <changelist id="09228c00-1f8e-4b16-9f71-ade8cfa6a006" name="New changelist" comment="" />
+      <changelist id="d9cdd1e4-87d3-43a5-9abe-16b4a80f1c21" name="New changelist2" comment="" />
       <created>1298874538133</created>
       <updated>1303218135314</updated>
     </task>
+    <option name="trackContextForNewChangelist" value="false" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -534,15 +543,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1440" height="852" extended-state="0" />
+    <frame x="0" y="24" width="1438" height="852" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32918397" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282967" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2446959" sideWeight="0.6680498" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293201" sideWeight="0.67081606" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26832643" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33195022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -550,14 +557,25 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36652836" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39972338" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39972338" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -569,9 +587,10 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit link added" />
-    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="-city and country added" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
@@ -591,121 +610,93 @@
     <MESSAGE value="..categories in hotel" />
     <MESSAGE value="packages on tour operator page" />
     <MESSAGE value="edit link added" />
+    <MESSAGE value="some changed added" />
+    <MESSAGE value="fb like link update with meta info" />
+    <MESSAGE value="order cy changed" />
+    <MESSAGE value="-city and country added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/controllers/hotels_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="94" selection-start="3015" selection-end="3015" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/spots_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="57" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/packages_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="13" selection-start="2504" selection-end="2871" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/tour_operators_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="101" selection-start="2915" selection-end="2915" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/hotels/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="44" selection-start="592" selection-end="592" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
+        <state line="9" column="90" selection-start="611" selection-end="611" vertical-scroll-proportion="-5.625" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/packages/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="99" selection-start="4904" selection-end="4904" vertical-scroll-proportion="-24.75" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/spots/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="31" selection-start="565" selection-end="565" vertical-scroll-proportion="-7.5416665">
-          <folding />
-        </state>
+        <state line="136" column="26" selection-start="4900" selection-end="4900" vertical-scroll-proportion="0.61139894" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tour_clubs/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/transports_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="23" selection-start="495" selection-end="495" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
+        <state line="85" column="59" selection-start="2592" selection-end="2592" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tour_operators/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/tour_clubs_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="91" selection-start="546" selection-end="559" vertical-scroll-proportion="-8.791667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/transports/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="56" selection-start="581" selection-end="581" vertical-scroll-proportion="-7.5416665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="23" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/spot.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="29" selection-start="587" selection-end="587" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/tour_club.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="34" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/transport.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="34" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/package.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="32" selection-start="931" selection-end="931" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/tour_operator.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="61" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_left_panel.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="31.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="52" selection-start="2607" selection-end="2607" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="83" column="97" selection-start="2519" selection-end="2519" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/article.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="27" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/package.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="20" selection-start="2769" selection-end="2783" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="198" column="68" selection-start="6580" selection-end="6580" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/hotel.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="2" selection-start="680" selection-end="680" vertical-scroll-proportion="0.53571427">
-          <folding />
-        </state>
+        <state line="27" column="57" selection-start="846" selection-end="846" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="96" selection-start="3205" selection-end="3205" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/comments_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/city.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
   </component>
