@@ -5,10 +5,10 @@
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
 
-    <meta property="og:title" content="<%=@package.title%>"/>
+    <meta property="og:title" content="<%= @package.title %>"/>
     <meta property="og:type" content="package"/>
-    <meta property="og:url" content="<%= package_url(:id => @package.id, :host => request.host)%>"/>
-    <meta property="og:image" content="<%="http://#{request.host}#{@package.main_image_url(:thumb)}" %>"/>
+    <meta property="og:url" content="<%= package_url(:id => @package.id, :host => request.host) %>"/>
+    <meta property="og:image" content="<%= "http://#{request.host}#{@package.main_image_url(:thumb)}" %>"/>
     <meta property="og:site_name" content="Travelobd"/>
 
 <% end %>
@@ -17,7 +17,7 @@
     <div class="redhead_row">
       <div class="subLink">
         <ul>
-            <% if can_edit?(@package) %>
+          <% if can_edit?(@package) %>
               <li>
                 <%= link_to t('general.label.edit'), edit_package_path(@package) %>
               </li>
@@ -50,7 +50,7 @@
 
 <div class="item_details">
 
-  <div class="itemDetail pad_TL0"><%=raw textilize @package.description %></div>
+  <div class="itemDetail pad_TL0"><%= raw textilize @package.description %></div>
   <% if @package.events.size > 0 %>
       <div class="good_item_head">
         <%= t('general.label.tour_plan_day_to_day') %>
@@ -90,37 +90,54 @@
     <div class="eventDetail eventTitle clear">
       <%= t('activerecord.models.package') %>
       <%= t('general.label.cost') %>
-      <span style="color: #FF7D01; font-size:20px;"><%= @package.price.bangla %>
+      <span style="color: #FF7D01; font-size:20px; margin-left: 20px">
+        <% if @package.price_bdt %>
+        <%= @package.price_bdt.bangla %>
+            <%= t('general.label.taka') %>
+            <% end %>
+
+        <%= raw "&nbsp;/&nbsp;" if @package.price_usd && @package.price_bdt %>
+        <% if @package.price_usd %>
+              <%= @package.price_usd.bangla %>
+            $
+        <% end %>
         <span style="font-weight:normal; font-size:12px">
-          <%= t('general.label.taka') %>
+
           <%= raw price_str(@package) %></span> </span>
     </div>
+    <div class="eventDetail ">
+      <%= discount_str(@package)%>
+    </div>
+
     <div class=" eventTitle">
       <%= t('general.label.price_included') %>
     </div>
-    <div class="eventDetail "><%=raw textilize @package.price_includes %></div>
+    <div class="eventDetail "><%= raw textilize @package.price_includes %></div>
     <div class=" eventTitle">
       <%= t('general.label.price_excluded') %>
     </div>
-    <div class="eventDetail "><%=raw textilize @package.price_excludes %></div>
+    <div class="eventDetail "><%= raw textilize @package.price_excludes %></div>
   </div>
+  <% if @package.conditions.size > 0 %>
+      <div class="good_item_head">
+        <%= t('general.label.conditions') %>
+      </div>
 
-  <div class="good_item_head">
-    <%= t('general.label.conditions') %>
-  </div>
-  <div class="itemDetail condition">
-    <ul>
-      <% @package.conditions.each do |condition| %>
-          <li><%= condition.detail %></li>
-      <% end %>
-    </ul>
-  </div>
+      <div class="itemDetail condition">
+        <ul>
+          <% @package.conditions.each do |condition| %>
+              <li><%= condition.detail %></li>
+          <% end %>
+        </ul>
+      </div>
+
+  <% end %>
 
   <div class="good_item_head">
     <%= t('general.label.contacts') %>
   </div>
   <div class="itemDetail">
-    <div class="eventDetail eventTitle clear"><%= @package.tour_operator.name  if @package.tour_operator%></div>
+    <div class="eventDetail eventTitle clear"><%=link_to @package.tour_operator.name, @package.tour_operator, :target => '_blank' %></div>
     <% @package.tour_operator.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
         <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
@@ -129,9 +146,10 @@
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @package, :rating => true} %>
 </div>
 
- <div class="eventDetail">
-    <fb:like href="<%= package_url(:id => @package.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
-  </div>
+
+<div class="eventDetail">
+  <fb:like href="<%= package_url(:id => @package.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+</div>
 <div id="send_message_to_owner_lb" style="display: none">
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>
   <%= render :partial => 'messages/ajax_form', :locals => {:message_target => @package} %>

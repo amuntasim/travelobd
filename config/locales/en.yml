@@ -235,6 +235,8 @@ en:
       comment_created_publish_soon_thanks: 'Comment successfully created. Your comment will be published soon. Thanks for your comment'
       confirm_password: 'Confirm Password'
       created_by: 'Created by'
+      country: Country
+      city: City
       dashboard: 'Dashboard'
       description: 'Description'
       destinations: 'Destinations'
@@ -318,6 +320,7 @@ en:
       password: 'Password'
       packages: 'Packages'
       price_details: Price Details
+      package_type: Package Type
       rating: 'Rating'
       read_more: "Read More"
       rooms_tariff: 'Rooms Tariff'
@@ -325,7 +328,7 @@ en:
       remove: 'Remove'
       route: 'Route'
       related: 'Related'
-      room_fare: 'Room Fare ( per night )'
+      room_fare: 'Room Fare'
       see_in_bn: 'বাংলাতে দেখুন'
       search: 'Search'
       side_scenes: 'Side Scenes'
@@ -356,6 +359,7 @@ en:
       tag: 'Tag'
       tour_club_joining_requests: 'Tour CLub Joining Requests'
       tour_club_leaving_requests: 'Tour CLub Leaving Requests'
+      till_discount_date: 'till %{date}'
       welcome_foo: 'Welcome %{foo}'
       website: 'Website'
       where_to_stay: 'Where to stay'

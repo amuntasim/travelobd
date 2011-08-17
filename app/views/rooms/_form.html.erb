@@ -54,12 +54,20 @@
         </div>
       </div>
 
+
       <div class="item_form_row">
-        <div class="label">
-          <%= t('general.label.room_fare') %>
-        </div>
-        <%= f.text_field :price %>
+      <div class="label">
+        <%= t('general.label.room_fare') %>
+        <span>*</span>
       </div>
+      <span class="fl price_field">
+      <%= f.text_field :price_bdt, :size => 10 %> (BDT)
+      </span>
+      <span class="fl price_field">
+      <%= f.text_field :price_usd, :size => 10 %> (USD)
+      </span>
+
+    </div>
 
       <div class="item_form_row">
         <div class="label">

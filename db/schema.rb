@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803073836) do
+ActiveRecord::Schema.define(:version => 20110816086059) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(:version => 20110803073836) do
     t.datetime "updated_at"
   end
 
+  add_index "cities", ["country_id"], :name => "index_cities_on_country_id"
+
   create_table "city_translations", :force => true do |t|
     t.integer  "city_id"
     t.string   "locale"
@@ -111,6 +113,8 @@ ActiveRecord::Schema.define(:version => 20110803073836) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "city_translations", ["city_id", "locale"], :name => "index_city_translations_on_city_id_and_locale"
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -279,23 +283,38 @@ ActiveRecord::Schema.define(:version => 20110803073836) do
     t.string   "email"
     t.string   "contact_person"
     t.integer  "user_id"
-    t.boolean  "active",         :default => true
-    t.boolean  "featured",       :default => false
+    t.boolean  "active",             :default => true
+    t.boolean  "featured",           :default => false
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "star_rating"
     t.string   "latitude"
     t.string   "longitude"
-    t.integer  "total_rooms",    :default => 0
-    t.float    "starting_price", :default => 0.0
+    t.integer  "total_rooms",        :default => 0
+    t.float    "starting_price_bdt", :default => 0.0
     t.string   "discount"
     t.date     "discount_till"
+    t.float    "starting_price_usd"
   end
 
   create_table "hotels_spots", :id => false, :force => true do |t|
     t.integer "hotel_id"
     t.integer "spot_id"
+  end
+
+  create_table "international_package_destination_translations", :force => true do |t|
+    t.integer "international_package_destination_id"
+    t.string  "locale"
+    t.string  "detail"
+  end
+
+  create_table "international_package_destinations", :force => true do |t|
+    t.integer  "package_id"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "country_id"
   end
 
   create_table "memberships", :force => true do |t|
@@ -374,7 +393,7 @@ ActiveRecord::Schema.define(:version => 20110803073836) do
     t.string   "title"
     t.integer  "user_id"
     t.string   "short_description"
-    t.float    "price"
+    t.float    "price_bdt"
     t.text     "description"
     t.boolean  "active",                                          :default => true
     t.boolean  "featured",                                        :default => false
@@ -389,6 +408,8 @@ ActiveRecord::Schema.define(:version => 20110803073836) do
     t.decimal  "rating_average",    :precision => 6, :scale => 2, :default => 0.0
     t.integer  "tour_operator_id"
     t.string   "currency"
+    t.float    "price_usd"
+    t.string   "package_type"
   end
 
   add_index "packages", ["featured"], :name => "index_packages_on_featured"
@@ -472,12 +493,13 @@ ActiveRecord::Schema.define(:version => 20110803073836) do
     t.integer  "hotel_id"
     t.string   "name"
     t.text     "description"
-    t.float    "price"
+    t.float    "price_bdt"
     t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "total_room"
     t.integer  "user_id"
+    t.float    "price_usd"
   end
 
   create_table "saved_listings", :force => true do |t|

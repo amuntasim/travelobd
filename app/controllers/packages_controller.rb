@@ -29,6 +29,7 @@ class PackagesController < ApplicationController
     @package = Package.new
     @package.tour_operator_id = params[:tour_operator_id] unless params[:tour_operator_id].blank?
     @package_settings = {} #Element.package_settings
+    @cities = []
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @package }
@@ -96,7 +97,6 @@ class PackagesController < ApplicationController
   end
 
 
-
   def location_autocomplete
     districts = District.includes(:division).where(['districts.name like ?  OR divisions.name like ?', "%#{params[:term]}%", "%#{params[:term]}%"]).limit(15)
     render :json => districts.collect { |c| {"id" => c.id, "label" => "#{c.name}, #{c.division.name if c.division}", "value" => c.name} }
@@ -139,8 +139,10 @@ class PackagesController < ApplicationController
 
   end
 
-
-  private
+  def load_cities
+    @cities = City.where(:country_id => params[:country_id])
+    render :partial => 'load_cities'
+  end
 
   private
   def set_district_division

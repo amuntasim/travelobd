@@ -19,39 +19,47 @@
     </div>
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :category_id %>
+        <%=t 'general.label.package_type'%>
+        <span>*</span>
+      </div>
+      <%= f.select :package_type, Package::PACKAGE_TYPES %>
+
+    </div>
+    <div class="item_form_row">
+      <div class="label">
+        <%= f.label :category_id, t('general.label.category') %>
         <span>*</span>
       </div>
 
-     <div class="f_edit_row photo_box">
-          <% for category in Category.package_categories %>
-              <div class="spot_in_package district_in_transport">
-                <%= check_box_tag "package[category_ids][]", category.id, @package.categories.include?(category), :id => dom_id(category) %>
+      <div class="f_edit_row photo_box">
+        <% for category in Category.package_categories %>
+            <div class="spot_in_package district_in_transport">
+              <%= check_box_tag "package[category_ids][]", category.id, @package.categories.include?(category), :id => dom_id(category) %>
 
-                <label for="<%= dom_id(category) %>"><%= category.title %></label>
-              </div>
-          <% end %>
-        </div>
+              <label for="<%= dom_id(category) %>"><%= category.title %></label>
+            </div>
+        <% end %>
+      </div>
     </div>
 
 
     <div class="item_form_row">
       <div class="label">
-        <%= t('activerecord.models.tour_operator')%>
+        <%= t('activerecord.models.tour_operator') %>
         <span>*</span>
       </div>
 
       <%= f.select :tour_operator_id, TourOperator.mine(current_user).collect { |c| [c.name, c.id] }, :prompt=> t('helpers.select.prompt') %>
       <% if TourOperator.mine(current_user).size == 0 %>
           <%= t('general.label.no_item_found', :item => t('activerecord.models.tour_operator')) %>
-          <%= link_to t('general.label.add_item', :item => t('activerecord.models.tour_operator')), new_tour_operator_path(:return_to_package =>1 ) %>
+          <%= link_to t('general.label.add_item', :item => t('activerecord.models.tour_operator')), new_tour_operator_path(:return_to_package =>1) %>
       <% end %>
     </div>
 
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :title %>
+        <%=t 'general.label.name'%>
         <span>*</span>
       </div>
       <%= f.text_field :title %>
@@ -60,7 +68,7 @@
 
     <div class="item_form_row">
       <div class="label">
-        <%= f.label :short_description %>
+        <%=t 'general.label.short_description'%>
         <span>*</span>
       </div>
       <%= f.text_field :short_description %>
@@ -72,10 +80,30 @@
         <%= f.label :price, t('general.label.price') %>
         <span>*</span>
       </div>
-      <%= f.text_field :price, :size => 10 %>    <%= f.check_box :price_per_person %>
+      <span class="fl price_field">
+      <%= f.text_field :price_bdt, :size => 10 %> (BDT)
+      </span>
+      <span class="fl price_field">
+      <%= f.text_field :price_usd, :size => 10 %> (USD)
+      </span>
+      <%= f.check_box :price_per_person %>
       <span class="fl">
       <%= t('general.label.per_person') %>
       </span>
+
+
+    </div>
+
+    <div class="item_form_row">
+      <div class="label">
+        <%= f.label :price_details, t('general.label.price_details') %>
+
+      </div>
+      <div class="instruction">
+        <%= t('general.label.if_list_style_required') %>
+      </div>
+      <%= f.text_area :price_details, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
+
     </div>
 
     <div class="item_form_row">
@@ -83,23 +111,30 @@
         <%= f.label :price_includes, t('general.label.price_included') %>
 
       </div>
-      <%= f.text_area :price_includes, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
       <div class="instruction">
         <%= t('general.label.if_list_style_required') %>
       </div>
+      <%= f.text_area :price_includes, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
+
     </div>
 
     <div class="item_form_row">
       <div class="label">
         <%= f.label :price_excludes, t('general.label.price_excluded') %>
       </div>
-      <%= f.text_area :price_excludes, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
       <div class="instruction">
         <%= t('general.label.if_list_style_required') %>
       </div>
+      <%= f.text_area :price_excludes, :style => 'height:80px; width: 500px', :class => 'bangla_input' %>
+
     </div>
 
-
+    <div class="item_form_row">
+      <div class="label">
+        <%= f.label :description, t('general.label.description') %>
+      </div>
+      <%= f.text_area :description, :rows => 20, :cols => 80, :class => 'tiny_redcloth bangla_input' %>
+    </div>
 
 
     <div class="item_form_row">
@@ -134,7 +169,7 @@
         <%= f.label :destinations, t('general.label.destinations') %>
       </div>
 
-      <div class="f_edit_row photo_box">
+      <div class="f_edit_row photo_box for_domestic">
         <% for district in District.actives %>
             <div class="spot_in_package district_in_package">
               <%= check_box_tag "package[destination_ids][]", district.id, @package.destinations.include?(district), :id => dom_id(district) %>
@@ -145,8 +180,23 @@
       </div>
 
 
+      <div class="f_edit_row photo_box for_international" style="width:705px;">
+
+
+        <div id="package_international_destinations" class="package_destinations package_events">
+
+          <% unless @package.new_record? %>
+              <%= render :partial => 'international_destination', :collection => @package.international_package_destinations, :locals => {:form => f} %>
+          <% end %>
+          <%= render :partial => 'international_destination', :locals => {:form => f, :international_destination => @package.international_package_destinations.new} if @package.new_record? || @package.international_package_destinations.size == 0 %>
+        </div>
+
+        <%= link_to t('general.label.add_more'), 'javascript:void(0)', :class=>'adMore addMoreDestination' %>
+      </div>
+
+
     </div>
-    <div class="item_form_row">
+    <div class="item_form_row for_domestic">
       <div class="label">
         <%= f.label :spots, t('general.label.spots') %>
       </div>
@@ -162,20 +212,13 @@
       </div>
     </div>
 
-    <div class="item_form_row">
-      <div class="label">
-        <%= f.label :description, t('general.label.description') %>
-      </div>
-      <%= f.text_area :description, :rows => 20, :cols => 80, :class => 'tiny_redcloth bangla_input' %>
-    </div>
-
 
     <div class="item_form_row">
       <div class="label">
         <%= f.label :image, t('general.label.image') %>
       </div>
 
-      <div class="f_edit_row photo_box">
+      <div class=" photo_box">
         <!-- <h3>Images <span style="font-size: 11px;"><%#= package_photo_number_str(@package) %></span></h3>-->
         <div class="edit_img_row">
 
@@ -207,8 +250,8 @@
     </div>
 
     <div class="item_form_row">
-      <div class="label">
-        <%= f.label :event,  t('general.label.tour_plan_day_to_day') %>
+      <div class="label w_200">
+        <%= f.label :event, t('general.label.tour_plan_day_to_day') %>
       </div>
 
       <div class="f_edit_row photo_box" style="width:705px;">
@@ -228,7 +271,7 @@
     </div>
 
     <div class="item_form_row">
-      <div class="label">
+      <div class="label  w_200">
         <%= t('activerecord.models.package') %>
         <%= f.label :itinerary, t('general.label.itinerary') %>
       </div>
@@ -290,6 +333,9 @@
   <div id="new_event_html">
     <%= render(:partial => 'event', :locals => {:form => @builder}, :object => @package.events.new) %>
   </div>
+  <div id="new_destination_html">
+    <%= render(:partial => 'international_destination', :locals => {:form => @builder}, :object => @package.international_package_destinations.new) %>
+  </div>
 
   <div id="new_itinerary_html">
     <%= render(:partial => 'itinerary', :locals => {:form => @builder}, :object => @package.itineraries.new) %>
@@ -309,14 +355,40 @@
     var allowed_images = 10;
     var allowed_videos = 0;
     <%if @package.featured?%>
-    allowed_images =  <%=@package_settings['featured_package_photos'] || 15 %>;
+    allowed_images =  <%=@package_settings['featured_package_photos'] || 5 %>;
     allowed_videos =  <%=@package_settings['featured_package_videos'] || 2 %>;
     <%end%>
 
+    var show_hide_for_package_type = function() {
+        if ($('#package_package_type').val() == 'international') {
+            $('.for_domestic').hide();
+            $('.for_international').show();
+        }
+        else {
+            $('.for_international').hide();
+            $('.for_domestic').show();
+        }
+    }
+
+    var country_changed_handler_for_destinations = function() {
+        $('.package_destination .country').change(function() {
+            $(this).siblings('div').children('.loading_city:first').show();
+            var $that = $(this);
+            $.ajax({
+                url: '/packages/load_cities?country_id=' + $(this).val(),
+                type: 'get',
+                dataType: 'script',
+                success: function(results) {
+                    $that.siblings('select.city:first').html(results);
+                    $that.siblings('div').children('.loading_city:first').hide();
+                }
+            });
+        });
+    }
 
     $(document).ready(function() {
         TBD.DHTML.addMoreItem('a.addMoreCondition', '#new_condition_html', '#package_conditions', 'span.removeConditionField', 'condition');
-        TBD.DHTML.addMoreItem('a.addMoreDestination', '#new_destination_html', '#package_destinations', 'span.removeDestinationField', 'destination');
+        TBD.DHTML.addMoreItem('a.addMoreDestination', '#new_destination_html', '#package_international_destinations', 'span.removeDestinationField', 'destination');
         TBD.DHTML.addMoreItem('a.addMoreEvent', '#new_event_html', '#package_events', 'span.removeEventField', 'event');
         TBD.DHTML.addMoreItem('a.addMoreItinerary', '#new_itinerary_html', '#package_itineraries', 'span.removeItineraryField', 'itinerary');
 
@@ -333,6 +405,8 @@
             }
 
         });
+
+
         TBD.DHTML.removeDHTMLItem('a.removeVideo', 'video');
 
 
@@ -375,7 +449,16 @@
         $(".district_in_package input[type='checkbox']").click(function () {
             TBD.DHTML.checkUncheckSpot(this);
         });
+        show_hide_for_package_type();
+        $('#package_package_type').change(function() {
+            show_hide_for_package_type();
+        });
 
+
+        country_changed_handler_for_destinations();
+        $('a.addMoreDestination').click(function() {
+            country_changed_handler_for_destinations();
+        })
     });
 
 

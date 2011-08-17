@@ -104,8 +104,17 @@
         <div class="roomTitle fl">
           <%= link_to room.name, room, :target => '_blank' %>
         </div>
-        <div class="roomPrice fl">
-          <%= room.price.bangla if  room.price%>
+        <div class="roomPrice fl"><% if room.price_bdt %>
+        <%= room.price_bdt.bangla %>
+            <%= t('general.label.taka') %>
+            <% end %>
+
+        <%= raw "&nbsp;/&nbsp;" if room.price_usd && room.price_bdt %>
+        <% if room.price_usd %>
+              <%= room.price_usd.bangla %>
+            $
+        <% end %>
+
           &nbsp;
         </div>
         <div class="roomTitle fl">

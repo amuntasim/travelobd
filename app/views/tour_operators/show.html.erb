@@ -11,7 +11,7 @@
     <div class="redhead_row">
       <div class="subLink">
         <ul>
-           <% if can_edit?(@tour_operator) %>
+          <% if can_edit?(@tour_operator) %>
               <li>
                 <%= link_to t('general.label.edit'), edit_tour_operator_path(@tour_operator) %>
               </li>
@@ -56,7 +56,7 @@
   </div>
 
   <div class="good_item_head">
-     <%= t('general.label.policies') %>
+    <%= t('general.label.policies') %>
   </div>
   <div class="itemDetail">
     <% @tour_operator.policies.each do |policy| %>
@@ -77,15 +77,29 @@
   <div class="good_item_head">
     <%= t('general.label.packages') %>
   </div>
-<div class="itemDetail">
+  <div class="itemDetail">
 
-  <ol>
-    <% @tour_operator.packages.each do |package| %>
+    <ol>
+      <% @tour_operator.packages.each do |package| %>
 
-       <li><%=link_to package.title, package %></li>
-                      d
-    <% end %>
-  </ol>
+          <li>
+            <div class="operator_package_title">
+              <h4>
+                <%= link_to package.title, package, :target => '_blank' %>
+              </h4>
+              <p>
+                 <%=truncate package.description, :length => 150%>
+              </p>
+            </div>
+            <div class="operator_package_price">
+                  <%= raw package_price(package)%>
+            </div>
+
+
+          </li>
+
+      <% end %>
+    </ol>
   </div>
 
   <%#= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @tour_operator, :rating => true} %>

@@ -52,7 +52,18 @@
     <label>
       <%= t('general.label.room_fare') %>
     </label>
-    : <%= @room.price %>
+    :
+
+    <% if @room.price_bdt %>
+        <%= @room.price_bdt.bangla %>
+            <%= t('general.label.taka') %>
+            <% end %>
+
+        <%= raw "&nbsp;/&nbsp;" if @room.price_usd && @room.price_bdt %>
+        <% if @room.price_usd %>
+              <%= @room.price_usd.bangla %>
+            $
+        <% end %>
   </div>
 
 

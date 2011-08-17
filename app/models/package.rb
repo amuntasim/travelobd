@@ -28,9 +28,10 @@ class Package < ActiveRecord::Base
   translates :title, :description, :short_description, :location, :price_includes, :price_excludes, :price_details
   default_scope order('packages.created_at DESC')
    CURRENCIES = ['BDT', 'USD']
+   PACKAGE_TYPES = ['domestic', 'international']
 
   validates :title, :presence => true
-  validates :price, :presence => true
+  #validates :price, :presence => true
   validates :short_description, :presence => true
   validates :tour_operator_id, :presence => true
 
@@ -52,6 +53,7 @@ class Package < ActiveRecord::Base
   has_many :saved_listings, :as => :savable, :dependent => :destroy
   has_and_belongs_to_many :destinations, :class_name => "District", :join_table => 'packages_destinations'
   has_and_belongs_to_many :spots
+  has_many :international_package_destinations
 
   has_friendly_id :title, :use_slug => true
 
@@ -61,6 +63,7 @@ class Package < ActiveRecord::Base
   accepts_nested_attributes_for :events, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :itineraries, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :conditions, :reject_if => lambda { |a| a[:detail].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :international_package_destinations, :reject_if => lambda { |a| a[:city_id].blank? }, :allow_destroy => true
 
 
   ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]

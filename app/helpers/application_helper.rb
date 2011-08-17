@@ -81,6 +81,13 @@ module ApplicationHelper
     current_user && (item.user_id == current_user.id || admin?)
   end
 
+  def discount_str(item)
+    if item.discount && item.discount_till
+      "#{item.discount} #{t('general.label.till_discount_date', :date => item.discount_till.to_s.bangla)}"
+    elsif item.discount
+      item.discount
+    end
+  end
 end
 
 

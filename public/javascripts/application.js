@@ -140,7 +140,7 @@ var TBD = {
     },
 
     DHTML : {
-        addMoreItem : function(clickableSelector, source, placeHolder, removeSelector, itemClass) {
+        addMoreItem : function(clickableSelector, source, placeHolder, removeSelector, itemClass, callbacks) {
             $(clickableSelector).click(function() {
                 var new_object_id = new Date().getTime();
                 var html = $($(source).html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
@@ -148,6 +148,9 @@ var TBD = {
                 TBD.DHTML.removeDHTMLItem(removeSelector, itemClass);
             });
 
+            if (callbacks)
+                eval(callbacks);
+            triggerBanglaInput();
             TBD.DHTML.removeDHTMLItem(removeSelector, itemClass);
         },
 

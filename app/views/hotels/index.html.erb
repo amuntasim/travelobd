@@ -28,13 +28,21 @@
         <div class="fl price_n_button">
           <div class="fl">
             <div class="fl price">
-              <% if hotel.starting_price.to_i > 0 %>
+              <% if hotel.starting_price_usd || hotel.starting_price_bdt %>
                   <%= t('general.label.starting_price') %>
                   :
-                  <span>
-                    <%= hotel.starting_price.bangla %>
-                     <%= t('general.label.taka') %>
-                  </span>
+
+              <% end %>
+
+              <% if hotel.starting_price_bdt %>
+                  <%= hotel.starting_price_bdt.bangla %>
+                  <%= t('general.label.taka') %>
+              <% end %>
+
+              <%= raw "&nbsp;/&nbsp;" if hotel.starting_price_usd && hotel.starting_price_bdt %>
+              <% if hotel.starting_price_usd %>
+                  <%= hotel.starting_price_usd.bangla %>
+                  $
               <% end %>
             </div>
           </div>

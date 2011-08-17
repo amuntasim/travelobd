@@ -342,6 +342,7 @@ bn:
       provide_the_followings: 'নিচের ফিল্ডগুলো পুরন করুন [ কেবলমাত্র প্রথমবার প্রযোয্য ]'
       password: 'পাসওয়ার্ড'
       price_details: বিস্তারিত মূল্য
+      package_type: প্যাকেজের ধরণ
       rating: "জনপ্রিয়তা"
       read_more: "বিস্তারিত পড়ুন"
       rooms_tariff: "রুমের মূল্য তালিকা"
@@ -349,7 +350,7 @@ bn:
       remove: "সরিয়ে ফেলুন"
       route: 'রুট'
       related: 'সম্পর্কিত'
-      room_fare: 'ভাড়া ( রাতপ্রতি )'
+      room_fare: 'ভাড়া'
       see_in_en: "ইংরেজিতে দেখুন"
       search: "অনুসন্ধান"
       side_scenes: "পার্শ্ববর্তী দৃশ্যাবলী"
@@ -380,6 +381,7 @@ bn:
       tag: 'ট্যাগ'
       tour_club_joining_requests: 'ট্যুর ক্লাবে যোগদানের আবেদন'
       tour_club_leaving_requests: 'ট্যুর ক্লাব ত্যাগের আবেদন'
+      till_discount_date:  '%{date} পর্যন্ত'
       welcome_foo: "স্বাগতম %{foo}"
       website: "ওয়েবসাইট"
       where_to_stay: 'কোথায় থাকবেন'

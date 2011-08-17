@@ -72,7 +72,7 @@
   <div id="article_search_form" class="searchOption">
     <%= form_for @article_search || Article.search, :url=> search_articles_path do |f| %>
         <div class="search_row">
-          <label> <%= t('general.label.what') %></label>
+          <label> <%= t('general.label.content') %></label>
 
           <%= f.text_field :tags_name_contains, :class => 'searchFieldWide' %>
 

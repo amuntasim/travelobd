@@ -1,0 +1,42 @@
+<div class="destination clear">
+  <%
+     if international_destination.country_id.present?
+       cities = City.where(:country_id => international_destination.country_id)
+     else
+       cities = []
+     end
+  %>
+
+  <%= form.fields_for :international_package_destinations, international_destination, :child_index => (international_destination.new_record? ? "index_to_replace_with_js" : nil) do |international_destination_form| %>
+      <div class="package_event_time">
+        <%= t('general.label.country') %>
+      </div>
+
+      <div class="package_event_detail">
+        <%= t('general.label.spots') %>
+      </div>
+      <div class="package_event_time package_destination">
+        <%= international_destination_form.select :country_id, Country.all.collect { |c| [c.name, c.id] }, {}, :class => 'country' %>
+        <br>
+
+        <div class="fl " style="margin: 8px 0"><%= t('general.label.city') %> <%= image_tag 'loading.gif', :class => 'loading_city', :style => "display:none" %></div>
+        <%= international_destination_form.select :city_id, cities.collect { |c| [c.name, c.id] }, {}, :class => 'city' %>
+        <br>
+
+      </div>
+      <div class="package_event_detail">
+        <%= international_destination_form.text_area :detail, :class => 'eventDetail bangla_input' %>
+      </div>
+      <div class="deleteLink">
+        <% if international_destination.new_record? %>
+            <span class="removeDestinationField cross"> X<%#= t('general.label.remove') %></span>
+        <% else %>
+            <%= international_destination_form.check_box :_destroy %>
+            <span class="deleteLink deleteLinkCheckbox">
+              <%= t('helpers.delete') %>
+            </span>
+        <% end %>
+      </div>
+  <% end %>
+
+</div>

@@ -84,6 +84,7 @@ Travelobd::Application.routes.draw do
       post :set_main_photo
       get :search
       get :location_autocomplete
+      get :load_cities
     end
     member do
       get :print

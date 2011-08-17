@@ -798,7 +798,7 @@ a.del_photo {
 }
 
 .listItemDesc .price {
-    width: 200px;
+    width: 350px;
     font-size: 13px;
 }
 
@@ -1578,4 +1578,56 @@ a.fb_button, a.fb_button_rtl, .fb_button, .fb_button_rtl {
 
 .panel-overlay h2, .panel-overlay p span {
     line-height: 25px;
+}
+
+.item_form_row .cross {
+    width: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.package_currency input {
+    float: left;
+    margin-left: 20px;
+    margin-right: 3px;
+}
+
+.price_field {
+    margin-right: 15px;
+}
+
+.price_field input {
+    width: 70px !important;
+    margin-right: 5px;
+}
+
+.package_destination select {
+    width: 200px;
+}
+
+div.operator_package_title {
+    width: 500px;
+    float: left;
+}
+
+div.operator_package_title h4 a {
+     color: #0083AB;
+}
+div.operator_package_title p {
+     color: #999999;
+}
+
+.operator_package_price{
+    float: left;
+    width: 145px;
+    margin-left: 20px;
+    color: #FF7D01;
+}
+
+.itemDetail ol li {
+    float: left;
+}
+
+.w_200 {
+    width: 200px !important;
 }

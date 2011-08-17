@@ -21,7 +21,7 @@ class Room < ActiveRecord::Base
 
   validates :hotel_id, :presence => true
   validates :name, :presence => true
-  validates :price, :numericality => true, :presence => true
+  #validates :price, :numericality => true, :presence => true
   validates :total_room, :numericality => true, :allow_blank => true
 
   has_and_belongs_to_many :features, :delete_sql => 'DELETE FROM features_rooms WHERE  room_id = #{id} AND feature_id = #{record.id}'
@@ -50,8 +50,11 @@ class Room < ActiveRecord::Base
       hotel.update_attribute(:total_rooms, hotel.total_rooms.to_i + total_room.to_i)
     end
 
-    if hotel.starting_price.to_i == 0 || price < hotel.starting_price
-      hotel.update_attribute(:starting_price, price)
+    if price_bdt.present? && (hotel.starting_price_bdt.to_i == 0 || price_bdt < hotel.starting_price_bdt)
+      hotel.update_attribute(:starting_price_bdt, price_bdt)
+    end
+    if price_usd.present? && (hotel.starting_price_usd.to_i == 0 || price_usd < hotel.starting_price_usd)
+      hotel.update_attribute(:starting_price_usd, price_usd)
     end
   end
 end
