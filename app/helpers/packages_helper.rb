@@ -34,6 +34,6 @@ module PackagesHelper
     else
       str += "<span>#{package.price_usd.bangla}</span> $ "
     end
-    str +=  price_str(package)
+    str += '&nbsp;' + price_str(package)
   end
 end
