@@ -29,7 +29,7 @@ module PackagesHelper
       else
         str += "<span>#{package.price_usd} </span>$"
       end
-    elsif package.price_bdt.bangla
+    elsif package.price_bdt
       str += "<span>#{package.price_bdt.bangla}</span> #{t('general.label.taka')}"
     else
       str += "<span>#{package.price_usd.bangla}</span> $ "
