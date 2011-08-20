@@ -69,27 +69,9 @@
             <div class="fl price">
               <%= t('general.label.price') %>:
 
-               <!--<%# if package.price_usd && package.price_bdt %>-->
-                  <!--<%# if I18n.locale.to_s == 'bn' %>-->
-                      <!--<span><%= package.price_bdt.bangla %></span>-->
-                      <!--<%= t('general.label.taka') %>-->
-                  <!--<%# else %>-->
-                      <!--<span><%= package.price_usd %></span>-->
-                      <!--$-->
-                  <!--<%# end %>-->
-              <!--<%# elsif package.price_bdt %>-->
-                  <!--<span><%= package.price_bdt.bangla %></span>-->
-                  <!--<%#= t('general.label.taka') %>-->
-              <!--<%# else %>-->
-                  <!--<span><%= package.price_usd.bangla %></span>-->
-                  <!--$-->
-              <!--<%# end %>-->
-              <!--<%#= raw price_str(package) %>-->
-              <!---->
               <%= raw package_price(package)%>
             </div>
             <%= link_to t('general.label.details'), package, :class => 'detail_link' %>
-            <%#= link_to 'Book This', package, :class => 'book_link' %>
           </div>
         </div>
 
@@ -97,7 +79,6 @@
   <% end %>
 
 </div>
-<!--END home middle-->
 
 
 <div class="home_right fl">
