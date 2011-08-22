@@ -246,6 +246,7 @@ en:
       discount_till: 'Discount till'
       details: 'Details'
       departure_time: 'Departure Time'
+      domestic: Domestic
       edit: 'Edit'
       event_detail: "Event Details"
       email: "Email"
@@ -273,6 +274,7 @@ en:
       item_created: '%{item}  was successfully created.'
       item_update: '%{item}  was successfully updated.'
       item_deleted: '%{item}  was successfully deleted.'
+      international: International
       keep_in_touch: "Keep in touch"
       login_n_other: 'Login & Others'
       login_n_other: 'Login & Others'

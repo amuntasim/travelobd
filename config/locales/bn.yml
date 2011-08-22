@@ -265,6 +265,7 @@ bn:
       discount_till: "বিশেষ ছাড় (শেষ তারিখ)"
       departure_time: 'ছাড়ার সময়'
       date: 'তারিখ'
+      domestic: আভ্যন্তরীণ
       edit: "সম্পাদনা"
       edit_label: "লেবেল সম্পাদনা"
       event_detail: "ইভেন্ট সমূ‌হের বর্ননা"
@@ -293,6 +294,7 @@ bn:
       item_created: '%{item}  সফলভাবে সংরক্ষিত ‌ হয়েছে'
       item_update: '%{item}   সফলভাবে ‌হালনাগাদ ‌করা  হয়েছে'
       item_deleted: '%{item}  সফলভাবে মোছা ‌ হয়েছে'
+      international: আন্তর্জাতিক
       keep_in_touch: "আমাদের সাথেই থাকুন"
       login_n_other: "লগইন ও অন্যান্য"
       login: "লগইন"

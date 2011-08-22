@@ -9,7 +9,7 @@
   <label> <%= t('general.label.category') %></label>
 
   <div class="fields">
-    <%= select_tag :search_option, options_for_select([[t('activerecord.models.hotel'), 'Hotels'], [t('activerecord.models.spot'), 'Spots'], [t('activerecord.models.package'), 'Packages'], [t('activerecord.models.article'), 'Articles']], params[:search_option]) %>
+    <%= select_tag :search_option, options_for_select([[t('activerecord.models.package'), 'Packages'],[t('activerecord.models.hotel'), 'Hotels'], [t('activerecord.models.spot'), 'Spots'],  [t('activerecord.models.article'), 'Articles']], params[:search_option]) %>
   </div>
   <div id="hotel_search_form" class="searchOption">
     <%= form_for @hotel_search || Hotel.search, :url=> search_hotels_path do |f| %>
@@ -47,6 +47,12 @@
   </div>
   <div id="package_search_form" class="searchOption">
     <%= form_for @package_search || Package.search, :url=> search_packages_path do |f| %>
+        <div class="search_row">
+          <label> <%= t('general.label.package_type') %></label>
+
+          <%= f.select :package_type_equals, Package::PACKAGE_TYPES.collect{|pt| [t("general.label.#{pt}"), pt]}, {}, :class => 'searchFieldWide' %>
+
+        </div>
         <div class="search_row">
           <label> <%= t('general.label.date') %></label>
 

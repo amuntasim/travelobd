@@ -60,22 +60,20 @@ $.fn.enableMenu = function() {
 
 $.fn.showHideSearchOption = function() {
     var search_option = $('#search_option').val();
+    $('.searchOption').hide();
+
     switch (search_option) {
-        case 'Packages':
-            $('.searchOption').hide();
-            $('#package_search_form').show();
+        case 'Hotels':
+            $('#hotel_search_form').show();
             break;
         case 'Spots':
-            $('.searchOption').hide();
             $('#spot_search_form').show();
             break;
         case 'Articles':
-            $('.searchOption').hide();
             $('#article_search_form').show();
             break;
         default:
-            $('.searchOption').hide();
-            $('#hotel_search_form').show();
+            $('#package_search_form').show();
     }
 };
 

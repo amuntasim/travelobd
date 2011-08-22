@@ -27,8 +27,8 @@
 class Package < ActiveRecord::Base
   translates :title, :description, :short_description, :location, :price_includes, :price_excludes, :price_details
   default_scope order('packages.created_at DESC')
-   CURRENCIES = ['BDT', 'USD']
-   PACKAGE_TYPES = ['domestic', 'international']
+  CURRENCIES = ['BDT', 'USD']
+  PACKAGE_TYPES = ['domestic', 'international']
 
   validates :title, :presence => true
   #validates :price, :presence => true
@@ -41,8 +41,8 @@ class Package < ActiveRecord::Base
   belongs_to :user
   belongs_to :tour_operator
 
-  has_many :polymorphic_categories , :as => :categorizable, :dependent => :destroy
-  has_many :categories, :through => :polymorphic_categories , :dependent => :destroy
+  has_many :polymorphic_categories, :as => :categorizable, :dependent => :destroy
+  has_many :categories, :through => :polymorphic_categories, :dependent => :destroy
 
   has_many :events, :class_name => 'PackageEvent'
   has_many :itineraries, :class_name => 'PackageItinerary'
@@ -57,6 +57,7 @@ class Package < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true
 
+  after_save :update_location
 
   accepts_nested_attributes_for :videos, :reject_if => lambda { |a| a[:code].length < 10 }, :allow_destroy => true
   accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
@@ -69,13 +70,22 @@ class Package < ActiveRecord::Base
   ajaxful_rateable :stars => 5, :allow_update => false, :dimensions => [:useful, :price]
 
 
-
   def main_image_url(style = :medium)
     main_image ? main_image.photo.url(style) : assets.size > 0 ? assets.first.photo.url(style) : ''
   end
 
   def category
     categories.collect(&:title).join(',')
+  end
+
+  private
+  def update_location
+    if package_type == 'domestic'
+      self.update_attribute(:location, destinations.collect { |d| d.name }.join(','))
+    else
+      #raise international_package_destinations.collect { |d| "#{d.city.name} #{d.country.name}" }.join(',').inspect
+      self.update_attribute(:location,international_package_destinations.collect { |d| "#{d.city.name} #{d.country.name}" }.join(', '))
+    end
   end
 
 end

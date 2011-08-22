@@ -1,7 +1,7 @@
 <div class="destination clear">
   <%
      if international_destination.country_id.present?
-       cities = City.where(:country_id => international_destination.country_id)
+       cities = City.where(:country_id => international_destination.country_id).includes(:translations).order('city_translations.name')
      else
        cities = []
      end
@@ -16,7 +16,7 @@
         <%= t('general.label.spots') %>
       </div>
       <div class="package_event_time package_destination">
-        <%= international_destination_form.select :country_id, Country.all.collect { |c| [c.name, c.id] }, {}, :class => 'country' %>
+        <%= international_destination_form.select :country_id, Country.includes(:translations).order('country_translations.name').collect { |c| [c.name, c.id] }, {}, :class => 'country' %>
         <br>
 
         <div class="fl " style="margin: 8px 0"><%= t('general.label.city') %> <%= image_tag 'loading.gif', :class => 'loading_city', :style => "display:none" %></div>
