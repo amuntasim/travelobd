@@ -105,18 +105,32 @@
 
           <%= raw price_str(@package) %></span> </span>
     </div>
-    <div class="eventDetail ">
-      <%= discount_str(@package)%>
-    </div>
+    <% if @package.price_details.present? %>
+        <div class=" eventTitle">
+          <%= t('general.label.price_details') %>
+        </div>
+        <div class="eventDetail "><%= raw textilize @package.price_details %></div>
+    <% end %>
+    <% if @package.discount.present? %>
+        <div class=" eventTitle">
+          <%= t('general.label.discount') %>
+        </div>
+        <div class="eventDetail "><%= discount_str(@package) %></div>
+    <% end %>
+    <% if @package.price_includes.present? %>
+        <div class=" eventTitle">
+          <%= t('general.label.price_included') %>
+        </div>
+        <div class="eventDetail "><%= raw textilize @package.price_includes %></div>
+    <% end %>
 
-    <div class=" eventTitle">
-      <%= t('general.label.price_included') %>
-    </div>
-    <div class="eventDetail "><%= raw textilize @package.price_includes %></div>
-    <div class=" eventTitle">
-      <%= t('general.label.price_excluded') %>
-    </div>
-    <div class="eventDetail "><%= raw textilize @package.price_excludes %></div>
+
+    <% if @package.price_excludes.present? %>
+        <div class=" eventTitle">
+          <%= t('general.label.price_excluded') %>
+        </div>
+        <div class="eventDetail "><%= raw textilize @package.price_excludes %></div>
+    <% end %>
   </div>
   <% if @package.conditions.size > 0 %>
       <div class="good_item_head">
@@ -137,7 +151,7 @@
     <%= t('general.label.contacts') %>
   </div>
   <div class="itemDetail">
-    <div class="eventDetail eventTitle clear"><%=link_to @package.tour_operator.name, @package.tour_operator, :target => '_blank' %></div>
+    <div class="eventDetail eventTitle clear"><%= link_to @package.tour_operator.name, @package.tour_operator, :target => '_blank' %></div>
     <% @package.tour_operator.contacts.each do |contact| %>
         <div class=" clear"><b><%= contact.name %></b></div>
         <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
@@ -148,6 +162,19 @@
 
 
 <div class="eventDetail">
+  <script>function fbs_click() {
+      u = location.href;
+      t = document.title;
+      window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(u) + '&t=' + encodeURIComponent(t), 'sharer', 'toolbar=0,status=0,width=626,height=436');
+      return false;
+  }</script>
+  <style> html .fb_share_link {
+      padding: 2px 0 0 20px;
+      height: 16px;
+      background: url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top left;
+  }</style>
+  <!--<a rel="nofollow" href="http://www.facebook.com/share.php?u=<;url>" onclick="return fbs_click()" target="_blank" class="fb_share_link">Share-->
+    <!--on Facebook</a>-->
   <fb:like href="<%= package_url(:id => @package.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
 </div>
 <div id="send_message_to_owner_lb" style="display: none">
