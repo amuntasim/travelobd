@@ -57,7 +57,7 @@ class Package < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true
 
-  after_save :update_location
+  before_save :update_location
 
   accepts_nested_attributes_for :videos, :reject_if => lambda { |a| a[:code].length < 10 }, :allow_destroy => true
   accepts_nested_attributes_for :assets, :reject_if => :all_blank, :allow_destroy => true
@@ -81,10 +81,10 @@ class Package < ActiveRecord::Base
   private
   def update_location
     if package_type == 'domestic'
-      self.update_attribute(:location, destinations.collect { |d| d.name }.join(','))
+      self.location, = destinations.collect { |d| d.name }.join(',')
     else
       #raise international_package_destinations.collect { |d| "#{d.city.name} #{d.country.name}" }.join(',').inspect
-      self.update_attribute(:location,international_package_destinations.collect { |d| "#{d.city.name} #{d.country.name}" }.join(', '))
+      self.location = international_package_destinations.collect { |d| "#{d.city.name} #{d.country.name}" }.join(', ')
     end
   end
 
