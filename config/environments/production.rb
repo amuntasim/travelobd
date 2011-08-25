@@ -50,4 +50,4 @@ config.action_mailer.default_url_options = {
   }
 end
 #for travelobd.heroku.com
-GMAP_API_KEY = 'ABQIAAAAv-CgURh0ryzzvdQmlxW74RT_9_5jAsPMaBYXvDK3bNxuXGBSlxQ3c1tPLdcLVABM6WCu7OgkOSQ6Kg'
+GMAP_API_KEY = 'ABQIAAAAv-CgURh0ryzzvdQmlxW74RT1cJt4_TD2NgsVUZOyyC3y_lzlBBTdH785cUL4ZAgrx3qWUQiQNQZQgA'
