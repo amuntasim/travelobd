@@ -35,7 +35,7 @@
           <%= t('general.label.name') %>
           <span>*</span>
         </div>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :class => 'bangla_input' %>
       </div>
 
       <div class="item_form_row">
@@ -43,14 +43,14 @@
           <%= t('general.label.short_description') %>
           <span>*</span>
         </div>
-        <%= f.text_field :short_description %>
+        <%= f.text_field :short_description, :class => 'bangla_input'  %>
       </div>
 
       <div class="item_form_row" id="history_wrapper">
         <div class="label">
           <%= t('general.label.history') %>
         </div>
-        <%= f.text_area :history, :class => "tiny_redcloth" %>
+        <%= f.text_area :history, :class => "tiny_redcloth bangla_input" %>
       </div>
 
       <div class="item_form_row" id="description_wrapper">
@@ -64,13 +64,13 @@
         <div class="label">
           <%= t('general.label.how_to_go') %>
         </div>
-        <%= f.text_area :how_to_go %>
+        <%= f.text_area :how_to_go , :class => 'bangla_input'%>
       </div>
       <div class="item_form_row">
         <div class="label">
           <%= t('general.label.where_to_stay') %>
         </div>
-        <%= f.text_area :where_to_stay %>
+        <%= f.text_area :where_to_stay, :class => 'bangla_input' %>
       </div>
 
       <div class="item_form_row">

@@ -144,11 +144,11 @@ var TBD = {
                 var html = $($(source).html().replace(/index_to_replace_with_js/g, new_object_id)).hide();
                 html.appendTo($(placeHolder)).slideDown('slow');
                 TBD.DHTML.removeDHTMLItem(removeSelector, itemClass);
+                triggerBanglaInput();
             });
 
             if (callbacks)
                 eval(callbacks);
-            triggerBanglaInput();
             TBD.DHTML.removeDHTMLItem(removeSelector, itemClass);
         },
 

@@ -753,11 +753,12 @@ $.fn.banglaInput.defaults = {
     noEffect: false  //for further use
 };
 
-var triggerBanglaInput = function(){
-    if ($(document.body).hasClass('bn'))
+var triggerBanglaInput = function() {
+    if ($(document.body).hasClass('bn'))   {
         $('textarea.bangla_input, input.bangla_input').banglaInput({keyboard:'unijoy'});
+    }
 }
 
 $(document).ready(function() {
-   triggerBanglaInput();
+    triggerBanglaInput();
 })
