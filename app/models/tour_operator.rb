@@ -18,7 +18,7 @@ class TourOperator < ActiveRecord::Base
   has_many :policies, :as => :policiable
   has_many :comments, :as => :commentable
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
-
+  has_one :ownership_request, :as => :resource
   has_many :saved_listings, :as => :savable, :dependent => :destroy
   has_and_belongs_to_many :destinations, :class_name => "District"
   has_and_belongs_to_many :spots

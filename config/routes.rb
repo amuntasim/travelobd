@@ -1,5 +1,6 @@
 Travelobd::Application.routes.draw do
 
+  resources :ownership_requests
 
   resources :club_joining_requests do
     member do

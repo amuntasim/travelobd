@@ -3,7 +3,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.xml
   def index
-    @feedbacks = Feedback.paginate(:page=> params[:page], :per_page => 10, :conditions => {:parent_id => nil})
+    @feedbacks = Feedback.paginate(:page=> params[:page], :per_page => 15, :conditions => {:parent_id => nil})
 
     respond_to do |format|
       format.html # index.html.erb

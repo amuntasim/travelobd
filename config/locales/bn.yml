@@ -328,6 +328,8 @@ bn:
       name: "নাম"
       no_item_found: '‌কোন  %{item}  নাই'
       notification_email: 'পর্যবেক্ষণ ই-মেইল'
+      own_this: স্বত্ত্বাধিকারী হউন
+      own_this_hists: আপনি এর প্রকৃত স্বত্ত্বাধিকারী হলে ক্লিক করুন
       package_owner: "প্যাকেজ স্বত্ত্বাধিকারী"
       phone: "ফোন"
       privacy_policy: "গোপনীয় নীতিমালা"

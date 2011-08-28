@@ -30,6 +30,9 @@
           <li id="saved_item_li">
             <%= render :partial => 'shared_partials/saved_item', :locals => {:savable => @tour_operator} %>
           </li>
+          <li id="saved_item_li">
+             <%= link_to t('general.label.own_this', :item => @tour_operator.class.name),  "#TB_inline?width=400&height=300&inlineId=ownership_request_lb&modal=true", :class => 'thickbox', :title => t('general.label.own_this_hists') %>
+          </li>
         </ul>
       </div>
     </div>
@@ -117,6 +120,7 @@
 </div>
 
 <%= render :partial => 'shared_partials/send_to_friends', :locals => {:item => 'tour_operator', :item_id => @tour_operator.id} %>
+<%= render :partial => 'shared_partials/ownership_request', :locals => {:item => 'tour_operator', :item_id => @tour_operator.id} %>
 <style type="text/css">
 
 </style>

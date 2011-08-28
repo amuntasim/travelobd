@@ -98,7 +98,7 @@ class SpotsController < ApplicationController
     @spot_search = Spot.search(params[:search])
     #ordering = " #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = " #{ params[:order] unless params[:order].blank? }"
-    @spots = @spot_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
+    @spots = @spot_search.order(ordering).paginate(:page=> params[:page], :per_page => 15)
     @search_label = params[:label] || 'Spots : Search Results '
     @paginate_items = @spots
     render :index

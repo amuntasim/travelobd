@@ -246,6 +246,7 @@ en:
       discount_till: 'Discount till'
       details: 'Details'
       departure_time: 'Departure Time'
+      date: Date
       domestic: Domestic
       edit: 'Edit'
       event_detail: "Event Details"
@@ -307,6 +308,8 @@ en:
       next: 'Next'
       no_item_found: 'No %{item} found'
       notification_email: 'Notification Email'
+      own_this: Own this
+      own_this_hists: Click if you own this
       phone: 'Phone'
       policies: 'Policies'
       previous: 'Previous'

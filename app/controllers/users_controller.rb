@@ -123,24 +123,24 @@ class UsersController < ApplicationController
 
   def saved_listings
     @active_dashboard_nav = 'my_saved_items'
-    @items = SavedListing.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 10)
+    @items = SavedListing.where(:user_id => current_user.id).paginate(:page=> params[:page], :per_page => 15)
   end
 
   def hotels
     @active_dashboard_nav = 'my_hotels'
-    @hotels = current_user.hotels.paginate(:page=> params[:page], :per_page => 10)
+    @hotels = current_user.hotels.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @hotels
   end
 
   def spots
     @active_dashboard_nav = 'my_spots'
-    @spots = current_user.spots.paginate(:page=> params[:page], :per_page => 10)
+    @spots = current_user.spots.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @spots
   end
 
   def articles
     @active_dashboard_nav = 'my_articles'
-    @articles = current_user.articles.paginate(:page=> params[:page], :per_page => 10)
+    @articles = current_user.articles.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @articles
   end
 
@@ -151,13 +151,13 @@ class UsersController < ApplicationController
 
   def packages
     @active_dashboard_nav = 'my_packages'
-    @packages = current_user.packages.paginate(:page=> params[:page], :per_page => 10)
+    @packages = current_user.packages.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @packages
   end
 
   def tour_operators
     @active_dashboard_nav = 'my_tour_operators'
-    @tour_operators = current_user.tour_operators.paginate(:page=> params[:page], :per_page => 10)
+    @tour_operators = current_user.tour_operators.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @tour_operators
   end
 
@@ -168,7 +168,7 @@ class UsersController < ApplicationController
   def rooms
     @active_dashboard_nav = 'my_rooms'
     conditions = params[:hotel_id].blank? ? {} : {:hotel_id => params[:hotel_id]}
-    @rooms = current_user.rooms.where(conditions).paginate(:page=> params[:page], :per_page => 10)
+    @rooms = current_user.rooms.where(conditions).paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @rooms
   end
 

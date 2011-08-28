@@ -96,7 +96,7 @@ class TourClubsController < ApplicationController
 
   def search
     @tour_club_search = TourClub.search(params[:search])
-    @tour_clubs = @tour_club_search.paginate(:page=> params[:page], :per_page => 10)
+    @tour_clubs = @tour_club_search.paginate(:page=> params[:page], :per_page => 15)
     @search_label = params[:label] || 'TourClubs : Search Results '
     @paginate_items = @tour_clubs
     render :index

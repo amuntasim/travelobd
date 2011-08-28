@@ -1,0 +1,36 @@
+<div id="ownership_request_lb" style="display: none">
+  <%= image_tag 'close.jpeg', :class=> 'close_lb close_ownership_request_lb', :id => 'close_ownership_request_lb', :title => 'close' %>
+  <% form_for OwnershipRequest.new, :url => ownership_requests_path, :remote => true, :html=> {:id => 'ownership_requests_form'} do |f| %>
+      <h2>
+        <%= t('general.label.tell_your_friends') %>
+      </h2>
+
+      <div id="stf_summary" style="margin-top: 5px;">
+
+      </div>
+      <p>
+        <%= t('activerecord.models.message') %>
+      </p>
+
+      <p class="message">
+        <%= text_area_tag :message %>
+      </p>
+
+      <p>
+        <%= t('general.label.email') %>
+      </p>
+
+      <p class="message">
+        <%= text_area_tag :email %>
+      </p>
+
+      <p style="text-align: center">
+        <%= hidden_field_tag 'item_id', item_id %>
+        <%= hidden_field_tag 'item_type', item %>
+        <%= submit_tag t("helpers.submit.send"), :id =>'submit_to_friend' %>
+        <%= image_tag 'loadingAnimation.gif', :id => 'sending_to_friend', :style=> 'display:none' %>
+      </p>
+  <% end %>
+
+
+</div>

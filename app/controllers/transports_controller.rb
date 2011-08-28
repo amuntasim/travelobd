@@ -97,7 +97,7 @@ class TransportsController < ApplicationController
 
   def search
     @transport_search = Transport.search(params[:search])
-    @transports = @transport_search.paginate(:page=> params[:page], :per_page => 10)
+    @transports = @transport_search.paginate(:page=> params[:page], :per_page => 15)
     @search_label = params[:label] || 'Transports : Search Results '
     @paginate_items = @transports
     render :index

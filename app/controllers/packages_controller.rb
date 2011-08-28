@@ -105,7 +105,7 @@ class PackagesController < ApplicationController
   def find_ad
     breed = Breed.search(:name_contains => params[:breed_like]).first
     if breed
-      @packages = Package.search(:breed_id_equals => breed.id).paginate(:page=> params[:page], :per_page => 10)
+      @packages = Package.search(:breed_id_equals => breed.id).paginate(:page=> params[:page], :per_page => 15)
       render :action=> 'search'
     else
       redirect_to advance_search_path
@@ -116,7 +116,7 @@ class PackagesController < ApplicationController
     @package_search = Package.search(params[:search])
     #ordering = "featured DESC, #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = "featured DESC #{','+ params[:order] unless params[:order].blank? } "
-    @packages = @package_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
+    @packages = @package_search.order(ordering).paginate(:page=> params[:page], :per_page => 15)
     @search_label = params[:label] || t('activerecord.models.package') +' : ' + t('general.label.search_result')
     @paginate_items = @packages
     render :index

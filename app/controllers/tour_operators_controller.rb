@@ -102,7 +102,7 @@ class TourOperatorsController < ApplicationController
 
   def search
     @tour_operator_search = TourOperator.search(params[:search])
-    @tour_operators = @tour_operator_search.paginate(:page=> params[:page], :per_page => 10)
+    @tour_operators = @tour_operator_search.paginate(:page=> params[:page], :per_page => 15)
     @search_label = params[:label] || 'TourOperators : Search Results '
     @paginate_items = @tour_operators
     render :index

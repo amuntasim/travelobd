@@ -114,7 +114,7 @@ class HotelsController < ApplicationController
     @hotel_search = Hotel.search(params[:search])
     #ordering = "featured DESC, #{ params[:order]+ ',' unless params[:order].blank? } RAND()"
     ordering = "featured DESC #{','+ params[:order] unless params[:order].blank? }"
-    @hotels = @hotel_search.order(ordering).paginate(:page=> params[:page], :per_page => 10)
+    @hotels = @hotel_search.order(ordering).paginate(:page=> params[:page], :per_page => 15)
     @search_label = params[:label] || 'Hotels : Search Results '
     @paginate_items = @hotels
     render :index

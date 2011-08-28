@@ -1292,7 +1292,7 @@ p.message textarea {
     height: 60px;
 }
 
-#close_send_to_friend_lb, #close_send_message_to_owner_lb, .standard_close_lb {
+#close_send_to_friend_lb, #close_send_message_to_owner_lb, .standard_close_lb, .close_ownership_request_lb {
     float: left;
     position: absolute;
     left: 399px;

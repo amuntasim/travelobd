@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110816086059) do
+ActiveRecord::Schema.define(:version => 20110828095943) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -343,6 +343,19 @@ ActiveRecord::Schema.define(:version => 20110816086059) do
     t.integer  "ref_id"
     t.integer  "parent_id"
     t.string   "ref_type"
+  end
+
+  create_table "ownership_requests", :force => true do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.string   "name"
+    t.string   "company"
+    t.string   "designation"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "package_event_translations", :force => true do |t|

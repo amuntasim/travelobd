@@ -23,7 +23,7 @@ class Mailer < ActionMailer::Base
 
   def send_to_friend(params, user)
     @message = params[:message]
-    @link = "/#{params[:item_type]}s/#{params[:item_id]}"
+    @link = eval "#{params[:item_type]}_url(#{params[:item_id]})"
     mail(:to => params[:email].split(','), :subject => "A link from #{ user ? user.full_name : 'your friend'} ", :from => user ? "#{user.full_name} <#{user.email}>" : "#{params[:from]}>")
   end
 

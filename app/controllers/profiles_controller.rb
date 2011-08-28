@@ -79,13 +79,13 @@ class ProfilesController < ApplicationController
 
   def spots
     @active_dashboard_nav = 'my_spots'
-    @spots = @profile.user.spots.paginate(:page=> params[:page], :per_page => 10)
+    @spots = @profile.user.spots.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @spots
   end
 
   def articles
     @active_dashboard_nav = 'my_articles'
-    @articles = @profile.user.articles.paginate(:page=> params[:page], :per_page => 10)
+    @articles = @profile.user.articles.paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @articles
   end
 
@@ -94,7 +94,7 @@ class ProfilesController < ApplicationController
   def rooms
     @active_dashboard_nav = 'my_rooms'
     conditions = params[:hotel_id].blank? ? {} : {:hotel_id => params[:hotel_id]}
-    @rooms = current_user.rooms.where(conditions).paginate(:page=> params[:page], :per_page => 10)
+    @rooms = current_user.rooms.where(conditions).paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @rooms
   end
   private
