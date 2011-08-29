@@ -1,0 +1,2 @@
+module OwnershipRequestsHelper
+end

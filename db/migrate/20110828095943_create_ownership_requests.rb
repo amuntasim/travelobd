@@ -9,6 +9,7 @@ class CreateOwnershipRequests < ActiveRecord::Migration
       t.string :phone
       t.string :email
       t.integer :user_id
+      t.text :message
 
       t.timestamps
     end

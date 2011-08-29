@@ -1631,3 +1631,7 @@ div.operator_package_title p {
 .w_200 {
     width: 200px !important;
 }
+
+h2.thickbox_header{
+    line-height: 22px;
+}

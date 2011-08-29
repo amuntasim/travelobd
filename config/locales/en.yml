@@ -248,6 +248,7 @@ en:
       departure_time: 'Departure Time'
       date: Date
       domestic: Domestic
+      designation: Designation
       edit: 'Edit'
       event_detail: "Event Details"
       email: "Email"
@@ -309,7 +310,8 @@ en:
       no_item_found: 'No %{item} found'
       notification_email: 'Notification Email'
       own_this: Own this
-      own_this_hists: Click if you own this
+      own_this_hints: Click if you own this
+      own_this_label: If you own this and want to manage it by yourself then contact us fillup this form and submit.
       phone: 'Phone'
       policies: 'Policies'
       previous: 'Previous'

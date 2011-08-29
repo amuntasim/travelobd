@@ -27,4 +27,10 @@ class Mailer < ActionMailer::Base
     mail(:to => params[:email].split(','), :subject => "A link from #{ user ? user.full_name : 'your friend'} ", :from => user ? "#{user.full_name} <#{user.email}>" : "#{params[:from]}>")
   end
 
+  def ownership_request(ownership_request)
+    @ownership_request = ownership_request
+    @link = eval "#{ownership_request.resource_type.underscore.downcase}_url(#{ownership_request.resource_id})"
+    mail(:to => "ahmed2tul@gmail.com", :subject => "Ownership request from #{ ownership_request.user ? ownership_request.user.full_name : ownership_request.name} ", :from => ownership_request.user ? "#{ownership_request.user.full_name} <#{ownership_request.user.email}>" : "#{ownership_request.email}>")
+  end
+
 end
