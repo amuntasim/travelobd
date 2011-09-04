@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828095943) do
+ActiveRecord::Schema.define(:version => 20110903145721) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -357,6 +357,10 @@ ActiveRecord::Schema.define(:version => 20110828095943) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "resolved",      :default => false
+    t.boolean  "approved",      :default => false
+    t.string   "token"
+    t.datetime "token_expires"
   end
 
   create_table "package_event_translations", :force => true do |t|

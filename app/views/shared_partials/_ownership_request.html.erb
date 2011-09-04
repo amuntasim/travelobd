@@ -5,7 +5,7 @@
         <%= t('general.label.own_this_label') %>
       </h2>
 
-      <div id="ownership_request_summary" style="margin-top: 5px;">
+      <div id="ownership_request_summary"  class="tb_form_summary">
 
       </div>
       <label>
@@ -58,7 +58,7 @@
 
       <p style="text-align: center">
         <%= f.hidden_field :resource_id, :value => item_id %>
-        <%= f.hidden_field :resource_type, :value => item %>
+        <%= f.hidden_field :resource_type, :value => item.classify %>
         <%= submit_tag t("helpers.submit.send"), :id =>'submit_to_own' %>
         <%= image_tag 'loadingAnimation.gif', :id => 'submit_to_own_loading', :style=> 'display:none' %>
       </p>

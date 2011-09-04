@@ -2,7 +2,8 @@ class TourOperatorsController < ApplicationController
   before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy]
   before_filter lambda { @active_nav = 'tour_operators' }
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print, :rate]
-  before_filter :check_ownership, :only => [:edit, :update, :destroy]
+  before_filter :check_ownership, :only => [:edit, :update]
+  before_filter :check_if_owner, :only => [:destroy]
   layout :choose_layout
   # GET /ads
   # GET /ads.xml
@@ -129,6 +130,10 @@ class TourOperatorsController < ApplicationController
   end
 
   def check_ownership
+    current_user && (current_user.id == @tour_operator.user_id || OwnershipRequest.owned('TourOperator', current_user.id).collect(&:resource_id).include?(@tour_operator.id))
+  end
+
+  def check_if_owner
     ownership_require(@tour_operator)
   end
 

@@ -18,7 +18,7 @@ jQuery.fn.submitWithAjax = function() {
 $.fn.saveItemToMyListing = function() {
     $('a.save_item').click(function() {
         $.ajax({
-            url: '/users/save_item?savable_id=' + $(this).attr('item_id') + '&savable_type=' + $(this).attr('savable_type'),
+            url: '/users/save_item?savable_id=' + $(this).attr('item_id') + '&savable_type=' + $(this).attr('savable_type') + '&locale=' + currentLocale,
             type: 'post',
             dataType: 'script',
             success: function(r) {
@@ -512,6 +512,17 @@ $(document).ready(function() {
             $('#submit_to_friend').show();
         }).bind("ajax:success", function() {
             $("#send_to_friends_form").get(0).reset();
+        });
+    $("#ownership_requests_form").bind("ajaxSend",
+        function() {
+            $('#submit_to_own').hide();
+            $('#submit_to_own_loading').show();
+        }).bind("ajaxComplete",
+        function() {
+            $('#submit_to_own_loading').hide();
+            $('#submit_to_own').show();
+        }).bind("ajax:success", function() {
+            $("#ownership_requests_form").get(0).reset();
         });
 
     $('#comment_form').bind(

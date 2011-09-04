@@ -62,3 +62,12 @@ TourOperator:
   search: 
   application: travelobd
 
+OwnershipRequest:
+  fields:
+    default: name,resource_type, resource, company, created_at, resolved, approved
+    form: resource_id, resource_type, resolved
+  order_by:
+  filters: resolved , resource_type
+  search:
+  application: travelobd
+

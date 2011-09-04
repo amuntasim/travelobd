@@ -2,7 +2,8 @@ class TransportsController < ApplicationController
   before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy]
   before_filter lambda { @active_nav = 'transports' }
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print, :rate]
-  before_filter :check_ownership, :only => [:edit, :update, :destroy]
+  before_filter :check_ownership, :only => [:edit, :update]
+  before_filter :check_if_owner, :only => [:destroy]
   layout :choose_layout
   # GET /ads
   # GET /ads.xml
@@ -124,8 +125,12 @@ class TransportsController < ApplicationController
   end
 
   def check_ownership
-    ownership_require(@transport)
-  end
+     current_user && (current_user.id == @transport.user_id || OwnershipRequest.owned('Transport', current_user.id).collect(&:resource_id).include?(@transport.id))
+   end
+
+   def check_if_owner
+     ownership_require(@transport)
+   end
 
   def choose_layout
     ['new', 'edit'].include?(action_name) ? 'dashboard' : 'application'

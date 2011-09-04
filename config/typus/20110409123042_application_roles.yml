@@ -9,3 +9,4 @@ admin:
   TitleDetailAttribute: create, read, update, delete
   TourClub: create, read, update, delete
   TourOperator: create, read, update, delete
+  OwnershipRequest: all

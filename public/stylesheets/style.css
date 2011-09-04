@@ -1611,13 +1611,14 @@ div.operator_package_title {
 }
 
 div.operator_package_title h4 a {
-     color: #0083AB;
-}
-div.operator_package_title p {
-     color: #999999;
+    color: #0083AB;
 }
 
-.operator_package_price{
+div.operator_package_title p {
+    color: #999999;
+}
+
+.operator_package_price {
     float: left;
     width: 145px;
     margin-left: 20px;
@@ -1632,6 +1633,11 @@ div.operator_package_title p {
     width: 200px !important;
 }
 
-h2.thickbox_header{
+h2.thickbox_header {
     line-height: 22px;
+}
+
+.tb_form_summary {
+    margin: 5px;
+    text-align: center
 }

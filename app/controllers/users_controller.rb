@@ -128,7 +128,8 @@ class UsersController < ApplicationController
 
   def hotels
     @active_dashboard_nav = 'my_hotels'
-    @hotels = current_user.hotels.paginate(:page=> params[:page], :per_page => 15)
+      owned_hotel_ids = OwnershipRequest.owned('Hotel', current_user.id).collect(&:resource_id)
+    @hotels = Transport.where(["id IN(?) OR user_id  = ?", owned_hotel_ids, current_user.id]).paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @hotels
   end
 
@@ -146,7 +147,9 @@ class UsersController < ApplicationController
 
   def transports
     @active_dashboard_nav = 'my_transports'
-    @transports = current_user.transports
+    owned_transport_ids = OwnershipRequest.owned('Transport', current_user.id).collect(&:resource_id)
+    @transports = Transport.where(["id IN(?) OR user_id  = ?", owned_transport_ids, current_user.id]).paginate(:page=> params[:page], :per_page => 15)
+    @paginate_items = @transports
   end
 
   def packages
@@ -157,7 +160,8 @@ class UsersController < ApplicationController
 
   def tour_operators
     @active_dashboard_nav = 'my_tour_operators'
-    @tour_operators = current_user.tour_operators.paginate(:page=> params[:page], :per_page => 15)
+    owned_tour_operator_ids = OwnershipRequest.owned('TourOperator', current_user.id).collect(&:resource_id)
+    @tour_operators = TourOperator.where(["id IN(?) OR user_id  = ?", owned_tour_operator_ids, current_user.id]).paginate(:page=> params[:page], :per_page => 15)
     @paginate_items = @tour_operators
   end
 

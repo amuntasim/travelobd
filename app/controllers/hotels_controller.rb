@@ -3,8 +3,8 @@ class HotelsController < ApplicationController
   before_filter lambda { @active_nav = 'hotels' }
 
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print]
-  before_filter :check_ownership, :only => [:edit, :update, :destroy]
-
+  before_filter :check_ownership, :only => [:edit, :update]
+  before_filter :check_if_owner, :only => [:destroy]
   layout :choose_layout
 
 #  uses_tiny_mce :only =>[:new, :edit], :options => {
@@ -141,8 +141,12 @@ class HotelsController < ApplicationController
   end
 
   def check_ownership
-    ownership_require(@hotel)
-  end
+     current_user && (current_user.id == @hotel.user_id || OwnershipRequest.owned('Hotel', current_user.id).collect(&:resource_id).include?(@hotel.id))
+   end
+
+   def check_if_owner
+     ownership_require(@hotel)
+   end
 
   def choose_layout
     ['new', 'edit'].include?(action_name) ? 'dashboard' : 'application'

@@ -1,8 +1,14 @@
 class Mailer < ActionMailer::Base
 
+  def ownership_acceptance_instructions(ownership_request)
+    @link = eval "#{ownership_request.resource_type.underscore.downcase}_url(#{ownership_request.resource_id})"
+    @accept_url = accept_ownership_request_url(ownership_request.token)
+    mail(:to => "#{ownership_request.name} <#{ownership_request.email}>", :subject => "Acceptance of ownership request", :from => "Travelobd Notifier <cst@travelobd.com>")
+  end
+
   def password_reset_instructions(user)
     @edit_password_reset_url = edit_password_reset_url(user.perishable_token)
-    mail(:to => "#{user.full_name} <#{user.email}>", :subject => "Password Reset Instructions", :from => "Travelobd Notifier <cst@everyequestrian.com>")
+    mail(:to => "#{user.full_name} <#{user.email}>", :subject => "Password Reset Instructions", :from => "Travelobd Notifier <cst@travelobd.com>")
   end
 
   def send_message(msg)
@@ -30,7 +36,7 @@ class Mailer < ActionMailer::Base
   def ownership_request(ownership_request)
     @ownership_request = ownership_request
     @link = eval "#{ownership_request.resource_type.underscore.downcase}_url(#{ownership_request.resource_id})"
-    mail(:to => "ahmed2tul@gmail.com", :subject => "Ownership request from #{ ownership_request.user ? ownership_request.user.full_name : ownership_request.name} ", :from => ownership_request.user ? "#{ownership_request.user.full_name} <#{ownership_request.user.email}>" : "#{ownership_request.email}>")
+    mail(:to => "webmaster@travelobd.com", :subject => "Ownership request from #{ ownership_request.user ? ownership_request.user.full_name : ownership_request.name} ", :from => ownership_request.user ? "#{ownership_request.user.full_name} <#{ownership_request.user.email}>" : "#{ownership_request.email}>")
   end
 
 end

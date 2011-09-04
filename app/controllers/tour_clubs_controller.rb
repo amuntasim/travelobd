@@ -2,7 +2,8 @@ class TourClubsController < ApplicationController
   before_filter :require_user, :only=> [:new, :edit, :create, :update, :destroy, :join_leave]
   before_filter lambda { @active_nav = 'tour_clubs' }
   before_filter :load_item, :only =>[:show, :edit, :update, :destroy, :print, :rate, :join_leave]
-  before_filter :check_ownership, :only => [:edit, :update, :destroy]
+  before_filter :check_ownership, :only => [:edit, :update]
+  before_filter :check_if_owner, :only => [:destroy]
   layout :choose_layout
   # GET /ads
   # GET /ads.xml
@@ -74,18 +75,17 @@ class TourClubsController < ApplicationController
   end
 
   def delete_asset
-      asset = Asset.find(params[:asset_id])
-      asset.destroy
-      render :nothing => true
-    end
+    asset = Asset.find(params[:asset_id])
+    asset.destroy
+    render :nothing => true
+  end
 
-    def set_main_photo
-      asset = Asset.find(params[:asset_id])
-      Asset.update_all ['main = ?', false], ['assetable_type = ? AND assetable_id = ?', 'TourClub', asset.assetable_id]
-      asset.update_attribute(:main, true)
-      render :nothing => true
-    end
-
+  def set_main_photo
+    asset = Asset.find(params[:asset_id])
+    Asset.update_all ['main = ?', false], ['assetable_type = ? AND assetable_id = ?', 'TourClub', asset.assetable_id]
+    asset.update_attribute(:main, true)
+    render :nothing => true
+  end
 
 
   def location_autocomplete
@@ -126,6 +126,10 @@ class TourClubsController < ApplicationController
   end
 
   def check_ownership
+    current_user && (current_user.id == @tour_club.user_id || OwnershipRequest.owned('TourOperator', current_user.id).collect(&:resource_id).include?(@tour_club.id))
+  end
+
+  def check_if_owner
     ownership_require(@tour_club)
   end
 
