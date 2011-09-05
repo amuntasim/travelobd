@@ -1,0 +1,16 @@
+<li>
+  <div class="operator_package_title">
+    <h4>
+      <%= link_to partial_package.title, partial_package, :target => '_blank' %>
+    </h4>
+
+    <p>
+      <%= truncate partial_package.description, :length => 150 %>
+    </p>
+  </div>
+  <div class="operator_package_price">
+    <%= raw package_price(partial_package) %>
+  </div>
+
+
+</li>

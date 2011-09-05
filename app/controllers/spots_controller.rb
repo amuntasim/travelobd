@@ -38,7 +38,7 @@ class SpotsController < ApplicationController
   # GET /spots/new.xml
   def new
     @spot = Spot.new
-
+    @nearby_spots = []
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @spot }
@@ -48,6 +48,7 @@ class SpotsController < ApplicationController
   # GET /spots/1/edit
   def edit
     @spot = Spot.find(params[:id])
+    @nearby_spots = Spot.where(:active => true, :district_id => @spot.district_id).where("id <> ?", @spot.id)
   end
 
   # POST /spots

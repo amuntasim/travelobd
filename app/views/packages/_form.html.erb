@@ -4,15 +4,15 @@
 </div>
 
 <%= content_for :js_css_include do %>
-    <%= javascript_include_tag 'jquery.form', 'jquery.validate', 'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery-fieldselection', 'jquery.caret.min' %>
+    <%= javascript_include_tag  'bangla.input', 'bangla_key_maps', 'tiny_redcloth', 'thickbox', 'jquery.caret.min' %>
     <%= stylesheet_link_tag 'jquery-ui', 'autocomplete', 'thickbox' %>
 <% end %>
 
 <div class="item_form">
-<%= form_for(@package, :html => {:multipart => true, :id=> 'package_form'}) do |f| %>
+<%= form_for(@package, :html => {:multipart => true, :id=> 'package_form'}, :validate => true) do |f| %>
     <% @builder = f %>
 
-    <%= error_messages_for(@package) %>
+    <%#= error_messages_for(@package) %>
 
     <div class="form_summary" id="summary">
 
@@ -404,7 +404,7 @@
         TBD.DHTML.removeDHTMLItem('a.removeVideo', 'video');
 
 
-        var validator = $("#package_form").validate({
+      /*  var validator = $("#package_form").validate({
             invalidHandler: function() {
                 $("#summary").html('<div class="item_form_row">' + TBD.GENERAL.translateNumber(validator.numberOfInvalids(), '<%=I18n.locale%>') + " <%= t('general.label.invalid_form_fields')%></div>");
                 //$('textarea.tiny_redcloth').removeAttr('trc_option_enabled');
@@ -428,6 +428,7 @@
             }
         });
 
+*/
         $('#package_discount_till, #package_start_date, #package_end_date').datepicker({
             changeMonth: true,
             changeYear: true

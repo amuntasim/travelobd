@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903145721) do
+ActiveRecord::Schema.define(:version => 20110905121439) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -343,6 +343,11 @@ ActiveRecord::Schema.define(:version => 20110903145721) do
     t.integer  "ref_id"
     t.integer  "parent_id"
     t.string   "ref_type"
+  end
+
+  create_table "nearby_spots", :id => false, :force => true do |t|
+    t.integer "spot_id"
+    t.integer "nearby_spot_id"
   end
 
   create_table "ownership_requests", :force => true do |t|

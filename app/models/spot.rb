@@ -46,6 +46,12 @@ class Spot < ActiveRecord::Base
   has_and_belongs_to_many :packages
   has_and_belongs_to_many :transports
   has_and_belongs_to_many :hotels
+  has_and_belongs_to_many :nearby_spots, :class_name => 'Spot',
+                          :finder_sql => 'SELECT DISTINCT spots.* FROM spots
+                                         JOIN  nearby_spots NS ON spots.id = NS.spot_id OR spots.id = NS.nearby_spot_id
+                                          WHERE spots.id <> #{id} AND (NS.spot_id = #{id} OR NS.nearby_spot_id = #{id})',
+                          :join_table => :nearby_spots, :foreign_key => :nearby_spot_id
+
   has_many :comments, :as => :commentable
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
 

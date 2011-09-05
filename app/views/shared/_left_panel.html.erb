@@ -23,6 +23,7 @@
         <div class="ad_btn" align="center">
 
           <%= hidden_field_tag :search_option, 'Hotels' %>
+          <%= hidden_field_tag :locale, I18n.locale %>
           <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
           <span class="search_button_right"> </span>
         </div>
@@ -40,6 +41,7 @@
 
         <div class="ad_btn">
           <%= hidden_field_tag :search_option, 'Spots' %>
+          <%= hidden_field_tag :locale, I18n.locale %>
           <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
           <span class="search_button_right"> </span>
         </div>
@@ -69,6 +71,7 @@
 
         <div class="ad_btn">
           <%= hidden_field_tag :search_option, 'Packages' %>
+          <%= hidden_field_tag :locale, I18n.locale %>
           <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
           <span class="search_button_right"> </span>
         </div>
@@ -85,6 +88,7 @@
 
           <div class="ad_btn">
             <%= hidden_field_tag :search_option, 'Articles' %>
+            <%= hidden_field_tag :locale, I18n.locale %>
             <%= f.submit t('helpers.submit.search'), :class => "search_button" %>
             <span class="search_button_right"> </span>
           </div>

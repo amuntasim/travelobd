@@ -1641,3 +1641,30 @@ h2.thickbox_header {
     margin: 5px;
     text-align: center
 }
+
+.field_with_errors, .inline {
+    display: inline;
+}
+
+.field_with_errors input, .field_with_errors select {
+    border: 1px solid red !important;
+}
+
+span.required {
+    color: red;
+    font-size: 20px;
+}
+
+.message {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 2px 5px;
+    margin-left: 3px;
+    border: 1px solid red;
+    color: red;
+
+}
+
+div.field_with_errors div.ui-effects-wrapper {
+    display: inline-block !important;
+}

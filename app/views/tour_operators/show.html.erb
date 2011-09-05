@@ -83,25 +83,7 @@
   <div class="itemDetail">
 
     <ol>
-      <% @tour_operator.packages.each do |package| %>
-
-          <li>
-            <div class="operator_package_title">
-              <h4>
-                <%= link_to package.title, package, :target => '_blank' %>
-              </h4>
-              <p>
-                 <%=truncate package.description, :length => 150%>
-              </p>
-            </div>
-            <div class="operator_package_price">
-                  <%= raw package_price(package)%>
-            </div>
-
-
-          </li>
-
-      <% end %>
+      <%= render  :partial => 'packages/partial_package',:collection => @tour_operator.packages %>
     </ol>
   </div>
 

@@ -5,7 +5,7 @@
   <title><%= @title || "Welcome" %></title>
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag 'style', 'menu', 'bx_styles', 'jquery-ui' %>
-  <%= javascript_include_tag 'jquery.min', 'jquery-ui', 'jquery.validate', 'rails', 'menu', 'application', 'jquery.bxSlider.min' %>
+  <%= javascript_include_tag 'jquery.min', 'jquery-ui','rails', 'menu', 'application', 'jquery.bxSlider.min', 'rails.validations' %>
   <%= yield :js_css_include %>
   <%= stylesheet_link_tag 'bangla_fix' if I18n.locale.to_s == 'bn' %>
   <script type="text/javascript">

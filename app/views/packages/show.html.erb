@@ -5,11 +5,7 @@
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
 
-    <meta property="og:title" content="<%= @package.title %>"/>
-    <meta property="og:type" content="package"/>
-    <meta property="og:url" content="<%= package_url(:id => @package.id, :host => request.host) %>"/>
-    <meta property="og:image" content="<%= "http://#{request.host}#{@package.main_image_url(:thumb)}" %>"/>
-    <meta property="og:site_name" content="Travelobd"/>
+   <%=raw meta_tags_for_fb(@package.title, 'Article', article_url(:id => @package.friendly_id, :host => request.host),"http://#{request.host}#{@package.main_image_url(:thumb)}") %>
 
 <% end %>
 

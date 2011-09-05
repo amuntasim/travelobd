@@ -375,20 +375,20 @@ $.maxZIndex = $.fn.maxZIndex = function(opt) {
 }
 
 $(document).ready(function() {
-    $.validator.methods.multipleEmailValidation = function(value, element, param) {
-        var emails = value.split(',');
-        var valid = (emails.length > 0); // make sure that value is not empty
-        var email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
-
-        for (i = 0; i < emails.length; i++) {
-
-            var emailAddress = emails[i];
-            //alert(emailAddress);
-            //alert(email_regex.test(emailAddress));
-            valid = valid && email_regex.test(emailAddress); // logical and of all email validations
-        }
-        return valid;
-    };
+//    $.validator.methods.multipleEmailValidation = function(value, element, param) {
+//        var emails = value.split(',');
+//        var valid = (emails.length > 0); // make sure that value is not empty
+//        var email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i;
+//
+//        for (i = 0; i < emails.length; i++) {
+//
+//            var emailAddress = emails[i];
+//            //alert(emailAddress);
+//            //alert(email_regex.test(emailAddress));
+//            valid = valid && email_regex.test(emailAddress); // logical and of all email validations
+//        }
+//        return valid;
+//    };
 
 
     setTimeout(function() {

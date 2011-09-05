@@ -5,11 +5,8 @@
     <%= javascript_include_tag 'jquery.easing.1.3', 'jquery.galleryview-1.1', 'jquery.timers-1.1.2', 'thickbox', 'jquery.gmap-1.1.0-min' %>
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
-    <meta property="og:title" content="<%=@hotel.title%>"/>
-    <meta property="og:type" content="hotel"/>
-    <meta property="og:url" content="<%= hotel_url(:id => @hotel.id, :host => request.host)%>"/>
-    <meta property="og:image" content="<%="http://#{request.host}#{@hotel.main_image_url(:thumb)}" %>"/>
-    <meta property="og:site_name" content="Travelobd"/>
+    <%=raw meta_tags_for_fb(@hote;.title, 'Article', article_url(:id => @hote;.friendly_id, :host => request.host),"http://#{request.host}#{@hote;.main_image_url(:thumb)}") %>
+
 <% end %>
 
 <%= content_for :over_mid_content do %>
