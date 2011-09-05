@@ -5,7 +5,7 @@
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
 
-   <%=raw meta_tags_for_fb(@package.title, 'Article', article_url(:id => @package.friendly_id, :host => request.host),"http://#{request.host}#{@package.main_image_url(:thumb)}") %>
+   <%=raw meta_tags_for_fb(@package.title, 'Package', package_url(:id => @package.friendly_id, :host => request.host),"http://#{request.host}#{@package.main_image_url(:thumb)}") %>
 
 <% end %>
 
