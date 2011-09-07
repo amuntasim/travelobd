@@ -105,6 +105,7 @@ Travelobd::Application.routes.draw do
       post :delete_asset
       post :set_main_photo
       get :search
+      get :load_nearby_spots
     end
     member do
       get :print

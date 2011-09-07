@@ -1,0 +1,1 @@
+$("#nearby_spots").html("<%= escape_javascript(render :partial =>'nearby_spot', :collection => @spots, :locals => {:existing_nearby_spots => @existing_nearby_spots}) %>");

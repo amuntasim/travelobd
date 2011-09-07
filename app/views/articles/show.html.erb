@@ -5,7 +5,7 @@
     <%= javascript_include_tag 'thickbox' %>
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
-    <%=raw meta_tags_for_fb(@article.title, 'Article', article_url(:id => @article.friendly_id, :host => request.host),"http://#{request.host}#{@article.main_image_url(:thumb)}") %>
+    <%=raw meta_tags_for_fb(@article.title, 'Article', article_url(:id => @article.custom_friendly_id, :host => request.host),"http://#{request.host}#{@article.main_image_url(:thumb)}") %>
 <% end %>
 <%= content_for :over_mid_content do %>
     <div class="redhead_row">

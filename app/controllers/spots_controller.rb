@@ -122,6 +122,11 @@ class SpotsController < ApplicationController
     render :layout => 'print'
   end
 
+  def load_nearby_spots
+    @spots = Spot.where(:active => true, :district_id => params[:district_id]).where("id <> ?", params[:spot_id])
+    @existing_nearby_spots  = Spot.find(params[:spot_id]).nearby_spots rescue []
+  end
+
   private
 
   def choose_layout

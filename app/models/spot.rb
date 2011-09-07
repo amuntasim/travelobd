@@ -17,7 +17,7 @@
 
 class Spot < ActiveRecord::Base
   translates :name, :description, :short_description, :history, :how_to_go, :where_to_stay
-  has_friendly_id :name, :use_slug => true
+  has_friendly_id :name, :use_slug => true, :scope => :locale
   default_scope order('spots.created_at DESC')
 
   has_many :assets, :class_name => 'SpotAsset', :dependent => :destroy
@@ -56,6 +56,10 @@ class Spot < ActiveRecord::Base
   has_many :approved_comments, :as => :commentable, :class_name => 'Comment', :conditions => {:approved => true}
 
   #before_save :save_textilize_description
+
+
+
+
 
   CATEGORIES = {'Hill' => 1, 'Sea' => 2, 'Wild' => 3, 'Nature' => 4}
   #accepts_nested_attributes_for :base_categories, :reject_if => :all_blank

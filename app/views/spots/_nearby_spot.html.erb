@@ -1,0 +1,5 @@
+<div class="spot_in_package">
+  <%= check_box_tag "spot[nearby_spot_ids][]", nearby_spot.id, existing_nearby_spots.include?(nearby_spot), :id => dom_id(nearby_spot) %>
+
+  <label for="<%= dom_id(nearby_spot) %>"><%= nearby_spot.name %></label>
+</div>

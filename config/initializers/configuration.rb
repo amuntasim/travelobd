@@ -22,6 +22,7 @@ I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
 #language
 LOCALES_DIRECTORY = "#{Rails.root}/config/locales/"
 require 'extend_class'
+require 'override_classes_modules'
 
 
 

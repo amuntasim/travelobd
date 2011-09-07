@@ -5,7 +5,7 @@
     <%= javascript_include_tag 'jquery.validate' %>
     <%= stylesheet_link_tag 'thickbox' %>
 
-   <%=raw meta_tags_for_fb(@package.title, 'Package', package_url(:id => @package.friendly_id, :host => request.host),"http://#{request.host}#{@package.main_image_url(:thumb)}") %>
+   <%=raw meta_tags_for_fb(@package.title, 'Package', package_url(:id => @package.custom_friendly_id, :host => request.host),"http://#{request.host}#{@package.main_image_url(:thumb)}") %>
 
 <% end %>
 
@@ -153,6 +153,10 @@
         <div class="eventDetail clear"><%= t('general.label.phone') %>: <%= contact.phone %></div>
     <% end %>
   </div>
+  <div class="itemDetail clear">
+    <fb:like href="<%= package_url(:id => @package.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+  </div>
+
   <%= render :partial => 'shared_partials/detail_page_comment', :locals => {:item => @package, :rating => true} %>
 </div>
 
@@ -171,7 +175,7 @@
   }</style>
   <!--<a rel="nofollow" href="http://www.facebook.com/share.php?u=<;url>" onclick="return fbs_click()" target="_blank" class="fb_share_link">Share-->
     <!--on Facebook</a>-->
-  <fb:like href="<%= package_url(:id => @package.id, :host => request.host) %>" layout="standard" show_faces="true" width="400" action="recommend" font="segoe ui" colorscheme="light"/>
+
 </div>
 <div id="send_message_to_owner_lb" style="display: none">
   <%= image_tag 'close.jpeg', :class=> 'close_lb', :id => 'close_send_message_to_owner_lb', :title => 'close' %>

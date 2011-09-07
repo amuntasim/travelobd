@@ -22,7 +22,7 @@
             </h4>
           </div>
           <div class="fl description">
-            <%= truncate(sanitize(spot.description).gsub(/<\/?[^>]*>/, ""), :length => 300) %>
+            <%= truncate(sanitize(spot.try(:description) || '').gsub(/<\/?[^>]*>/, ""), :length => 300) %>
           </div>
 
         </div>

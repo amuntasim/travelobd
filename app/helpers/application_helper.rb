@@ -2,12 +2,12 @@ module ApplicationHelper
 
   def meta_tags_for_fb(title, type, url, image)
     meta_tags = ""
-    meta_tags += "<meta property='og:title' content='#{title}'/>"
-    meta_tags += "<meta property='og:type' content='#{type}'/>"
-    meta_tags += "<meta property='og:url' content='#{url}'/>"
-    meta_tags += "<meta property='og:image' content='#{image}'/>"
-    meta_tags += "<meta property='og:site_name' content='Travelobd'/>"
-    meta_tags += "<meta property='fb:app_id' content='106632129690'/>  "
+    meta_tags += "<meta property=\"og:title\" content=\"#{title}\"/>"
+    meta_tags += "<meta property=\"og:type\" content=\"#{type}\"/>"
+    meta_tags += "<meta property=\"og:url\" content=\"#{url}\"/>"
+    meta_tags += "<meta property=\"og:image\" content=\"#{image}\"/>"
+    meta_tags += "<meta property=\"og:site_name\" content=\"Travelobd\"/>"
+    meta_tags += "<meta property=\"fb:app_id\" content=\"106632129690\"/>  "
     meta_tags
   end
 

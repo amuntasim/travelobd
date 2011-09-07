@@ -138,6 +138,37 @@ var TBD = {
     },
 
     DHTML : {
+        stylingFileField : function() {
+            $('input[type=file]').each(function() {
+                $(this).addClass('file').addClass('hidden');
+                $(this).parent().append($('<div class="fakefile" />').append($('<input type="text" />').attr('id', $(this).attr('id') + '__fake')).append($('<img src="/images/choose-file.gif" alt="" />')));
+
+                $(this).bind('change', function() {
+                    $('#' + $(this).attr('id') + '__fake').val($(this).val());
+                    ;
+                });
+                $(this).bind('mouseout', function() {
+                    $('#' + $(this).attr('id') + '__fake').val($(this).val());
+                    ;
+                });
+            });
+        },
+
+        shadeWithLoading : function(dom_id) {
+            var obj = $('#' + dom_id);
+            obj.css({ opacity: 0.2 });
+            left_pos = obj.offset().left + (obj.outerWidth() / 2) - 16;
+            top_pos = obj.offset().top + (obj.outerHeight() / 2) - 16;
+            $('<div class="loading_div">&nbsp;</div>').appendTo($('body')).css('top', top_pos).css('left', left_pos);
+
+        },
+        removeShadeWithLoading : function(dom_id) {
+            var obj = $('#' + dom_id);
+            obj.css({ opacity: 1 });
+            $('div.loading_div').remove();
+
+        },
+
         addMoreItem : function(clickableSelector, source, placeHolder, removeSelector, itemClass, callbacks) {
             $(clickableSelector).click(function() {
                 var new_object_id = new Date().getTime();
